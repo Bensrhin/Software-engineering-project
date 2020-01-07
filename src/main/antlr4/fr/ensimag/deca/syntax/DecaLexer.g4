@@ -10,20 +10,37 @@ options {
 
 @members {
 }
-//Identificateur
-fragment DIGIT : '0' .. '9';
 
+//Identificateur
+fragment LETTER : 'a' .. 'z'|'A' .. 'Z';
+fragment DIGIT : '0' .. '9';
+INDENT : (LETTER | '$' | '_')(LETTER | DIGIT | '$' | '_')*;
+
+//Symbole Speciaux
+
+PLUS : '+' ;
+MINUS : '-' ;
+TIMES : '*' ;
+LESS : '<';
+GREAT : '>';
+EQUAL : '=';
+DIVISION : '/';
+MOD : '%';
+LEQ : '<=';
+GEQ : '>=';
+SKIP : (' ' | '\n' | '\t' | '\r');
+
+//Litteraux entiers
+fragment POSITIVE_DIGITS : '1' .. '9';
+INT : '0' | POSITIVE_DIGITS*;
+
+//Litteraux Flottant
 fragment HEXA_MAJ : 'A' .. 'F';
 fragment HEXA_MIN : 'a' .. 'f';
-fragment POSITIVE_DIGITS : '1' .. '9';
 
-LETTER : 'a' .. 'z'|'A' .. 'Z';
-
-INT : '0' | POSITIVE_DIGITS*;
 NUM : DIGIT+;
 SIGN : '+' | '-' | '';
 EXP : ('E' | 'e') SIGN NUM;
-
 DEC : NUM '.' NUM;
 FLOATDEC : (DEC | DEC EXP) ('F' | 'f' | '');
 DIGITHEX : DIGIT | HEXA_MAJ| HEXA_MIN;
@@ -31,4 +48,17 @@ NUMHEX : DIGITHEX+
 FLOATHEX : ('0x' | '0X') NUMHEX '.' NUMHEX ('P' | 'p') SIGN NUM ('F' | 'f' | '');
 FLOAT : FLOATDEC | FLOATHEX;
 
-STRING
+//Chaine de caracteres
+STRING_CAR : (LETTER | DIGIT)~('"' | '\\' | '\n');
+STRING : '"' (STRING_CAR | '\\"' | '\\\\')* '"';
+MULTI_LINE_STRING = '"' (STRING_CAR | '\n' | '\\"' | '\\\\')* '"';
+
+//Commentaires
+
+
+//Separateurs
+WS : SKIP {skip();};
+
+//Inclusion de Fichier
+FILENAME : (LETTER | DIGIT | '.' | '-' | '_')+
+INCLUDE : '#include' ('')* '"' FILENAME '"';
