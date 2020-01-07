@@ -14,21 +14,25 @@ options {
 //Identificateur
 fragment LETTER : 'a' .. 'z'|'A' .. 'Z';
 fragment DIGIT : '0' .. '9';
-INDENT : (LETTER | '$' | '_')(LETTER | DIGIT | '$' | '_')*;
+INDENT : (LETTER |'$' |'_')(LETTER |DIGIT |'$' |'_')*;
 
 //Symbole Speciaux
 
-PLUS : '+' ;
-MINUS : '-' ;
-TIMES : '*' ;
-LESS : '<';
-GREAT : '>';
-EQUAL : '=';
-DIVISION : '/';
-MOD : '%';
-LEQ : '<=';
-GEQ : '>=';
-SKIP : (' ' | '\n' | '\t' | '\r');
+fragment PLUS : '+' ;
+fragment MINUS : '-' ;
+fragment TIMES : '*' ;
+fragment LESS : '<';
+fragment GREAT : '>';
+fragment EQUAL : '=';
+fragment DIVISION : '/';
+fragment MOD : '%';
+fragment LEQ : '<=';
+fragment GEQ : '>=';
+fragment EOL : '\n';
+fragment TAB : '\t';
+//EMPTY :
+
+SKIPCAR : (' ' |EOL |TAB |'\r');
 
 //Litteraux entiers
 fragment POSITIVE_DIGITS : '1' .. '9';
@@ -39,26 +43,26 @@ fragment HEXA_MAJ : 'A' .. 'F';
 fragment HEXA_MIN : 'a' .. 'f';
 
 NUM : DIGIT+;
-SIGN : '+' | '-' | '';
+SIGN : '+' |'-' |;
 EXP : ('E' | 'e') SIGN NUM;
 DEC : NUM '.' NUM;
-FLOATDEC : (DEC | DEC EXP) ('F' | 'f' | '');
+FLOATDEC : (DEC | DEC EXP) ('F' | 'f' |);
 DIGITHEX : DIGIT | HEXA_MAJ| HEXA_MIN;
-NUMHEX : DIGITHEX+
-FLOATHEX : ('0x' | '0X') NUMHEX '.' NUMHEX ('P' | 'p') SIGN NUM ('F' | 'f' | '');
+NUMHEX : DIGITHEX+;
+FLOATHEX : ('0x' | '0X') NUMHEX '.' NUMHEX ('P' | 'p') SIGN NUM ('F' | 'f' |);
 FLOAT : FLOATDEC | FLOATHEX;
 
 //Chaine de caracteres
-STRING_CAR : (LETTER | DIGIT)~('"' | '\\' | '\n');
+STRING_CAR : ~('"' |'\\' |EOL);
 STRING : '"' (STRING_CAR | '\\"' | '\\\\')* '"';
-MULTI_LINE_STRING = '"' (STRING_CAR | '\n' | '\\"' | '\\\\')* '"';
+MULTI_LINE_STRING : '"' (STRING_CAR | EOL | '\\"' | '\\\\')* '"';
 
 //Commentaires
 
 
 //Separateurs
-WS : SKIP {skip();};
+WS : SKIPCAR {skip();};
 
 //Inclusion de Fichier
-FILENAME : (LETTER | DIGIT | '.' | '-' | '_')+
-INCLUDE : '#include' ('')* '"' FILENAME '"';
+FILENAME : (LETTER | DIGIT | '.' | '-' | '_')+;
+INCLUDE : '#include' ()* '"' FILENAME '"';
