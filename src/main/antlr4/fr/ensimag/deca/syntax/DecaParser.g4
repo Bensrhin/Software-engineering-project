@@ -40,7 +40,7 @@ prog returns[AbstractProgram tree]
             assert($list_classes.tree != null);
             assert($main.tree != null);
             $tree = new Program($list_classes.tree, $main.tree);
-            setLocation($tree, $list_classes.start);
+            setLocation($tree, $main.start);
         }
     ;
 
@@ -101,6 +101,7 @@ list_inst returns[ListInst tree]
     $tree = new ListInst();
     }
     : (inst {
+        assert($inst.tree != null);
         $tree.add($inst.tree);
         setLocation($tree, $inst.start);
         }
@@ -175,10 +176,13 @@ list_expr returns[ListExpr tree]
         $tree = new ListExpr();
         }
     : (e1=expr {
+          assert($e1.tree != null);
           $tree.add($e1.tree);
           setLocation($tree, $e1.start);
+
         }
        (COMMA e2=expr {
+          assert($e2.tree != null);
           $tree.add($e2.tree);
           setLocation($tree, $e2.start);
         }
@@ -188,8 +192,10 @@ list_expr returns[ListExpr tree]
 expr returns[AbstractExpr tree]
     : assign_expr {
             assert($assign_expr.tree != null);
-      
+            $tree = $assign_expr.tree; 
+            setLocation($tree, $assign_expr.start);
         }
+         
     ;
 
 assign_expr returns[AbstractExpr tree]
@@ -202,7 +208,7 @@ assign_expr returns[AbstractExpr tree]
         EQUALS e2=assign_expr {
             assert($e.tree != null);
             assert($e2.tree != null);
-            $tree = new Equals($e.tree, $e2.tree);
+            $tree = new Assign((AbstractLValue)$e.tree, $e2.tree);
             setLocation($tree, $EQUALS);
         }
       | /* epsilon */ {
@@ -464,8 +470,8 @@ ident returns[AbstractIdentifier tree]
 /****     Class related rules     ****/
 
 list_classes returns[ListDeclClass tree]
-    :
-      (c1=class_decl {
+    @init {$tree = new ListDeclClass();}
+    :(c1=class_decl { 
         }
       )*
     ;
