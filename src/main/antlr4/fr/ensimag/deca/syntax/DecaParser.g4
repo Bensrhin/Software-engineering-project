@@ -26,6 +26,9 @@ options {
 @header {
     import fr.ensimag.deca.tree.*;
     import java.io.PrintStream;
+    import fr.ensimag.deca.tools.SymbolTable;
+    import fr.ensimag.deca.tools.SymbolTable.Symbol;
+
 }
 
 @members {
@@ -87,12 +90,18 @@ list_decl_var[ListDeclVar l, AbstractIdentifier t]
 
 decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
 @init   {
+        AbstractInitialization debut = null;
         }
     : i=ident {
         }
       (EQUALS e=expr {
+        debut = new Initialization($e.tree);
+        $tree = new DeclVar($t, $i.tree, debut);
+        setLocation(debut, $EQUALS);
         }
       )? {
+         $tree = new DeclVar($t, $i.tree, new NoInitialization());
+         setLocation($tree, $i.start);
         }
     ;
 
@@ -464,6 +473,9 @@ literal returns[AbstractExpr tree]
 
 ident returns[AbstractIdentifier tree]
     : IDENT {
+        SymbolTable s = new SymbolTable();
+        $tree = new Identifier(s.create($IDENT.text));
+        setLocation($tree, $IDENT);
         }
     ;
 
