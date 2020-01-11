@@ -93,15 +93,21 @@ decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
         AbstractInitialization debut = null;
         }
     : i=ident {
+        assert($i.tree != null);
         }
       (EQUALS e=expr {
         debut = new Initialization($e.tree);
-        $tree = new DeclVar($t, $i.tree, debut);
-        setLocation(debut, $EQUALS);
         }
       )? {
+         if(debut != null){
+           $tree = new DeclVar($t, $i.tree, debut);
+           setLocation(debut, $EQUALS);
+        }
+        else{
          $tree = new DeclVar($t, $i.tree, new NoInitialization());
          setLocation($tree, $i.start);
+         }
+         
         }
     ;
 
@@ -167,15 +173,23 @@ inst returns[AbstractInst tree]
 
 if_then_else returns[IfThenElse tree]
 @init {
-    
+    ListInst list = new ListInst();
+    IfThenElse tree2 = null;
 }
     : if1=IF OPARENT condition=expr CPARENT OBRACE li_if=list_inst CBRACE {
+        $tree = new IfThenElse($expr.tree, $li_if.tree, list);
+        System.out.println("ok");
         }
       (ELSE elsif=IF OPARENT elsif_cond=expr CPARENT OBRACE elsif_li=list_inst CBRACE {
-      
+        System.out.println("hhh");
+        ListInst list2 = new ListInst();
+        tree2 = new IfThenElse($expr.tree, $elsif_li.tree, list2);
+        list.add(tree2);
+        list = list2;
         }
       )*
       (ELSE OBRACE li_else=list_inst CBRACE {
+        tree2.setElseBranch($li_else.tree);
         }
       )?
     ;
