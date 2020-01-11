@@ -1,1 +1,1 @@
-src/test/script/launchers/test_synt src/test/deca/syntax/valid/provided/hello.deca
+src/test/script/launchers/test_synt hello_world.deca

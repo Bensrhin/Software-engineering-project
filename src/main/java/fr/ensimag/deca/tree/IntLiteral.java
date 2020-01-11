@@ -7,6 +7,7 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
 import java.io.PrintStream;
@@ -56,9 +57,14 @@ public class IntLiteral extends AbstractExpr {
     }
     @Override
     protected void codeGenPrint(DecacCompiler compiler) {
-        GPRegister r = new GPRegister("R1", 1);
+        System.out.println("hhh");
+        GPRegister r = Register.getR(1);
         compiler.addInstruction(new LOAD(value, r));
         compiler.addInstruction(new WINT());
+    }
+    public void codeGenLoad(DecacCompiler compiler, GPRegister r1){
+        int val = this.getValue();
+        compiler.addInstruction(new LOAD(val, r1));
     }
 
 }

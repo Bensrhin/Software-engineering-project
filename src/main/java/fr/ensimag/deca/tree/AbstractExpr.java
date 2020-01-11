@@ -7,9 +7,10 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.*;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
+import fr.ensimag.ima.pseudocode.instructions.MUL;
 
 /**
  * Expression, i.e. anything that has a value.
@@ -115,6 +116,8 @@ public abstract class AbstractExpr extends AbstractInst {
      */
     protected void codeGenPrint(DecacCompiler compiler) {
         throw new UnsupportedOperationException("not yet implemented");
+         
+        
     }
 
     @Override
@@ -122,7 +125,10 @@ public abstract class AbstractExpr extends AbstractInst {
         throw new UnsupportedOperationException("not yet implemented");
     }
     
-
+    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+        throw new UnsupportedOperationException("not yet implemented");
+    }
+    
     @Override
     protected void decompileInst(IndentPrintStream s) {
         decompile(s);
@@ -139,4 +145,6 @@ public abstract class AbstractExpr extends AbstractInst {
             s.println();
         }
     }
+    
+    
 }

@@ -1,5 +1,8 @@
 package fr.ensimag.deca.tree;
 
+import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.ima.pseudocode.GPRegister;
+
 
 /**
  *
@@ -11,6 +14,7 @@ public abstract class AbstractOpIneq extends AbstractOpCmp {
     public AbstractOpIneq(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
-
+    @Override
+    public abstract void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2);
 
 }
