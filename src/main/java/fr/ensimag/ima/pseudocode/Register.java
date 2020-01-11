@@ -20,6 +20,7 @@ public class Register extends DVal {
     /**
      * Global Base register
      */
+    public static int cpt = 2;
     public static final Register GB = new Register("GB");
     /**
      * Local Base register
