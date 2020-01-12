@@ -26,4 +26,8 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
     }
     @Override
     public abstract void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2);
+    @Override
+    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+        throw new UnsupportedOperationException("not yet implemented");
+    }
 }

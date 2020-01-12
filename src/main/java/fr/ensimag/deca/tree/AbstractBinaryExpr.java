@@ -65,8 +65,8 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
     }
     @Override
     public void codeGenPrint(DecacCompiler compiler){
-        GPRegister r1 = Register.getR(2);
-        GPRegister r2 = Register.getR(3);
+        GPRegister r1 = Register.getR(Register.getCpt());
+        GPRegister r2 = Register.getR(Register.getCpt());
         this.codeGenOp(compiler, r1, r2);
         
         //throw new UnsupportedOperationException("not yet implemented");
@@ -78,5 +78,9 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         leftOperand.prettyPrint(s, prefix, false);
         rightOperand.prettyPrint(s, prefix, true);
+    }
+    @Override
+    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+        throw new UnsupportedOperationException("not yet implemented");
     }
 }

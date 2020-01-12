@@ -57,7 +57,6 @@ public class IntLiteral extends AbstractExpr {
     }
     @Override
     protected void codeGenPrint(DecacCompiler compiler) {
-        System.out.println("hhh");
         GPRegister r = Register.getR(1);
         compiler.addInstruction(new LOAD(value, r));
         compiler.addInstruction(new WINT());

@@ -118,7 +118,6 @@ list_inst returns[ListInst tree]
     : (inst {
         assert($inst.tree != null);
         $tree.add($inst.tree);
-        setLocation($tree, $inst.start);
         }
       )*
     ;

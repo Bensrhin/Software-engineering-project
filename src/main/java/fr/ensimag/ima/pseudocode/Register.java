@@ -20,7 +20,7 @@ public class Register extends DVal {
     /**
      * Global Base register
      */
-    public static int cpt = 2;
+    private static int cpt = 1;
     public static final Register GB = new Register("GB");
     /**
      * Local Base register
@@ -56,4 +56,10 @@ public class Register extends DVal {
         }
         return res;
     }
+    public void freeR(){
+        cpt--;
+    }
+    public static int getCpt(){
+        cpt ++;
+        return cpt;    }
 }

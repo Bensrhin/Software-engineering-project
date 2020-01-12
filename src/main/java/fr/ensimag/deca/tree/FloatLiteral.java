@@ -67,5 +67,9 @@ public class FloatLiteral extends AbstractExpr {
         compiler.addInstruction(new LOAD(value, r));
         compiler.addInstruction(new WFLOAT());
     }
+    public void codeGenLoad(DecacCompiler compiler, GPRegister r1){
+        float val = this.getValue();
+        compiler.addInstruction(new LOAD(val, r1));
+    }
 
 }
