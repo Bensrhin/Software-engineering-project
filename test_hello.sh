@@ -1,1 +1,1 @@
-./src/main/bin/decac hello_world.deca && ima tes.ass
+./src/main/bin/decac hello_world.deca && ima hello_world.ass

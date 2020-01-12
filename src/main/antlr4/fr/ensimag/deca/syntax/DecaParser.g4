@@ -101,7 +101,7 @@ decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
       )? {
          if(debut != null){
            $tree = new DeclVar($t, $i.tree, debut);
-           setLocation(debut, $EQUALS);
+           setLocation(debut, $i.start);
         }
         else{
          $tree = new DeclVar($t, $i.tree, new NoInitialization());
@@ -118,6 +118,7 @@ list_inst returns[ListInst tree]
     : (inst {
         assert($inst.tree != null);
         $tree.add($inst.tree);
+        setLocation($tree, $inst.start);
         }
       )*
     ;
