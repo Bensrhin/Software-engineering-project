@@ -25,7 +25,7 @@ public abstract class AbstractPrint extends AbstractInst {
 
     private boolean printHex;
     private ListExpr arguments = new ListExpr();
-    
+
     abstract String getSuffix();
 
     public AbstractPrint(boolean printHex, ListExpr arguments) {
@@ -42,7 +42,7 @@ public abstract class AbstractPrint extends AbstractInst {
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        this.getArguments().verifyListExpr(compiler, localEnv, currentClass);
     }
 
     @Override
@@ -63,7 +63,22 @@ public abstract class AbstractPrint extends AbstractInst {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        throw new UnsupportedOperationException("not yet implemented");
+      boolean x = this.getPrintHex();
+      String ln = new String(this.getSuffix());
+      String print = new String("print");
+      if (x)
+      {
+          print = print + "x" + ln;
+      }
+      else
+      {
+          print = print + ln;
+      }
+      s.print(print +"(");
+      //s.indent();
+      this.getArguments().decompile(s);
+      //s.unindent();
+      s.println(")");
     }
 
     @Override
