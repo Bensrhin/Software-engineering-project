@@ -1,5 +1,6 @@
 package fr.ensimag.deca;
-
+import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.EnvironmentType;
 import fr.ensimag.deca.syntax.DecaLexer;
 import fr.ensimag.deca.syntax.DecaParser;
 import fr.ensimag.deca.tools.DecacInternalError;
@@ -9,10 +10,18 @@ import fr.ensimag.ima.pseudocode.AbstractLine;
 import fr.ensimag.ima.pseudocode.IMAProgram;
 import fr.ensimag.ima.pseudocode.Instruction;
 import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.deca.tools.SymbolTable;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import fr.ensimag.deca.context.TypeDefinition;
+import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.tree.Location;
+import fr.ensimag.deca.context.IntType;
+import fr.ensimag.deca.context.VoidType;
+import fr.ensimag.deca.context.BooleanType;
 import java.io.PrintStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -35,18 +44,52 @@ import org.apache.log4j.Logger;
  */
 public class DecacCompiler {
     private static final Logger LOG = Logger.getLogger(DecacCompiler.class);
-    
+
     /**
      * Portable newline character.
      */
     private static final String nl = System.getProperty("line.separator", "\n");
 
+    /************************ Partie B  ***************************/
+    private EnvironmentExp env_exp;
+    private EnvironmentType env_types;
+    private SymbolTable symbols;
+    /****************************************************************/
     public DecacCompiler(CompilerOptions compilerOptions, File source) {
         super();
         this.compilerOptions = compilerOptions;
         this.source = source;
+        /********************** Partie B  ****************************/
+        this.env_exp = new EnvironmentExp(null);
+        this.env_types = new EnvironmentType(null);
+        this.symbols = new SymbolTable();
+        this.initialisation_symbols();
+
+
+        /***************************************************************/
+    }
+    public void initialisation_symbols()
+    {
+        this.symbols.create("void");
+        this.symbols.create("boolean");
+        this.symbols.create("float");
+        this.symbols.create("int");
+        this.symbols.create("String");
+        this.symbols.create("null");
     }
 
+    public SymbolTable getSymbols()
+    {
+        return this.symbols;
+    }
+    public EnvironmentExp get_env_exp()
+    {
+        return this.env_exp;
+    }
+    public EnvironmentType get_env_types()
+    {
+        return this.env_types;
+    }
     /**
      * Source file associated with this compiler instance.
      */
@@ -101,22 +144,22 @@ public class DecacCompiler {
     public void addInstruction(Instruction instruction, String comment) {
         program.addInstruction(instruction, comment);
     }
-    
+
     /**
-     * @see 
+     * @see
      * fr.ensimag.ima.pseudocode.IMAProgram#display()
      */
     public String displayIMAProgram() {
         return program.display();
     }
-    
+
     private final CompilerOptions compilerOptions;
     private final File source;
     /**
      * The main program. Every instruction generated will eventually end up here.
      */
     private final IMAProgram program = new IMAProgram();
- 
+
 
     /**
      * Run the compiler (parse source file, generate code)
