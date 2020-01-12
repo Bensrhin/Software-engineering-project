@@ -2,7 +2,7 @@ package fr.ensimag.deca.tools;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import fr.ensimag.deca.context.*;
 /**
  * Manage unique symbols.
  *
@@ -32,6 +32,23 @@ public class SymbolTable {
         return map.get(name);
     }
 
+    public Symbol getSymbol(String name)
+    {
+        if (this.map.containsKey(name))
+        {
+            return this.map.get(name);
+        }
+        return null;
+        // exception
+    }
+    public boolean checkSymbol(String name)
+    {
+        if (this.map.containsKey(name))
+        {
+            return true;
+        }
+        return false;
+    }
     public static class Symbol {
         // Constructor is private, so that Symbol instances can only be created
         // through SymbolTable.create factory (which thus ensures uniqueness
@@ -50,5 +67,26 @@ public class SymbolTable {
         }
 
         private String name;
+        public Type getType()
+        {
+
+            if (this.getName().equals("int"))
+            {
+                return new IntType(this);
+            }
+            if (this.getName().equals("float"))
+            {
+                return new FloatType(this);
+            }
+            if (this.getName().equals("boolean"))
+            {
+                return new BooleanType(this);
+            }
+            if (this.getName().equals("void"))
+            {
+                return new VoidType(this);
+            }
+            return null;
+        }
     }
 }
