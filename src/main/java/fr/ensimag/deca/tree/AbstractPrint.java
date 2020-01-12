@@ -13,7 +13,7 @@ import fr.ensimag.ima.pseudocode.instructions.WSTR;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
-
+import java.util.Iterator;
 
 /**
  * Print statement (print, println, ...).
@@ -47,9 +47,13 @@ public abstract class AbstractPrint extends AbstractInst {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        for (AbstractExpr a : getArguments().getList()) {
-            a.codeGenPrint(compiler);
-            compiler.addInstruction(new WSTR("   "));
+        Iterator<AbstractExpr> it = getArguments().getList().iterator();
+        while (it.hasNext()){
+            AbstractExpr expr = it.next();
+            expr.codeGenPrint(compiler);
+            if (it.hasNext()){
+                compiler.addInstruction(new WSTR("   "));//ajout espace entre arguments
+            }
         }
     }
 
