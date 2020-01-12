@@ -2,20 +2,23 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import org.apache.commons.lang.Validate;
-
+import org.apache.log4j.Logger;
 /**
  * @author gl53
  * @date 01/01/2020
  */
 public class DeclVar extends AbstractDeclVar {
 
-    
+
     final private AbstractIdentifier type;
     final private AbstractIdentifier varName;
     final private AbstractInitialization initialization;
@@ -29,16 +32,54 @@ public class DeclVar extends AbstractDeclVar {
         this.initialization = initialization;
     }
 
+    public AbstractIdentifier getNameType()
+    {
+        return this.type;
+    }
+    public AbstractIdentifier getNameVar()
+    {
+        return this.varName;
+    }
+    public AbstractInitialization getInitialization()
+    {
+        return this.initialization;
+    }
     @Override
     protected void verifyDeclVar(DecacCompiler compiler,
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
+              Type nameType = this.getNameType().verifyType(compiler);
+              if (nameType.isVoid())
+              {
+                  throw new ContextualError("type must be defferent of void", this.getLocation());
+              }
+              /* declaration of nameVar in the invironment */
+              VariableDefinition def = new VariableDefinition(nameType, this.getLocation());
+              Symbol symbol = this.getNameVar().getName();
+              try
+              {
+                  localEnv.declare(symbol, def);
+              }
+              catch (DoubleDefException e)
+              {
+                  throw new ContextualError(symbol.toString()
+                             + "is already defined", this.getLocation());
+              }
+
+              Type nameVar = this.getNameVar().verifyExpr(compiler, localEnv, currentClass);
+
+              this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
+              LOG.debug("End of verifyDeclVar");
     }
 
-    
+
     @Override
     public void decompile(IndentPrintStream s) {
-        throw new UnsupportedOperationException("not yet implemented");
+      this.type.decompile(s);
+      s.print(" ");
+      this.varName.decompile(s);
+      this.initialization.decompile();
+      s.print(";");
     }
 
     @Override
@@ -48,7 +89,7 @@ public class DeclVar extends AbstractDeclVar {
         varName.iter(f);
         initialization.iter(f);
     }
-    
+
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         type.prettyPrint(s, prefix, false);
