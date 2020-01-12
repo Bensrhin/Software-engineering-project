@@ -6,9 +6,11 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.Definition;
+import fr.ensimag.deca.context.IntType;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.MethodDefinition;
+import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.tools.DecacInternalError;
@@ -25,7 +27,7 @@ import org.apache.log4j.Logger;
  * @date 01/01/2020
  */
 public class Identifier extends AbstractIdentifier {
-    
+
     @Override
     protected void checkDecoration() {
         if (getDefinition() == null) {
@@ -41,10 +43,10 @@ public class Identifier extends AbstractIdentifier {
     /**
      * Like {@link #getDefinition()}, but works only if the definition is a
      * ClassDefinition.
-     * 
+     *
      * This method essentially performs a cast, but throws an explicit exception
      * when the cast fails.
-     * 
+     *
      * @throws DecacInternalError
      *             if the definition is not a class definition.
      */
@@ -63,10 +65,10 @@ public class Identifier extends AbstractIdentifier {
     /**
      * Like {@link #getDefinition()}, but works only if the definition is a
      * MethodDefinition.
-     * 
+     *
      * This method essentially performs a cast, but throws an explicit exception
      * when the cast fails.
-     * 
+     *
      * @throws DecacInternalError
      *             if the definition is not a method definition.
      */
@@ -85,10 +87,10 @@ public class Identifier extends AbstractIdentifier {
     /**
      * Like {@link #getDefinition()}, but works only if the definition is a
      * FieldDefinition.
-     * 
+     *
      * This method essentially performs a cast, but throws an explicit exception
      * when the cast fails.
-     * 
+     *
      * @throws DecacInternalError
      *             if the definition is not a field definition.
      */
@@ -107,10 +109,10 @@ public class Identifier extends AbstractIdentifier {
     /**
      * Like {@link #getDefinition()}, but works only if the definition is a
      * VariableDefinition.
-     * 
+     *
      * This method essentially performs a cast, but throws an explicit exception
      * when the cast fails.
-     * 
+     *
      * @throws DecacInternalError
      *             if the definition is not a field definition.
      */
@@ -128,10 +130,10 @@ public class Identifier extends AbstractIdentifier {
 
     /**
      * Like {@link #getDefinition()}, but works only if the definition is a ExpDefinition.
-     * 
+     *
      * This method essentially performs a cast, but throws an explicit exception
      * when the cast fails.
-     * 
+     *
      * @throws DecacInternalError
      *             if the definition is not a field definition.
      */
@@ -167,7 +169,16 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        if (!localEnv.isIn(this.getName()))
+        {
+                throw new ContextualError("\nIdentifier "
+                        + this.getName().toString()
+                        + " is unknown", this.getLocation());
+        }
+        ExpDefinition def = localEnv.get(this.getName());
+        this.setDefinition(def);
+        this.setType(def.getType());
+        return this.getType();
     }
 
     /**
@@ -176,10 +187,20 @@ public class Identifier extends AbstractIdentifier {
      */
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+      if (!compiler.getSymbols().checkSymbol(this.getName().toString())){
+              throw new ContextualError(this.getName().toString()
+                      + "Type is not yet implemented at", this.getLocation());
+          }
+
+          Type type = this.getName().getType();
+          //ExpDefinition def = this.getName().
+          TypeDefinition def = new TypeDefinition(type, Location.BUILTIN);
+          this.setDefinition(def);
+          this.setType(type);
+          return this.getType();
     }
-    
-    
+
+
     private Definition definition;
 
 
