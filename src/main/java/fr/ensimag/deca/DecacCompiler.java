@@ -27,6 +27,10 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.log4j.Logger;
 
+
+ import java.lang.String ;
+
+
 /**
  * Decac compiler instance.
  *
@@ -166,25 +170,11 @@ public class DecacCompiler {
      *
      * @return true on error
      */
-    public String renamDest(String source){
-        String dest = "";
-        for(int i = 0; i<source.length(); i++){
-            if(source.charAt(i) != '.'){
-                dest += source.charAt(i);
-            }
-            else{
-                dest += ".ass";
-                break;
-            }
-        }
-        return dest;
-    }
     public boolean compile() {
-        String sourceFile = source.getAbsolutePath();
-        // String destFile = null;
-        String destFile = this.renamDest(sourceFile);
         // A FAIRE: calculer le nom du fichier .ass à partir du nom du
         // A FAIRE: fichier .deca.
+        String sourceFile = source.getAbsolutePath();
+        String destFile = sourceFile.substring(0, sourceFile.length()-4)+ "ass";
         PrintStream err = System.err;
         PrintStream out = System.out;
         LOG.debug("Compiling file " + sourceFile + " to assembly file " + destFile);
