@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.context.StringType;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -34,7 +35,13 @@ public class StringLiteral extends AbstractStringLiteral {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        if (!compiler.getSymbols().checkSymbol("String")){
+            throw new ContextualError("String Type is not yet implemented at", this.getLocation());
+        }
+
+       Type returnType = new StringType(compiler.getSymbols().getSymbol("String"));
+       this.setType(returnType);
+       return this.getType();
     }
 
     @Override
@@ -44,7 +51,8 @@ public class StringLiteral extends AbstractStringLiteral {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        throw new UnsupportedOperationException("not yet implemented");
+      s.print(this.getValue());
+        //throw new UnsupportedOperationException("not yet implemented");
     }
 
     @Override
@@ -56,7 +64,7 @@ public class StringLiteral extends AbstractStringLiteral {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         // leaf node => nothing to do
     }
-    
+
     @Override
     String prettyPrintNode() {
         return "StringLiteral (" + value + ")";
