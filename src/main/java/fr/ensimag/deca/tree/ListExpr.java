@@ -1,12 +1,12 @@
 package fr.ensimag.deca.tree;
-
+import java.util.Iterator;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
-
+import fr.ensimag.deca.context.EnvironmentExp;
 /**
  * List of expressions (eg list of parameters).
  *
@@ -16,8 +16,59 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 public class ListExpr extends TreeList<AbstractExpr> {
 
 
-    @Override
-    public void decompile(IndentPrintStream s) {
-        throw new UnsupportedOperationException("Not yet implemented");
+  protected void verifyListExpr(DecacCompiler compiler, EnvironmentExp localEnv,
+  ClassDefinition currentClass)
+  throws ContextualError {
+
+  Iterator<AbstractExpr> exprs = this.iterator();
+      while (exprs.hasNext())
+      {
+          AbstractExpr expr = exprs.next();
+          Type type = expr.verifyExpr(compiler, localEnv, currentClass);
+          if (this.checkType(type))
+          {
+              throw new ContextualError("Type of Expr is not int, float neither string at", this.getLocation());
+          }
+      }
+  }
+  public boolean checkType(Type type)
+  {
+      if ((type.isString() || type.isFloat() || type.isInt()))
+      {
+          return false;
+      }
+      return true;
+  }
+  @Override
+  public void decompile(IndentPrintStream s) {
+      Iterator<AbstractExpr> exprs = this.iterator();
+      AbstractExpr expr = exprs.next();
+      if (expr != null)
+      {
+          expr.decompile(s);
+      }
+      while (exprs.hasNext())
+      {
+          expr = exprs.next();
+          s.print(",");
+          expr.decompile(s);
+      }
+
+      /*********************** Or  **************************/
+      /*
+      int compteur i = 0;
+      for (AbstractExpr expr : getList()) {
+          if (i == 0)
+          {
+              expr.decompile(s);
+          }
+          else
+          {
+              s.print(",");
+              expr.decompile(s);
+          }
+          i += 1;
+      }
+*/
     }
 }
