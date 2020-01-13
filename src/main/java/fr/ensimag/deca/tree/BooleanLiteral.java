@@ -5,6 +5,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.BooleanType;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 
@@ -28,7 +29,13 @@ public class BooleanLiteral extends AbstractExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        if (!compiler.getSymbols().checkSymbol("boolean")){
+            throw new ContextualError("boolean Type is not yet implemented", this.getLocation());
+        }
+
+       Type returnType = new BooleanType(compiler.getSymbols().getSymbol("boolean"));
+       this.setType(returnType);
+       return this.getType();
     }
 
 

@@ -74,6 +74,10 @@ public class SymbolTable {
             {
                 return new IntType(this);
             }
+            if (this.getName().equals("String"))
+            {
+                return new StringType(this);
+            }
             if (this.getName().equals("float"))
             {
                 return new FloatType(this);

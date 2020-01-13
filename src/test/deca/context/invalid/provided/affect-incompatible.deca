@@ -8,9 +8,14 @@
 //    cree le 01/01/2020
 
 {
+   String c;
    int a;
+   float r = 7.66;
+   int i = 77;
+   String s = "AFRICA";
    boolean b;
-
+   boolean x = true;
+   boolean y = false;
    // Doit etre refuse.
    //a = b;
 }

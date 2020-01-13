@@ -1,5 +1,5 @@
 package fr.ensimag.deca.context;
-import java.util.HashMap;
+import java.util.*;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import java.util.Map;
 /**
@@ -58,6 +58,11 @@ public class EnvironmentExp {
         }
 
         //throw new UnsupportedOperationException("not yet implemented");
+    }
+    public Set<Symbol> stringIsIn()
+    {
+        System.out.println("begiiiiiiiing");
+        return this.dictionary.keySet();
     }
     public boolean isIn(Symbol key)
     {

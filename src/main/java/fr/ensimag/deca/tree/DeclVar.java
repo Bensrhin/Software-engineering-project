@@ -65,11 +65,9 @@ public class DeclVar extends AbstractDeclVar {
                   throw new ContextualError(symbol.toString()
                              + "is already defined", this.getLocation());
               }
-
               Type nameVar = this.getNameVar().verifyExpr(compiler, localEnv, currentClass);
-
               this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
-              LOG.debug("End of verifyDeclVar");
+              //LOG.debug("End of verifyDeclVar");
     }
 
 

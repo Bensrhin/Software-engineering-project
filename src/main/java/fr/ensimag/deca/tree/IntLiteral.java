@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
-
+import java.util.*;
 import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.context.IntType;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -11,7 +12,7 @@ import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
 import java.io.PrintStream;
-
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
 /**
  * Integer literal
  *
@@ -32,7 +33,20 @@ public class IntLiteral extends AbstractExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        //throw new UnsupportedOperationException("not yet implemented");
+        if (!compiler.getSymbols().checkSymbol("int")){
+            throw new ContextualError("int Type is not yet implemented", this.getLocation());
+        }
+        /*
+       Set<Symbol> sym = localEnv.stringIsIn();
+       for (Symbol s:sym)
+       {
+           System.out.println(s.getName());
+       }
+                */
+       Type returnType = new IntType(compiler.getSymbols().getSymbol("int"));
+       this.setType(returnType);
+       return this.getType();
     }
 
 
