@@ -1,5 +1,5 @@
 package fr.ensimag.deca.tree;
-
+import java.util.Iterator;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -43,7 +43,7 @@ public class ListDeclVar extends TreeList<AbstractDeclVar> {
             AbstractDeclVar declVar = declVars.next();
             declVar.verifyDeclVar(compiler, localEnv, currentClass);
         }
-        
+
     }
 
 

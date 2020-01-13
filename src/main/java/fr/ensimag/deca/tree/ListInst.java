@@ -2,7 +2,7 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
 
-import fr.ensimag.deca.context.Type;
+import java.util.Iterator;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -35,7 +35,7 @@ public class ListInst extends TreeList<AbstractInst> {
             AbstractInst inst = insts.next();
             inst.verifyInst(compiler, localEnv, currentClass, returnType);
         }
-        
+
     }
 
     public void codeGenListInst(DecacCompiler compiler) {

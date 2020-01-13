@@ -22,7 +22,7 @@ public class DeclVar extends AbstractDeclVar {
     final private AbstractIdentifier type;
     final private AbstractIdentifier varName;
     final private AbstractInitialization initialization;
-
+    private static final Logger LOG = Logger.getLogger(DeclVar.class);
     public DeclVar(AbstractIdentifier type, AbstractIdentifier varName, AbstractInitialization initialization) {
         Validate.notNull(type);
         Validate.notNull(varName);
