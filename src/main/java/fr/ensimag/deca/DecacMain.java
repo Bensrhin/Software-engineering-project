@@ -26,9 +26,10 @@ public class DecacMain {
             System.exit(1);
         }
         if (options.getPrintBanner()) {
-            throw new UnsupportedOperationException("decac -b not yet implemented");
+            //throw new UnsupportedOperationException("decac -b not yet implemented");
+            System.out.println("Compilateur DECA. Equipe GL53."); error = true;
         }
-        if (options.getSourceFiles().isEmpty()) {
+        if (options.getSourceFiles().isEmpty() && !options.getPrintBanner()) {
             throw new UnsupportedOperationException("decac without argument not yet implemented");
         }
         if (options.getParallel()) {
@@ -37,7 +38,25 @@ public class DecacMain {
             // instance en parallèle. Il est conseillé d'utiliser
             // java.util.concurrent de la bibliothèque standard Java.
             throw new UnsupportedOperationException("Parallel build not yet implemented");
-        } else {
+        } 
+        if (options.getParse()){
+            File src1 = options.getSourceFiles().get(0);
+            DecacCompiler compiler = new DecacCompiler(options, src1);
+            if (compiler.decompile()){
+                error = true;
+            }
+        }
+        if (options.getVerification()){
+            System.out.println("Verification not "
+                    + "implemented, nta a nabil, nta.");
+            error = true;
+        }
+        if (options.getNoCheck()){
+            System.out.println("No Check not "
+                    + "implemented, nta a nabil, nta.");
+            error = true;
+        }
+        else {
             for (File source : options.getSourceFiles()) {
                 DecacCompiler compiler = new DecacCompiler(options, source);
                 if (compiler.compile()) {
