@@ -2,6 +2,7 @@ package fr.ensimag.deca.context;
 import java.util.*;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import java.util.Map;
+import fr.ensimag.deca.context.Type;
 /**
  * Dictionary associating identifier's ExpDefinition to their names.
  *
@@ -41,9 +42,10 @@ public class EnvironmentExp {
      * symbol is undefined.
      */
     public ExpDefinition get(Symbol key) {
-        if (dictionary.containsKey(key))
+        Symbol s = this.stringIsIn(key);
+        if (s != null)
         {
-            return dictionary.get(key);
+            return dictionary.get(s);
         }
         else
         {
@@ -57,12 +59,49 @@ public class EnvironmentExp {
             }
         }
 
-        //throw new UnsupportedOperationException("not yet implemented");
+        
+    }
+    /** Compatibilté pour l'affectation */
+    public boolean assignCompatible(Type t1, Type t2)
+    {
+        if ((t1.isFloat() & t2.isInt())||(this.subType(t2, t1)) )
+        {
+            return true;
+        }
+        return false;
+    }
+    /** Relation de sous-typage */
+    public boolean subType(Type t1, Type t2)
+    {
+        if (t1.toString().equals(t2.toString()))
+        {
+            return true;
+        }
+        String obj = new String( (new Object()).getClass().getName() );
+        String objT2 = new String( t2.getClass().getName() );
+        if(obj.equals(objT2))
+        {
+            System.out.println(obj + objT2);
+            return true;
+        }
+        /* todo */
+        return false;
     }
     public Set<Symbol> stringIsIn()
     {
-        System.out.println("begiiiiiiiing");
         return this.dictionary.keySet();
+    }
+    public Symbol stringIsIn(Symbol key)
+    {
+        Set<Symbol> sym = this.stringIsIn();
+        for (Symbol s:sym)
+        {
+            if(s.getName().equals(key.toString()))
+            {
+                return s;
+            }
+        }
+        return null;
     }
     public boolean isIn(Symbol key)
     {

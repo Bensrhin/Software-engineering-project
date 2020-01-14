@@ -19,10 +19,17 @@ public class FloatType extends Type {
     public boolean isFloat() {
         return true;
     }
-
+    @Override
+    public boolean isBoolean() {
+        return true;
+    }
     @Override
     public boolean sameType(Type otherType) {
-        throw new UnsupportedOperationException("not yet implemented");
+        if (otherType.isFloat())
+        {
+            return true;
+        }
+        return false;
     }
 
 

@@ -22,13 +22,23 @@ public class Modulo extends AbstractOpArith {
         super(leftOperand, rightOperand);
     }
 
-    @Override
+        @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        Type t1 = this.getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
+        Type t2 = this.getRightOperand().verifyExpr(compiler, localEnv, currentClass);
+        return this.typeArith(t1, t2);
     }
+    public Type typeArith(Type t1, Type t2) throws ContextualError
+    {
 
+        if (t1.isInt() & t2.isInt())
+        {
+            return t1;
+        }
+        throw new ContextualError("Modulo cannot be done", this.getLocation());
 
+    }
     @Override
     protected String getOperatorName() {
         return "%";

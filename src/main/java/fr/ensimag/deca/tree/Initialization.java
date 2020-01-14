@@ -36,8 +36,14 @@ public class Initialization extends AbstractInitialization {
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
         Type type2 = this.getExpression().verifyExpr(compiler, localEnv, currentClass);
-        //assign_compatible(localenv, type2, t);
-//throw new UnsupportedOperationException("not yet implemented");
+        
+        if (!localEnv.assignCompatible(t, type2))
+        {
+            //System.out.println("dkhel");
+            throw new ContextualError("The affected type is not compatible with "
+                        + t.toString(), this.getExpression().getLocation());
+        }
+        
     }
 
 

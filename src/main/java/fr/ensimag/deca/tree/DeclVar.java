@@ -51,7 +51,7 @@ public class DeclVar extends AbstractDeclVar {
               Type nameType = this.getNameType().verifyType(compiler);
               if (nameType.isVoid())
               {
-                  throw new ContextualError("type must be defferent of void", this.getLocation());
+                  throw new ContextualError("type must be defferent than void", this.getLocation());
               }
               /* declaration of nameVar in the invironment */
               VariableDefinition def = new VariableDefinition(nameType, this.getLocation());

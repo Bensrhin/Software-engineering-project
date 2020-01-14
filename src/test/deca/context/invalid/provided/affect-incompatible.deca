@@ -9,13 +9,10 @@
 
 {
    String c;
-   int a;
-   float r = 7.66;
-   int i = 77;
-   String s = "AFRICA";
-   boolean b;
-   boolean x = true;
-   boolean y = false;
+   String s = "HALOO";
+   int a = 0;
+   println(a);
+   println(s);
    // Doit etre refuse.
    //a = b;
 }

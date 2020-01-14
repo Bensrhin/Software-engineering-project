@@ -67,6 +67,11 @@ public abstract class Type {
     public boolean isClassOrNull() {
         return false;
     }
+    public boolean isType() {
+        return (isClass()||isInt()||isFloat()
+                ||isBoolean()||isVoid()||isString()
+                ||isNull());
+    }
 
     /**
      * Returns the same object, as type ClassType, if possible. Throws

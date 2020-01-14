@@ -1,5 +1,5 @@
 package fr.ensimag.deca.tree;
-
+import java.util.*;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.DecacCompiler;
@@ -169,13 +169,22 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        if (!localEnv.isIn(this.getName()))
+        /*
+        Set<Symbol> sym = localEnv.stringIsIn();
+        for (Symbol s:sym)
+        {
+            System.out.println(s.getName());
+        }
+        */
+        //System.out.println(this.getName().getName());
+        Symbol s = localEnv.stringIsIn(this.getName());
+        if (s == null)
         {
                 throw new ContextualError("\nIdentifier "
                         + this.getName().toString()
                         + " is unknown", this.getLocation());
         }
-        ExpDefinition def = localEnv.get(this.getName());
+        ExpDefinition def = localEnv.get(s);
         this.setDefinition(def);
         this.setType(def.getType());
         return this.getType();
@@ -189,7 +198,7 @@ public class Identifier extends AbstractIdentifier {
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
       if (!compiler.getSymbols().checkSymbol(this.getName().toString())){
               throw new ContextualError(this.getName().toString()
-                      + "Type is not yet implemented at", this.getLocation());
+                      + " Type is not yet implemented", this.getLocation());
           }
 
           Type type = this.getName().getType();

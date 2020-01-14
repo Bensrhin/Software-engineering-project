@@ -47,6 +47,7 @@ MINUS : '-' ;
 TIMES : '*' ;
 SLASH : '/';
 PERCENT : '%';
+EXCLAM : '!';
 
 LEQ : '<=';
 GEQ : '>=';
