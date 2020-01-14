@@ -20,7 +20,14 @@ public class Not extends AbstractUnaryExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        return this.getOperand().verifyExpr(compiler, localEnv, currentClass);
+              Type unary = this.getOperand().verifyExpr(compiler, localEnv, currentClass);
+              if (!unary.isBoolean())
+              {
+                  throw new ContextualError("expression is not a boolean",
+                                             this.getLocation());
+              }
+              this.setType(unary);
+              return unary;
     }
 
 

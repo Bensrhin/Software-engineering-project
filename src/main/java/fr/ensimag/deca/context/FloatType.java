@@ -20,10 +20,6 @@ public class FloatType extends Type {
         return true;
     }
     @Override
-    public boolean isBoolean() {
-        return true;
-    }
-    @Override
     public boolean sameType(Type otherType) {
         if (otherType.isFloat())
         {

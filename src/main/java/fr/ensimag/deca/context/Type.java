@@ -72,7 +72,9 @@ public abstract class Type {
                 ||isBoolean()||isVoid()||isString()
                 ||isNull());
     }
-
+    public boolean isTypeBinary() {
+        return (isInt()||isFloat());
+    }
     /**
      * Returns the same object, as type ClassType, if possible. Throws
      * ContextualError(errorMessage, l) otherwise.

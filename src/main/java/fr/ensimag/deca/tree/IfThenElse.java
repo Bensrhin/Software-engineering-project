@@ -16,11 +16,24 @@ import org.apache.commons.lang.Validate;
  * @date 01/01/2020
  */
 public class IfThenElse extends AbstractInst {
-    
-    private final AbstractExpr condition; 
+
+    private final AbstractExpr condition;
     private final ListInst thenBranch;
     private ListInst elseBranch;
 
+    public AbstractExpr getCondition()
+    {
+        return this.condition;
+    }
+    public ListInst getThen()
+    {
+        return this.thenBranch;
+    }
+
+    public ListInst getElse()
+    {
+        return this.elseBranch;
+    }
     public IfThenElse(AbstractExpr condition, ListInst thenBranch, ListInst elseBranch) {
         Validate.notNull(condition);
         Validate.notNull(thenBranch);
@@ -36,6 +49,9 @@ public class IfThenElse extends AbstractInst {
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
+        this.getCondition().verifyCondition(compiler, localEnv, currentClass);
+        this.getThen().verifyListInst(compiler, localEnv, currentClass, returnType);
+        this.getElse().verifyListInst(compiler, localEnv, currentClass, returnType);
     }
 
     @Override
@@ -45,8 +61,22 @@ public class IfThenElse extends AbstractInst {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        throw new UnsupportedOperationException("not yet implemented");
-    }
+      s.print("if(");
+      this.getCondition().decompile(s);
+      s.println(")");
+      s.println("{");
+      s.indent();
+      this.getThen().decompile(s);
+      //s.println();
+      s.unindent();
+      s.println("}");
+      s.println("else");
+      s.println("{");
+      s.indent();
+      this.getElse().decompile(s);
+      s.println();
+      s.unindent();
+      s.println("}");    }
 
     @Override
     protected

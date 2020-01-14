@@ -19,10 +19,7 @@ public class IntType extends Type {
     public boolean isInt() {
         return true;
     }
-    @Override
-    public boolean isBoolean() {
-        return true;
-    }
+
     @Override
     public boolean sameType(Type otherType) {
         if (otherType.isInt())

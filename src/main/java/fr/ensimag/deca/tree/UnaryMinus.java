@@ -19,7 +19,14 @@ public class UnaryMinus extends AbstractUnaryExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        return this.getOperand().verifyExpr(compiler, localEnv, currentClass);
+              Type unary = this.getOperand().verifyExpr(compiler, localEnv, currentClass);
+              if (!unary.isInt() & !unary.isFloat())
+              {
+                  throw new ContextualError("expression is not an int nor a float",
+                                             this.getLocation());
+              }
+              this.setType(unary);
+              return unary;
     }
 
 
