@@ -5,6 +5,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.ExpDefinition;
 
 /**
  * Left-hand side value of an assignment.
@@ -13,4 +14,7 @@ import fr.ensimag.deca.context.EnvironmentExp;
  * @date 01/01/2020
  */
 public abstract class AbstractLValue extends AbstractExpr {
+     public ExpDefinition getExpDefinition(){
+        return null;
+      }
 }

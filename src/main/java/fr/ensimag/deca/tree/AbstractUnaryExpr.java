@@ -3,7 +3,9 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
-
+import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
 /**
  * Unary expression.
  *
@@ -44,6 +46,10 @@ public abstract class AbstractUnaryExpr extends AbstractExpr {
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         operand.prettyPrint(s, prefix, true);
+    }
+    @Override
+    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+        throw new UnsupportedOperationException("not yet implementedoki");
     }
 
 }

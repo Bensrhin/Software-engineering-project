@@ -1,3 +1,0 @@
-{
-println("hello, world", 55*65, "waaaa");
-}

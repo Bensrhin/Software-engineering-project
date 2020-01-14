@@ -3,11 +3,17 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.ExpDefinition;
+import fr.ensimag.deca.context.Definition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
 
 /**
  * @author gl53
@@ -46,7 +52,16 @@ public class Initialization extends AbstractInitialization {
         
     }
 
-
+    @Override
+    protected void codeGenInt(DecacCompiler compiler, int i){
+        //throw new UnsupportedOperationException("not yet implemented");
+        GPRegister r = Register.getR(Register.getCpt());
+        //System.out.println(expression.getDefinition());
+        this.expression.codeGenLoad(compiler, r);
+        compiler.addInstruction(new STORE(r,new RegisterOffset(i, Register.GB)));
+        r.freeR();
+        
+    }
     @Override
     public void decompile(IndentPrintStream s) {
       s.print(" = ");

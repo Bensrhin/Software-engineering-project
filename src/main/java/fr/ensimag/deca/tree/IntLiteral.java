@@ -75,7 +75,8 @@ public class IntLiteral extends AbstractExpr {
         compiler.addInstruction(new LOAD(value, r));
         compiler.addInstruction(new WINT());
     }
-    public void codeGenLoad(DecacCompiler compiler, GPRegister r1){
+    @Override
+    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1){
         int val = this.getValue();
         compiler.addInstruction(new LOAD(val, r1));
     }

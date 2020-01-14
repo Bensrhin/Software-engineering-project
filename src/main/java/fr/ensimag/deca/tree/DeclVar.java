@@ -69,7 +69,12 @@ public class DeclVar extends AbstractDeclVar {
               this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
               //LOG.debug("End of verifyDeclVar");
     }
-
+    @Override
+    protected void codeGenVar(DecacCompiler compiler, int i){
+        varName.codeGenIdent(compiler, i);
+        initialization.codeGenInt(compiler, i);
+        
+    }
 
     @Override
     public void decompile(IndentPrintStream s) {

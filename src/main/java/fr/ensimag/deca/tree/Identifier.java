@@ -19,6 +19,12 @@ import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.WINT;
+import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
+import fr.ensimag.ima.pseudocode.GPRegister;
 
 /**
  * Deca Identifier
@@ -242,6 +248,30 @@ public class Identifier extends AbstractIdentifier {
             s.print(d);
             s.println();
         }
+    }
+    @Override
+    public void codeGenIdent(DecacCompiler compiler,int i){
+        RegisterOffset r = new RegisterOffset(i, Register.GB);
+        ExpDefinition def = this.getExpDefinition();
+        def.setOperand(r);
+    }
+    @Override
+     protected void codeGenPrint(DecacCompiler compiler) {
+        compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
+        if(this.getType().toString().equals("int")){
+            compiler.addInstruction(new WINT());
+            
+        }
+        if(this.getType().toString().equals("float")){
+            compiler.addInstruction(new WFLOAT());
+            
+        }
+        //throw new UnsupportedOperationException("not yet implemented55");
+    }
+    @Override
+    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+        //throw new UnsupportedOperationException("not yet implemented55");
+        compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
     }
 
 }

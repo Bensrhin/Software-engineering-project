@@ -93,4 +93,6 @@ public abstract class AbstractIdentifier extends AbstractLValue {
      *         (corresponds to the "type" attribute)
      */
     public abstract Type verifyType(DecacCompiler compiler) throws ContextualError;
+    public abstract void codeGenIdent(DecacCompiler compiler,int i);
+   
 }

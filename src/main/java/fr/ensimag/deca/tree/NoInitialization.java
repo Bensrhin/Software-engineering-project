@@ -23,7 +23,10 @@ public class NoInitialization extends AbstractInitialization {
             throws ContextualError {
         //throw new UnsupportedOperationException("not yet implemented");
     }
-
+     @Override
+    protected void codeGenInt(DecacCompiler compiler, int i){
+        //throw new UnsupportedOperationException("not yet implemented");
+    }
 
     /**
      * Node contains no real information, nothing to check.

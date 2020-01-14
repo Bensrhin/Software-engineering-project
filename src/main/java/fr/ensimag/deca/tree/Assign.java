@@ -7,6 +7,8 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.Definition;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
 
 /**
  * Assignment, i.e. lvalue = expr.
@@ -50,6 +52,19 @@ public class Assign extends AbstractBinaryExpr {
     @Override
     public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
         throw new UnsupportedOperationException("not yet implemented");
+    }
+    @Override
+    protected void codeGenInst(DecacCompiler compiler) {
+        GPRegister r1 = Register.getR(Register.getCpt());
+        this.getRightOperand().codeGenLoad(compiler, r1);
+        compiler.addInstruction(new STORE(r1, this.getLeftOperand().getExpDefinition().getOperand()));
+    }
+     @Override
+     public void codeGenPrint(DecacCompiler compiler) {
+        //System.out.println((AbstractLValue)super.getOperand());
+        throw new UnsupportedOperationException("not yet implemented55");
+         
+        
     }
 
 }

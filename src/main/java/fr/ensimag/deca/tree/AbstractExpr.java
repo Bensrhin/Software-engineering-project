@@ -132,6 +132,7 @@ public abstract class AbstractExpr extends AbstractInst {
      * @param compiler
      */
     protected void codeGenPrint(DecacCompiler compiler) {
+        //System.out.println(this.getType());
         throw new UnsupportedOperationException("not yet implemented");
          
         
@@ -143,7 +144,7 @@ public abstract class AbstractExpr extends AbstractInst {
     }
     
     protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
-        throw new UnsupportedOperationException("not yet implemented");
+        //throw new UnsupportedOperationException("not yet implementedoki");
     }
     
     @Override

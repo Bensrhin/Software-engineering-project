@@ -6,6 +6,7 @@ import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.MUL;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
+import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 
 
 
@@ -37,8 +38,13 @@ public class Multiply extends AbstractOpArith {
     @Override
     public void codeGenPrint(DecacCompiler compiler){
         super.codeGenPrint(compiler);
-        compiler.addInstruction(new WINT());
-    }
+        if(this.getType().toString().equals("int")){
+            compiler.addInstruction(new WINT());
+        }
+        else{
+            compiler.addInstruction(new WFLOAT());
+        }
+}
     @Override
     protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
         GPRegister r2 = Register.getR(Register.getCpt());

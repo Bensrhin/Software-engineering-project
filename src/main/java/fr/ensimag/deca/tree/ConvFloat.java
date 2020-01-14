@@ -5,6 +5,11 @@ import fr.ensimag.deca.context.FloatType;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.ima.pseudocode.instructions.FLOAT;
 
 /**
  * Conversion of an int into a float. Used for implicit conversions.
@@ -29,6 +34,13 @@ public class ConvFloat extends AbstractUnaryExpr {
     @Override
     protected String getOperatorName() {
         return "/* conv float */";
+    }
+    @Override
+    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1){
+        this.getOperand().codeGenLoad(compiler, r1);
+        if(this.getOperand().getType().toString().equals("int")){
+            compiler.addInstruction(new FLOAT(r1, r1));
+        }
     }
 
 }
