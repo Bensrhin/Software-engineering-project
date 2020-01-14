@@ -27,8 +27,8 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.log4j.Logger;
 
-
- import java.lang.String ;
+import fr.ensimag.deca.tools.IndentPrintStream;
+import java.lang.String ;
 
 
 /**
@@ -164,7 +164,37 @@ public class DecacCompiler {
      */
     private final IMAProgram program = new IMAProgram();
 
+    
+    /*Decompiling the program, transforming a .deca to a .deca,
+     return true on error (similar to compile();)*/
+    public boolean decompile(){
+        String sourceFile = source.getAbsolutePath();
+        String destFile = sourceFile.substring(0, sourceFile.length()-5)+ "_decompiled.deca";
+        try{ 
+            doDecompile(sourceFile, destFile);
+        }
+        finally{// A GERER !!
+            return true;
+        }
+    }
 
+    public boolean doDecompile(String sourceFile, String destFile)throws DecacFatalError,FileNotFoundException{
+        PrintStream err = System.err;
+        AbstractProgram prog = doLexingAndParsing(sourceFile, err);
+        if (prog == null) {
+            LOG.info("Parsing failed");
+            return true;
+        }
+        IndentPrintStream fstream = null;
+        try {
+            fstream = new IndentPrintStream(new PrintStream(destFile));
+        } catch (FileNotFoundException e) {
+            throw new DecacFatalError("Failed to open output file: " + e.getLocalizedMessage());
+        }
+        prog.decompile(fstream);
+        return false;
+    }
+    
     /**
      * Run the compiler (parse source file, generate code)
      *

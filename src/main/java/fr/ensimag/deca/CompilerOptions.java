@@ -32,6 +32,18 @@ public class CompilerOptions {
         return printBanner;
     }
     
+    public boolean getParse(){
+        return parse;
+    }
+    
+    public boolean getVerification(){
+        return verification;
+    }
+    
+    public boolean getNoCheck(){
+        return noCheck;
+    }
+    
     public List<File> getSourceFiles() {
         return Collections.unmodifiableList(sourceFiles);
     }
@@ -39,13 +51,44 @@ public class CompilerOptions {
     private int debug = 0;
     private boolean parallel = false;
     private boolean printBanner = false;
+    private boolean parse = false;
+    private boolean verification = false;
+    private boolean noCheck = false;
     private List<File> sourceFiles = new ArrayList<File>();
 
     
     public void parseArgs(String[] args) throws CLIException {
         // A FAIRE : parcourir args pour positionner les options correctement.
         Logger logger = Logger.getRootLogger();
-        sourceFiles.add(new File(args[0]));
+        if (args.length==1 && args[0].equals("-b")){
+            printBanner = true;
+        }
+        for (String arg:args){
+            if (arg.substring(0,1).equals("-")){
+                switch (arg){
+                    case "-p":
+                        if (verification){throw new CLIException("Bad arguments for decac");}
+                        else{parse = true;}
+                        break;
+                    case "-v":
+                        if (parse){throw new CLIException("Bad arguments for decac");}
+                        else{verification = true;}
+                        break;
+                    case "-n": noCheck = true; break;
+                    case "-d": debug = Math.min(debug+1, 3); break;
+                    case "-P": parallel = true; break;
+                    default:
+                }
+            }
+            else if (arg.length()>=5 &&
+                    arg.substring(arg.length()-5, arg.length()).equals(".deca")){
+                sourceFiles.add(new File(arg));
+            }
+            else{
+                System.out.println(arg.substring(arg.length()-6, arg.length()-1));
+                throw new CLIException("Bad arguments for decac");
+            }
+        }
         // map command-line debug option to log4j's level.
         switch (getDebug()) {
         case QUIET: break; // keep default
