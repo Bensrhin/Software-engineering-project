@@ -60,6 +60,10 @@ public class Register extends DVal {
         cpt--;
     }
     public static int getCpt(){
-        cpt ++;
-        return cpt;    }
+        if(cpt < 15){
+            cpt ++;
+            return cpt;
+        }
+        return 15;
+        }
 }

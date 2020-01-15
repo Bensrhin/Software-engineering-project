@@ -15,6 +15,8 @@ public abstract class AbstractOpIneq extends AbstractOpCmp {
         super(leftOperand, rightOperand);
     }
     @Override
-    public abstract void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2);
+    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+        throw new UnsupportedOperationException("not yet implemented");
+    }
 
 }

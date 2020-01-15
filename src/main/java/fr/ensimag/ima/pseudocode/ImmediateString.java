@@ -11,7 +11,7 @@ public class ImmediateString extends Operand {
 
     public ImmediateString(String value) {
         super();
-        //this.value = value
+        //this.value = value;
         this.value = value.substring(1, value.length()-1);//enlever les ""
     }
 

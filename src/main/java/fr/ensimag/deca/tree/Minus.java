@@ -35,16 +35,6 @@ public class Minus extends AbstractOpArith {
         r1.freeR();
     }
     @Override
-    public void codeGenPrint(DecacCompiler compiler){
-        super.codeGenPrint(compiler);
-        if(this.getType().toString().equals("int")){
-            compiler.addInstruction(new WINT());
-        }
-        else{
-            compiler.addInstruction(new WFLOAT());
-        }
-    }
-    @Override
     protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
         GPRegister r2 = Register.getR(Register.getCpt());
         this.getLeftOperand().codeGenLoad(compiler, r1);

@@ -8,6 +8,9 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.BooleanType;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 /**
  *
@@ -58,6 +61,15 @@ public class BooleanLiteral extends AbstractExpr {
     String prettyPrintNode() {
         return "BooleanLiteral (" + value + ")";
     }
-    
-
+    @Override
+    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1){
+        boolean val = this.getValue();
+        if(val == true){
+            compiler.addInstruction(new LOAD(1, r1));
+        }
+        else{
+            compiler.addInstruction(new LOAD(0, r1));
+        }
+        //compiler.addInstruction(new LOAD(val, r1));
+    }
 }

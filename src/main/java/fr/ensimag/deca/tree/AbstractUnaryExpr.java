@@ -6,6 +6,8 @@ import org.apache.commons.lang.Validate;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.WINT;
+import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 /**
  * Unary expression.
  *
@@ -51,5 +53,20 @@ public abstract class AbstractUnaryExpr extends AbstractExpr {
     protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
         throw new UnsupportedOperationException("not yet implementedoki");
     }
+    @Override
+    public void codeGenPrint(DecacCompiler compiler){
+        GPRegister r1 = Register.getR(Register.getCpt());
+        this.codeGenOp(compiler, r1);
+        if(this.getType().toString().equals("int")){
+            compiler.addInstruction(new WINT());
+        }
+        else if(this.getType().toString().equals("float")){
+            compiler.addInstruction(new WFLOAT());
+        }
+    }
+    public void codeGenOp(DecacCompiler compiler, GPRegister r1){
+        throw new UnsupportedOperationException("not yet implemented");
+    }
+
 
 }

@@ -1,0 +1,6 @@
+{
+int x = ReadInt();
+float y = 2.5*x + 5;
+float z = x*y/12;
+println(-z);
+}

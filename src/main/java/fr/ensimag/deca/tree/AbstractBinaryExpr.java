@@ -5,6 +5,8 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.WINT;
+import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
@@ -68,12 +70,19 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
         GPRegister r1 = Register.getR(Register.getCpt());
         GPRegister r2 = Register.getR(Register.getCpt());
         this.codeGenOp(compiler, r1, r2);
+        if(this.getType().toString().equals("int")){
+            compiler.addInstruction(new WINT());
+        }
+        else if(this.getType().toString().equals("float")){
+            compiler.addInstruction(new WFLOAT());
+        }
         
-        //throw new UnsupportedOperationException("not yet implemented");
         
         
     }
-    public abstract void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2);
+    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+        throw new UnsupportedOperationException("not yet implemented");
+    }
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         leftOperand.prettyPrint(s, prefix, false);

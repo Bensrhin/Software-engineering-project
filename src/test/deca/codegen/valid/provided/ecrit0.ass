@@ -1,0 +1,10 @@
+; start main program
+; Main program
+	TSTO #0
+	ADDSP #0
+; Beginning of main instructions:
+	WSTR "ok"
+	WNL
+	WSTR "ok"
+	HALT
+; end main program

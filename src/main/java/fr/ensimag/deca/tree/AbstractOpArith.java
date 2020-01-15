@@ -37,7 +37,7 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
     {
       //Type type1 = new IntType(compiler.getSymbols().getSymbol("int"));
       //Type type2 = new FloatType(compiler.getSymbols().getSymbol("float"));
-      if (t1.isInt() & t2.isInt())
+      if (t1.sameType(t2) & t1.isTypeBinary())
       {
           return t1;
       }
@@ -54,7 +54,9 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
       throw new ContextualError("types are not compatible", this.getLocation());
     }
     @Override
-    public abstract void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2);
+    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+        throw new UnsupportedOperationException("not yet implemented");
+    }
     @Override
     protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
         throw new UnsupportedOperationException("not yet implemented");

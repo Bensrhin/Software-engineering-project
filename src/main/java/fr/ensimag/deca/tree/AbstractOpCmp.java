@@ -58,7 +58,9 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
         }
     }
     @Override
-    public abstract void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2);
+    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+        throw new UnsupportedOperationException("not yet implemented");
+    }
 
 
 }

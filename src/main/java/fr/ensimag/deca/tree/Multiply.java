@@ -26,7 +26,6 @@ public class Multiply extends AbstractOpArith {
     }
     @Override
     public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
-        //throw new UnsupportedOperationException("not yet implemented");
         GPRegister R1 = Register.R1;
         this.getLeftOperand().codeGenLoad(compiler, r1);
         this.getRightOperand().codeGenLoad(compiler, r2);
@@ -35,16 +34,6 @@ public class Multiply extends AbstractOpArith {
         compiler.addInstruction(new LOAD(r1, R1));
         r1.freeR();
     }
-    @Override
-    public void codeGenPrint(DecacCompiler compiler){
-        super.codeGenPrint(compiler);
-        if(this.getType().toString().equals("int")){
-            compiler.addInstruction(new WINT());
-        }
-        else{
-            compiler.addInstruction(new WFLOAT());
-        }
-}
     @Override
     protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
         GPRegister r2 = Register.getR(Register.getCpt());

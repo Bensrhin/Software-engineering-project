@@ -1,4 +1,5 @@
 package fr.ensimag.deca.tree;
+import fr.ensimag.deca.DecacCompiler;
 
 /**
  * @author gl53
@@ -17,4 +18,5 @@ public class Print extends AbstractPrint {
     String getSuffix() {
         return "";
     }
+    
 }

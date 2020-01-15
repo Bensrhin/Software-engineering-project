@@ -41,6 +41,8 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
         throw new ContextualError("OpBool : on autorise pas "
                 + "la comparaison dans ce cas", this.getLocation());
     }
-    @Override
-    public abstract void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2);
+   @Override
+    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+        throw new UnsupportedOperationException("not yet implemented");
+    }
 }

@@ -2,12 +2,18 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.IntType;
-import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.RINT;
+
 
 /**
  *
@@ -42,5 +48,11 @@ public class ReadInt extends AbstractReadExpr {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         // leaf node => nothing to do
     }
-
+    @Override
+    protected void codeGenLoad(DecacCompiler compiler,GPRegister r){
+        //throw new UnsupportedOperationException("not yet implemented5555");
+        compiler.addInstruction(new RINT());
+        compiler.addInstruction(new LOAD(Register.R1, r));
+    }
+    
 }

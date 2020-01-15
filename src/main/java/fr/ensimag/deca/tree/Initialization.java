@@ -56,7 +56,7 @@ public class Initialization extends AbstractInitialization {
     protected void codeGenInt(DecacCompiler compiler, int i){
         //throw new UnsupportedOperationException("not yet implemented");
         GPRegister r = Register.getR(Register.getCpt());
-        //System.out.println(expression.getDefinition());
+        //System.out.println(expression);
         this.expression.codeGenLoad(compiler, r);
         compiler.addInstruction(new STORE(r,new RegisterOffset(i, Register.GB)));
         r.freeR();
