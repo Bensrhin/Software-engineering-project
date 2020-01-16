@@ -2,6 +2,11 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 
 /**
@@ -21,8 +26,25 @@ public class Or extends AbstractOpBool {
     }
     @Override
     public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
-        throw new UnsupportedOperationException("not yet implemented");
+        GPRegister R1 = Register.R1;
+        GPRegister r3 = Register.getR(Register.getCpt());
+        this.getLeftOperand().codeGenLoad(compiler, r3);
+        compiler.addInstruction(new LOAD(r3, R1));
+        r3.freeR();
+        Label andElse= new Label("And_else_in_"+this.getLeftOperand()
+                .getLocation().toStringLabel());
+        Label andFin= new Label("And_fin_in_"+this.getLeftOperand()
+                .getLocation().toStringLabel());
+        compiler.addInstruction(new BEQ(andElse));//premier vrai -> or vrai
+        this.getRightOperand().codeGenLoad(compiler, r2);
+        compiler.addInstruction(new LOAD(r2, R1));
+        compiler.addInstruction(new BEQ(andElse));
+        compiler.addInstruction(new LOAD(1, R1));
+        compiler.addInstruction(new BRA(andFin));
+        compiler.addLabel(andElse);
+        compiler.addInstruction(new LOAD(0, R1));
+        compiler.addLabel(andFin);
     }
-
+    
 
 }

@@ -31,6 +31,14 @@ public class Location implements Serializable {
         }
     }
 
+    public String toStringLabel() {//juuust for labels in IMA
+        if (this == BUILTIN) {
+            return "[builtin]";
+        } else {
+            return "a"+ Integer.toString(line) + Integer.toString(positionInLine);
+        }
+    }
+    
     public int getLine() {
         return line;
     }
