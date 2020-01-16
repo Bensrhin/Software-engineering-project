@@ -1,16 +1,11 @@
 {
-	int x = ReadInt();
-	Boolean y = true;
-	/*while ((x==5 || x >= 113) ||(x>72 && x<96)){
-		println("yes", x);
-		x = x+1;
-	}*/
-	
-	if (x<=25 && (x>1 || x<56) ){
-		println("NO");
-	}
-	else{
-		println("good");
-	}
+	int n = ReadInt();
+    int r = 1;
+	while(n > 0){
+        r = r*n;
+        n= n-1;
+    }
+    println(r);
+
 
 }

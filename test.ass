@@ -1,0 +1,12 @@
+; start main program
+; Main program
+; Beginning of main instructions:
+	TSTO #1
+	ADDSP #1
+	LOAD #10, R2
+	STORE R2, 1(GB)
+	LOAD 1(GB), R1
+	WINT
+	WNL
+	HALT
+; end main program

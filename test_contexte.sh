@@ -1,1 +1,1 @@
-src/test/script/launchers/test_context mon_test.deca
+src/test/script/launchers/test_context test.deca
