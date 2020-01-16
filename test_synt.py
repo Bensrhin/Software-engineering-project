@@ -83,5 +83,5 @@ if (x!=0):
     print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[TEST INVALID ERROR].-~-.-~-.-~"+color.ENDC) 
     print("~========================================================================~")
 
-#os.system("rm *.log")
+os.system("rm *.log")
 
