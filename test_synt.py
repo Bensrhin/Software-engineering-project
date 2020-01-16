@@ -75,20 +75,26 @@ def invalid_synt():
     return counter, tmp
 
 
+print("Tester les valides ? [1/0]")
+val = int(input())
+if val == 1:
+    y = valid_synt()
+    if (y[0] == y[1]):
+        print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS VALID SUCCESS].-~-.-~-.-~".format(str(y[1]))+color.ENDC)
+        print("~======================================================~")
+    else:
+        print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS VALID ERROR].-~-.-~-.-~".format(str(y[1] -y[0]))+color.ENDC)
+        print("~========================================================================~")
+print("Tester les invalides ? [1/0]")
+inval = int(input())
+if inval == 1:
+    x = invalid_synt()
+    if (x[0] == x[1]):
+        print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS INVALID SUCCESS].-~-.-~-.-~".format(str(x[1]))+color.ENDC)
+        print("~======================================================~")
+    else:
+        print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS INVALID ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
+        print("~========================================================================~")
 
-y = valid_synt()
-if (y[0] == y[1]):
-    print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS VALID SUCCESS].-~-.-~-.-~".format(str(y[1]))+color.ENDC)
-    print("~======================================================~")
-else:
-    print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS VALID ERROR].-~-.-~-.-~".format(str(y[1] -y[0]))+color.ENDC)
-    print("~========================================================================~")
-x = invalid_synt()
-if (x[0] == x[1]):
-    print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS INVALID SUCCESS].-~-.-~-.-~".format(str(x[1]))+color.ENDC)
-    print("~======================================================~")
-else:
-    print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS INVALID ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
-    print("~========================================================================~")
-#
+
 os.system("rm *.log")
