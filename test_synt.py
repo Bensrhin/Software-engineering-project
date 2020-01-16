@@ -44,20 +44,13 @@ def invalid_synt():
     counter = 0;
     test_synt = "src/test/script/launchers/test_synt"
     invalid_synt = "src/test/deca/syntax/invalid"
-    print("Details d'execution [1/0] ?")
-    x = int(input())
     print("~======================================================~")
     #for file in os.listdir(invalid_synt):
     for file in files (invalid_synt):
         execute = test_synt + " " + invalid_synt + "/" + str(file) + " " +"2> {}.log".format(str(file))
         #print(execute)
-        if x == 1:
-            os.system(execute)
-            #os.open(format(str(file))+".log",os.O_RDWR)
-
-        if x == 0:
-            os.system(execute + "> synt.txt")
-            os.system("rm synt.txt")
+        os.system(execute)
+        #os.open(format(str(file))+".log",os.O_RDWR)
         if os.stat("{}.log".format(str(file))).st_size != 0:
             fichier = open("{}.log".format(str(file)), "r")
             read = fichier.readlines()[0]
