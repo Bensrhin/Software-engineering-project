@@ -11,8 +11,6 @@
    String c;
    String s = "HALOO";
    int a = 0;
-   println(a);
-   println(s);
    // Doit etre refuse.
-   //a = b;
+   a = b;
 }
