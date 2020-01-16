@@ -1,5 +1,5 @@
 {
-  x = ReadInt();
+  x = readInt();
   if(x > 2){
     println(" x est sup à 2");
   }

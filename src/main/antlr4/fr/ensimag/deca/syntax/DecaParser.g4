@@ -172,11 +172,12 @@ if_then_else returns[IfThenElse tree]
 }
     : if1=IF OPARENT condition=expr CPARENT OBRACE li_if=list_inst CBRACE {
         $tree = new IfThenElse($expr.tree, $li_if.tree, list);
+        setLocation($tree, $if1);
         }
       (ELSE elsif=IF OPARENT elsif_cond=expr CPARENT OBRACE elsif_li=list_inst CBRACE {
-        System.out.println("hhh");
         ListInst list2 = new ListInst();
         tree2 = new IfThenElse($expr.tree, $elsif_li.tree, list2);
+        setLocation(tree2, $elsif);
         list.add(tree2);
         list = list2;
         }

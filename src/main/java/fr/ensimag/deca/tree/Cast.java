@@ -11,6 +11,8 @@ import java.io.PrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.FLOAT;
+import fr.ensimag.ima.pseudocode.instructions.INT;
 
 /**
  *
@@ -62,6 +64,15 @@ public class Cast extends AbstractLValue {
       idExpr.prettyPrint(s, prefix, true);
       expr.prettyPrint(s, prefix, true);
   }
-
+  @Override
+  protected void codeGenLoad(DecacCompiler compiler, GPRegister r1){
+        expr.codeGenLoad(compiler, r1);
+        if(this.getType().isInt()){
+            compiler.addInstruction(new INT(r1, r1));
+        }
+        else{
+            compiler.addInstruction(new FLOAT(r1, r1));
+        }
+    }
 
 }

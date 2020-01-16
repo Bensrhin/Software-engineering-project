@@ -1,0 +1,8 @@
+{
+float x = readFloat();
+int y = (int)(x);
+int k = 3;
+float w = (float)(k);
+int u = (int)(8*2.4 + w*y);
+println(x, y, k, w, u);
+}

@@ -1,0 +1,15 @@
+{
+int x = readInt();
+if(x > 1){
+    println(x, "x est sup à 1");
+    if( x < 8){
+        println(x, "x est in à 8");
+    }
+}
+else if(x < 1){
+    println(x, "x est inf à 1");
+}
+else{
+    println("ok");
+    }
+}
