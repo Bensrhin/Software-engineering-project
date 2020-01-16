@@ -1,0 +1,1 @@
+src/test/deca/syntax/invalid/invalid_if7.deca:3:10: mismatched input '+' expecting {'true', 'new', 'null', 'readInt', 'false', 'readFloat', 'this', '-', '!', '(', INT, FLOAT, STRING, IDENT}

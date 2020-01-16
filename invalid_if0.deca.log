@@ -1,0 +1,1 @@
+src/test/deca/syntax/invalid/invalid_if0.deca:3:8: mismatched input 'else' expecting {'true', 'new', 'null', 'readInt', 'false', 'readFloat', 'this', '-', '!', '(', INT, FLOAT, STRING, IDENT}

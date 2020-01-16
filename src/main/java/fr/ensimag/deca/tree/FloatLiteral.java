@@ -29,6 +29,10 @@ public class FloatLiteral extends AbstractExpr {
     private float value;
 
     public FloatLiteral(float value) {
+        Validate.isTrue(value <= Float.MAX_VALUE,
+                "Floatliteral values connot depass 2^128 - 2^104");
+        Validate.isTrue(value >= Float.MIN_VALUE,
+                "Floatliteral values connot be under  2^-{149}");
         Validate.isTrue(!Float.isInfinite(value),
                 "literal values cannot be infinite");
         Validate.isTrue(!Float.isNaN(value),

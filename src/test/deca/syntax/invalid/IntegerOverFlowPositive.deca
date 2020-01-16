@@ -1,0 +1,4 @@
+{
+    println("Start test IntegerOverFlow [0;+oo]");
+    int x = 2147483648;
+}

@@ -11,6 +11,7 @@ import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
+import org.apache.commons.lang.Validate;
 import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 /**
@@ -27,6 +28,10 @@ public class IntLiteral extends AbstractExpr {
     private int value;
 
     public IntLiteral(int value) {
+        Validate.isTrue(value >= -2147483648,
+                "int values connot be less than -2147483648");
+        Validate.isTrue(value <= 2147483647,
+                "int values connot depass +2147483648");
         this.value = value;
     }
 
