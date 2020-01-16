@@ -33,7 +33,14 @@ public class Cast extends AbstractLValue {
   @Override
   public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
           ClassDefinition currentClass) throws ContextualError {
-            return null;
+        Type type = this.getIdExpr().verifyType(compiler);
+        Type type2 = this.getExpr().verifyExpr(compiler, localEnv, currentClass);
+        if(!localEnv.castCompatible(type2, type))
+        {
+            throw new ContextualError("Le cast n'est pas autorisé", this.getLocation());
+        }
+        this.setType(type);
+        return type;
   }
 
 

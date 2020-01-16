@@ -6,6 +6,7 @@
   }
   else
   {
+    int x = 4.9;
     println(7);
   }
   while (!(1.6 < -8))

@@ -73,6 +73,18 @@ public class EnvironmentExp {
         }
         return false;
     }
+    public boolean castCompatible(Type t1, Type t2)
+    {
+        if (t1.isVoid())
+        {
+            return false;
+        }
+        if (this.assignCompatible(t1, t2) || this.assignCompatible(t2, t1))
+        {
+            return true;
+        }
+        return false;
+    }
     /** Relation de sous-typage */
     public boolean subType(Type t1, Type t2)
     {
