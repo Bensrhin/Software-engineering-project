@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import os
 
 class color:
@@ -15,13 +15,13 @@ def files(path):
         if os.path.isfile(os.path.join(path, file)):
             yield file
 
-    
+
 def valid_synt():
     counter = 0;
     test_synt = "src/test/script/launchers/test_synt"
     valid_synt = "src/test/deca/syntax/valid"
     print("Details d'execution [1/0] ?")
-    x = input()
+    x = int(input())
     print("======================================================")
     #for file in os.listdir(valid_synt):
     for file in files(valid_synt):
@@ -45,7 +45,7 @@ def invalid_synt():
     test_synt = "src/test/script/launchers/test_synt"
     invalid_synt = "src/test/deca/syntax/invalid"
     print("Details d'execution [1/0] ?")
-    x = input()
+    x = int(input())
     print("~======================================================~")
     #for file in os.listdir(invalid_synt):
     for file in files (invalid_synt):
@@ -59,7 +59,13 @@ def invalid_synt():
             os.system(execute + "> synt.txt")
             os.system("rm synt.txt")
         if os.stat("{}.log".format(str(file))).st_size != 0:
-            print(file+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)   
+            fichier = open("{}.log".format(str(file)), "r")
+            read = fichier.readlines()[0]
+            if read[0] == 's':
+                new_read = read[len(invalid_synt) + 1:]
+            else:
+                new_read = read
+            print(new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
         else:
             print(file+color.BOLD+color.WARNING+"  *** [TEST PASSED UNEXPECTED] ***"+color.ENDC)
             counter+=1
@@ -70,18 +76,17 @@ def invalid_synt():
 
 y = valid_synt()
 if (y==0):
-    print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[TEST VALID SUCCESS].-~-.-~-.-~"+color.ENDC) 
+    print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[TEST VALID SUCCESS].-~-.-~-.-~"+color.ENDC)
     print("~======================================================~")
 if (y!=0):
-    print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[TEST VALID ERROR].-~-.-~-.-~"+color.ENDC) 
+    print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[TEST VALID ERROR].-~-.-~-.-~"+color.ENDC)
     print("~========================================================================~")
 x = invalid_synt()
 if (x==0):
-    print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[TEST INVALID SUCCESS].-~-.-~-.-~"+color.ENDC) 
+    print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[TEST INVALID SUCCESS].-~-.-~-.-~"+color.ENDC)
     print("~======================================================~")
 if (x!=0):
-    print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[TEST INVALID ERROR].-~-.-~-.-~"+color.ENDC) 
+    print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[TEST INVALID ERROR].-~-.-~-.-~"+color.ENDC)
     print("~========================================================================~")
 
 os.system("rm *.log")
-
