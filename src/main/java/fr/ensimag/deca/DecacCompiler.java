@@ -22,6 +22,7 @@ import fr.ensimag.deca.tree.Location;
 import fr.ensimag.deca.context.IntType;
 import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.context.BooleanType;
+import fr.ensimag.deca.context.ContextualError;
 import java.io.PrintStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -164,37 +165,42 @@ public class DecacCompiler {
      */
     private final IMAProgram program = new IMAProgram();
 
-    
+
     /*Decompiling the program, transforming a .deca to a .deca,
      return true on error (similar to compile();)*/
     public boolean decompile(){
         String sourceFile = source.getAbsolutePath();
-        String destFile = sourceFile.substring(0, sourceFile.length()-5)+ "_decompiled.deca";
-        try{ 
-            doDecompile(sourceFile, destFile);
+        try{
+            PrintStream err = System.err;
+            AbstractProgram prog = doLexingAndParsing(sourceFile, err);
+            IndentPrintStream fstream = null;
+            fstream = new IndentPrintStream(new PrintStream(System.out));
+            prog.decompile(fstream);
+            return false;
         }
-        finally{// A GERER !!
+        catch (DecacFatalError e){
             return true;
         }
     }
-
-    public boolean doDecompile(String sourceFile, String destFile)throws DecacFatalError,FileNotFoundException{
+    /*running verifications without compiling*/
+    public boolean verify() throws ContextualError{
+        String sourceFile = source.getAbsolutePath();
         PrintStream err = System.err;
-        AbstractProgram prog = doLexingAndParsing(sourceFile, err);
-        if (prog == null) {
-            LOG.info("Parsing failed");
+        try{
+            AbstractProgram prog = doLexingAndParsing(sourceFile, err);
+            if (prog == null) {
+                return true;
+            }
+            assert(prog.checkAllLocations());
+            prog.verifyProgram(this);
+            assert(prog.checkAllDecorations());
+            }
+        catch (DecacFatalError e){
             return true;
         }
-        IndentPrintStream fstream = null;
-        try {
-            fstream = new IndentPrintStream(new PrintStream(destFile));
-        } catch (FileNotFoundException e) {
-            throw new DecacFatalError("Failed to open output file: " + e.getLocalizedMessage());
-        }
-        prog.decompile(fstream);
         return false;
     }
-    
+
     /**
      * Run the compiler (parse source file, generate code)
      *
@@ -254,8 +260,6 @@ public class DecacCompiler {
             return true;
         }
         assert(prog.checkAllLocations());
-
-
         prog.verifyProgram(this);
         assert(prog.checkAllDecorations());
 

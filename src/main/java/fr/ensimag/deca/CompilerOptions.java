@@ -60,8 +60,13 @@ public class CompilerOptions {
     public void parseArgs(String[] args) throws CLIException {
         // A FAIRE : parcourir args pour positionner les options correctement.
         Logger logger = Logger.getRootLogger();
-        if (args.length==1 && args[0].equals("-b")){
-            printBanner = true;
+        if (args[0].equals("-b")){
+            if (args.length==1){
+                printBanner = true;
+            }
+            else{
+                throw new CLIException("Bad arguments for decac");
+            }
         }
         for (String arg:args){
             if (arg.substring(0,1).equals("-")){
@@ -85,7 +90,6 @@ public class CompilerOptions {
                 sourceFiles.add(new File(arg));
             }
             else{
-                System.out.println(arg.substring(arg.length()-6, arg.length()-1));
                 throw new CLIException("Bad arguments for decac");
             }
         }
