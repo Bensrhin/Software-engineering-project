@@ -62,9 +62,12 @@ def invalid_synt():
             read = fichier.readlines()[0]
             if read[0] == 's':
                 new_read = read[len(invalid_synt) + 1:]
+                print(new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
+
             else:
                 new_read = read
-            print(new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
+                print(file+": "+new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
+
         else:
             print(file+color.BOLD+color.WARNING+"  *** [TEST PASSED UNEXPECTED] ***"+color.ENDC)
 
