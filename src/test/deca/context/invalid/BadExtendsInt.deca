@@ -1,0 +1,4 @@
+class A extends int{
+    int x;
+    x= 2020;
+}

@@ -1,0 +1,4 @@
+class A extends String{
+    float x;
+    x = 1.2f;
+}
