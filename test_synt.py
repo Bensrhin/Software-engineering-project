@@ -21,7 +21,7 @@ def valid_synt():
     tmp = 0
     test_synt = "src/test/script/launchers/test_synt"
     valid_synt = "src/test/deca/syntax/valid"
-    print("Details d'execution [1/0] ?")
+    print("Details d'execution des tests valides [1/0] ?")
     x = int(input())
     print("======================================================")
 
