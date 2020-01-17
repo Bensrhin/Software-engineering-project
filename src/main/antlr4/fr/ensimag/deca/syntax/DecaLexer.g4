@@ -80,7 +80,7 @@ fragment SKIPCAR : (' ' |EOL |TAB |'\r');
 
 //Litteraux entiers
 fragment POSITIVE_DIGITS : '1' .. '9';
-INT : POSITIVE_DIGITS*('0' | POSITIVE_DIGITS+);
+INT : ('0' |POSITIVE_DIGITS)+;
 
 //Litteraux Flottant
 fragment HEXA_MAJ : 'A' .. 'F';
