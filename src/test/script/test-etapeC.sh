@@ -51,3 +51,23 @@ else
     echo "$resultat"
     exit 1
 fi
+rm -f ./test-etapeC/exemplediapo.ass 2>/dev/null
+decac ./test-etapeC/exemplediapo.deca || exit 1
+if [ ! -f ./test-etapeC/exemplediapo.deca ]; then
+    echo "Fichier exemplediapo.ass non généré."
+    exit 1
+fi
+
+resultat=$(ima ./test-etapeC/exemplediapo.ass) || exit 1
+rm -f ./test-etapeC/exemplediapo.ass
+
+# On code en dur la valeur attendue.
+attendu=-4
+
+if [ "$resultat" = "$attendu" ]; then
+    echo "Tout va bien pour exemplediapo"
+else
+    echo "Résultat inattendu de ima:"
+    echo "$resultat"
+    exit 1
+fi
