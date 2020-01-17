@@ -1,0 +1,8 @@
+{
+    boolean a =true;
+    if (){
+        print("it's rather Empty);
+    }else{
+        print("Normalement ici");
+    }
+}

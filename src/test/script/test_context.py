@@ -23,6 +23,7 @@ def valid_context():
     valid_context = "../deca/context/valid"
     print("Details d'execution [1/0] ?")
     x = int(input())
+    #x = 0
     print("======================================================")
 
     for file in files(valid_context):
@@ -57,7 +58,7 @@ def invalid_context():
             counter += 1
             fichier = open("{}.log".format(str(file)), "r")
             read = fichier.readlines()[0]
-            if read[0] == 's':
+            if read[0] == '.':
                 new_read = read[len(invalid_context) + 1:]
                 print(new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
             else:
@@ -73,6 +74,7 @@ def invalid_context():
 
 print("Tester les valides ? [1/0]")
 val = int(input())
+#val = 1
 if val == 1:
     y = valid_context()
     if (y[0] == y[1]):
@@ -83,6 +85,7 @@ if val == 1:
         print("~========================================================================~")
 print("Tester les invalides ? [1/0]")
 inval = int(input())
+#inval = 1
 if inval == 1:
     x = invalid_context()
     if (x[0] == x[1]):

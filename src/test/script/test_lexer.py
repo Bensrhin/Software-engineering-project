@@ -17,6 +17,7 @@ def valid_lexer():
     valid_lexer = "../deca/lexicographie/valid"
     print("Details d'execution des tests valides [1/0] ?")
     x = int(input())
+    #x=0
     print("======================================================")
     for file in os.listdir(valid_lexer):
         tmp += 1
@@ -51,7 +52,7 @@ def invalid_lexer():
             counter += 1
             fichier = open("{}.log".format(str(file)), "r")
             read = fichier.readlines()[0]
-            if read[0] == 's':
+            if read[0] == '.':
                 new_read = read[len(invalid_lexer) + 1:]
             else:
                 new_read = read
@@ -65,6 +66,7 @@ def invalid_lexer():
 
 print("Tester les valides ? [1/0]")
 val = int(input())
+#val = 1
 if val == 1:
     y = valid_lexer()
     if (y[0] == y[1]):
@@ -75,6 +77,7 @@ if val == 1:
         print("~========================================================================~")
 print("Tester les invalides ? [1/0]")
 inval = int(input())
+#inval = 1
 if inval == 1:
     x = invalid_lexer()
     if (x[0] == x[1]):
@@ -83,6 +86,4 @@ if inval == 1:
     else:
         print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS INVALID ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
         print("~========================================================================~")
-
-
 os.system("rm *.log")
