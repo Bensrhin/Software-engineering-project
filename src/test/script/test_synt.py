@@ -16,18 +16,18 @@ def files(path):
             yield file
 
 
-def valid_context():
+def valid_synt():
     counter = 0
     tmp = 0
-    test_context = "src/test/script/launchers/test_context"
-    valid_context = "src/test/deca/context/valid"
-    print("Details d'execution [1/0] ?")
+    test_synt = "launchers/test_synt"
+    valid_synt = "../deca/syntax/valid"
+    print("Details d'execution des tests valides [1/0] ?")
     x = int(input())
     print("======================================================")
 
-    for file in files(valid_context):
+    for file in files(valid_synt):
         tmp += 1
-        execute = test_context + " " + valid_context + "/" + str(file) + " " +"2> {}.log".format(str(file))
+        execute = test_synt + " " + valid_synt + "/" + str(file) + " " +"2> {}.log".format(str(file))
         if x == 1:
             os.system(execute)
         if x == 0:
@@ -43,23 +43,27 @@ def valid_context():
     return counter, tmp
 
 
-def invalid_context():
+def invalid_synt():
     counter = 0
     tmp = 0
-    test_context = "src/test/script/launchers/test_context"
-    invalid_context = "src/test/deca/context/invalid"
+    test_synt = "launchers/test_synt"
+    invalid_synt = "../deca/syntax/invalid"
     print("~======================================================~")
-    for file in files(invalid_context):
+    #for file in os.listdir(invalid_synt):
+    for file in files(invalid_synt):
         tmp += 1
-        execute = test_context + " " + invalid_context + "/" + str(file) + " " +"2> {}.log".format(str(file))
+        execute = test_synt + " " + invalid_synt + "/" + str(file) + " " +"2> {}.log".format(str(file))
+        #print(execute)
         os.system(execute)
+        #os.open(format(str(file))+".log",os.O_RDWR)
         if os.stat("{}.log".format(str(file))).st_size != 0:
             counter += 1
             fichier = open("{}.log".format(str(file)), "r")
             read = fichier.readlines()[0]
             if read[0] == 's':
-                new_read = read[len(invalid_context) + 1:]
+                new_read = read[len(invalid_synt) + 1:]
                 print(new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
+
             else:
                 new_read = read
                 print(file+": "+new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
@@ -74,7 +78,7 @@ def invalid_context():
 print("Tester les valides ? [1/0]")
 val = int(input())
 if val == 1:
-    y = valid_context()
+    y = valid_synt()
     if (y[0] == y[1]):
         print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS VALID SUCCESS].-~-.-~-.-~".format(str(y[1]))+color.ENDC)
         print("~======================================================~")
@@ -84,12 +88,13 @@ if val == 1:
 print("Tester les invalides ? [1/0]")
 inval = int(input())
 if inval == 1:
-    x = invalid_context()
+    x = invalid_synt()
     if (x[0] == x[1]):
         print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS INVALID SUCCESS].-~-.-~-.-~".format(str(x[1]))+color.ENDC)
         print("~======================================================~")
     else:
         print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS INVALID ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
         print("~========================================================================~")
+
 
 os.system("rm *.log")
