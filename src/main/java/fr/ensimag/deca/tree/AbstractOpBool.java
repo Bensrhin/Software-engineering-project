@@ -37,15 +37,18 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
         {
             return type;
         }
-        /* comparaison class todo */
+        else 
+        {
+            throw new ContextualError("Opération booléenne: (" +
+                t1.toString() + " " + getOperatorName() +  " " + t2.toString() + 
+                ") : non autorisée (règle 3.33)"
+                , this.getLocation());
+        }
 
-        /***/
-        throw new ContextualError("OpBool : on autorise pas "
-                + "la comparaison dans ce cas", this.getLocation());
     }
    @Override
     public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
-        throw new UnsupportedOperationException("not yet implemented");
+        //throw new UnsupportedOperationException("not yet implemented");
     }
     
     @Override

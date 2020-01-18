@@ -27,7 +27,8 @@ public class ReadFloat extends AbstractReadExpr {
             ClassDefinition currentClass) throws ContextualError {
         if (!compiler.getSymbols().checkSymbol("float"))
         {
-            throw new ContextualError("float Type is not yet implemented", this.getLocation());
+            throw new ContextualError("Type \"float\" n'est pas un "
+                    + "type prédéfini (règle 0.2)", this.getLocation());
         }
        Type returnType = new FloatType(compiler.getSymbols().getSymbol("float"));
        this.setType(returnType);

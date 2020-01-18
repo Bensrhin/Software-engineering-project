@@ -27,7 +27,8 @@ public class Modulo extends AbstractOpArith {
             ClassDefinition currentClass) throws ContextualError {
         Type t1 = this.getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
         Type t2 = this.getRightOperand().verifyExpr(compiler, localEnv, currentClass);
-        return this.typeArith(t1, t2);
+        this.setType(this.typeArith(t1, t2));
+        return getType();
     }
     public Type typeArith(Type t1, Type t2) throws ContextualError
     {
@@ -36,7 +37,9 @@ public class Modulo extends AbstractOpArith {
         {
             return t1;
         }
-        throw new ContextualError("Modulo cannot be done", this.getLocation());
+        throw new ContextualError("L'opération arithmétique: (" +
+                t1.toString() + " % " + t2.toString() + 
+                ") n'est pas autorisée (règle 3.33)", this.getLocation());
 
     }
     @Override

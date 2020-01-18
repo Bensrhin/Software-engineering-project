@@ -51,7 +51,14 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
           this.setRightOperand(new ConvFloat(this.getRightOperand()));
           return this.getRightOperand().verifyExpr(compiler, localEnv, currentClass);
       }
-      throw new ContextualError("types are not compatible", this.getLocation());
+      else
+        {
+            throw new ContextualError("Opération de arithmétique: (" +
+                t1.toString() + " " + getOperatorName() +  " " + t2.toString() + 
+                ") : non autorisée (règle 3.33)"
+                , this.getLocation());
+        }
+      
     }
     @Override
     public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){

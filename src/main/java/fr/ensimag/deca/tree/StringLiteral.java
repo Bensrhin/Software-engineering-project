@@ -36,7 +36,8 @@ public class StringLiteral extends AbstractStringLiteral {
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
         if (!compiler.getSymbols().checkSymbol("String")){
-            throw new ContextualError("String Type is not yet implemented at", this.getLocation());
+            throw new ContextualError("Type \"String\" n'est pas un "
+                    + "type prédéfini (règle 0.2)", this.getLocation());
         }
 
        Type returnType = new StringType(compiler.getSymbols().getSymbol("String"));

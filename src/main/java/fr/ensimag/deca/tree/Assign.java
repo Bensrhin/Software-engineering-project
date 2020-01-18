@@ -39,8 +39,11 @@ public class Assign extends AbstractBinaryExpr {
         Type type2 = this.getRightOperand().getType();
         if (!localEnv.assignCompatible(type, type2))
         {
-            throw new ContextualError("The affected type is not compatible with "
-                + type.toString(), this.getLocation());
+            throw new ContextualError("L'identificateur " + 
+                //this.getLeftOperand().getName().toString() +
+                " est de type " + type.toString() +
+                ", qui n'est pas compatible avec le type " +
+                type2.toString() + " affecté (règle 3.32)", this.getLocation());
         }
         this.setType(type);
         return getType();

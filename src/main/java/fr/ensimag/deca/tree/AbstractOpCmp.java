@@ -55,11 +55,14 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
             return type;
         }
         */
-        else
+        else 
         {
-            throw new ContextualError("on autorise pas "
-                + "la comparaison dans ce cas", this.getLocation());
+            throw new ContextualError("Opération de comparaison: (" +
+                t1.toString() + " " + getOperatorName() +  " " + t2.toString() + 
+                ") : non autorisée (règle 3.33)"
+                , this.getLocation());
         }
+
     }
     @Override
     public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){

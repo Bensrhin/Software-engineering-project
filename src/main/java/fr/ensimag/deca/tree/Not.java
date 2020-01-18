@@ -23,8 +23,9 @@ public class Not extends AbstractUnaryExpr {
               Type unary = this.getOperand().verifyExpr(compiler, localEnv, currentClass);
               if (!unary.isBoolean())
               {
-                  throw new ContextualError("expression is not a boolean",
-                                             this.getLocation());
+                  throw new ContextualError("L'opération unaire: [" +
+                " ! ( " + unary.toString() + 
+                " ) ] n'est pas autorisée (règle 3.33)", this.getLocation());
               }
               this.setType(unary);
               return unary;
