@@ -50,7 +50,14 @@ public class Initialization extends AbstractInitialization {
                 " : non autorisée (règle 3.8)"
                 , this.getExpression().getLocation());
         }
-        
+        if (t.sameType(type2))
+        {
+            this.expression.setType(type2);
+        }
+        else
+        {
+            this.expression.setType(t);
+        }
     }
 
     @Override

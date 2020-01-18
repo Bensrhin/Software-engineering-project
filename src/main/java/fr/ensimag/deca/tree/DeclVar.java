@@ -64,8 +64,8 @@ public class DeclVar extends AbstractDeclVar {
               }
               catch (DoubleDefException e)
               {
-                  throw new ContextualError("Identificateur " +
-                          symbol.toString() + " est déjà déclaré à " +
+                  throw new ContextualError("Identificateur \"" +
+                          symbol.toString() + "\" est déjà déclaré à " +
                           localEnv.get(symbol).getLocation() + " (règle 3.17)", 
                           this.getLocation());
               }
