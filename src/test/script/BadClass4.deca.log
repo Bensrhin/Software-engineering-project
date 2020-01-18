@@ -1,1 +1,0 @@
-../deca/syntax/invalid/BadClass4.deca:2:4: mismatched input 'class' expecting {';', 'println', 'true', 'new', 'printlnx', 'while', 'null', 'printx', 'readInt', 'false', 'readFloat', 'return', 'if', 'print', 'this', '-', '!', '(', '}', INT, FLOAT, STRING, IDENT}

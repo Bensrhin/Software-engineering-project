@@ -1,1 +1,0 @@
-../deca/syntax/invalid/BadAffectation.deca:2:14: mismatched input 'else' expecting {'true', 'new', 'null', 'readInt', 'false', 'readFloat', 'this', '-', '!', '(', INT, FLOAT, STRING, IDENT}
