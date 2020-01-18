@@ -1,19 +1,21 @@
 ; start main program
 ; Main program
 ; Beginning of main instructions:
-	TSTO #1
-	ADDSP #1
-	LOAD #19, R2
+	TSTO #2
+	ADDSP #2
+	LOAD #5, R2
 	STORE R2, 1(GB)
-	LOAD #5, R3
 	LOAD 1(GB), R4
-	MUL R4, R3
-	LOAD #2, R4
-	LOAD #5, R5
-	MUL R5, R4
-	ADD R4, R3
-	LOAD R3, R1
-	WINT
-	WNL
+	LOAD #4, R5
+	SUB R5, R4
+	LOAD R4, R1
+	BGT OpCmp_if_in_a313
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a313
+OpCmp_if_in_a313:
+	LOAD #0, R1
+OpCmp_fin_in_a313:
+	LOAD R1, R3
+	STORE R3, 2(GB)
 	HALT
 ; end main program
