@@ -10,7 +10,7 @@ import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.REM;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
-
+import fr.ensimag.deca.codegen.RegisterManager;
 /**
  *
  * @author gl53
@@ -44,23 +44,22 @@ public class Modulo extends AbstractOpArith {
         return "%";
     }
     @Override
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
-        //throw new UnsupportedOperationException("not yet implemented");
+    public void codeGenOp(DecacCompiler compiler){
         GPRegister R1 = Register.R1;
-        this.getLeftOperand().codeGenLoad(compiler, r1);
-        this.getRightOperand().codeGenLoad(compiler, r2);
+        GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
+        GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new REM(r2, r1));
-        r2.freeR();
+        RegisterManager.freeReg(compiler, r2);
         compiler.addInstruction(new LOAD(r1, R1));
-        r1.freeR();
+        RegisterManager.freeReg(compiler, r1);
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
-        GPRegister r2 = Register.getR(Register.getCpt());
-        this.getLeftOperand().codeGenLoad(compiler, r1);
-        this.getRightOperand().codeGenLoad(compiler, r2);
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
+        GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
+        GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new REM(r2, r1));
-        r2.freeR();
+        RegisterManager.freeReg(compiler, r2);
+        return r1;
     }
 
 }

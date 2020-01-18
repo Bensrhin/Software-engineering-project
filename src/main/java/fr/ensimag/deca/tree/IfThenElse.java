@@ -63,8 +63,8 @@ public class IfThenElse extends AbstractInst {
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
         GPRegister R1 = Register.R1;
-        GPRegister r1 = Register.getR(Register.getCpt());
-        condition.codeGenLoad(compiler, r1);
+        //GPRegister r1 = Register.getR(Register.getCpt());
+        GPRegister r1 = condition.codeGenLoad(compiler);
         compiler.addInstruction(new LOAD(r1, Register.R1));
         Label labelElse = new Label("IfThenElse_else_" + condition.getLocation().toStringLabel());
         compiler.addInstruction(new BNE(labelElse));

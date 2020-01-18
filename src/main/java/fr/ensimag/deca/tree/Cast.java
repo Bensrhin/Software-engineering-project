@@ -65,14 +65,15 @@ public class Cast extends AbstractLValue {
       expr.prettyPrint(s, prefix, true);
   }
   @Override
-  protected void codeGenLoad(DecacCompiler compiler, GPRegister r1){
-        expr.codeGenLoad(compiler, r1);
+  protected GPRegister codeGenLoad(DecacCompiler compiler){
+        GPRegister r1 = expr.codeGenLoad(compiler);
         if(this.getType().isInt()){
             compiler.addInstruction(new INT(r1, r1));
         }
         else{
             compiler.addInstruction(new FLOAT(r1, r1));
         }
+        return r1;
     }
 
 }

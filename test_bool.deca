@@ -1,0 +1,8 @@
+{
+int x;
+x = readInt();
+while( (x>9 || x < 0) && (3*x > 30) && ( x != 0)){
+ x = x-1;
+ println(x);
+ }
+ }

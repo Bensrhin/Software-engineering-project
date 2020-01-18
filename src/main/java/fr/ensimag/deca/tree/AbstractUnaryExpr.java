@@ -50,13 +50,12 @@ public abstract class AbstractUnaryExpr extends AbstractExpr {
         operand.prettyPrint(s, prefix, true);
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
         throw new UnsupportedOperationException("not yet implementedoki");
     }
     @Override
     public void codeGenPrint(DecacCompiler compiler){
-        GPRegister r1 = Register.getR(Register.getCpt());
-        this.codeGenOp(compiler, r1);
+        this.codeGenOp(compiler);
         if(this.getType().toString().equals("int")){
             compiler.addInstruction(new WINT());
         }
@@ -64,7 +63,7 @@ public abstract class AbstractUnaryExpr extends AbstractExpr {
             compiler.addInstruction(new WFLOAT());
         }
     }
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1){
+    public void codeGenOp(DecacCompiler compiler){
         throw new UnsupportedOperationException("not yet implemented");
     }
 

@@ -9,6 +9,7 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  * Arithmetic binary operations (+, -, /, ...)
@@ -54,11 +55,11 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
       throw new ContextualError("types are not compatible", this.getLocation());
     }
     @Override
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+    public void codeGenOp(DecacCompiler compiler){
         throw new UnsupportedOperationException("not yet implemented");
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
         throw new UnsupportedOperationException("not yet implemented");
     }
 }

@@ -36,9 +36,10 @@ public class ConvFloat extends AbstractUnaryExpr {
         return "/* conv float */";
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1){
-        this.getOperand().codeGenLoad(compiler, r1);
+    protected GPRegister codeGenLoad(DecacCompiler compiler){
+        GPRegister r1 = this.getOperand().codeGenLoad(compiler);
         compiler.addInstruction(new FLOAT(r1, r1));
+        return r1;
     
     }
 

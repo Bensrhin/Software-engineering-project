@@ -11,6 +11,8 @@ import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.BRA;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.SUB;
+import fr.ensimag.deca.codegen.RegisterManager;
+import fr.ensimag.deca.codegen.RegisterManager;
 /**
  *
  * @author gl53
@@ -61,11 +63,10 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
                 + "la comparaison dans ce cas", this.getLocation());
         }
     }
-    @Override
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+    public void codeGenOp(DecacCompiler compiler){
         GPRegister R1 = Register.R1;
-        this.getLeftOperand().codeGenLoad(compiler, r1);
-        this.getRightOperand().codeGenLoad(compiler, r2);
+        GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
+        GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new SUB(r2, r1));
         compiler.addInstruction(new LOAD(r1, R1));
         Label opIf = new Label("OpCmp_if_in_"+this.getLeftOperand()
@@ -84,11 +85,11 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
     public abstract void codeGenIma(DecacCompiler compiler, Label label);
     
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
-        GPRegister r2 = Register.getR(Register.getCpt());
-        this.codeGenOp(compiler, r1, r2);
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
+        GPRegister r1 = RegisterManager.allocReg(compiler);
+        this.codeGenOp(compiler);
         compiler.addInstruction(new LOAD(Register.R1, r1));
-        r2.freeR();
+        return r1;
     }
 
 

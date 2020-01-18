@@ -25,6 +25,7 @@ import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
 import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  * Deca Identifier
@@ -269,9 +270,11 @@ public class Identifier extends AbstractIdentifier {
         //throw new UnsupportedOperationException("not yet implemented55");
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
         //throw new UnsupportedOperationException("not yet implemented55");
+        GPRegister r1 = RegisterManager.allocReg(compiler);
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
+        return r1;
     }
 
 }

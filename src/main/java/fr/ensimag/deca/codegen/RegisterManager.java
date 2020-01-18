@@ -1,3 +1,4 @@
+package fr.ensimag.deca.codegen;
 /**
  * 
  * @author gl53
@@ -6,21 +7,36 @@
 
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.ima.pseudocode.instructions.PUSH;
+import fr.ensimag.ima.pseudocode.instructions.POP;
 import java.util.*;
 public class RegisterManager{
-    private LinkedList<Register> regDispo = new LinkedList<Register>();
-    private LinkedList<Register> regNonDispo = new LinkedList<Register>();
-    public GPRegister allocReg(){
+    private static InitManager initR = new InitManager(15);
+    //System.out.println(initR);
+    public static GPRegister allocReg(DecacCompiler compiler){
         int cpt = Register.getCpt();
-        if(cpt < 16){
-            regNonDispo.add(Register.getR(cpt));
-            return Register.getR(cpt);
-            
+        if(!initR.regDispo.empty()){
+            GPRegister r = initR.regDispo.pop();
+            initR.regNonDispo.add(r);
+            return r;    
         }
         else{
-            
+            GPRegister r = initR.getNonDispo();
+            compiler.addInstruction(new PUSH(r));
+            return r;
         }
-        return null;
+    }
+    public static void freeReg(DecacCompiler compiler, GPRegister r){
+        if(initR.regEcrase.contains(r)){ 
+            compiler.addInstruction(new POP(r));
+            initR.regEcrase.pop();
+        }
+        else{
+            r.freeR();
+            initR.regNonDispo.remove(r);
+            initR.regDispo.push(r);        
+        }
     }
 
 

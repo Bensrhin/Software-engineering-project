@@ -11,6 +11,7 @@ import java.io.PrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  *
@@ -62,14 +63,16 @@ public class BooleanLiteral extends AbstractExpr {
         return "BooleanLiteral (" + value + ")";
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1){
+    protected GPRegister codeGenLoad(DecacCompiler compiler){
         boolean val = this.getValue();
+        GPRegister r1 = RegisterManager.allocReg(compiler);
         if(val == true){
             compiler.addInstruction(new LOAD(1, r1));
         }
         else{
             compiler.addInstruction(new LOAD(0, r1));
         }
+        return r1;
         //compiler.addInstruction(new LOAD(val, r1));
     }
 }

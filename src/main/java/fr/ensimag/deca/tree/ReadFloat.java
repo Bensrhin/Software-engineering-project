@@ -14,6 +14,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.RFLOAT;
 import fr.ensimag.ima.pseudocode.instructions.FLOAT;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  *
@@ -50,10 +51,12 @@ public class ReadFloat extends AbstractReadExpr {
         // leaf node => nothing to do
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler,GPRegister r){
+    protected GPRegister codeGenLoad(DecacCompiler compiler){
         //throw new UnsupportedOperationException("not yet implemented5555");
+        GPRegister r = RegisterManager.allocReg(compiler);
         compiler.addInstruction(new RFLOAT());
         compiler.addInstruction(new LOAD(Register.R1, r));
+        return r;
     }
 
 }
