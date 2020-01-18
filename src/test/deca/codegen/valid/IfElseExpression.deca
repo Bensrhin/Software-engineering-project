@@ -1,7 +1,7 @@
 {
-  x = readInt();
-  if(x > 2){
-    println(" x est sup à 2");
+  int x = 3;
+  if(x > 22){
+    println("x est sup à 2");
   }
   else if(x < 4){
     println("x est inf à 4");
