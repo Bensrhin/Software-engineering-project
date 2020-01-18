@@ -48,13 +48,8 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
 
     }
    @Override
-<<<<<<< HEAD
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
-        //throw new UnsupportedOperationException("not yet implemented");
-=======
     public void codeGenOp(DecacCompiler compiler){
         throw new UnsupportedOperationException("not yet implemented");
->>>>>>> 8022a5a1df67cd404e315bd600c119af4c0cad64
     }
     
     @Override

@@ -40,7 +40,7 @@ public class NullLiteral extends AbstractExpr{
     }
     @Override
     String prettyPrintNode() {
-        return "null ";
+        return "null";
     }
 
     @Override
