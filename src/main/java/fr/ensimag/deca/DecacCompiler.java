@@ -165,42 +165,6 @@ public class DecacCompiler {
      */
     private final IMAProgram program = new IMAProgram();
 
-
-    /*Decompiling the program, transforming a .deca to a .deca,
-     return true on error (similar to compile();)*/
-    public boolean decompile(){
-        String sourceFile = source.getAbsolutePath();
-        try{
-            PrintStream err = System.err;
-            AbstractProgram prog = doLexingAndParsing(sourceFile, err);
-            IndentPrintStream fstream = null;
-            fstream = new IndentPrintStream(new PrintStream(System.out));
-            prog.decompile(fstream);
-            return false;
-        }
-        catch (DecacFatalError e){
-            return true;
-        }
-    }
-    /*running verifications without compiling*/
-    public boolean verify() throws ContextualError{
-        String sourceFile = source.getAbsolutePath();
-        PrintStream err = System.err;
-        try{
-            AbstractProgram prog = doLexingAndParsing(sourceFile, err);
-            if (prog == null) {
-                return true;
-            }
-            assert(prog.checkAllLocations());
-            prog.verifyProgram(this);
-            assert(prog.checkAllDecorations());
-            }
-        catch (DecacFatalError e){
-            return true;
-        }
-        return false;
-    }
-
     /**
      * Run the compiler (parse source file, generate code)
      *
@@ -253,15 +217,29 @@ public class DecacCompiler {
     private boolean doCompile(String sourceName, String destName,
             PrintStream out, PrintStream err)
             throws DecacFatalError, LocationException {
+        CompilerOptions cond = this.getCompilerOptions();
         AbstractProgram prog = doLexingAndParsing(sourceName, err);
-
         if (prog == null) {
             LOG.info("Parsing failed");
             return true;
         }
+        if (cond.getRegisters()!=16){
+            //TO FILL
+        }
+        if (!cond.getNoCheck()){
+            //TO FILL
+        }
+        if (cond.getParse()){
+            IndentPrintStream fstream = new IndentPrintStream(new PrintStream(System.out));
+            prog.decompile(fstream);
+            return false;
+        }
         assert(prog.checkAllLocations());
         prog.verifyProgram(this);
         assert(prog.checkAllDecorations());
+        if (cond.getVerification()){      
+            return false;
+        }
 
         addComment("start main program");
         prog.codeGenProgram(this);

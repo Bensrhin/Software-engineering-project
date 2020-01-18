@@ -5,9 +5,11 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+import java.lang.*;
+import java.util.stream.IntStream;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import java.lang.System;
 
 /**
  * User-specified options influencing the compilation.
@@ -44,6 +46,10 @@ public class CompilerOptions {
         return noCheck;
     }
     
+    public int getRegisters(){
+        return registers;
+    }
+    
     public List<File> getSourceFiles() {
         return Collections.unmodifiableList(sourceFiles);
     }
@@ -54,6 +60,7 @@ public class CompilerOptions {
     private boolean parse = false;
     private boolean verification = false;
     private boolean noCheck = false;
+    private int registers = 16;
     private List<File> sourceFiles = new ArrayList<File>();
 
     
@@ -67,8 +74,9 @@ public class CompilerOptions {
             else{
                 throw new CLIException("Bad arguments for decac");
             }
-        }
-        for (String arg:args){
+        }else{
+        for (int index=0; index<args.length; index++){
+            String arg = args[index];
             if (arg.substring(0,1).equals("-")){
                 switch (arg){
                     case "-p":
@@ -82,8 +90,14 @@ public class CompilerOptions {
                     case "-n": noCheck = true; break;
                     case "-d": debug = Math.min(debug+1, 3); break;
                     case "-P": parallel = true; break;
+                    case "-r":
+                        try {
+                            int x = Integer.parseInt(args[index+1]);index++;
+                            assert(x>=4 && x<=16); registers = x;
+                        }catch(NumberFormatException | AssertionError e){
+                            throw new CLIException("Bad arguments for decac");}
                     default:
-                }
+                        throw new CLIException("Bad arguments for decac");}
             }
             else if (arg.length()>=5 &&
                     arg.substring(arg.length()-5, arg.length()).equals(".deca")){
@@ -93,6 +107,8 @@ public class CompilerOptions {
                 throw new CLIException("Bad arguments for decac");
             }
         }
+        }
+        
         // map command-line debug option to log4j's level.
         switch (getDebug()) {
         case QUIET: break; // keep default

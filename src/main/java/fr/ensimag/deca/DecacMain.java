@@ -6,6 +6,12 @@ import java.io.PrintStream;
 import org.apache.log4j.Logger;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tree.LocationException;
+import java.util.concurrent.*;
+import java.util.concurrent.Executors;
+import java.lang.Runtime.*;
+import java.util.ArrayList;
+import java.io.*;
+import java.lang.System;
 
 
 /**
@@ -32,7 +38,7 @@ public class DecacMain {
         }
         if (options.getPrintBanner()) {
             //throw new UnsupportedOperationException("decac -b not yet implemented");
-            System.out.println("Compilateur DECA. Equipe GL53.");
+            System.out.println("Compilateur DECA. Equipe GL53."); System.exit(0);
         }
         if (options.getSourceFiles().isEmpty() && !options.getPrintBanner()) {
             throw new UnsupportedOperationException("decac without argument not yet implemented");
@@ -42,17 +48,41 @@ public class DecacMain {
             // compiler, et lancer l'exécution des méthodes compile() de chaque
             // instance en parallèle. Il est conseillé d'utiliser
             // java.util.concurrent de la bibliothèque standard Java.
-            throw new UnsupportedOperationException("Parallel build not yet implemented");
+            ExecutorService e = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+            ArrayList<Future<Boolean>> l = new ArrayList<Future<Boolean>>();
+            for (File source : options.getSourceFiles()) {
+                Future<Boolean> future
+                        = e.submit(new Callable<Boolean>() {
+                          public Boolean call() {
+                              DecacCompiler compiler = 
+                                        new DecacCompiler(options, source);
+                              return compiler.compile();
+                          }});
+                l.add(future);
+            }
+            for (Future<Boolean> future : l){
+                try{
+                    if(future.get()){
+                        error = true;
+                    }
+                }
+                catch(ExecutionException er){
+                    er.printStackTrace();
+                }
+                catch( InterruptedException er2){
+                    er2.printStackTrace();
+                }
+            }
         }
-        if (options.getParse()){
+        /*if (options.getParse()){
             for (File source : options.getSourceFiles()) {
                 DecacCompiler compiler = new DecacCompiler(options, source);
                 if (compiler.decompile()){
                    error = true;
                 }
             }
-        }
-        if (options.getVerification()){
+        }*/
+        /*if (options.getVerification()){
             PrintStream err = System.err;
             for (File source : options.getSourceFiles()) {
                 DecacCompiler compiler = new DecacCompiler(options, source);
@@ -72,8 +102,8 @@ public class DecacMain {
             System.out.println("No Check not "
                     + "implemented, nta a nabil, nta.");
             error = true;
-        }
-        else if (!options.getParse() && !options.getVerification()){
+        }*/
+        else if ( !options.getParallel()){
             for (File source : options.getSourceFiles()) {
                 DecacCompiler compiler = new DecacCompiler(options, source);
                 if (compiler.compile()) {
