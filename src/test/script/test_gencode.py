@@ -53,12 +53,23 @@ def valid_gencode():
 
 
             if resultat==attendu:
-                print("Tout va bien pour " + str(file))
+                print(str(file)+color.BOLD+color.HEADER+"  *** [TEST PASSED] *** "+color.ENDC)
+                counter+=1
+                #print("Tout va bien pour " + str(file))
             else:
-                print("Tout ne pas va bien pour " + str(file))
+                print(str(file)+color.BOLD+color.WARNING+"  *** [Test FAILED] *** "+color.ENDC)
+                #print("Tout ne pas va bien pour " + str(file))
                 print("Le résultat obtenu :", resultat)
                 print("Le résultat attendu :", attendu)
+        print("======================================================")
+    return counter,tmp
 
 #os.system("rm " +  "../deca/codegen/valid" + "/"+ "*.ass")
-valid_gencode()
+x = valid_gencode()
+if (x[0] == x[1]):
+    print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS GENCODE SUCCESS].-~-.-~-.-~".format(str(x[1]))+color.ENDC)
+    print("~======================================================~")
+else:
+    print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS GENCODE ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
+    print("~========================================================================~")
 os.system("rm " +  "../deca/codegen/valid" + "/"+ "*.ass")

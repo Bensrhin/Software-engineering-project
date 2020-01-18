@@ -21,9 +21,9 @@ def valid_synt():
     tmp = 0
     test_synt = "launchers/test_synt"
     valid_synt = "../deca/syntax/valid"
-    print("Details d'execution des tests valides [1/0] ?")
-    x = int(input())
-    #x=0
+    # print("Details d'execution des tests valides [1/0] ?")
+    # x = int(input())
+    x=0
     print("======================================================")
 
     for file in files(valid_synt):
@@ -71,26 +71,26 @@ def invalid_synt():
     return counter, tmp
 
 
-print("Tester les valides ? [1/0]")
-val = int(input())
-#val = 1
+# print("Tester les valides ? [1/0]")
+# val = int(input())
+val = 1
 if val == 1:
     y = valid_synt()
     if (y[0] == y[1]):
-        print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS VALID SUCCESS].-~-.-~-.-~".format(str(y[1]))+color.ENDC)
+        print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS VALID SYNT SUCCESS].-~-.-~-.-~".format(str(y[1]))+color.ENDC)
         print("~======================================================~")
     else:
-        print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS VALID ERROR].-~-.-~-.-~".format(str(y[1] -y[0]))+color.ENDC)
+        print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS VALID SYNT ERROR].-~-.-~-.-~".format(str(y[1] -y[0]))+color.ENDC)
         print("~========================================================================~")
-print("Tester les invalides ? [1/0]")
-inval = int(input())
-#inval =1
+# print("Tester les invalides ? [1/0]")
+# inval = int(input())
+inval =1
 if inval == 1:
     x = invalid_synt()
     if (x[0] == x[1]):
-        print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS INVALID SUCCESS].-~-.-~-.-~".format(str(x[1]))+color.ENDC)
+        print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS INVALID SYNT SUCCESS].-~-.-~-.-~".format(str(x[1]))+color.ENDC)
         print("~======================================================~")
     else:
-        print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS INVALID ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
+        print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS INVALID SYNT ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
         print("~========================================================================~")
 os.system("rm *.log")
