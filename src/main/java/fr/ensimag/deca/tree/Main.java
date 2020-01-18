@@ -34,12 +34,12 @@ public class Main extends AbstractMain {
 
     @Override
     protected void verifyMain(DecacCompiler compiler) throws ContextualError {
-      LOG.debug("verify Main: start");
+      //LOG.debug("verify Main: start");
       EnvironmentExp localEnv = compiler.get_env_exp();
       Type returnType = new VoidType(compiler.getSymbols().getSymbol("void"));
       declVariables.verifyListDeclVariable(compiler, localEnv, null);
       insts.verifyListInst(compiler, localEnv, null, returnType);
-      LOG.debug("verify Main: end");
+      //LOG.debug("verify Main: end");
     }
     public ListDeclVar getDeclVariables(){
         return this.declVariables;

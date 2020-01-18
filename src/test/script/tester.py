@@ -33,10 +33,9 @@ print(color.OKGREEN+"=================================================="+color.E
 while(1):
     
     print("Que Voulez-Vous Tester ? \n\n" +
-    " [1 (Lexer)] \n [2 (Parser)] \n [3 (Context)] \n [4 (All)] \n [0 (Quitter)]\n")
-    # x = int(input())
+    " [1 (Lexer)] \n [2 (Parser)] \n [3 (Context)] \n [4 (gencode)] \n [5 (All)] \n [0 (Quitter)]\n")
     try:
-        x = int(input("Veuillez choisir un nombre entre 0 et 4: "))
+        x = int(input("Veuillez choisir un nombre entre 0 et 5: "))
 
     except SyntaxError:
         print(color.WARNING+"\nNot an integer! Try again.\n"+color.ENDC)
@@ -44,7 +43,7 @@ while(1):
     except NameError:
         print(color.WARNING+"\nNot an integer! Try again.\n"+color.ENDC)
     else:
-        if (x not in [0, 1, 2, 3, 4]):
+        if (x not in [0, 1, 2, 3, 4, 5]):
             continue
         if x == 0:
             break
@@ -54,21 +53,31 @@ while(1):
             os.system("./test_synt.py")
         elif x==3:
             os.system("./test_context.py")
-        elif x==4:
+        elif x ==4:
+            os.system("./test_gencode.py")
+        elif x==5:
             start_time = time.time()
-            print("=========================");
+
+            print("=========================")
             print(color.OKBLUE+"       Test Lexer"+color.ENDC)
-            print("=========================");
+            print("=========================")
             os.system("./test_lexer.py")
-            print("=========================");
+
+            print("=========================")
             print(color.OKBLUE+"       Test Synt"+color.ENDC)
-            print("=========================");
+            print("=========================")
             os.system("./test_synt.py")
-            print("=========================");
+
+            print("=========================")
             print(color.OKBLUE+"       Test Context"+color.ENDC)
-            print("=========================");
+            print("=========================")
             os.system("./test_context.py")
-            print(color.BOLD+color.OKBLUE+"           Execution Time : %.2s secondes ---" % (time.time() - start_time)+color.ENDC)
-            print("=========================");
+
+            print("=========================")
+            print(color.OKBLUE+"       Test Gencode"+color.ENDC)
+            print("=========================")
+            os.system("./test_gencode.py")
+            print(color.BOLD+color.OKBLUE+"      ---  Execution Time : %.2s secondes ---" % (time.time() - start_time)+color.ENDC)
+            print("=========================")
 
 

@@ -86,8 +86,9 @@ public abstract class AbstractExpr extends AbstractInst {
         Type type2 = this.verifyExpr(compiler, localEnv, currentClass);
         if (!localEnv.assignCompatible(expectedType, type2))
         {
-            throw new ContextualError("The affected type is not compatible with "
-                + expectedType.toString(), this.getLocation());
+            throw new ContextualError("On ne peut pas affecter un " +
+                type2.toString()+ " à un identificateur de type " +
+                expectedType.toString() + " (règle 3.28)", this.getLocation());
         }
         if (expectedType.sameType(type2))
         {
@@ -126,7 +127,8 @@ public abstract class AbstractExpr extends AbstractInst {
               Type condType = this.verifyExpr(compiler, localEnv, currentClass);
               if (!condType.isBoolean())
               {
-                  throw new  ContextualError("Condition must be a boolean",
+                  throw new  ContextualError("Expression " + decompile() +
+                          " doit être un booléen (règle 3.29)",
                                               this.getLocation());
               }
               this.setType(condType);

@@ -34,7 +34,8 @@ public class BooleanLiteral extends AbstractExpr {
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
         if (!compiler.getSymbols().checkSymbol("boolean")){
-            throw new ContextualError("boolean Type is not yet implemented", this.getLocation());
+            throw new ContextualError("Type \"boolean\" n'est pas un "
+                    + "type prédéfini (règle 0.2)", this.getLocation());
         }
 
        Type returnType = new BooleanType(compiler.getSymbols().getSymbol("boolean"));

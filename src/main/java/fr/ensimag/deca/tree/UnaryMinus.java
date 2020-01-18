@@ -27,9 +27,12 @@ public class UnaryMinus extends AbstractUnaryExpr {
               Type unary = this.getOperand().verifyExpr(compiler, localEnv, currentClass);
               if (!unary.isInt() & !unary.isFloat())
               {
-                  throw new ContextualError("expression is not an int nor a float",
-                                             this.getLocation());
+                  throw new ContextualError("L'opération unaire " + decompile()
+                          + " : [" +
+                " - ( " + unary.toString() + 
+                " ) ] : n'est pas autorisée (règle 3.37)", this.getLocation());
               }
+              
               this.setType(unary);
               return unary;
     }

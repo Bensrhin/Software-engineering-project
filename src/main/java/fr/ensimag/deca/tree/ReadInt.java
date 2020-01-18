@@ -26,8 +26,9 @@ public class ReadInt extends AbstractReadExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-                if (!compiler.getSymbols().checkSymbol("int")){
-            throw new ContextualError("int Type is not yet implemented", this.getLocation());
+        if (!compiler.getSymbols().checkSymbol("int")){
+            throw new ContextualError("Type \"int\" n'est pas un "
+                    + "type prédéfini (règle 0.2)", this.getLocation());
         }
        Type returnType = new IntType(compiler.getSymbols().getSymbol("int"));
        this.setType(returnType);

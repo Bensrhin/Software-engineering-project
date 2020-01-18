@@ -39,7 +39,10 @@ public class Cast extends AbstractLValue {
         Type type2 = this.getExpr().verifyExpr(compiler, localEnv, currentClass);
         if(!localEnv.castCompatible(type2, type))
         {
-            throw new ContextualError("Le cast n'est pas autorisé", this.getLocation());
+            throw new ContextualError("Le Cast  " + decompile() 
+                    + " : (" +
+            type.toString() + ")" + "(" +type2.toString() +  
+            ") : n'est pas autorisée (règle 3.39)", this.getLocation());
         }
         this.setType(type);
         return type;
@@ -48,6 +51,11 @@ public class Cast extends AbstractLValue {
 
   @Override
   public void decompile(IndentPrintStream s) {
+      s.print("(");
+      idExpr.decompile(s);
+      s.print(")");
+      expr.decompile(s);
+
 
   }
 

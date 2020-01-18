@@ -10,6 +10,7 @@ import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.instructions.FLOAT;
+import fr.ensimag.deca.tools.IndentPrintStream;
 
 /**
  * Conversion of an int into a float. Used for implicit conversions.
@@ -29,11 +30,13 @@ public class ConvFloat extends AbstractUnaryExpr {
         setType(new FloatType(compiler.getSymbols().getSymbol("float")));
         return getType();
     }
-
-
+    @Override
+    public void decompile(IndentPrintStream s) {
+        getOperand().decompile(s);
+    }
     @Override
     protected String getOperatorName() {
-        return "/* conv float */";
+        return "ConvFloat";
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler){

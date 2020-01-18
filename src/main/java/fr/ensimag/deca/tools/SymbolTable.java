@@ -90,6 +90,10 @@ public class SymbolTable {
             {
                 return new VoidType(this);
             }
+            if (this.getName().equals("null"))
+            {
+                return new NullType(this);
+            }
             return null;
         }
     }

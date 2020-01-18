@@ -41,7 +41,8 @@ public class IntLiteral extends AbstractExpr {
             ClassDefinition currentClass) throws ContextualError {
         //throw new UnsupportedOperationException("not yet implemented");
         if (!compiler.getSymbols().checkSymbol("int")){
-            throw new ContextualError("int Type is not yet implemented", this.getLocation());
+            throw new ContextualError("Type \"int\" n'est pas un "
+                    + "type prédéfini (règle 0.2)", this.getLocation());
         }
         /*
        Set<Symbol> sym = localEnv.stringIsIn();

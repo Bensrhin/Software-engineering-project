@@ -45,9 +45,10 @@ public class Initialization extends AbstractInitialization {
         
         if (!localEnv.assignCompatible(t, type2))
         {
-            //System.out.println("dkhel");
-            throw new ContextualError("The affected type is not compatible with "
-                        + t.toString(), this.getExpression().getLocation());
+            throw new ContextualError("Initialisation d'une variable de type " +
+                t.toString() + " par une valeur de type " + type2.toString() + 
+                " : non autorisée (règle 3.8)"
+                , this.getExpression().getLocation());
         }
         if(t.isFloat() && type2.isInt()){
             this.expression = new ConvFloat(this.expression);
