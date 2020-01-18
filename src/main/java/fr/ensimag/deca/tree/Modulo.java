@@ -10,6 +10,7 @@ import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.REM;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.deca.codegen.RegisterManager;
 /**
  *
@@ -49,6 +50,7 @@ public class Modulo extends AbstractOpArith {
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new REM(r2, r1));
+         compiler.addInstruction(new BOV(compiler.divisionErr));
         RegisterManager.freeReg(compiler, r2);
         compiler.addInstruction(new LOAD(r1, R1));
         RegisterManager.freeReg(compiler, r1);
@@ -58,6 +60,7 @@ public class Modulo extends AbstractOpArith {
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new REM(r2, r1));
+         compiler.addInstruction(new BOV(compiler.divisionErr));
         RegisterManager.freeReg(compiler, r2);
         return r1;
     }

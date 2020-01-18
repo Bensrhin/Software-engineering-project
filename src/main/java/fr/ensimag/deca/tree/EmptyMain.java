@@ -44,4 +44,11 @@ public class EmptyMain extends AbstractMain {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         // leaf node => nothing to do
     }
+    @Override
+    public  ListDeclVar getDeclVariables(){
+        return new ListDeclVar();
+    }
+    @Override
+    public void codeGenEntete(DecacCompiler compiler, int n){
+    }
 }

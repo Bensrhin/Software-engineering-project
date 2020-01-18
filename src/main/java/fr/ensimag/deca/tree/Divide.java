@@ -9,6 +9,7 @@ import fr.ensimag.ima.pseudocode.instructions.WINT;
 import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 import fr.ensimag.ima.pseudocode.instructions.INT;
 import fr.ensimag.ima.pseudocode.instructions.FLOAT;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.QUO;
 import fr.ensimag.deca.codegen.RegisterManager;
 
@@ -40,6 +41,7 @@ public class Divide extends AbstractOpArith {
         else{
             compiler.addInstruction(new DIV(r2, r1));
         }
+        compiler.addInstruction(new BOV(compiler.divisionErr));
         r2.freeR();
         compiler.addInstruction(new LOAD(r1, R1));
         r1.freeR();
@@ -54,6 +56,7 @@ public class Divide extends AbstractOpArith {
         else{
             compiler.addInstruction(new DIV(r2, r1));
         }
+        compiler.addInstruction(new BOV(compiler.divisionErr));
         r2.freeR();
         return r1;
     }

@@ -8,6 +8,7 @@ import fr.ensimag.ima.pseudocode.instructions.MUL;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
 import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 import fr.ensimag.deca.codegen.RegisterManager;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
 
 
 
@@ -31,6 +32,7 @@ public class Multiply extends AbstractOpArith {
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new MUL(r2, r1));
+        compiler.addInstruction(new BOV(compiler.over_flow));
         RegisterManager.freeReg(compiler, r2);
         compiler.addInstruction(new LOAD(r1, R1));
         RegisterManager.freeReg(compiler, r1);
@@ -39,6 +41,7 @@ public class Multiply extends AbstractOpArith {
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
         GPRegister r1  = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
+        compiler.addInstruction(new MUL(r2, r1));
         compiler.addInstruction(new MUL(r2, r1));
         RegisterManager.freeReg(compiler, r2);
         return r1;
