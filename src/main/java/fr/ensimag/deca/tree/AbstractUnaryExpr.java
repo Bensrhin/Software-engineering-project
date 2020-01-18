@@ -4,8 +4,10 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.codegen.RegisterManager;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
 import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 /**
@@ -51,7 +53,10 @@ public abstract class AbstractUnaryExpr extends AbstractExpr {
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implementedoki");
+        GPRegister r1 = RegisterManager.allocReg(compiler);
+        this.codeGenOp(compiler);
+        compiler.addInstruction(new LOAD(Register.R1, r1));
+        return r1;
     }
     @Override
     public void codeGenPrint(DecacCompiler compiler){
