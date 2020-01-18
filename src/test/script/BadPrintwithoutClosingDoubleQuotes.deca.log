@@ -1,0 +1,1 @@
+../deca/syntax/invalid/BadPrintwithoutClosingDoubleQuotes.deca:2:20: token recognition error at: '"ca va?);\n}'

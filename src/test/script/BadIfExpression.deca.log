@@ -1,0 +1,1 @@
+../deca/syntax/invalid/BadIfExpression.deca:2:15: mismatched input '<' expecting {'true', 'new', 'null', 'readInt', 'false', 'readFloat', 'this', '-', '!', '(', INT, FLOAT, STRING, IDENT}
