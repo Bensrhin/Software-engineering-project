@@ -6,8 +6,8 @@
                     if (true){
                         if(true){
                             print("jusque la OK");
-                            if (!){
-                                print("Ah ici pas trop);
+                            if (!1){
+                                print("Ah ici pas trop");
                             }
                         }
                     }

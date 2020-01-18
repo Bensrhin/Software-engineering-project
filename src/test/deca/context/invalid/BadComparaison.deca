@@ -1,6 +1,6 @@
 {
     int a = 100;
-    float b = 100f;
+    boolean b = true;
     if (a != b){
         print("a et b sont differents");
     }

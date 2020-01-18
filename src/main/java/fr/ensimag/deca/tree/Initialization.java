@@ -51,7 +51,7 @@ public class Initialization extends AbstractInitialization {
                 , this.getExpression().getLocation());
         }
         
-         if (t.sameType(type2))
+        if (t.sameType(type2))
         {
             this.expression.setType(type2);
         }
