@@ -59,7 +59,8 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
         */
         else 
         {
-            throw new ContextualError("Opération de comparaison: (" +
+            throw new ContextualError("Opération de comparaison " + decompile()
+                    + " : (" +
                 t1.toString() + " " + getOperatorName() +  " " + t2.toString() + 
                 ") : non autorisée (règle 3.33)"
                 , this.getLocation());

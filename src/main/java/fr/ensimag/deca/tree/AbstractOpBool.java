@@ -40,7 +40,8 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
         }
         else 
         {
-            throw new ContextualError("Opération booléenne: (" +
+            throw new ContextualError("Opération booléenne " + decompile()
+                    + " : (" +
                 t1.toString() + " " + getOperatorName() +  " " + t2.toString() + 
                 ") : non autorisée (règle 3.33)"
                 , this.getLocation());

@@ -127,7 +127,8 @@ public abstract class AbstractExpr extends AbstractInst {
               Type condType = this.verifyExpr(compiler, localEnv, currentClass);
               if (!condType.isBoolean())
               {
-                  throw new  ContextualError("Condition must be a boolean",
+                  throw new  ContextualError("Expression " + decompile() +
+                          " doit être un booléen (règle 3.29)",
                                               this.getLocation());
               }
               this.setType(condType);

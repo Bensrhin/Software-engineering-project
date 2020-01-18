@@ -36,8 +36,7 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
     public Type typeArith(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type t1, Type t2) throws ContextualError
     {
-      //Type type1 = new IntType(compiler.getSymbols().getSymbol("int"));
-      //Type type2 = new FloatType(compiler.getSymbols().getSymbol("float"));
+
       if (t1.sameType(t2) & t1.isTypeBinary())
       {
           return t1;
@@ -54,7 +53,8 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
       }
       else
         {
-            throw new ContextualError("Opération de arithmétique: (" +
+            throw new ContextualError("Opération arithmétique " + decompile() 
+                    + " : (" +
                 t1.toString() + " " + getOperatorName() +  " " + t2.toString() + 
                 ") : non autorisée (règle 3.33)"
                 , this.getLocation());

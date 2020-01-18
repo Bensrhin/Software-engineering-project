@@ -34,10 +34,7 @@ public abstract class AbstractUnaryExpr extends AbstractExpr {
     public void decompile(IndentPrintStream s) {
         s.print("(");
         String op = getOperatorName();
-        //if (op.equals("!")||op.equals("-"))
-        //{
         s.print(" " + op + " ");
-        //}
         getOperand().decompile(s);
         s.print(")");
     }
