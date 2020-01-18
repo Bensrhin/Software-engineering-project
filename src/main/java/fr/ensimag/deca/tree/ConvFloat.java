@@ -1,7 +1,9 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.context.IntType;
 import fr.ensimag.deca.context.FloatType;
+import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.EnvironmentExp;
@@ -25,10 +27,9 @@ public class ConvFloat extends AbstractUnaryExpr {
 
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
-            ClassDefinition currentClass) {
-        //this.setType(this.getOperand().verifyExpr(compiler, localEnv, currentClass););
-        setType(new FloatType(compiler.getSymbols().getSymbol("float")));
-        return getType();
+            ClassDefinition currentClass){
+        this.getOperand().setType(new IntType(compiler.getSymbols().getSymbol("int")));
+        return (new FloatType(compiler.getSymbols().getSymbol("float")));
     }
     @Override
     public void decompile(IndentPrintStream s) {

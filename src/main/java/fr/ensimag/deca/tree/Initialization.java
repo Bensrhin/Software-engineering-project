@@ -42,22 +42,26 @@ public class Initialization extends AbstractInitialization {
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
         Type type2 = this.getExpression().verifyExpr(compiler, localEnv, currentClass);
-        
+
         if (!localEnv.assignCompatible(t, type2))
         {
             throw new ContextualError("Initialisation d'une variable de type " +
-                t.toString() + " par une valeur de type " + type2.toString() + 
+                t.toString() + " par une valeur de type " + type2.toString() +
                 " : non autorisée (règle 3.8)"
                 , this.getExpression().getLocation());
         }
-        if (t.sameType(type2))
+        
+         if (t.sameType(type2))
         {
             this.expression.setType(type2);
         }
         else
         {
+            this.expression = new ConvFloat(this.expression);
+            this.expression.verifyExpr(compiler, localEnv,currentClass);
             this.expression.setType(t);
         }
+
     }
 
     @Override
@@ -65,9 +69,10 @@ public class Initialization extends AbstractInitialization {
         //throw new UnsupportedOperationException("not yet implemented");
         //GPRegister r = Register.getR(Register.getCpt());
         GPRegister r = this.expression.codeGenLoad(compiler);
+       // System.out.println(this.getType());
         compiler.addInstruction(new STORE(r,new RegisterOffset(i, Register.GB)));
         r.freeR();
-        
+
     }
     @Override
     public void decompile(IndentPrintStream s) {

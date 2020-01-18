@@ -10,6 +10,10 @@ import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
+import fr.ensimag.ima.pseudocode.instructions.TSTO;
+import fr.ensimag.ima.pseudocode.instructions.ADDSP;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
+import fr.ensimag.ima.pseudocode.Label;
 
 /**
  * @author gl53
@@ -36,6 +40,9 @@ public class Main extends AbstractMain {
       declVariables.verifyListDeclVariable(compiler, localEnv, null);
       insts.verifyListInst(compiler, localEnv, null, returnType);
       //LOG.debug("verify Main: end");
+    }
+    public ListDeclVar getDeclVariables(){
+        return this.declVariables;
     }
 
     @Override
@@ -66,5 +73,13 @@ public class Main extends AbstractMain {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         declVariables.prettyPrint(s, prefix, false);
         insts.prettyPrint(s, prefix, true);
+    }
+    public void codeGenEntete(DecacCompiler compiler, int n){
+        if(n > 0){
+            compiler.addInstruction(new TSTO(n));
+            Label pilePleine= new Label("pile_pleine");
+            compiler.addInstruction(new BOV(pilePleine));
+            compiler.addInstruction(new ADDSP(n));
+        }
     }
 }

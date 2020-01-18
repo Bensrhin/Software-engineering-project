@@ -44,13 +44,7 @@ public class IntLiteral extends AbstractExpr {
             throw new ContextualError("Type \"int\" n'est pas un "
                     + "type prédéfini (règle 0.2)", this.getLocation());
         }
-        /*
-       Set<Symbol> sym = localEnv.stringIsIn();
-       for (Symbol s:sym)
-       {
-           System.out.println(s.getName());
-       }
-                */
+
        Type returnType = new IntType(compiler.getSymbols().getSymbol("int"));
        this.setType(returnType);
        return this.getType();

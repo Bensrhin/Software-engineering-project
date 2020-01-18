@@ -30,6 +30,11 @@ import org.apache.log4j.Logger;
 
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.lang.String ;
+import fr.ensimag.ima.pseudocode.instructions.ERROR;
+import fr.ensimag.ima.pseudocode.instructions.WSTR;
+import fr.ensimag.ima.pseudocode.instructions.WNL;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.ImmediateString;
 
 
 /**
@@ -242,8 +247,11 @@ public class DecacCompiler {
         }
 
         addComment("start main program");
+        prog.getMain().codeGenEntete(this, prog.getMain().getDeclVariables().getList().size());
         prog.codeGenProgram(this);
         addComment("end main program");
+        this.codeGenErr();
+        
         LOG.debug("Generated assembly code:" + nl + program.display());
         LOG.info("Output file assembly file is: " + destName);
 
@@ -288,5 +296,26 @@ public class DecacCompiler {
         parser.setDecacCompiler(this);
         return parser.parseProgramAndManageErrors(err);
     }
-
+    public static Label pilePleine= new Label("pile_pleine");
+    public static Label over_flow = new Label("over_flow");   
+    public static Label i0Error = new Label("i0_error");
+    public static Label divisionErr = new Label("divisionErr");
+    protected void codeGenErr(){
+        this.addLabel(pilePleine);
+        this.addInstruction(new WSTR("EError: Stack Overfloww"));
+        this.addInstruction(new WNL());
+        this.addInstruction(new ERROR());
+        this.addLabel(over_flow);
+        this.addInstruction(new WSTR("EError: Overflow during arithmetic operationn"));
+        this.addInstruction(new WNL());
+        this.addInstruction(new ERROR());
+        this.addLabel(i0Error);
+        this.addInstruction(new WSTR("EError: Input/Output errorr"));
+        this.addInstruction(new WNL());
+        this.addInstruction(new ERROR());
+        this.addLabel(divisionErr);
+        this.addInstruction(new WSTR(("EError :Division par 0 ")));
+        this.addInstruction(new WNL());
+        this.addInstruction(new ERROR());    
+    }
 }

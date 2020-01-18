@@ -1,5 +1,7 @@
 
 {
+  float b;
   float a = 3;
-  println(a);
+  b = 1;
+  println(a, b);
 }

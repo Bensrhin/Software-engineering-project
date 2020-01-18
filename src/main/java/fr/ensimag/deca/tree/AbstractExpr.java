@@ -98,7 +98,8 @@ public abstract class AbstractExpr extends AbstractInst {
         {
             AbstractExpr expr = new ConvFloat(this);
             Type t = expr.verifyExpr(compiler, localEnv, currentClass);
-            this.setType(t);
+            expr.setType(t);
+            //this.setType(t);
             return expr;
         }
         //throw new ContextualError("not yet implemented", this.getLocation());
