@@ -12,7 +12,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
-import fr.ensimag.deca.context.FloatType;
+import fr.ensimag.deca.context.NullType;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
@@ -31,8 +31,16 @@ public class NullLiteral extends AbstractExpr{
     }
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
-            ClassDefinition currentClass) throws ContextualError {
-            return null;
+            ClassDefinition currentClass) throws ContextualError 
+    {
+        if (!compiler.getSymbols().checkSymbol("null"))
+        {
+            throw new ContextualError("\"null\" n'est pas "
+                    + "défini", this.getLocation());
+        }
+        Type returnType = new NullType(compiler.getSymbols().getSymbol("null"));
+        this.setType(returnType);
+        return this.getType();
     }
     @Override
     public void decompile(IndentPrintStream s) {
