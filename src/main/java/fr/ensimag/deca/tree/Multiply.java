@@ -42,7 +42,7 @@ public class Multiply extends AbstractOpArith {
         GPRegister r1  = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new MUL(r2, r1));
-        compiler.addInstruction(new MUL(r2, r1));
+        compiler.addInstruction(new BOV(compiler.over_flow));
         RegisterManager.freeReg(compiler, r2);
         return r1;
     }
