@@ -9,6 +9,7 @@ import fr.ensimag.ima.pseudocode.instructions.WINT;
 import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  * Binary expressions.
@@ -67,9 +68,7 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
     }
     @Override
     public void codeGenPrint(DecacCompiler compiler){
-        GPRegister r1 = Register.getR(Register.getCpt());
-        GPRegister r2 = Register.getR(Register.getCpt());
-        this.codeGenOp(compiler, r1, r2);
+        this.codeGenOp(compiler);
         if(this.getType().toString().equals("int")){
             compiler.addInstruction(new WINT());
         }
@@ -80,7 +79,7 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
         
         
     }
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+    public void codeGenOp(DecacCompiler compiler){
         throw new UnsupportedOperationException("not yet implemented");
     }
     @Override
@@ -89,7 +88,7 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
         rightOperand.prettyPrint(s, prefix, true);
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
         throw new UnsupportedOperationException("not yet implemented");
     }
 }

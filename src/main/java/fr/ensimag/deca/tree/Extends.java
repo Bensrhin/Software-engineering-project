@@ -251,27 +251,28 @@ public class Extends extends AbstractIdentifier {
     }
     @Override
     public void codeGenIdent(DecacCompiler compiler,int i){
-        RegisterOffset r = new RegisterOffset(i, Register.GB);
-        ExpDefinition def = this.getExpDefinition();
-        def.setOperand(r);
+       // RegisterOffset r = new RegisterOffset(i, Register.GB);
+       // ExpDefinition def = this.getExpDefinition();
+        //def.setOperand(r);
     }
     @Override
      protected void codeGenPrint(DecacCompiler compiler) {
-        compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
-        if(this.getType().toString().equals("int")){
-            compiler.addInstruction(new WINT());
+       // compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
+        //if(this.getType().toString().equals("int")){
+          //  compiler.addInstruction(new WINT());
             
-        }
-        if(this.getType().toString().equals("float")){
-            compiler.addInstruction(new WFLOAT());
+        //}
+        //if(this.getType().toString().equals("float")){
+          //  compiler.addInstruction(new WFLOAT());
             
-        }
+        //}
         //throw new UnsupportedOperationException("not yet implemented55");
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
         //throw new UnsupportedOperationException("not yet implemented55");
-        compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
+        //compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
+        return null;
     }
 
 }

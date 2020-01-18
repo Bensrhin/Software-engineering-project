@@ -13,6 +13,7 @@ import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  * Single precision, floating-point literal
@@ -78,9 +79,11 @@ public class FloatLiteral extends AbstractExpr {
         compiler.addInstruction(new LOAD(value, r));
         compiler.addInstruction(new WFLOAT());
     }
-    public void codeGenLoad(DecacCompiler compiler, GPRegister r1){
+    public GPRegister codeGenLoad(DecacCompiler compiler){
         float val = this.getValue();
+        GPRegister r1 = RegisterManager.allocReg(compiler);
         compiler.addInstruction(new LOAD(val, r1));
+        return r1;
     }
 
 }

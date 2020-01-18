@@ -9,6 +9,7 @@ import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.OPP;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  * @author gl53
@@ -41,17 +42,18 @@ public class UnaryMinus extends AbstractUnaryExpr {
         return "-";
     }
     @Override
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1){
+    public void codeGenOp(DecacCompiler compiler){
         GPRegister R1 = Register.R1;
-        this.getOperand().codeGenLoad(compiler, r1);
+        GPRegister r1 = this.getOperand().codeGenLoad(compiler);
         compiler.addInstruction(new OPP(r1, r1));
         compiler.addInstruction(new LOAD(r1, R1));
         r1.freeR();
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
-        this.getOperand().codeGenLoad(compiler, r1);
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
+        GPRegister r1 = this.getOperand().codeGenLoad(compiler);
         compiler.addInstruction(new OPP(r1, r1));
+        return r1;
     }
 
 }

@@ -14,6 +14,7 @@ import fr.ensimag.ima.pseudocode.instructions.WINT;
 import org.apache.commons.lang.Validate;
 import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.deca.codegen.RegisterManager;
 /**
  * Integer literal
  *
@@ -82,9 +83,11 @@ public class IntLiteral extends AbstractExpr {
         compiler.addInstruction(new WINT());
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1){
+    protected GPRegister codeGenLoad(DecacCompiler compiler){
         int val = this.getValue();
+        GPRegister r1 = RegisterManager.allocReg(compiler);
         compiler.addInstruction(new LOAD(val, r1));
+        return r1;
     }
 
 }

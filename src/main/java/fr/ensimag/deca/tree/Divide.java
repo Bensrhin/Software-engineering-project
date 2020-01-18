@@ -10,6 +10,7 @@ import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 import fr.ensimag.ima.pseudocode.instructions.INT;
 import fr.ensimag.ima.pseudocode.instructions.FLOAT;
 import fr.ensimag.ima.pseudocode.instructions.QUO;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 
 /**
@@ -28,11 +29,11 @@ public class Divide extends AbstractOpArith {
         return "/";
     }
 @Override
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+    public void codeGenOp(DecacCompiler compiler){
         //throw new UnsupportedOperationException("not yet implemented");
         GPRegister R1 = Register.R1;
-        this.getLeftOperand().codeGenLoad(compiler, r1);
-        this.getRightOperand().codeGenLoad(compiler, r2);
+        GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
+        GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         if(this.getLeftOperand().getType().toString().equals("int") && this.getRightOperand().getType().toString().equals("int")){
             compiler.addInstruction(new QUO(r2, r1));
         }
@@ -44,10 +45,9 @@ public class Divide extends AbstractOpArith {
         r1.freeR();
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
-        GPRegister r2 = Register.getR(Register.getCpt());
-        this.getLeftOperand().codeGenLoad(compiler, r1);
-        this.getRightOperand().codeGenLoad(compiler, r2);
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
+        GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
+        GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         if(this.getLeftOperand().getType().toString().equals("int") && this.getRightOperand().getType().toString().equals("int")){
             compiler.addInstruction(new QUO(r2, r1));
         }
@@ -55,6 +55,7 @@ public class Divide extends AbstractOpArith {
             compiler.addInstruction(new DIV(r2, r1));
         }
         r2.freeR();
+        return r1;
     }
 
 }
