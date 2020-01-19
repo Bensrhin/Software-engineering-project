@@ -29,10 +29,11 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
             ClassDefinition currentClass) throws ContextualError {
         Type t1 = this.getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
         Type t2 = this.getRightOperand().verifyExpr(compiler, localEnv, currentClass);
-        this.setType(this.typeBool(compiler, t1, t2));
+        this.setType(this.typeBool(compiler, localEnv, currentClass,t1, t2));
         return getType();
     }
-    public Type typeBool(DecacCompiler compiler, Type t1, Type t2) throws ContextualError
+    public Type typeBool(DecacCompiler compiler, EnvironmentExp localEnv,
+            ClassDefinition currentClass, Type t1, Type t2) throws ContextualError
     {
         String op = this.getOperatorName();
         Type type = new BooleanType(compiler.getSymbols().getSymbol("boolean"));
@@ -49,6 +50,21 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
             ||op.equals("<=")||op.equals(">")||op.equals(">="))
             & t1.isTypeBinary() & t2.isTypeBinary())
         {
+            if (t2.isFloat() & t1.isInt())
+            {
+                this.setLeftOperand(new ConvFloat(this.getLeftOperand()));
+                //this.getLeftOperand().setType(t1);
+                this.getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
+                this.getLeftOperand().setType(t2);
+            }
+            else if(t1.isFloat() & t2.isInt())
+            {
+                this.setRightOperand(new ConvFloat(this.getRightOperand()));
+                //this.getRightOperand().setType(t2);
+                this.getRightOperand().verifyExpr(compiler, localEnv, currentClass);
+                this.getRightOperand().setType(t1);
+            }
+            
             return type;
         }
         /*if ((op.equals("==")||op.equals("!="))
