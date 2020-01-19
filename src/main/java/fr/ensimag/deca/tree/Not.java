@@ -30,10 +30,10 @@ public class Not extends AbstractUnaryExpr {
               Type unary = this.getOperand().verifyExpr(compiler, localEnv, currentClass);
               if (!unary.isBoolean())
               {
-                  throw new ContextualError("L'opération unaire: " + decompile()
-                          + " [" +
-                " ! ( " + unary.toString() + 
-                " ) ] :  n'est pas autorisée (règle 3.37)", this.getLocation());
+                  throw new ContextualError("L'opération unaire: \"" + decompile()
+                          + ": [" +
+                " ! ( " + unary.toString() +
+                " ) ]\" :  n'est pas autorisée (règle 3.37)", this.getLocation());
               }
               this.setType(unary);
               return unary;
@@ -55,7 +55,7 @@ public class Not extends AbstractUnaryExpr {
         compiler.addLabel(Else);
         compiler.addInstruction(new LOAD(1, R1));
         compiler.addLabel(Fin);
-       
+
     }
     @Override
     protected String getOperatorName() {

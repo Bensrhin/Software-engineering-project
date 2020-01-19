@@ -39,9 +39,9 @@ public class Cast extends AbstractExpr {
         Type type2 = this.getExpr().verifyExpr(compiler, localEnv, currentClass);
         if(!localEnv.castCompatible(type2, type))
         {
-            throw new ContextualError("Le Cast  " + decompile() 
+            throw new ContextualError("Le Cast  " + decompile()
                     + " : (" +
-            type.toString() + ")" + "(" +type2.toString() +  
+            type.toString() + ")" + "(" +type2.toString() +
             ") : n'est pas autorisée (règle 3.39)", this.getLocation());
         }
         this.setType(type);
@@ -54,8 +54,9 @@ public class Cast extends AbstractExpr {
       s.print("(");
       idExpr.decompile(s);
       s.print(")");
+      s.print("(");
       expr.decompile(s);
-
+      s.print(")");
 
   }
 
