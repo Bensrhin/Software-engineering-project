@@ -67,6 +67,7 @@ public class CompilerOptions {
     public void parseArgs(String[] args) throws CLIException {
         // A FAIRE : parcourir args pour positionner les options correctement.
         Logger logger = Logger.getRootLogger();
+        if (args.length > 0){
         if (args[0].equals("-b")){
             if (args.length==1){
                 printBanner = true;
@@ -80,7 +81,8 @@ public class CompilerOptions {
             if (arg.substring(0,1).equals("-")){
                 switch (arg){
                     case "-p":
-                        if (verification){throw new CLIException("Bad arguments for decac");}
+                        if (verification){
+                            throw new CLIException("Bad arguments for decac");}
                         else{parse = true;}
                         break;
                     case "-v":
@@ -107,6 +109,7 @@ public class CompilerOptions {
             else{
                 throw new CLIException("Bad arguments for decac");
             }
+        }
         }
         }
 

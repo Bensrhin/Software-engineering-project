@@ -23,7 +23,7 @@ import java.lang.System;
 public class DecacMain {
     private static Logger LOG = Logger.getLogger(DecacMain.class);
 
-    public static void main(String[] args) throws ContextualError {
+    public static void main(String[] args){
         // example log4j message.
         LOG.info("Decac compiler started");
         boolean error = false;
@@ -31,9 +31,10 @@ public class DecacMain {
         try {
             options.parseArgs(args);
         } catch (CLIException e) {
+            //System.out.println("hi");
             System.err.println("Error during option parsing:\n"
                     + e.getMessage());
-            options.displayUsage();
+            //options.displayUsage();
             System.exit(1);
         }
         if (options.getPrintBanner()) {
@@ -41,7 +42,32 @@ public class DecacMain {
             System.out.println("Compilateur DECA. Equipe GL53."); System.exit(0);
         }
         if (options.getSourceFiles().isEmpty() && !options.getPrintBanner()) {
-            throw new UnsupportedOperationException("decac without argument not yet implemented");
+            System.err.println("Error during option parsing.\n"
+                    + " Standard usage of our compiler DECA :\n"
+                    + " decac [[-p | -v] [-n] [-r X] [-d]* [-P] [-w]"
+                    + " <fichier deca>...] | [-b]\n"
+                    + " -b       (banner)       : affiche une bannière"
+                    + " indiquant le nom de l’équipe.\n"
+                    + " -p       (parse)        : arrête decac après"
+                    + " l’étape de construction del’arbre, et affiche"
+                    + " la décompilation de ce dernier.\n"
+                    + " -v       (verification) : arrête decac après"
+                    + " l’étape de vérifications(ne produit aucune "
+                    + " sortie en l’absence d’erreur).\n"
+                    + " -n       (no check)     : supprime les tests"
+                    + " de débordement à l’exécution- débordement"
+                    + " arithmétique- débordement mémoire- déréférencement"
+                    + " de null.\n"
+                    + " -r X     (registers)    : limite les registres"
+                    + " banalisés disponibles àR0 ... R{X-1}, avec"
+                    + " 4 <= X <= 16.\n"
+                    + " -d       (debug)        : active les traces"
+                    + " de debug. Répéter l’option plusieurs fois pour*"
+                    + " avoir plus detraces..\n"
+                    + " -P       (parallel)     : s’il y a plusieurs"
+                    + " fichiers sources,lance la compilation des fichiers"
+                    + " en parallèle (pour accélérer la compilation)");
+            //throw new UnsupportedOperationException("decac without argument not yet implemented");
         }
         if (options.getParallel()) {
             // A FAIRE : instancier DecacCompiler pour chaque fichier à
@@ -74,35 +100,6 @@ public class DecacMain {
                 }
             }
         }
-        /*if (options.getParse()){
-            for (File source : options.getSourceFiles()) {
-                DecacCompiler compiler = new DecacCompiler(options, source);
-                if (compiler.decompile()){
-                   error = true;
-                }
-            }
-        }*/
-        /*if (options.getVerification()){
-            PrintStream err = System.err;
-            for (File source : options.getSourceFiles()) {
-                DecacCompiler compiler = new DecacCompiler(options, source);
-                try{
-                    if (compiler.verify()){
-                        error = true;
-                    }
-                }
-                catch (ContextualError e) {
-                    e.display(err);
-                    error = true;
-                    throw e;
-                }
-
-        }}
-        if (options.getNoCheck()){
-            System.out.println("No Check not "
-                    + "implemented, nta a nabil, nta.");
-            error = true;
-        }*/
         else if ( !options.getParallel()){
             for (File source : options.getSourceFiles()) {
                 DecacCompiler compiler = new DecacCompiler(options, source);
