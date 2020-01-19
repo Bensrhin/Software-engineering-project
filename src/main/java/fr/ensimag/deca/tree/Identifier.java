@@ -272,7 +272,7 @@ public class Identifier extends AbstractIdentifier {
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
         //throw new UnsupportedOperationException("not yet implemented55");
-        GPRegister r1 = RegisterManager.allocReg(compiler);
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
         return r1;
     }

@@ -53,7 +53,7 @@ public class ReadInt extends AbstractReadExpr {
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler){
         //throw new UnsupportedOperationException("not yet implemented5555");
-         GPRegister r = RegisterManager.allocReg(compiler);
+         GPRegister r = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new RINT());
         compiler.addInstruction(new BOV(compiler.i0Error));
         compiler.addInstruction(new LOAD(Register.R1, r));

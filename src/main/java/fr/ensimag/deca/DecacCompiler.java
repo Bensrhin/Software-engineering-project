@@ -6,6 +6,7 @@ import fr.ensimag.deca.syntax.DecaParser;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tree.AbstractProgram;
 import fr.ensimag.deca.tree.LocationException;
+import fr.ensimag.deca.codegen.RegisterManager;
 import fr.ensimag.ima.pseudocode.AbstractLine;
 import fr.ensimag.ima.pseudocode.IMAProgram;
 import fr.ensimag.ima.pseudocode.Instruction;
@@ -16,25 +17,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import fr.ensimag.deca.context.TypeDefinition;
-import fr.ensimag.deca.context.Type;
-import fr.ensimag.deca.tree.Location;
-import fr.ensimag.deca.context.IntType;
-import fr.ensimag.deca.context.VoidType;
-import fr.ensimag.deca.context.BooleanType;
-import fr.ensimag.deca.context.ContextualError;
 import java.io.PrintStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.log4j.Logger;
 
 import fr.ensimag.deca.tools.IndentPrintStream;
-import java.lang.String ;
 import fr.ensimag.ima.pseudocode.instructions.ERROR;
 import fr.ensimag.ima.pseudocode.instructions.WSTR;
 import fr.ensimag.ima.pseudocode.instructions.WNL;
 import fr.ensimag.ima.pseudocode.Label;
-import fr.ensimag.ima.pseudocode.ImmediateString;
 
 
 /**
@@ -154,6 +146,12 @@ public class DecacCompiler {
     public void addInstruction(Instruction instruction, String comment) {
         program.addInstruction(instruction, comment);
     }
+    
+    private RegisterManager registerManager;
+    public RegisterManager getRegisterManager(){
+        return registerManager;
+    }
+    
 
     /**
      * @see
@@ -223,16 +221,11 @@ public class DecacCompiler {
             PrintStream out, PrintStream err)
             throws DecacFatalError, LocationException {
         CompilerOptions cond = this.getCompilerOptions();
+        registerManager = new RegisterManager(this);
         AbstractProgram prog = doLexingAndParsing(sourceName, err);
         if (prog == null) {
             LOG.info("Parsing failed");
             return true;
-        }
-        if (cond.getRegisters()!=16){
-            //TO FILL
-        }
-        if (!cond.getNoCheck()){
-            //TO FILL
         }
         if (cond.getParse()){
             IndentPrintStream fstream = new IndentPrintStream(new PrintStream(System.out));

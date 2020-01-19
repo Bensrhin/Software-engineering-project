@@ -76,9 +76,11 @@ public class Main extends AbstractMain {
     }
     public void codeGenEntete(DecacCompiler compiler, int n){
         if(n > 0){
-            compiler.addInstruction(new TSTO(n));
             Label pilePleine= new Label("pile_pleine");
-            compiler.addInstruction(new BOV(pilePleine));
+            if (!compiler.getCompilerOptions().getNoCheck()){
+                compiler.addInstruction(new TSTO(n));
+                compiler.addInstruction(new BOV(pilePleine));
+            }
             compiler.addInstruction(new ADDSP(n));
         }
     }

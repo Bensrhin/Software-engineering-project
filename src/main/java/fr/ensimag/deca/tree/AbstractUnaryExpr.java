@@ -50,7 +50,7 @@ public abstract class AbstractUnaryExpr extends AbstractExpr {
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
-        GPRegister r1 = RegisterManager.allocReg(compiler);
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         this.codeGenOp(compiler);
         compiler.addInstruction(new LOAD(Register.R1, r1));
         return r1;

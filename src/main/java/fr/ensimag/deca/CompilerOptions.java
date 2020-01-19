@@ -96,8 +96,9 @@ public class CompilerOptions {
                             assert(x>=4 && x<=16); registers = x;
                         }catch(NumberFormatException | AssertionError e){
                             throw new CLIException("Bad arguments for decac");}
+                        break;
                     default:
-                        throw new CLIException("Bad arguments for decac");}
+                        throw new CLIException("Bad arguments for decac hna");}
             }
             else if (arg.length()>=5 &&
                     arg.substring(arg.length()-5, arg.length()).equals(".deca")){

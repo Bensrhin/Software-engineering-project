@@ -32,18 +32,22 @@ public class Multiply extends AbstractOpArith {
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new MUL(r2, r1));
-        compiler.addInstruction(new BOV(compiler.over_flow));
-        RegisterManager.freeReg(compiler, r2);
+        if (compiler.getCompilerOptions().getNoCheck()){
+            compiler.addInstruction(new BOV(compiler.over_flow));
+        }
+        compiler.getRegisterManager().freeReg(compiler, r2);
         compiler.addInstruction(new LOAD(r1, R1));
-        RegisterManager.freeReg(compiler, r1);
+        compiler.getRegisterManager().freeReg(compiler, r1);
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
         GPRegister r1  = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new MUL(r2, r1));
-        compiler.addInstruction(new BOV(compiler.over_flow));
-        RegisterManager.freeReg(compiler, r2);
+        if (!compiler.getCompilerOptions().getNoCheck()){
+            compiler.addInstruction(new BOV(compiler.over_flow));
+        }
+        compiler.getRegisterManager().freeReg(compiler, r2);
         return r1;
     }
 

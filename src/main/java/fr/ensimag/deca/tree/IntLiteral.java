@@ -79,7 +79,7 @@ public class IntLiteral extends AbstractExpr {
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler){
         int val = this.getValue();
-        GPRegister r1 = RegisterManager.allocReg(compiler);
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new LOAD(val, r1));
         return r1;
     }
