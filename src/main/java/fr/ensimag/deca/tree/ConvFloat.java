@@ -23,6 +23,7 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 public class ConvFloat extends AbstractUnaryExpr {
     public ConvFloat(AbstractExpr operand) {
         super(operand);
+        this.setLocation(this.getOperand().getLocation());
     }
 
     @Override

@@ -51,15 +51,18 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
             ||op.equals("<=")||op.equals(">")||op.equals(">="))
             & t1.isTypeBinary() & t2.isTypeBinary())
         {
+            
             if (t2.isFloat() & t1.isInt())
             {
+                this.getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
                 this.setLeftOperand(new ConvFloat(this.getLeftOperand()));
                 //this.getLeftOperand().setType(t1);
                 this.getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
                 this.getLeftOperand().setType(t2);
             }
-            else if(t1.isFloat() & t2.isInt())
+            if(t1.isFloat() & t2.isInt())
             {
+                this.getRightOperand().verifyExpr(compiler, localEnv, currentClass);
                 this.setRightOperand(new ConvFloat(this.getRightOperand()));
                 //this.getRightOperand().setType(t2);
                 this.getRightOperand().verifyExpr(compiler, localEnv, currentClass);
@@ -88,12 +91,14 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
         GPRegister R1 = Register.R1;
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
+        /*
         if(this.getLeftOperand().getType().isFloat() && this.getRightOperand().getType().isInt()){
             compiler.addInstruction(new FLOAT(r2, r2));
         }
         else if(this.getLeftOperand().getType().isInt() && this.getRightOperand().getType().isFloat()){
             compiler.addInstruction(new FLOAT(r1, r1));
         }
+        */
         compiler.addInstruction(new SUB(r2, r1));
         compiler.addInstruction(new LOAD(r1, R1));
         Label opIf = new Label("OpCmp_if_in_"+this.getLeftOperand()
