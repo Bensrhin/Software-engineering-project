@@ -31,7 +31,7 @@ print(color.OKGREEN+"=================================================="+color.E
 
 
 while(1):
-    
+
     print("Que Voulez-Vous Tester ? \n\n" +
     " [1 (Lexer)] \n [2 (Parser)] \n [3 (Context)] \n [4 (gencode)] \n [5 (All)] \n [0 (Quitter)]\n")
     try:
@@ -79,5 +79,3 @@ while(1):
             os.system("./test_gencode.py")
             print(color.BOLD+color.OKBLUE+"      ---  Execution Time : %.2s secondes ---" % (time.time() - start_time)+color.ENDC)
             print("=========================")
-
-
