@@ -10,6 +10,7 @@ import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.BRA;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.FLOAT;
 import fr.ensimag.ima.pseudocode.instructions.SUB;
 import fr.ensimag.deca.codegen.RegisterManager;
 import fr.ensimag.deca.codegen.RegisterManager;
@@ -71,6 +72,12 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
         GPRegister R1 = Register.R1;
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
+        if(this.getLeftOperand().getType().isFloat() && this.getRightOperand().getType().isInt()){
+            compiler.addInstruction(new FLOAT(r2, r2));
+        }
+        else if(this.getLeftOperand().getType().isInt() && this.getRightOperand().getType().isFloat()){
+            compiler.addInstruction(new FLOAT(r1, r1));
+        }
         compiler.addInstruction(new SUB(r2, r1));
         compiler.addInstruction(new LOAD(r1, R1));
         Label opIf = new Label("OpCmp_if_in_"+this.getLeftOperand()

@@ -37,6 +37,8 @@ def valid_gencode():
             os.system("rm resultat.log")
             if str(file) == "Cast.deca":
                 attendu= "3.60000e+00 3 3 3.00000e+00 28"
+            elif str(file) == "castIntFloat.deca":
+                attendu = "(int) 2.50000e+00 = 2"
             elif str(file) == "Mult.deca":
                 attendu= "1.51250e+03"
             elif str(file) == "ExempleDiapo.deca":
@@ -47,6 +49,48 @@ def valid_gencode():
                 attendu = "13"
             elif str(file) == "IfElseExpression.deca":
                 attendu = "x est inf à 4"
+            elif str(file) == "sommeFloatInt.deca":
+                attendu = "1.98000e+01"
+            elif str(file) == "conditions.deca":
+                attendu = "ok2"
+            elif str(file) == "ifImb.deca":
+                attendu = "x est impair"
+            elif str(file) == "multIntFloat.deca":
+                attendu = "7.87500e+02"
+            elif str(file) == "moyenne.deca":
+                attendu = "-3.07500e+01"
+            elif str(file) == "NotTest.deca":
+                attendu = "not ok"
+            elif str(file) == "pgcd.deca":
+                attendu = "54"
+            elif str(file) == "pingPong.deca":
+                attendu = "pingpongpingpongpingpongpingpong"
+            elif str(file) == "puiss34.deca":
+                attendu = "81"
+            elif str(file) == "mult.deca":
+                attendu = "720"
+            elif str(file) == "RegMin.deca":
+                attendu = "528 528"
+            elif str(file) == "testAssign.deca":
+                attendu = "1.50000e+00"
+            elif str(file) == "testDivision0.deca":
+                attendu = "Error :Division par 0"
+            elif str(file) == "testOpBinaire.deca":
+                attendu = "4950"
+            elif str(file) == "testPrintx.deca":
+                attendu = "0x1.6p+3"
+            elif str(file) == "unaryMinus.deca":
+                attendu = "-3"
+            elif str(file) == "whileOr.deca":
+                attendu = "ok"
+            elif str(file) == "division.deca":
+                attendu = "25"
+            elif str(file) == "modulo.deca":
+                attendu = "2"
+            elif str(file) == "min.deca":
+                attendu = "45"
+            elif str(file) == "max.deca":
+                attendu = "4.58000e+01"
             else:
                 print("fichier pas encore traité")
                 exit()
