@@ -67,14 +67,9 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
         rightOperand.iter(f);
     }
     @Override
-    public void codeGenPrint(DecacCompiler compiler){
+    public void codeGenPrint(DecacCompiler compiler, boolean hex){
         this.codeGenOp(compiler);
-        if(this.getType().toString().equals("int")){
-            compiler.addInstruction(new WINT());
-        }
-        else if(this.getType().toString().equals("float")){
-            compiler.addInstruction(new WFLOAT());
-        }
+        super.codeGenPrint(compiler, hex);
         
         
         

@@ -256,17 +256,8 @@ public class Extends extends AbstractIdentifier {
         //def.setOperand(r);
     }
     @Override
-     protected void codeGenPrint(DecacCompiler compiler) {
-       // compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
-        //if(this.getType().toString().equals("int")){
-          //  compiler.addInstruction(new WINT());
-            
-        //}
-        //if(this.getType().toString().equals("float")){
-          //  compiler.addInstruction(new WFLOAT());
-            
-        //}
-        //throw new UnsupportedOperationException("not yet implemented55");
+     protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
+       
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {

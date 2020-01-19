@@ -321,7 +321,7 @@ inequality_expr returns[AbstractExpr tree]
     | e1=inequality_expr INSTANCEOF type {
             assert($e1.tree != null);
             assert($type.tree != null);
-            $tree = new Equals($e1.tree, $type.tree);
+            $tree = new InstanceOf($e1.tree, $type.tree);
             setLocation($tree, $INSTANCEOF);
         }
     ;
@@ -437,6 +437,8 @@ primary_expr returns[AbstractExpr tree]
         }
     | NEW ident OPARENT CPARENT {
             assert($ident.tree != null);
+            $tree = new New($ident.tree);
+            setLocation($tree, $NEW);
         }
     | cast=OPARENT type CPARENT OPARENT expr CPARENT {
             assert($type.tree != null);
@@ -482,6 +484,8 @@ literal returns[AbstractExpr tree]
         setLocation($tree, $FALSE);
         }
     | THIS {
+        $tree = new ThisLiteral();
+        setLocation($tree, $THIS);
         }
     | NULL {
         $tree = new NullLiteral();
@@ -502,6 +506,7 @@ ident returns[AbstractIdentifier tree]
 list_classes returns[ListDeclClass tree]
     @init {$tree = new ListDeclClass();}
     :(c1=class_decl { 
+        
         }
       )*
     ;

@@ -257,22 +257,15 @@ public class Identifier extends AbstractIdentifier {
         def.setOperand(r);
     }
     @Override
-     protected void codeGenPrint(DecacCompiler compiler) {
+     protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
-        if(this.getType().toString().equals("int")){
-            compiler.addInstruction(new WINT());
-            
-        }
-        if(this.getType().toString().equals("float")){
-            compiler.addInstruction(new WFLOAT());
-            
-        }
+        super.codeGenPrint(compiler, hex);
         //throw new UnsupportedOperationException("not yet implemented55");
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
         //throw new UnsupportedOperationException("not yet implemented55");
-        GPRegister r1 = RegisterManager.allocReg(compiler);
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
         return r1;
     }

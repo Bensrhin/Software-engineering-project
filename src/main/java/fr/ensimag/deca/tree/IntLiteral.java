@@ -71,15 +71,15 @@ public class IntLiteral extends AbstractExpr {
         // leaf node => nothing to do
     }
     @Override
-    protected void codeGenPrint(DecacCompiler compiler) {
+    protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         GPRegister r = Register.getR(1);
         compiler.addInstruction(new LOAD(value, r));
-        compiler.addInstruction(new WINT());
+        super.codeGenPrint(compiler, hex);
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler){
         int val = this.getValue();
-        GPRegister r1 = RegisterManager.allocReg(compiler);
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new LOAD(val, r1));
         return r1;
     }

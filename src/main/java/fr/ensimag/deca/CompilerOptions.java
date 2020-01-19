@@ -33,23 +33,23 @@ public class CompilerOptions {
     public boolean getPrintBanner() {
         return printBanner;
     }
-    
+
     public boolean getParse(){
         return parse;
     }
-    
+
     public boolean getVerification(){
         return verification;
     }
-    
+
     public boolean getNoCheck(){
         return noCheck;
     }
-    
+
     public int getRegisters(){
         return registers;
     }
-    
+
     public List<File> getSourceFiles() {
         return Collections.unmodifiableList(sourceFiles);
     }
@@ -63,7 +63,7 @@ public class CompilerOptions {
     private int registers = 16;
     private List<File> sourceFiles = new ArrayList<File>();
 
-    
+
     public void parseArgs(String[] args) throws CLIException {
         // A FAIRE : parcourir args pour positionner les options correctement.
         Logger logger = Logger.getRootLogger();
@@ -96,8 +96,9 @@ public class CompilerOptions {
                             assert(x>=4 && x<=16); registers = x;
                         }catch(NumberFormatException | AssertionError e){
                             throw new CLIException("Bad arguments for decac");}
+                        break;
                     default:
-                        throw new CLIException("Bad arguments for decac");}
+                        throw new CLIException("Bad arguments for decac hna");}
             }
             else if (arg.length()>=5 &&
                     arg.substring(arg.length()-5, arg.length()).equals(".deca")){
@@ -108,7 +109,7 @@ public class CompilerOptions {
             }
         }
         }
-        
+
         // map command-line debug option to log4j's level.
         switch (getDebug()) {
         case QUIET: break; // keep default
@@ -135,6 +136,6 @@ public class CompilerOptions {
     }
 
     protected void displayUsage() {
-        throw new UnsupportedOperationException("not yet implemented");
+        throw new UnsupportedOperationException("not yet implemented555");
     }
 }

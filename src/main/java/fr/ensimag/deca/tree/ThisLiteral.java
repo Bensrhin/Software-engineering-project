@@ -5,8 +5,6 @@
  */
 
 package fr.ensimag.deca.tree;
-
-
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
@@ -25,22 +23,15 @@ import fr.ensimag.deca.codegen.RegisterManager;
  *
  * @author ensimag
  */
-public class NullLiteral extends AbstractExpr{
-    public NullLiteral(){
+public class ThisLiteral extends AbstractExpr{
+    public ThisLiteral(){
         super();
     }
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError 
     {
-        if (!compiler.getSymbols().checkSymbol("null"))
-        {
-            throw new ContextualError("\"null\" n'est pas "
-                    + "défini", this.getLocation());
-        }
-        Type returnType = new NullType(compiler.getSymbols().getSymbol("null"));
-        this.setType(returnType);
-        return this.getType();
+        return null;
     }
     @Override
     public void decompile(IndentPrintStream s) {
@@ -48,7 +39,7 @@ public class NullLiteral extends AbstractExpr{
     }
     @Override
     String prettyPrintNode() {
-        return "null";
+        return "this";
     }
 
     @Override
@@ -66,4 +57,6 @@ public class NullLiteral extends AbstractExpr{
     public GPRegister codeGenLoad(DecacCompiler compiler){
         return null;
     }
+    
+
 }

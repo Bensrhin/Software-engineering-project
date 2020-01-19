@@ -10,7 +10,10 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.*;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
-import fr.ensimag.ima.pseudocode.instructions.MUL;
+import fr.ensimag.ima.pseudocode.instructions.FLOAT;
+import fr.ensimag.ima.pseudocode.instructions.WINT;
+import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
+import fr.ensimag.ima.pseudocode.instructions.WFLOATX;
 
 /**
  * Expression, i.e. anything that has a value.
@@ -141,12 +144,29 @@ public abstract class AbstractExpr extends AbstractInst {
      *
      * @param compiler
      */
-    protected void codeGenPrint(DecacCompiler compiler) {
+    protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         //System.out.println(this.getType());
-        throw new UnsupportedOperationException("not yet implemented");
+        //throw new UnsupportedOperationException("not yet implemented");
+        if(hex){
+            if(this.getType().isInt()){
+                compiler.addInstruction(new FLOAT(Register.R1, Register.R1));
+            }
+            compiler.addInstruction(new WFLOATX());
+        }
+        else{
+            if(this.getType().toString().equals("int")){
+                compiler.addInstruction(new WINT());
+            
+            }
+            if(this.getType().toString().equals("float")){
+                compiler.addInstruction(new WFLOAT());
+            
+            }
+        }
 
 
     }
+    
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {

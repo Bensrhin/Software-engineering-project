@@ -50,20 +50,15 @@ public abstract class AbstractUnaryExpr extends AbstractExpr {
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
-        GPRegister r1 = RegisterManager.allocReg(compiler);
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         this.codeGenOp(compiler);
         compiler.addInstruction(new LOAD(Register.R1, r1));
         return r1;
     }
     @Override
-    public void codeGenPrint(DecacCompiler compiler){
+    public void codeGenPrint(DecacCompiler compiler, boolean hex){
         this.codeGenOp(compiler);
-        if(this.getType().toString().equals("int")){
-            compiler.addInstruction(new WINT());
-        }
-        else if(this.getType().toString().equals("float")){
-            compiler.addInstruction(new WFLOAT());
-        }
+        super.codeGenPrint(compiler, hex);
     }
     public void codeGenOp(DecacCompiler compiler){
         throw new UnsupportedOperationException("not yet implemented");

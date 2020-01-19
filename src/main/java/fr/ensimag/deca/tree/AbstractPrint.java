@@ -50,7 +50,8 @@ public abstract class AbstractPrint extends AbstractInst {
         Iterator<AbstractExpr> it = getArguments().getList().iterator();
         while (it.hasNext()){
             AbstractExpr expr = it.next();
-            expr.codeGenPrint(compiler);
+            expr.codeGenPrint(compiler, this.printHex);
+            
             if (it.hasNext()){
                 compiler.addInstruction(new WSTR("   "));//ajout espace entre arguments
             }

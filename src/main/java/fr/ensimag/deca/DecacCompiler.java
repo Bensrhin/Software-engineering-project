@@ -6,6 +6,7 @@ import fr.ensimag.deca.syntax.DecaParser;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tree.AbstractProgram;
 import fr.ensimag.deca.tree.LocationException;
+import fr.ensimag.deca.codegen.RegisterManager;
 import fr.ensimag.ima.pseudocode.AbstractLine;
 import fr.ensimag.ima.pseudocode.IMAProgram;
 import fr.ensimag.ima.pseudocode.Instruction;
@@ -154,6 +155,12 @@ public class DecacCompiler {
     public void addInstruction(Instruction instruction, String comment) {
         program.addInstruction(instruction, comment);
     }
+    
+    private RegisterManager registerManager;
+    public RegisterManager getRegisterManager(){
+        return registerManager;
+    }
+    
 
     /**
      * @see
@@ -223,6 +230,7 @@ public class DecacCompiler {
             PrintStream out, PrintStream err)
             throws DecacFatalError, LocationException {
         CompilerOptions cond = this.getCompilerOptions();
+        registerManager = new RegisterManager(this);
         AbstractProgram prog = doLexingAndParsing(sourceName, err);
         if (prog == null) {
             LOG.info("Parsing failed");

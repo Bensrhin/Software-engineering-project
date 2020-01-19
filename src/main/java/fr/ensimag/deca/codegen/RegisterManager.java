@@ -14,7 +14,12 @@ import fr.ensimag.ima.pseudocode.instructions.TSTO;
 import fr.ensimag.ima.pseudocode.instructions.BOV;
 import java.util.*;
 public class RegisterManager{
-    private static InitManager initR = new InitManager(4);
+    private static InitManager initR;
+    
+    public RegisterManager(DecacCompiler compiler){
+        initR = new InitManager
+        (compiler.getCompilerOptions().getRegisters()-1);
+    }
     //System.out.println(initR);
     public static GPRegister allocReg(DecacCompiler compiler){
         int cpt = Register.getCpt();

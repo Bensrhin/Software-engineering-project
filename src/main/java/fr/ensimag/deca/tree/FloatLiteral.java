@@ -74,14 +74,14 @@ public class FloatLiteral extends AbstractExpr {
         // leaf node => nothing to do
     }
     @Override
-    protected void codeGenPrint(DecacCompiler compiler) {
+    protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         GPRegister r = Register.getR(1);
         compiler.addInstruction(new LOAD(value, r));
-        compiler.addInstruction(new WFLOAT());
+        super.codeGenPrint(compiler, hex);
     }
     public GPRegister codeGenLoad(DecacCompiler compiler){
         float val = this.getValue();
-        GPRegister r1 = RegisterManager.allocReg(compiler);
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new LOAD(val, r1));
         return r1;
     }
