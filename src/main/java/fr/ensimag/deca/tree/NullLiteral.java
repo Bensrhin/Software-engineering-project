@@ -31,7 +31,7 @@ public class NullLiteral extends AbstractExpr{
     }
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
-            ClassDefinition currentClass) throws ContextualError 
+            ClassDefinition currentClass) throws ContextualError
     {
         if (!compiler.getSymbols().checkSymbol("null"))
         {
@@ -44,11 +44,11 @@ public class NullLiteral extends AbstractExpr{
     }
     @Override
     public void decompile(IndentPrintStream s) {
-        
+        s.print("null");
     }
     @Override
     String prettyPrintNode() {
-        return "null";
+        return "NullLiteral";
     }
 
     @Override
