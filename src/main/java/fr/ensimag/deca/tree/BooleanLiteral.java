@@ -67,7 +67,7 @@ public class BooleanLiteral extends AbstractExpr {
     protected GPRegister codeGenLoad(DecacCompiler compiler){
         boolean val = this.getValue();
         GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
-        if(val == true){
+        if(val){
             compiler.addInstruction(new LOAD(1, r1));
         }
         else{

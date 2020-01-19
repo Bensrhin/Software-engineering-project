@@ -19,7 +19,7 @@ import fr.ensimag.ima.pseudocode.instructions.INT;
  * @author gl53
  * @date 01/01/2020
  */
-public class Cast extends AbstractLValue {
+public class Cast extends AbstractExpr {
   private AbstractIdentifier idExpr;
   private AbstractExpr expr;
   public Cast(AbstractIdentifier idExpr, AbstractExpr expr){
@@ -84,5 +84,10 @@ public class Cast extends AbstractLValue {
         }
         return r1;
     }
-
+@Override
+protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
+    GPRegister r1 = this.codeGenLoad(compiler);
+    compiler.addInstruction(new LOAD(r1, Register.R1));
+    super.codeGenPrint(compiler, hex);
+}
 }
