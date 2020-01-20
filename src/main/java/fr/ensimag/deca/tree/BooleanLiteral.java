@@ -68,12 +68,12 @@ public class BooleanLiteral extends AbstractExpr {
         boolean val = this.getValue();
         GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         if(val){
-            compiler.addInstruction(new LOAD(1, r1));
-        }
-        else{
             compiler.addInstruction(new LOAD(0, r1));
         }
+        else{
+            compiler.addInstruction(new LOAD(1, r1));
+        }
         return r1;
-        //compiler.addInstruction(new LOAD(val, r1));
+
     }
 }
