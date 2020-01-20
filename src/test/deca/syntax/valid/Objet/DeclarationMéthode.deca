@@ -1,0 +1,6 @@
+void calcul(int x){
+    this.x =x;
+}
+{
+    
+}

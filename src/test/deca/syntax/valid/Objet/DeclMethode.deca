@@ -1,0 +1,10 @@
+float add(float x){
+    float z;
+    z =z+x;
+    return z;
+}
+{
+    float x,y=2.0;
+    x = add(y);
+
+}

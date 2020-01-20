@@ -20,10 +20,10 @@ def valid_synt():
     counter = 0
     tmp = 0
     test_synt = "launchers/test_synt"
-    valid_synt = "../deca/syntax/valid"
+    valid_synt = "../deca/syntax/valid/Objet"
     # print("Details d'execution des tests valides [1/0] ?")
     # x = int(input())
-    x=0
+    x=1
     print("======================================================")
 
     for file in files(valid_synt):
@@ -48,7 +48,7 @@ def invalid_synt():
     counter = 0
     tmp = 0
     test_synt = "launchers/test_synt"
-    invalid_synt = "../deca/syntax/invalid"
+    invalid_synt = "../deca/syntax/valid/Objet"
     print("~======================================================~")
     for file in files(invalid_synt):
         tmp += 1
@@ -71,9 +71,9 @@ def invalid_synt():
     return counter, tmp
 
 
-# print("Tester les valides ? [1/0]")
-# val = int(input())
-val = 1
+print("Tester les valides ? [1/0]")
+val = int(input())
+#val = 1
 if val == 1:
     y = valid_synt()
     if (y[0] == y[1]):
@@ -82,9 +82,9 @@ if val == 1:
     else:
         print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS VALID SYNT ERROR].-~-.-~-.-~".format(str(y[1] -y[0]))+color.ENDC)
         print("~========================================================================~")
-# print("Tester les invalides ? [1/0]")
-# inval = int(input())
-inval =1
+print("Tester les invalides ? [1/0]")
+inval = int(input())
+#inval =1
 if inval == 1:
     x = invalid_synt()
     if (x[0] == x[1]):
