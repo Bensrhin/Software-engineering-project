@@ -3,6 +3,7 @@ package fr.ensimag.deca.tools;
 import java.util.HashMap;
 import java.util.Map;
 import fr.ensimag.deca.context.*;
+import fr.ensimag.deca.tree.Location;
 /**
  * Manage unique symbols.
  *
@@ -90,6 +91,11 @@ public class SymbolTable {
             {
                 return new VoidType(this);
             }
+            /*
+            if (this.getName().equals("class"))
+            {
+                return new ClassType(this, Location.BUILTIN, null);
+            }*/
             return null;
         }
     }

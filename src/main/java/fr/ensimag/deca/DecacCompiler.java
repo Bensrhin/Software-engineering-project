@@ -13,6 +13,7 @@ import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tools.SymbolTable;
 import java.io.File;
+import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,6 +23,7 @@ import fr.ensimag.deca.tree.Location;
 import fr.ensimag.deca.context.IntType;
 import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.context.BooleanType;
+import fr.ensimag.deca.context.ClassType;
 import java.io.PrintStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -80,6 +82,18 @@ public class DecacCompiler {
         this.symbols.create("int");
         this.symbols.create("String");
         this.symbols.create("null");
+        
+        Symbol object = this.symbols.create("Object");
+        ClassType objectType = new ClassType(object, Location.BUILTIN, null);
+        try
+        {
+            this.get_env_types().declare(object, objectType.getDefinition());
+        }
+        catch (EnvironmentType.DoubleDefException e)
+        {
+            System.out.println("C'est impossible : C'est la première déclaration");
+        }
+        
     }
 
     public SymbolTable getSymbols()

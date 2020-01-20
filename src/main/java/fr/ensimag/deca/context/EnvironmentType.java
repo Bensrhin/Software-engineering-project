@@ -1,7 +1,9 @@
 package fr.ensimag.deca.context;
 import java.util.HashMap;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.deca.tree.Location;
 import java.util.Map;
+import java.util.Set;
 /**
  * Dictionary associating identifier's TypeDefinition to their names.
  *
@@ -21,6 +23,7 @@ public class EnvironmentType {
     public EnvironmentType(EnvironmentType parentEnvironment) {
         this.parentEnvironment = parentEnvironment;
         dictionary = new HashMap<Symbol, TypeDefinition>();
+        
 
     }
 
@@ -33,15 +36,16 @@ public class EnvironmentType {
      * symbol is undefined.
      */
     public TypeDefinition get(Symbol key) {
-        if (dictionary.containsKey(key))
+        Symbol s = this.stringIsIn(key);
+        if (s != null)
         {
-            return dictionary.get(key);
+            return dictionary.get(s);
         }
         else
         {
             if (this.parentEnvironment != null)
             {
-                return this.parentEnvironment.get(key);
+                return this.parentEnvironment.get(s);
             }
             else
             {
@@ -49,7 +53,71 @@ public class EnvironmentType {
             }
         }
     }
-
+    /** Compatibilté pour l'affectation */
+    public boolean assignCompatible(Type t1, Type t2)
+    {
+        if ((t1.isFloat() & t2.isInt())||(this.subType(t2, t1)) )
+        {
+            return true;
+        }
+        return false;
+    }
+    public boolean castCompatible(Type t1, Type t2)
+    {
+        if (t1.isVoid())
+        {
+            return false;
+        }
+        if (this.assignCompatible(t1, t2) || this.assignCompatible(t2, t1))
+        {
+            return true;
+        }
+        return false;
+    }
+    /** Relation de sous-typage */
+    public boolean subType(Type t1, Type t2)
+    {
+        if (t1.toString().equals(t2.toString()))
+        {
+            return true;
+        }
+        String obj = new String( (new Object()).getClass().getName() );
+        String objT2 = new String( t2.getClass().getName() );
+        if(obj.equals(objT2))
+        {
+            System.out.println(obj + objT2);
+            return true;
+        }
+        /* todo */
+        return false;
+    }
+    public Set<Symbol> stringIsIn()
+    {
+        return this.dictionary.keySet();
+    }
+    public Symbol stringIsIn(Symbol key)
+    {
+        Set<Symbol> sym = this.stringIsIn();
+        for (Symbol s:sym)
+        {
+            if(s.getName().equals(key.toString()))
+            {
+                return s;
+            }
+        }
+        return null;
+    }
+    public boolean isIn(Symbol key)
+    {
+        if (this.get(key) != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     /**
      * Add the definition def associated to the symbol name in the environment.
      *
@@ -67,7 +135,7 @@ public class EnvironmentType {
      */
     public void declare(Symbol name, TypeDefinition def) throws DoubleDefException {
         //throw new UnsupportedOperationException("not yet implemented");
-        if (dictionary.containsKey(name))
+        if (this.stringIsIn(name) != null)
         {
             throw new DoubleDefException();
         }

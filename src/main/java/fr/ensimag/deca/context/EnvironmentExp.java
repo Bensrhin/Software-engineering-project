@@ -53,7 +53,7 @@ public class EnvironmentExp {
         {
             if (this.parentEnvironment != null)
             {
-                return this.parentEnvironment.get(key);
+                return this.parentEnvironment.get(s);
             }
             else
             {
@@ -147,7 +147,7 @@ public class EnvironmentExp {
      */
     public void declare(Symbol name, ExpDefinition def) throws DoubleDefException {
         //throw new UnsupportedOperationException("not yet implemented");
-        if (dictionary.containsKey(name))
+        if (this.stringIsIn(name) != null)
         {
             throw new DoubleDefException();
         }
