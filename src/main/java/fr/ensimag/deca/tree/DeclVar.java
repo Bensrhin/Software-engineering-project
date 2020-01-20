@@ -58,6 +58,7 @@ public class DeclVar extends AbstractDeclVar {
               /* declaration of nameVar in the invironment */
               VariableDefinition def = new VariableDefinition(nameType, this.getLocation());
               Symbol symbol = this.getNameVar().getName();
+              this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
               try
               {
                   localEnv.declare(symbol, def);
@@ -66,18 +67,18 @@ public class DeclVar extends AbstractDeclVar {
               {
                   throw new ContextualError("Identificateur \"" +
                           symbol.toString() + "\" est déjà déclaré à " +
-                          localEnv.get(symbol).getLocation() + " (règle 3.17)", 
+                          localEnv.get(symbol).getLocation() + " (règle 3.17)",
                           this.getLocation());
               }
               Type nameVar = this.getNameVar().verifyExpr(compiler, localEnv, currentClass);
-              this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
+
               //LOG.debug("End of verifyDeclVar");
     }
     @Override
     protected void codeGenVar(DecacCompiler compiler, int i){
         varName.codeGenIdent(compiler, i);
         initialization.codeGenInt(compiler, i);
-        
+
     }
 
     @Override
