@@ -20,37 +20,35 @@ public class DeclMethod extends AbstractDeclMethod
     final private AbstractIdentifier type;
     final private AbstractIdentifier method;
     final private ListDeclParam params;
-    private ListDeclVar declVariables;
-    private ListInst insts;
+    private AbstractMain methodBody;
     final private String code;
-    
+
     private static final Logger LOG = Logger.getLogger(DeclMethod.class);
-    public DeclMethod(AbstractIdentifier type, AbstractIdentifier method, 
-        ListDeclParam params, ListDeclVar declVariables, ListInst insts) {
+    public DeclMethod(AbstractIdentifier type, AbstractIdentifier method,
+        ListDeclParam params, AbstractMain methodBody) {
         Validate.notNull(type);
         Validate.notNull(method);
         Validate.notNull(params);
-        Validate.notNull(declVariables);
-        Validate.notNull(insts);
+        Validate.notNull(methodBody);
+
         this.type = type;
         this.method = method;
         this.params = params;
-        this.declVariables = declVariables;
-        this.insts = insts;
+        this.methodBody = methodBody;
         this.code = null;
     }
-    public DeclMethod(AbstractIdentifier type, AbstractIdentifier method, 
+    public DeclMethod(AbstractIdentifier type, AbstractIdentifier method,
         ListDeclParam params, String code) {
         Validate.notNull(type);
         Validate.notNull(method);
         Validate.notNull(params);
         Validate.notNull(code);
-        
+
         this.type = type;
         this.method = method;
         this.params = params;
         this.code = code;
-        this.insts = null;
+        this.methodBody = null;
     }
 
     public AbstractIdentifier getNameType()
@@ -72,7 +70,7 @@ public class DeclMethod extends AbstractDeclMethod
               {
                   throw new ContextualError("type must be defferent than void", this.getLocation());
               }
-              
+
               methodeDefinition def = new methodeDefinition(nameType, this.getLocation());
               Symbol symbol = this.getNamemethodetName();
               try
@@ -86,12 +84,12 @@ public class DeclMethod extends AbstractDeclMethod
               }
               Type namemethodhis.getNamemethoderifyExpr(compiler, localEnv, currentClass);
               this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
-              //LOG.debug("End of verifyDeclmethod */   
+              //LOG.debug("End of verifyDeclmethod */
     }
     @Override
     protected void codeGenMethod(DecacCompiler compiler, int i){
         //method.codeGenIdent(compiler, i);
-        
+
     }
 
     @Override
@@ -110,8 +108,7 @@ public class DeclMethod extends AbstractDeclMethod
         params.iter(f);
         if (code == null)
         {
-            declVariables.iter(f);
-            insts.iter(f);
+            methodBody.iter(f);
         }
     }
 
@@ -122,12 +119,11 @@ public class DeclMethod extends AbstractDeclMethod
         params.prettyPrint(s, prefix, true);
         if (code == null)
         {
-        declVariables.prettyPrint(s, prefix, false);
-        insts.prettyPrint(s, prefix, true);
+          methodBody.prettyPrint(s, prefix, true);
         }
         else
         {
-            
+          //code.prettyPrint(s, prefix, true);
         }
     }
 }
