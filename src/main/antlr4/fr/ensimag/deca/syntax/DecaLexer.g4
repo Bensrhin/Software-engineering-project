@@ -80,7 +80,15 @@ fragment SKIPCAR : (' ' |EOL |TAB |'\r');
 
 //Litteraux entiers
 fragment POSITIVE_DIGITS : '1' .. '9';
-INT : ('0' |POSITIVE_DIGITS)+;
+INT : ('0' |POSITIVE_DIGITS)+{
+    try {
+        Integer.parseInt(getText());
+    }
+    catch (NumberFormatException excep){
+        System.err.println();
+        System.out.println("long for an integer");
+    }
+};
 
 //Litteraux Flottant
 fragment HEXA_MAJ : 'A' .. 'F';
