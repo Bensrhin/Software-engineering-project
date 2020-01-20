@@ -1,4 +1,4 @@
 /*tester les chaine de caracteres*/
 {
-    String s = "salut";
+    "salut";
 }
