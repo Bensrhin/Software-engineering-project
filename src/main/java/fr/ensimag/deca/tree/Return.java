@@ -1,4 +1,4 @@
-/*
+
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
@@ -12,20 +12,20 @@ import java.io.PrintStream;
 
 import org.apache.commons.lang.Validate;
 /**
- * 
+ *
  * @author gl53
  * @date 01/01/2020
  */
-/*public class Return extends AbstractInst {
+public class Return extends AbstractInst {
 
-    private final AbstractExpr rvalue; 
-    
+    private AbstractExpr rvalue;
+
     public AbstractExpr getRvalue()
     {
         return this.rvalue;
     }
 
-    
+
     public Return(AbstractExpr rvalue) {
         Validate.notNull(rvalue);
         this.rvalue = rvalue;
@@ -38,12 +38,13 @@ import org.apache.commons.lang.Validate;
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
+              /*
         if (returnType.isVoid())
         {
             throw new ContextualError("return must be defferent than void", this.getLocation());
         }
         this.setType(this.getRvalue().verifyExpr(compiler, localEnv, currentClass, returnType));
-        
+        */
 
     }
 
@@ -57,13 +58,12 @@ import org.apache.commons.lang.Validate;
         s.print("return ");
         this.getRvalue().decompile(s);
         s.println(";");
-        
-        
+
+
     }
 
     @Override
-    protected
-    void iterChildren(TreeFunction f) {
+    protected void iterChildren(TreeFunction f) {
         rvalue.iter(f);
     }
 
@@ -73,5 +73,3 @@ import org.apache.commons.lang.Validate;
 
     }
 }
-
-    */
