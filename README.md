@@ -1,5 +1,6 @@
 # Projet Génie Logiciel, Ensimag.
-L'Equipe gl53, le 01/01/2020, vous présente son travail pour le rendu intérmédiaire
+L'Equipe gl53, 
+le 20/01/2020, vous présente son travail pour le rendu intérmédiaire
 
 
 ### Lancer le tests
