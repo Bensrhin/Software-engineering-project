@@ -15,7 +15,7 @@ cd src/test/script
 ```
 On lance le testeur
 ```
-3) ./tester.py
+./tester.py
 ```
 ## Equipe Dev
 * **Tout le groupe** - *Dev partie A* - 
