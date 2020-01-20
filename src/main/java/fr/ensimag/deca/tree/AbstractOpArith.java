@@ -9,6 +9,7 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  * Arithmetic binary operations (+, -, /, ...)
@@ -35,8 +36,7 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
     public Type typeArith(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type t1, Type t2) throws ContextualError
     {
-      //Type type1 = new IntType(compiler.getSymbols().getSymbol("int"));
-      //Type type2 = new FloatType(compiler.getSymbols().getSymbol("float"));
+
       if (t1.sameType(t2) & t1.isTypeBinary())
       {
           return t1;
@@ -44,21 +44,32 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
       else if (t2.isFloat() & t1.isInt())
       {
           this.setLeftOperand(new ConvFloat(this.getLeftOperand()));
+          this.getLeftOperand().setType(t2);
           return this.getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
+          
       }
       else if(t1.isFloat() & t2.isInt())
       {
           this.setRightOperand(new ConvFloat(this.getRightOperand()));
+          this.getRightOperand().setType(t1);
           return this.getRightOperand().verifyExpr(compiler, localEnv, currentClass);
       }
-      throw new ContextualError("types are not compatible", this.getLocation());
+      else
+        {
+            throw new ContextualError("Opération arithmétique " + decompile() 
+                    + " : (" +
+                t1.toString() + " " + getOperatorName() +  " " + t2.toString() + 
+                ") : non autorisée (règle 3.33)"
+                , this.getLocation());
+        }
+      
     }
     @Override
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+    public void codeGenOp(DecacCompiler compiler){
         throw new UnsupportedOperationException("not yet implemented");
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
         throw new UnsupportedOperationException("not yet implemented");
     }
 }

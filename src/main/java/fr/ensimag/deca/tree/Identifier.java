@@ -25,6 +25,7 @@ import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
 import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  * Deca Identifier
@@ -186,9 +187,9 @@ public class Identifier extends AbstractIdentifier {
         Symbol s = localEnv.stringIsIn(this.getName());
         if (s == null)
         {
-                throw new ContextualError("\nIdentifier "
+                throw new ContextualError("Identificateur \""
                         + this.getName().toString()
-                        + " is unknown", this.getLocation());
+                        + "\" non déclaré (règle 0.1)", this.getLocation());
         }
         ExpDefinition def = localEnv.get(s);
         this.setDefinition(def);
@@ -203,8 +204,8 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
       if (!compiler.getSymbols().checkSymbol(this.getName().toString())){
-              throw new ContextualError(this.getName().toString()
-                      + " Type is not yet implemented", this.getLocation());
+              throw new ContextualError("Type \"" + this.getName().toString() +
+                "\" n'est pas un type prédéfini (règle 0.2)", this.getLocation());
           }
 
           Type type = this.getName().getType();
@@ -256,22 +257,17 @@ public class Identifier extends AbstractIdentifier {
         def.setOperand(r);
     }
     @Override
-     protected void codeGenPrint(DecacCompiler compiler) {
+     protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
-        if(this.getType().toString().equals("int")){
-            compiler.addInstruction(new WINT());
-            
-        }
-        if(this.getType().toString().equals("float")){
-            compiler.addInstruction(new WFLOAT());
-            
-        }
+        super.codeGenPrint(compiler, hex);
         //throw new UnsupportedOperationException("not yet implemented55");
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
         //throw new UnsupportedOperationException("not yet implemented55");
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
+        return r1;
     }
 
 }

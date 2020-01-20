@@ -10,6 +10,7 @@ import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.deca.codegen.RegisterManager;
 /**
  *
  * @author gl53
@@ -37,22 +38,26 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
         {
             return type;
         }
-        /* comparaison class todo */
+        else 
+        {
+            throw new ContextualError("Opération booléenne " + decompile()
+                    + " : (" +
+                t1.toString() + " " + getOperatorName() +  " " + t2.toString() + 
+                ") : non autorisée (règle 3.33)"
+                , this.getLocation());
+        }
 
-        /***/
-        throw new ContextualError("OpBool : on autorise pas "
-                + "la comparaison dans ce cas", this.getLocation());
     }
    @Override
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+    public void codeGenOp(DecacCompiler compiler){
         throw new UnsupportedOperationException("not yet implemented");
     }
     
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
-        GPRegister r2 = Register.getR(Register.getCpt());
-        this.codeGenOp(compiler, r1, r2);
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
+        this.codeGenOp(compiler);
         compiler.addInstruction(new LOAD(Register.R1, r1));
-        r2.freeR();
+        return r1;
     }
 }

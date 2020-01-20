@@ -10,7 +10,8 @@ import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.REM;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
-
+import fr.ensimag.ima.pseudocode.instructions.BOV;
+import fr.ensimag.deca.codegen.RegisterManager;
 /**
  *
  * @author gl53
@@ -27,7 +28,8 @@ public class Modulo extends AbstractOpArith {
             ClassDefinition currentClass) throws ContextualError {
         Type t1 = this.getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
         Type t2 = this.getRightOperand().verifyExpr(compiler, localEnv, currentClass);
-        return this.typeArith(t1, t2);
+        this.setType(this.typeArith(t1, t2));
+        return getType();
     }
     public Type typeArith(Type t1, Type t2) throws ContextualError
     {
@@ -36,7 +38,9 @@ public class Modulo extends AbstractOpArith {
         {
             return t1;
         }
-        throw new ContextualError("Modulo cannot be done", this.getLocation());
+        throw new ContextualError("L'opération arithmétique: (" +
+                t1.toString() + " % " + t2.toString() + 
+                ") n'est pas autorisée (règle 3.33)", this.getLocation());
 
     }
     @Override
@@ -44,23 +48,24 @@ public class Modulo extends AbstractOpArith {
         return "%";
     }
     @Override
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
-        //throw new UnsupportedOperationException("not yet implemented");
+    public void codeGenOp(DecacCompiler compiler){
         GPRegister R1 = Register.R1;
-        this.getLeftOperand().codeGenLoad(compiler, r1);
-        this.getRightOperand().codeGenLoad(compiler, r2);
+        GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
+        GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new REM(r2, r1));
-        r2.freeR();
+         compiler.addInstruction(new BOV(compiler.divisionErr));
+        compiler.getRegisterManager().freeReg(compiler, r2);
         compiler.addInstruction(new LOAD(r1, R1));
-        r1.freeR();
+        compiler.getRegisterManager().freeReg(compiler, r1);
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
-        GPRegister r2 = Register.getR(Register.getCpt());
-        this.getLeftOperand().codeGenLoad(compiler, r1);
-        this.getRightOperand().codeGenLoad(compiler, r2);
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
+        GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
+        GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new REM(r2, r1));
-        r2.freeR();
+         compiler.addInstruction(new BOV(compiler.divisionErr));
+        compiler.getRegisterManager().freeReg(compiler, r2);
+        return r1;
     }
 
 }

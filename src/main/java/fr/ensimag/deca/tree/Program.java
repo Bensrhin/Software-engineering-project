@@ -8,6 +8,7 @@ import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 
+
 /**
  * Deca complete program (class definition plus main block)
  *
@@ -64,4 +65,5 @@ public class Program extends AbstractProgram {
         classes.prettyPrint(s, prefix, false);
         main.prettyPrint(s, prefix, true);
     }
+
 }

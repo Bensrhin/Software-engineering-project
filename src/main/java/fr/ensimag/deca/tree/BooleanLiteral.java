@@ -11,6 +11,7 @@ import java.io.PrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  *
@@ -33,7 +34,8 @@ public class BooleanLiteral extends AbstractExpr {
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
         if (!compiler.getSymbols().checkSymbol("boolean")){
-            throw new ContextualError("boolean Type is not yet implemented", this.getLocation());
+            throw new ContextualError("Type \"boolean\" n'est pas un "
+                    + "type prédéfini (règle 0.2)", this.getLocation());
         }
 
        Type returnType = new BooleanType(compiler.getSymbols().getSymbol("boolean"));
@@ -62,14 +64,16 @@ public class BooleanLiteral extends AbstractExpr {
         return "BooleanLiteral (" + value + ")";
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1){
+    protected GPRegister codeGenLoad(DecacCompiler compiler){
         boolean val = this.getValue();
-        if(val == true){
-            compiler.addInstruction(new LOAD(1, r1));
-        }
-        else{
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
+        if(val){
             compiler.addInstruction(new LOAD(0, r1));
         }
-        //compiler.addInstruction(new LOAD(val, r1));
+        else{
+            compiler.addInstruction(new LOAD(1, r1));
+        }
+        return r1;
+
     }
 }

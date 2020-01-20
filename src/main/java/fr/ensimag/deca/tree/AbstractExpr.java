@@ -10,7 +10,10 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.*;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
-import fr.ensimag.ima.pseudocode.instructions.MUL;
+import fr.ensimag.ima.pseudocode.instructions.FLOAT;
+import fr.ensimag.ima.pseudocode.instructions.WINT;
+import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
+import fr.ensimag.ima.pseudocode.instructions.WFLOATX;
 
 /**
  * Expression, i.e. anything that has a value.
@@ -86,8 +89,9 @@ public abstract class AbstractExpr extends AbstractInst {
         Type type2 = this.verifyExpr(compiler, localEnv, currentClass);
         if (!localEnv.assignCompatible(expectedType, type2))
         {
-            throw new ContextualError("The affected type is not compatible with "
-                + expectedType.toString(), this.getLocation());
+            throw new ContextualError("On ne peut pas affecter un " +
+                type2.toString()+ " à un identificateur de type " +
+                expectedType.toString() + " (règle 3.28)", this.getLocation());
         }
         if (expectedType.sameType(type2))
         {
@@ -97,7 +101,8 @@ public abstract class AbstractExpr extends AbstractInst {
         {
             AbstractExpr expr = new ConvFloat(this);
             Type t = expr.verifyExpr(compiler, localEnv, currentClass);
-            this.setType(t);
+            expr.setType(t);
+            //this.setType(t);
             return expr;
         }
         //throw new ContextualError("not yet implemented", this.getLocation());
@@ -126,7 +131,8 @@ public abstract class AbstractExpr extends AbstractInst {
               Type condType = this.verifyExpr(compiler, localEnv, currentClass);
               if (!condType.isBoolean())
               {
-                  throw new  ContextualError("Condition must be a boolean",
+                  throw new  ContextualError("Expression " + decompile() +
+                          " doit être un booléen (règle 3.29)",
                                               this.getLocation());
               }
               this.setType(condType);
@@ -138,19 +144,36 @@ public abstract class AbstractExpr extends AbstractInst {
      *
      * @param compiler
      */
-    protected void codeGenPrint(DecacCompiler compiler) {
+    protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         //System.out.println(this.getType());
-        throw new UnsupportedOperationException("not yet implemented");
+        //throw new UnsupportedOperationException("not yet implemented");
+        if(hex){
+            if(this.getType().isInt()){
+                compiler.addInstruction(new FLOAT(Register.R1, Register.R1));
+            }
+            compiler.addInstruction(new WFLOATX());
+        }
+        else{
+            if(this.getType().toString().equals("int")){
+                compiler.addInstruction(new WINT());
+            
+            }
+            if(this.getType().toString().equals("float")){
+                compiler.addInstruction(new WFLOAT());
+            
+            }
+        }
 
 
     }
+    
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
         throw new UnsupportedOperationException("not yet implemented");
     }
 
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
         throw new UnsupportedOperationException("not yet implementedoki");
     }
 

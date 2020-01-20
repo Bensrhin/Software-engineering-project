@@ -14,6 +14,8 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.RFLOAT;
 import fr.ensimag.ima.pseudocode.instructions.FLOAT;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  *
@@ -27,7 +29,8 @@ public class ReadFloat extends AbstractReadExpr {
             ClassDefinition currentClass) throws ContextualError {
         if (!compiler.getSymbols().checkSymbol("float"))
         {
-            throw new ContextualError("float Type is not yet implemented", this.getLocation());
+            throw new ContextualError("Type \"float\" n'est pas un "
+                    + "type prédéfini (règle 0.2)", this.getLocation());
         }
        Type returnType = new FloatType(compiler.getSymbols().getSymbol("float"));
        this.setType(returnType);
@@ -50,10 +53,13 @@ public class ReadFloat extends AbstractReadExpr {
         // leaf node => nothing to do
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler,GPRegister r){
+    protected GPRegister codeGenLoad(DecacCompiler compiler){
         //throw new UnsupportedOperationException("not yet implemented5555");
+        GPRegister r = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new RFLOAT());
+        compiler.addInstruction(new BOV(compiler.i0Error));
         compiler.addInstruction(new LOAD(Register.R1, r));
+        return r;
     }
 
 }

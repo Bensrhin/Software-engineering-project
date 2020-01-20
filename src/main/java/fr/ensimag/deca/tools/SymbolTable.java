@@ -96,6 +96,11 @@ public class SymbolTable {
             {
                 return new ClassType(this, Location.BUILTIN, null);
             }*/
+            if (this.getName().equals("null"))
+            {
+                return new NullType(this);
+            }
+
             return null;
         }
     }

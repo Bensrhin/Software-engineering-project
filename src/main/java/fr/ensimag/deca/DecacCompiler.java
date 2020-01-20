@@ -6,6 +6,7 @@ import fr.ensimag.deca.syntax.DecaParser;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tree.AbstractProgram;
 import fr.ensimag.deca.tree.LocationException;
+import fr.ensimag.deca.codegen.RegisterManager;
 import fr.ensimag.ima.pseudocode.AbstractLine;
 import fr.ensimag.ima.pseudocode.IMAProgram;
 import fr.ensimag.ima.pseudocode.Instruction;
@@ -17,6 +18,7 @@ import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tree.Location;
@@ -24,13 +26,17 @@ import fr.ensimag.deca.context.IntType;
 import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.context.BooleanType;
 import fr.ensimag.deca.context.ClassType;
+
 import java.io.PrintStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.log4j.Logger;
 
 import fr.ensimag.deca.tools.IndentPrintStream;
-import java.lang.String ;
+import fr.ensimag.ima.pseudocode.instructions.ERROR;
+import fr.ensimag.ima.pseudocode.instructions.WSTR;
+import fr.ensimag.ima.pseudocode.instructions.WNL;
+import fr.ensimag.ima.pseudocode.Label;
 
 
 /**
@@ -82,7 +88,7 @@ public class DecacCompiler {
         this.symbols.create("int");
         this.symbols.create("String");
         this.symbols.create("null");
-        
+
         Symbol object = this.symbols.create("Object");
         ClassType objectType = new ClassType(object, Location.BUILTIN, null);
         try
@@ -93,7 +99,7 @@ public class DecacCompiler {
         {
             System.out.println("C'est impossible : C'est la première déclaration");
         }
-        
+
     }
 
     public SymbolTable getSymbols()
@@ -163,6 +169,12 @@ public class DecacCompiler {
         program.addInstruction(instruction, comment);
     }
 
+    private RegisterManager registerManager;
+    public RegisterManager getRegisterManager(){
+        return registerManager;
+    }
+
+
     /**
      * @see
      * fr.ensimag.ima.pseudocode.IMAProgram#display()
@@ -178,37 +190,6 @@ public class DecacCompiler {
      */
     private final IMAProgram program = new IMAProgram();
 
-    
-    /*Decompiling the program, transforming a .deca to a .deca,
-     return true on error (similar to compile();)*/
-    public boolean decompile(){
-        String sourceFile = source.getAbsolutePath();
-        String destFile = sourceFile.substring(0, sourceFile.length()-5)+ "_decompiled.deca";
-        try{ 
-            doDecompile(sourceFile, destFile);
-        }
-        finally{// A GERER !!
-            return true;
-        }
-    }
-
-    public boolean doDecompile(String sourceFile, String destFile)throws DecacFatalError,FileNotFoundException{
-        PrintStream err = System.err;
-        AbstractProgram prog = doLexingAndParsing(sourceFile, err);
-        if (prog == null) {
-            LOG.info("Parsing failed");
-            return true;
-        }
-        IndentPrintStream fstream = null;
-        try {
-            fstream = new IndentPrintStream(new PrintStream(destFile));
-        } catch (FileNotFoundException e) {
-            throw new DecacFatalError("Failed to open output file: " + e.getLocalizedMessage());
-        }
-        prog.decompile(fstream);
-        return false;
-    }
-    
     /**
      * Run the compiler (parse source file, generate code)
      *
@@ -261,21 +242,31 @@ public class DecacCompiler {
     private boolean doCompile(String sourceName, String destName,
             PrintStream out, PrintStream err)
             throws DecacFatalError, LocationException {
+        CompilerOptions cond = this.getCompilerOptions();
+        registerManager = new RegisterManager(this);
         AbstractProgram prog = doLexingAndParsing(sourceName, err);
-
         if (prog == null) {
             LOG.info("Parsing failed");
             return true;
         }
+        if (cond.getParse()){
+            IndentPrintStream fstream = new IndentPrintStream(new PrintStream(System.out));
+            prog.decompile(fstream);
+            return false;
+        }
         assert(prog.checkAllLocations());
-
-
         prog.verifyProgram(this);
         assert(prog.checkAllDecorations());
+        if (cond.getVerification()){
+            return false;
+        }
 
         addComment("start main program");
+        prog.getMain().codeGenEntete(this, prog.getMain().getDeclVariables().getList().size());
         prog.codeGenProgram(this);
         addComment("end main program");
+        this.codeGenErr();
+
         LOG.debug("Generated assembly code:" + nl + program.display());
         LOG.info("Output file assembly file is: " + destName);
 
@@ -320,5 +311,26 @@ public class DecacCompiler {
         parser.setDecacCompiler(this);
         return parser.parseProgramAndManageErrors(err);
     }
-
+    public static Label pilePleine= new Label("pile_pleine");
+    public static Label over_flow = new Label("over_flow");
+    public static Label i0Error = new Label("i0_error");
+    public static Label divisionErr = new Label("divisionErr");
+    protected void codeGenErr(){
+        this.addLabel(pilePleine);
+        this.addInstruction(new WSTR("EError: Stack Overfloww"));
+        this.addInstruction(new WNL());
+        this.addInstruction(new ERROR());
+        this.addLabel(over_flow);
+        this.addInstruction(new WSTR("EError: Overflow during arithmetic operationn"));
+        this.addInstruction(new WNL());
+        this.addInstruction(new ERROR());
+        this.addLabel(i0Error);
+        this.addInstruction(new WSTR("EError: Input/Output errorr"));
+        this.addInstruction(new WNL());
+        this.addInstruction(new ERROR());
+        this.addLabel(divisionErr);
+        this.addInstruction(new WSTR(("EError :Division par 0 ")));
+        this.addInstruction(new WNL());
+        this.addInstruction(new ERROR());
+    }
 }

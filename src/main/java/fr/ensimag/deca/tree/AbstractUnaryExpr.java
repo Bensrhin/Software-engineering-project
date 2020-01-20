@@ -4,8 +4,10 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.codegen.RegisterManager;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
 import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 /**
@@ -32,10 +34,7 @@ public abstract class AbstractUnaryExpr extends AbstractExpr {
     public void decompile(IndentPrintStream s) {
         s.print("(");
         String op = getOperatorName();
-        //if (op.equals("!")||op.equals("-"))
-        //{
         s.print(" " + op + " ");
-        //}
         getOperand().decompile(s);
         s.print(")");
     }
@@ -50,21 +49,18 @@ public abstract class AbstractUnaryExpr extends AbstractExpr {
         operand.prettyPrint(s, prefix, true);
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1) {
-        throw new UnsupportedOperationException("not yet implementedoki");
+    protected GPRegister codeGenLoad(DecacCompiler compiler) {
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
+        this.codeGenOp(compiler);
+        compiler.addInstruction(new LOAD(Register.R1, r1));
+        return r1;
     }
     @Override
-    public void codeGenPrint(DecacCompiler compiler){
-        GPRegister r1 = Register.getR(Register.getCpt());
-        this.codeGenOp(compiler, r1);
-        if(this.getType().toString().equals("int")){
-            compiler.addInstruction(new WINT());
-        }
-        else if(this.getType().toString().equals("float")){
-            compiler.addInstruction(new WFLOAT());
-        }
+    public void codeGenPrint(DecacCompiler compiler, boolean hex){
+        this.codeGenOp(compiler);
+        super.codeGenPrint(compiler, hex);
     }
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1){
+    public void codeGenOp(DecacCompiler compiler){
         throw new UnsupportedOperationException("not yet implemented");
     }
 

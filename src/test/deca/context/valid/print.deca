@@ -1,0 +1,15 @@
+/** @version 1.0
+    Title : print
+*/
+{
+  String s = "A journey through time";
+  if (true)
+  {
+    print(s);
+  }
+  if (!false)
+  {
+    printx("Every decision against something is a decision against something else");
+  }
+  printlnx("Print with x");
+}

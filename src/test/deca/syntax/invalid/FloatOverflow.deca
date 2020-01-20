@@ -1,5 +1,4 @@
 {
-    //print("Start test FlotOverflow");
     float a = 3.4028235E38;
     float a = 3.4028236E38;
     

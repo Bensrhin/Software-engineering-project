@@ -13,7 +13,8 @@ import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.RINT;
-
+import fr.ensimag.ima.pseudocode.instructions.BOV;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
  *
@@ -25,8 +26,9 @@ public class ReadInt extends AbstractReadExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-                if (!compiler.getSymbols().checkSymbol("int")){
-            throw new ContextualError("int Type is not yet implemented", this.getLocation());
+        if (!compiler.getSymbols().checkSymbol("int")){
+            throw new ContextualError("Type \"int\" n'est pas un "
+                    + "type prédéfini (règle 0.2)", this.getLocation());
         }
        Type returnType = new IntType(compiler.getSymbols().getSymbol("int"));
        this.setType(returnType);
@@ -49,10 +51,13 @@ public class ReadInt extends AbstractReadExpr {
         // leaf node => nothing to do
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler,GPRegister r){
+    protected GPRegister codeGenLoad(DecacCompiler compiler){
         //throw new UnsupportedOperationException("not yet implemented5555");
+         GPRegister r = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new RINT());
+        compiler.addInstruction(new BOV(compiler.i0Error));
         compiler.addInstruction(new LOAD(Register.R1, r));
+        return r;
     }
     
 }

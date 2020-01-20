@@ -9,6 +9,7 @@ import fr.ensimag.ima.pseudocode.instructions.BEQ;
 import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.SUB;
+import fr.ensimag.deca.codegen.RegisterManager;
 
 
 /**
@@ -27,10 +28,9 @@ public class And extends AbstractOpBool {
         return "&&";
     }
     @Override
-    public void codeGenOp(DecacCompiler compiler, GPRegister r1, GPRegister r2){
+    public void codeGenOp(DecacCompiler compiler){
         GPRegister R1 = Register.R1;
-        GPRegister r3 = Register.getR(Register.getCpt());
-        this.getLeftOperand().codeGenLoad(compiler, r3);
+        GPRegister r3 = this.getLeftOperand().codeGenLoad(compiler);
         compiler.addInstruction(new LOAD(r3, R1));
         r3.freeR();
         Label andElse= new Label("And_else_in_"+this.getLeftOperand()
@@ -38,7 +38,7 @@ public class And extends AbstractOpBool {
         Label andFin= new Label("And_fin_in_"+this.getLeftOperand()
                 .getLocation().toStringLabel());
         compiler.addInstruction(new BNE(andElse));//premier faux -> and faux
-        this.getRightOperand().codeGenLoad(compiler, r2);
+        GPRegister r2  = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new LOAD(r2, R1));
         compiler.addInstruction(new BNE(andElse));//deuxieme faux -> and faux
         compiler.addInstruction(new LOAD(0, R1));

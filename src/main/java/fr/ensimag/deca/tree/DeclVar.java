@@ -51,29 +51,34 @@ public class DeclVar extends AbstractDeclVar {
               Type nameType = this.getNameType().verifyType(compiler);
               if (nameType.isVoid())
               {
-                  throw new ContextualError("type must be defferent than void", this.getLocation());
+                  throw new ContextualError("Type de l'indentificateur \""+
+                          this.getNameVar().getName().toString() +
+                          "\" doit être différent de void (règle 3.17)", this.getLocation());
               }
               /* declaration of nameVar in the invironment */
               VariableDefinition def = new VariableDefinition(nameType, this.getLocation());
               Symbol symbol = this.getNameVar().getName();
+              this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
               try
               {
                   localEnv.declare(symbol, def);
               }
               catch (DoubleDefException e)
               {
-                  throw new ContextualError(symbol.toString()
-                             + "is already defined", this.getLocation());
+                  throw new ContextualError("Identificateur \"" +
+                          symbol.toString() + "\" est déjà déclaré à " +
+                          localEnv.get(symbol).getLocation() + " (règle 3.17)",
+                          this.getLocation());
               }
               Type nameVar = this.getNameVar().verifyExpr(compiler, localEnv, currentClass);
-              this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
+
               //LOG.debug("End of verifyDeclVar");
     }
     @Override
     protected void codeGenVar(DecacCompiler compiler, int i){
         varName.codeGenIdent(compiler, i);
         initialization.codeGenInt(compiler, i);
-        
+
     }
 
     @Override

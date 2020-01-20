@@ -172,11 +172,12 @@ if_then_else returns[IfThenElse tree]
 }
     : if1=IF OPARENT condition=expr CPARENT OBRACE li_if=list_inst CBRACE {
         $tree = new IfThenElse($expr.tree, $li_if.tree, list);
+        setLocation($tree, $if1);
         }
       (ELSE elsif=IF OPARENT elsif_cond=expr CPARENT OBRACE elsif_li=list_inst CBRACE {
-        System.out.println("hhh");
         ListInst list2 = new ListInst();
         tree2 = new IfThenElse($expr.tree, $elsif_li.tree, list2);
+        setLocation(tree2, $elsif);
         list.add(tree2);
         list = list2;
         }
@@ -320,7 +321,7 @@ inequality_expr returns[AbstractExpr tree]
     | e1=inequality_expr INSTANCEOF type {
             assert($e1.tree != null);
             assert($type.tree != null);
-            $tree = new Equals($e1.tree, $type.tree);
+            $tree = new InstanceOf($e1.tree, $type.tree);
             setLocation($tree, $INSTANCEOF);
         }
     ;
@@ -436,6 +437,8 @@ primary_expr returns[AbstractExpr tree]
         }
     | NEW ident OPARENT CPARENT {
             assert($ident.tree != null);
+            $tree = new New($ident.tree);
+            setLocation($tree, $NEW);
         }
     | cast=OPARENT type CPARENT OPARENT expr CPARENT {
             assert($type.tree != null);
@@ -481,8 +484,12 @@ literal returns[AbstractExpr tree]
         setLocation($tree, $FALSE);
         }
     | THIS {
+        $tree = new ThisLiteral();
+        setLocation($tree, $THIS);
         }
     | NULL {
+        $tree = new NullLiteral();
+        setLocation($tree, $NULL);
         }
     ;
 
@@ -494,7 +501,7 @@ ident returns[AbstractIdentifier tree]
         }
     ;
 
-    /****     Class related rules     ****/
+
 
     list_classes returns[ListDeclClass tree]
         @init {$tree = new ListDeclClass();}
@@ -520,7 +527,7 @@ ident returns[AbstractIdentifier tree]
   class_extension returns[AbstractIdentifier tree]
       : EXTENDS ident {
           $tree = $ident.tree;
-          
+
           }
       | /* epsilon */ {
         SymbolTable s = new SymbolTable();

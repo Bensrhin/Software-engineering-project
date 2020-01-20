@@ -25,7 +25,7 @@ public class NoOperation extends AbstractInst {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implemented");
+        //throw new UnsupportedOperationException("not yet implemented");
     }
 
     @Override
@@ -42,5 +42,4 @@ public class NoOperation extends AbstractInst {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         // leaf node => nothing to do
     }
-
 }

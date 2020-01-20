@@ -14,6 +14,7 @@ import fr.ensimag.ima.pseudocode.instructions.WINT;
 import org.apache.commons.lang.Validate;
 import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.deca.codegen.RegisterManager;
 /**
  * Integer literal
  *
@@ -40,15 +41,10 @@ public class IntLiteral extends AbstractExpr {
             ClassDefinition currentClass) throws ContextualError {
         //throw new UnsupportedOperationException("not yet implemented");
         if (!compiler.getSymbols().checkSymbol("int")){
-            throw new ContextualError("int Type is not yet implemented", this.getLocation());
+            throw new ContextualError("Type \"int\" n'est pas un "
+                    + "type prédéfini (règle 0.2)", this.getLocation());
         }
-        /*
-       Set<Symbol> sym = localEnv.stringIsIn();
-       for (Symbol s:sym)
-       {
-           System.out.println(s.getName());
-       }
-                */
+
        Type returnType = new IntType(compiler.getSymbols().getSymbol("int"));
        this.setType(returnType);
        return this.getType();
@@ -75,15 +71,17 @@ public class IntLiteral extends AbstractExpr {
         // leaf node => nothing to do
     }
     @Override
-    protected void codeGenPrint(DecacCompiler compiler) {
+    protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         GPRegister r = Register.getR(1);
         compiler.addInstruction(new LOAD(value, r));
-        compiler.addInstruction(new WINT());
+        super.codeGenPrint(compiler, hex);
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler, GPRegister r1){
+    protected GPRegister codeGenLoad(DecacCompiler compiler){
         int val = this.getValue();
+        GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new LOAD(val, r1));
+        return r1;
     }
 
 }

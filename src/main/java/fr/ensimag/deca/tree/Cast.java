@@ -11,13 +11,15 @@ import java.io.PrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.FLOAT;
+import fr.ensimag.ima.pseudocode.instructions.INT;
 
 /**
  *
  * @author gl53
  * @date 01/01/2020
  */
-public class Cast extends AbstractLValue {
+public class Cast extends AbstractExpr {
   private AbstractIdentifier idExpr;
   private AbstractExpr expr;
   public Cast(AbstractIdentifier idExpr, AbstractExpr expr){
@@ -37,7 +39,10 @@ public class Cast extends AbstractLValue {
         Type type2 = this.getExpr().verifyExpr(compiler, localEnv, currentClass);
         if(!localEnv.castCompatible(type2, type))
         {
-            throw new ContextualError("Le cast n'est pas autorisé", this.getLocation());
+            throw new ContextualError("Le Cast  " + decompile()
+                    + " : (" +
+            type.toString() + ")" + "(" +type2.toString() +
+            ") : n'est pas autorisée (règle 3.39)", this.getLocation());
         }
         this.setType(type);
         return type;
@@ -46,6 +51,12 @@ public class Cast extends AbstractLValue {
 
   @Override
   public void decompile(IndentPrintStream s) {
+      s.print("(");
+      idExpr.decompile(s);
+      s.print(")");
+      s.print("(");
+      expr.decompile(s);
+      s.print(")");
 
   }
 
@@ -62,6 +73,21 @@ public class Cast extends AbstractLValue {
       idExpr.prettyPrint(s, prefix, true);
       expr.prettyPrint(s, prefix, true);
   }
-
-
+  @Override
+  protected GPRegister codeGenLoad(DecacCompiler compiler){
+        GPRegister r1 = expr.codeGenLoad(compiler);
+        if(this.getType().isInt()){
+            compiler.addInstruction(new INT(r1, r1));
+        }
+        else{
+            compiler.addInstruction(new FLOAT(r1, r1));
+        }
+        return r1;
+    }
+@Override
+protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
+    GPRegister r1 = this.codeGenLoad(compiler);
+    compiler.addInstruction(new LOAD(r1, Register.R1));
+    super.codeGenPrint(compiler, hex);
+}
 }

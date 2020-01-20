@@ -16,7 +16,8 @@ public abstract class AbstractReadExpr extends AbstractExpr {
         super();
     }
     @Override
-    protected void codeGenLoad(DecacCompiler compiler,GPRegister r){
+    protected GPRegister codeGenLoad(DecacCompiler compiler){
+        return null;
     }
 
 }

@@ -41,11 +41,10 @@ public class While extends AbstractInst {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        GPRegister r1 = Register.getR(Register.getCpt());
         Label labelCond = new Label("While_cond_" + condition.getLocation().toStringLabel());
         Label labelFin = new Label("While_fin_" + condition.getLocation().toStringLabel());
         compiler.addLabel(labelCond);
-        condition.codeGenLoad(compiler, r1);
+        GPRegister r1 = condition.codeGenLoad(compiler);
         compiler.addInstruction(new LOAD(r1, Register.R1));
         compiler.addInstruction(new BNE(labelFin));
         body.codeGenListInst(compiler);

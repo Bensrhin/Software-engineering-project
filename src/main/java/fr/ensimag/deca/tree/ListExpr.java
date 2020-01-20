@@ -27,7 +27,10 @@ public class ListExpr extends TreeList<AbstractExpr> {
           Type type = expr.verifyExpr(compiler, localEnv, currentClass);
           if (this.checkType(type))
           {
-              throw new ContextualError("Type of Expr is not int, float neither string at", this.getLocation());
+              throw new ContextualError("Type de l'expression" + 
+                      " doit être un String, un int ou un float" + 
+                      " (règle 3.31)", 
+                      this.getLocation());
           }
       }
   }
