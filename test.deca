@@ -5,7 +5,6 @@ int getX()
   return x;
 }
 }
-class A extends B
-{
-
+class B extends A{
 }
+

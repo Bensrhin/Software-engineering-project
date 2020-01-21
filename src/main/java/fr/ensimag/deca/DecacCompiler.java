@@ -254,17 +254,17 @@ public class DecacCompiler {
             prog.decompile(fstream);
             return false;
         }
-        assert(prog.checkAllLocations());
-        prog.verifyProgram(this);
-        assert(prog.checkAllDecorations());
+        //assert(prog.checkAllLocations());
+       prog.verifyProgram(this);
+        //assert(prog.checkAllDecorations());
         if (cond.getVerification()){
             return false;
         }
 
-        addComment("start main program");
+        //addComment("start main program");
         prog.getMain().codeGenEntete(this, prog.getMain().getDeclVariables().getList().size());
         prog.codeGenProgram(this);
-        addComment("end main program");
+        //addComment("end main program");
         this.codeGenErr();
 
         LOG.debug("Generated assembly code:" + nl + program.display());

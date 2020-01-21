@@ -12,6 +12,8 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.instructions.*;
+import fr.ensimag.ima.pseudocode.*;
 /**
  * Declaration of a class (<code>class name extends superClass {members}<code>).
  * 
@@ -91,7 +93,7 @@ public class DeclClass extends AbstractDeclClass {
                     this.getLocation());
         }
         this.getSuperName().setDefinition(superType.getDefinition());
-        
+        this.getSuperName().setType(superType);
         ClassType currentType = new ClassType(nameKey, 
                 this.getName().getLocation(), superType.getDefinition());
         try
@@ -105,6 +107,7 @@ public class DeclClass extends AbstractDeclClass {
                        + "\" est déjà déclaré (règle 1.3)", this.getLocation());
         }
         this.getName().setDefinition(currentType.getDefinition());
+        this.getName().setType(currentType);
     }
     @Override
     protected void verifyClassMembers(DecacCompiler compiler)
@@ -132,6 +135,13 @@ public class DeclClass extends AbstractDeclClass {
         superName.iter(f);
         fields.iter(f);
         methods.iter(f);
+    }
+    @Override
+    protected void codeGenClass(DecacCompiler compiler){
+        if(superName.getType().toString().equals("Object")){ 
+            superName.codeGenObj(compiler);
+        }
+        name.codeGenClass(compiler, );
     }
 
 }

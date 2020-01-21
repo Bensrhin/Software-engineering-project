@@ -12,7 +12,7 @@ import org.apache.commons.lang.Validate;
  */
 public class ClassDefinition extends TypeDefinition {
 
-
+    private DAddr operand;
     public void setNumberOfFields(int numberOfFields) {
         this.numberOfFields = numberOfFields;
     }
@@ -76,5 +76,10 @@ public class ClassDefinition extends TypeDefinition {
         members = new EnvironmentExp(parent);
         this.superClass = superClass;
     }
-    
+    public setOperand(DAddr op){
+        this.operand = op;
+    }
+    public DAddr getOperand(){
+        return operand;
+    }
 }

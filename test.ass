@@ -1,15 +1,13 @@
-; start main program
+; table des methodes
+; construction de la table des methodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; construction de la table des methodes de A
+; construction de la table des methodes de B
 ; Main program
-; Beginning of main instructions:
-	LOAD #5, R2
-	LOAD #0, R3
-	QUO R3, R2
-	BOV divisionErr
-	LOAD R2, R1
-	WINT
-	WNL
 	HALT
-; end main program
 pile_pleine:
 	WSTR "Error: Stack Overflow"
 	WNL

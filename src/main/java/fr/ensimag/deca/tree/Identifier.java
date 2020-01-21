@@ -21,10 +21,8 @@ import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
-import fr.ensimag.ima.pseudocode.instructions.LOAD;
-import fr.ensimag.ima.pseudocode.instructions.WINT;
-import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
-import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.instructions.*;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
@@ -269,5 +267,23 @@ public class Identifier extends AbstractIdentifier {
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
         return r1;
     }
-
+    @Override
+    protected void codeGenObj(DecacCompiler compiler){
+        compiler.addComment("construction de la table des methodes de " + this.getType());
+        LabelOperand obj = new LabelOperand(new Label("code.Object.equals"));
+        compiler.addInstruction(new LOAD(new ImmediateNull(), Register.R0));
+        RegisterOffset gb1 = new RegisterOffset(1, Register.GB);
+        RegisterOffset gb2 = new RegisterOffset(2, Register.GB);
+        compiler.addInstruction(new STORE(Register.R0, gb1));
+        compiler.addInstruction(new LOAD(obj, Register.R0));
+        compiler.addInstruction(new STORE(Register.R0, gb2));
+        ClassDefinition def = this.getClassDefinition();
+        def.setOperand(gb1);
+    }
+    @Override
+    protected void codeGenClass(DecacCompiler compiler){
+        compiler.addComment("construction de la table des methodes de " + this.getType());
+        LabelOperand obj = new LabelOperand(new Label("code."+ this.getType()+".equals"));
+        
+    }
 }

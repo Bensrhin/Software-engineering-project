@@ -265,5 +265,9 @@ public class Extends extends AbstractIdentifier {
         //compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
         return null;
     }
+    @Override
+    protected void codeGenObj(DecacCompiler compiler){
+        
+    }
 
 }
