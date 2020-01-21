@@ -39,28 +39,26 @@ public class DeclParam extends AbstractDeclParam
 
     @Override
     protected Type verifyDeclParam(DecacCompiler compiler) throws ContextualError {
-              throw new ContextualError("ddddddd", getLocation());
-            /*
               Type nameType = this.getNameType().verifyType(compiler);
               if (nameType.isVoid())
               {
-                  throw new ContextualError("type must be defferent than void", this.getLocation());
+                  throw new ContextualError("Type de l'indentificateur \""+
+                          this.getNameType().getName().toString() +
+                          "\" doit être différent de void (règle 2.5)", this.getLocation());
               }
-
-                parameDefinition def = ne    parameDefinition(nameType, this.getLocation());
-              Symbol symbol = this.getNa    parametName();
-              try
-              {
-                  localEnv.declare(symbol, def);
-              }
-              catch (DoubleDefException e)
-              {
-                  throw new ContextualError(symbol.toString()
-                             + "is already defined", this.getLocation());
-              }
-              Type na   paramhis.getNa   paramerifyExpr(compiler, localEnv, currentClass);
-              this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
-              //LOG.debug("End of verifyDe  param */
+              return nameType;
+              // Symbol symbol = getParam().getName();
+              // Definition def = new ParamDefinition(nameType, this.getLocation());
+              // try
+              // {
+              //     localEnv.declare(symbol, def);
+              // }
+              // catch (DoubleDefException e)
+              // {
+              //     throw new ContextualError("Parameter " +
+              //     symbol.toString() + " is already defined", this.getLocation());
+              // }
+              // this.getParam().verifyExpr(compiler, localEnv, null);
     }
     @Override
     protected void codeGenParam(DecacCompiler compiler, int i){

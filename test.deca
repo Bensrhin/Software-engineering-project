@@ -1,0 +1,22 @@
+class A
+{
+  int getA(int a, int b)
+  {
+
+  }
+}
+
+class B extends A
+{
+  int getA(int a, int c)
+  {
+
+  }
+}
+class C extends B
+{
+  int getA(float a, int c)
+  {
+
+  }
+}

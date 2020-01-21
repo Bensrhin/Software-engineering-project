@@ -114,8 +114,8 @@ public class DeclClass extends AbstractDeclClass {
 
           this.getFields().verifyListDeclField(compiler,
           this.getSuperName(), this.getName());
-          // this.getMethods().verifyListDeclField(compiler,
-          // this.getSuperName().getClassDefinition());
+          this.getMethods().verifyListDeclMethod(compiler,
+          this.getSuperName(), this.getName());
         //throw new UnsupportedOperationException("not yet implemented");
     }
 

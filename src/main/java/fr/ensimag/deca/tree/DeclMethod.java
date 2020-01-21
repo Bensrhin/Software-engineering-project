@@ -73,7 +73,7 @@ public class DeclMethod extends AbstractDeclMethod
 
             if (isClass && override != null &&
                 !((override instanceof MethodDefinition) &&
-                  // override.getSignature().equals(sig) &&
+                  override.getSignature().equals(sig) &&
                   compiler.get_env_types().subType(type, override.getType())))
             {
               throw new ContextualError("Méthode \""
