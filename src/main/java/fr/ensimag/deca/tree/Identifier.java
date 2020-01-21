@@ -282,25 +282,5 @@ public class Identifier extends AbstractIdentifier {
         this.getClassDefinition().setOperand(gb1);
     }
     
-    @Override
-    protected void codeGenClass(DecacCompiler compiler, ListDeclMethod methods){
-        compiler.addComment("construction de la table des methodes de " + this.getType());
-        DAddr addr = this.getClassDefinition().getOperand();
-        RegisterOffset gb = compiler.getRegisterManager().getRegOff();
-        compiler.addInstruction(new LEA(addr, Register.R0));
-        compiler.addInstruction(new STORE(Register.R0, gb));
-        this.getClassDefinition().setOperand(gb);
-        Set<Map.Entry<LabelOperand, String>> couples = Vu.entrySet();
-        Iterator<Map.Entry<LabelOperand, String>> itCouples = couples.iterator();
-        while (itCouples.hasNext()) {
-            Map.Entry<LabelOperand, String> couple = itCouples.next();
-            compiler.addInstruction(new LOAD(couple.getKey(), Register.R0));
-            compiler.addInstruction(new STORE(Register.R0, compiler.getRegisterManager().getRegOff()));
-        }
-        for(AbstractDeclMethod m : methods.getList()){
-            System.out.println(m);
-        }
-        
-        
-    }
+   
 }

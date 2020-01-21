@@ -150,38 +150,38 @@ public class DeclClass extends AbstractDeclClass {
         if(superName.getType().toString().equals("Object")){ 
             superName.codeGenObj(compiler);
         }
-        ClassDefinition current = ((ClassType) name.getType()).getDefinition();
-        codeGenClas(compiler, current);
+        ClassDefinition current =  name.getClassDefinition();
+        codeGenClass(compiler, current);
     }
-    private static ArrayList<String> mth = new ArrayList<String>();
-    private HashSet<Symbol> vu = new HashSet<Symbol>();
-    protected void codeGenClas(DecacCompiler compiler, ClassDefinition current){
-       Symbol name = current.getType().getName();
-       if(name == this.name.getName()){
+    private Set<Symbol> vu = new HashSet<Symbol>();
+    protected void codeGenClass(DecacCompiler compiler, ClassDefinition current){
+       if(current.getType().getName() == this.name.getName()){
             compiler.addComment("construction de la table des methodes de " + current.getType());
             DAddr addr = current.getOperand();
             RegisterOffset gb = compiler.getRegisterManager().getRegOff();
             compiler.addInstruction(new LEA(addr, Register.R0));
             compiler.addInstruction(new STORE(Register.R0, gb));
+            current.setOperand(gb);
         }
-        ExpDefinition mth;
         Map<Symbol, ExpDefinition> dic = current.getMembers().getMapMethod();
         Set<Map.Entry<Symbol, ExpDefinition>> couples = dic.entrySet();
         Iterator<Map.Entry<Symbol, ExpDefinition>> itCouples = couples.iterator();
+        ExpDefinition mth;
         while(itCouples.hasNext()){
             Map.Entry<Symbol, ExpDefinition> couple = itCouples.next();
             mth = couple.getValue();
             if(vu.add(couple.getKey())){
                 DAddr addr = current.getOperand();
                 MethodDefinition methode = (MethodDefinition)(mth);
+                RegisterOffset gb0 = compiler.getRegisterManager().getRegOff();
                 compiler.addInstruction(new LOAD(new LabelOperand(methode.getLabel()), Register.R0));
-                RegisterOffset rg = new RegisterOffset(methode.getIndex(), Register.GB);
-                compiler.addInstruction(new STORE(Register.R0, rg));
+                compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex(), Register.GB)));
+                
             }
         }
-        ClassDefinition sup = current.getSuperClass();
-        if(sup != null){
-            codeGenClas(compiler, sup);
+        
+        if(current.getSuperClass() != null){
+            codeGenClass(compiler, current.getSuperClass());
         }
  }
   }

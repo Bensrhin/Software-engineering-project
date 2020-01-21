@@ -40,8 +40,8 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
     void verifyListDeclMethod(DecacCompiler compiler,
                 AbstractIdentifier superIdentifier, AbstractIdentifier classIdentifier) throws ContextualError {
         Iterator<AbstractDeclMethod> declMethods = this.iterator();
-        // int index = superIdentifier.getClassDefinition().getNumberOfMethods();
-        // classIdentifier.getClassDefinition().setNumberOfMethods(index);
+        int index = superIdentifier.getClassDefinition().getNumberOfMethods();
+        classIdentifier.getClassDefinition().setNumberOfMethods(index);
         while (declMethods.hasNext())
         {
             AbstractDeclMethod declMethod = declMethods.next();

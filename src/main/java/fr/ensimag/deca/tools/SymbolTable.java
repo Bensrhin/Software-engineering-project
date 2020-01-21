@@ -32,6 +32,7 @@ public class SymbolTable {
         }
         return map.get(name);
     }
+    
 
     public Symbol getSymbol(String name)
     {
@@ -66,7 +67,18 @@ public class SymbolTable {
         public String toString() {
             return name;
         }
-
+        @Override
+        public int hashCode(){
+            return name.hashCode();
+        }
+        @Override
+        public boolean equals(Object o){
+            if( ! (o instanceof Symbol)) {
+                return false ;
+            }
+            Symbol other = (Symbol)o;
+            return other.getName().equals(this.getName());
+        }
         private String name;
         public Type getType()
         {

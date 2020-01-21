@@ -3,11 +3,14 @@ class A {
   int getX(){
     return x;
 }
+void m(){}
 }
+
 class B extends A{
     int y;
     int getY(){
         return y;
         }
+    void m(){}
 }
 

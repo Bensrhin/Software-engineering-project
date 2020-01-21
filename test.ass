@@ -4,6 +4,22 @@
 	STORE R0, 1(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 2(GB)
+; construction de la table des methodes de A
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.A.getX, R0
+	STORE R0, 1(GB)
+	LOAD code.A.m, R0
+	STORE R0, 2(GB)
+; construction de la table des methodes de B
+	LEA 3(GB), R0
+	STORE R0, 6(GB)
+	LOAD code.B.getY, R0
+	STORE R0, 3(GB)
+	LOAD code.B.m, R0
+	STORE R0, 4(GB)
+	LOAD code.A.getX, R0
+	STORE R0, 1(GB)
 ; Main program
 	HALT
 pile_pleine:
