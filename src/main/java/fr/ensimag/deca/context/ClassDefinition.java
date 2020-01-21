@@ -3,6 +3,8 @@ package fr.ensimag.deca.context;
 import fr.ensimag.deca.tree.Location;
 import fr.ensimag.ima.pseudocode.Label;
 import org.apache.commons.lang.Validate;
+import fr.ensimag.ima.pseudocode.*;
+import java.util.*;
 
 /**
  * Definition of a class.
@@ -12,7 +14,7 @@ import org.apache.commons.lang.Validate;
  */
 public class ClassDefinition extends TypeDefinition {
 
-    private DAddr operand;
+    private static LinkedList<DAddr> superTypes = new LinkedList<DAddr>();
     public void setNumberOfFields(int numberOfFields) {
         this.numberOfFields = numberOfFields;
     }
@@ -76,10 +78,11 @@ public class ClassDefinition extends TypeDefinition {
         members = new EnvironmentExp(parent);
         this.superClass = superClass;
     }
-    public setOperand(DAddr op){
-        this.operand = op;
+    public void setOperand(DAddr op){
+        this.superTypes.add(op);
     }
     public DAddr getOperand(){
-        return operand;
+        return superTypes.getLast();
     }
+    
 }

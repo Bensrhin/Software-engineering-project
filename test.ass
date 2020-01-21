@@ -4,8 +4,6 @@
 	STORE R0, 1(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 2(GB)
-; construction de la table des methodes de A
-; construction de la table des methodes de B
 ; Main program
 	HALT
 pile_pleine:

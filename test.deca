@@ -1,10 +1,14 @@
 class A {
-int x;
-int getX()
-{
-  return x;
+  int x;
+  int getX(){
+    return x;
 }
+
 }
 class B extends A{
+    int y;
+    int getY(){
+        return y;
+        }
 }
 
