@@ -65,10 +65,9 @@ public class DeclMethod extends AbstractDeclMethod
 
     @Override
     protected void verifyDeclMethod(DecacCompiler compiler,
-            AbstractIdentifier superIdentifier) throws ContextualError {
+            AbstractIdentifier superIdentifier, AbstractIdentifier classIdentifier) throws ContextualError {
             Type type = this.getNameType().verifyType(compiler);
-            // Signature sig = this.getParams().verifyListDeclParam(compiler);
-            Signature sig;
+            Signature sig = this.getParams().verifyListDeclParam(compiler);
             Boolean isClass = compiler.get_env_types().get(superIdentifier.getName()).isClass();
             MethodDefinition override = (MethodDefinition)superIdentifier.getClassDefinition().getMembers().get(getNameMethod().getName());
 
@@ -82,6 +81,23 @@ public class DeclMethod extends AbstractDeclMethod
               "dans une super classe avec une autre définition (règle 2.7)",
               this.getLocation());
             }
+            ClassDefinition classDef = classIdentifier.getClassDefinition();
+            int index = classDef.getNumberOfMethods(); index ++;
+            classDef.setNumberOfMethods(index);
+            MethodDefinition def = new MethodDefinition(type,
+                    this.getLocation(), sig, index);
+            Symbol symbol = this.getNameMethod().getName();
+            try
+            {
+                classDef.getMembers().declare(symbol, def);
+            }
+            catch (DoubleDefException e)
+            {
+                throw new ContextualError(symbol.toString()
+                           + "is already defined", this.getLocation());
+            }
+            this.getNameMethod().setDefinition(def);
+            this.getNameMethod().setType(type);
             /*
               Type nameType = this.getNameType().verifyType(compiler);
               if (nameType.isVoid())

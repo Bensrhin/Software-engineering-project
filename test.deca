@@ -1,7 +1,5 @@
-class C {
-  float a = false;
-}
-class A extends C
+
 {
-  int b;
+  int n;
+  n = n + 1;
 }

@@ -38,14 +38,14 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
      *          corresponds to "class" attribute (null in the main bloc).
      */
     void verifyListDeclMethod(DecacCompiler compiler,
-                AbstractIdentifier superIdentifier) throws ContextualError {
+                AbstractIdentifier superIdentifier, AbstractIdentifier classIdentifier) throws ContextualError {
         Iterator<AbstractDeclMethod> declMethods = this.iterator();
         // int index = superIdentifier.getClassDefinition().getNumberOfMethods();
         // classIdentifier.getClassDefinition().setNumberOfMethods(index);
         while (declMethods.hasNext())
         {
             AbstractDeclMethod declMethod = declMethods.next();
-            declMethod.verifyDeclMethod(compiler, superIdentifier);
+            declMethod.verifyDeclMethod(compiler, superIdentifier, classIdentifier);
         }
 
     }

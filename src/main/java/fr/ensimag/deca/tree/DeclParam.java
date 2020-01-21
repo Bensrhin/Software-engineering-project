@@ -20,7 +20,7 @@ public class DeclParam extends AbstractDeclParam
     final private AbstractIdentifier type;
     final private AbstractIdentifier param;
 
-    
+
     private static final Logger LOG = Logger.getLogger(DeclParam.class);
     public DeclParam(AbstractIdentifier type, AbstractIdentifier param) {
         Validate.notNull(type);
@@ -38,14 +38,15 @@ public class DeclParam extends AbstractDeclParam
     }
 
     @Override
-    protected void verifyDeclParam(DecacCompiler compiler) throws ContextualError {
+    protected Type verifyDeclParam(DecacCompiler compiler) throws ContextualError {
+              throw new ContextualError("ddddddd", getLocation());
             /*
               Type nameType = this.getNameType().verifyType(compiler);
               if (nameType.isVoid())
               {
                   throw new ContextualError("type must be defferent than void", this.getLocation());
               }
-              
+
                 parameDefinition def = ne    parameDefinition(nameType, this.getLocation());
               Symbol symbol = this.getNa    parametName();
               try
@@ -59,12 +60,12 @@ public class DeclParam extends AbstractDeclParam
               }
               Type na   paramhis.getNa   paramerifyExpr(compiler, localEnv, currentClass);
               this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
-              //LOG.debug("End of verifyDe  param */   
+              //LOG.debug("End of verifyDe  param */
     }
     @Override
     protected void codeGenParam(DecacCompiler compiler, int i){
             param.codeGenIdent(compiler, i);
-        
+
     }
 
     @Override

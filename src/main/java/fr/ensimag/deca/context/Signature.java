@@ -1,6 +1,6 @@
 package fr.ensimag.deca.context;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -23,27 +23,27 @@ public class Signature {
     public int size() {
         return args.size();
     }
-    // @Override
-    // public boolean equals(Object o) {
-    //     if (this == o) {
-    //         return true;
-    //     }
-    //     if (o == null || getClass() != o.getClass()) {
-    //         return false;
-    //     }
-    //     Signature sig = (Signature) o;
-    //     if (!(size() == sig.size() && paramNumber() == sig.paramNumber())){
-    //         return false;
-    //     }
-        // ListIterator<Type> e1 = args.listIterator();
-        // ListIterator<Type> e2 = (sig.args).listIterator();
-        // while (e1.hasNext() && e2.hasNext()) {
-        //      Type o1 = e1.next();
-        //      Type o2 = e2.next();
-        //      if (!o1.sameType(o2))
-        //          return false;
-        // }
-        // return  true;
-        // }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Signature sig = (Signature) o;
+        if (!(size() == sig.size() )){
+            return false;
+        }
+        Iterator<Type> e1 = args.iterator();
+        Iterator<Type> e2 = (sig.args).iterator();
+        while (e1.hasNext() && e2.hasNext()) {
+             Type o1 = e1.next();
+             Type o2 = e2.next();
+             if (!o1.sameType(o2))
+                 return false;
+        }
+        return  true;
+        }
 
 }
