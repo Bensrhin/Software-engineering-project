@@ -13,20 +13,20 @@ import fr.ensimag.deca.context.EnvironmentExp;
  * @date 01/01/2020
  */
 public abstract class AbstractDeclMethod extends Tree {
-    
+
     /**
      * Implements non-terminal "decl_Method" of [SyntaxeContextuelle] in pass 3
      * @param compiler contains "env_types" attribute
-     * @param localEnv 
+     * @param localEnv
      *   its "parentEnvironment" corresponds to the "env_exp_sup" attribute
-     *   in precondition, its "current" dictionary corresponds to 
+     *   in precondition, its "current" dictionary corresponds to
      *      the "env_exp" attribute
-     *   in postcondition, its "current" dictionary corresponds to 
+     *   in postcondition, its "current" dictionary corresponds to
      *      the synthetized attribute
-     * @param currentClass 
+     * @param currentClass
      *          corresponds to the "class" attribute (null in the main bloc).
-     */    
+     */
     protected abstract void verifyDeclMethod(DecacCompiler compiler,
-            ClassDefinition superClass) throws ContextualError;
+            AbstractIdentifier superIdentifier) throws ContextualError;
     protected abstract void codeGenMethod(DecacCompiler compiler, int i);
 }

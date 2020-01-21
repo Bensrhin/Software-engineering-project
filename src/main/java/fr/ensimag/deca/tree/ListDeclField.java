@@ -40,12 +40,11 @@ public class ListDeclField extends TreeList<AbstractDeclField> {
     void verifyListDeclField(DecacCompiler compiler, AbstractIdentifier superIdentifier,
                              AbstractIdentifier classIdentifier) throws ContextualError {
         Iterator<AbstractDeclField> declFields = this.iterator();
+        int index = superIdentifier.getClassDefinition().getNumberOfFields();
+        classIdentifier.getClassDefinition().setNumberOfFields(index);
         while (declFields.hasNext())
         {
             AbstractDeclField declField = declFields.next();
-            int index = superIdentifier.getClassDefinition().getNumberOfFields();
-            classIdentifier.getClassDefinition().setNumberOfFields(index);
-            // System.out.println("init" + index);
             declField.verifyDeclField(compiler, superIdentifier, classIdentifier);
         }
 

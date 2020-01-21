@@ -37,8 +37,7 @@ public class ListDeclParam extends TreeList<AbstractDeclParam> {
      * @param currentClass
      *          corresponds to "class" attribute (null in the main bloc).
      */
-    void verifyListDeclParam(DecacCompiler compiler, 
-                ClassDefinition superClass) throws ContextualError {
+    void verifyListDeclParam(DecacCompiler compiler) throws ContextualError {
         Iterator<AbstractDeclParam> declParams = this.iterator();
         while (declParams.hasNext())
         {

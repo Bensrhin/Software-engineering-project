@@ -1,9 +1,10 @@
 package fr.ensimag.deca.tree;
+import java.util.*;
 
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
-import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -63,7 +64,24 @@ public class DeclMethod extends AbstractDeclMethod
     }
 
     @Override
-    protected void verifyDeclMethod(DecacCompiler compiler, ClassDefinition supermethod) throws ContextualError {
+    protected void verifyDeclMethod(DecacCompiler compiler,
+            AbstractIdentifier superIdentifier) throws ContextualError {
+            Type type = this.getNameType().verifyType(compiler);
+            // Signature sig = this.getParams().verifyListDeclParam(compiler);
+            Signature sig;
+            Boolean isClass = compiler.get_env_types().get(superIdentifier.getName()).isClass();
+            MethodDefinition override = (MethodDefinition)superIdentifier.getClassDefinition().getMembers().get(getNameMethod().getName());
+
+            if (isClass && override != null &&
+                !((override instanceof MethodDefinition) &&
+                  // override.getSignature().equals(sig) &&
+                  compiler.get_env_types().subType(type, override.getType())))
+            {
+              throw new ContextualError("Méthode \""
+              + this.getNameMethod().getName().getName() + "\" est redéfinie " +
+              "dans une super classe avec une autre définition (règle 2.7)",
+              this.getLocation());
+            }
             /*
               Type nameType = this.getNameType().verifyType(compiler);
               if (nameType.isVoid())
