@@ -1,11 +1,7 @@
-class A {
-int x;
-int getX()
-{
-  return x;
+class C {
+  float a = false;
 }
-}
-class A extends B
+class A extends C
 {
-
+  int b;
 }

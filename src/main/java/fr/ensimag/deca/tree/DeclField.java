@@ -1,9 +1,9 @@
 package fr.ensimag.deca.tree;
 
-import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
-import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.*;
+
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -17,20 +17,28 @@ import org.apache.log4j.Logger;
  */
 public class DeclField extends AbstractDeclField {
 
-
+    final private Visibility visib;
     final private AbstractIdentifier type;
     final private AbstractIdentifier fieldName;
-    final private AbstractInitialization initialization;
+    private AbstractInitialization initialization;
     private static final Logger LOG = Logger.getLogger(DeclField.class);
-    public DeclField(AbstractIdentifier type, AbstractIdentifier fieldName, AbstractInitialization initialization) {
+    public DeclField(Visibility visib, AbstractIdentifier type,
+                     AbstractIdentifier fieldName,
+                     AbstractInitialization initialization) {
         Validate.notNull(type);
+        Validate.notNull(visib);
         Validate.notNull(fieldName);
         Validate.notNull(initialization);
+        this.visib = visib;
         this.type = type;
         this.fieldName = fieldName;
         this.initialization = initialization;
     }
 
+    public Visibility getVisibility()
+    {
+        return this.visib;
+    }
     public AbstractIdentifier getNameType()
     {
         return this.type;
@@ -44,38 +52,56 @@ public class DeclField extends AbstractDeclField {
         return this.initialization;
     }
     @Override
-    protected void verifyDeclField(DecacCompiler compiler, ClassDefinition superClass,
-            ClassDefinition currentClass)
+    protected void verifyDeclField(DecacCompiler compiler,
+                  AbstractIdentifier superIdentifier, AbstractIdentifier classIdentifier)
             throws ContextualError {
-            /*
+
               Type nameType = this.getNameType().verifyType(compiler);
               if (nameType.isVoid())
               {
-                  throw new ContextualError("type must be defferent than void", this.getLocation());
+                  throw new ContextualError("Type de l'indentificateur \""+
+                          this.getNameField().getName().toString() +
+                          "\" doit être différent de void (règle 2.5)", this.getLocation());
               }
-              
-              FieldiableDefinition def = new FieldiableDefinition(nameType, this.getLocation());
+              Definition override = superIdentifier.getClassDefinition().getMembers().get(getNameField().getName());
+              if (override != null && !(override instanceof FieldDefinition))
+              {
+                throw new ContextualError("Le champs \""
+                + this.getNameField().getName().getName() + "\" est défini " +
+                "dans une super classe avec une autre définition (règle 2.5)",
+                this.getLocation());
+              }
+              ClassDefinition classDef = classIdentifier.getClassDefinition();
+              int index = classDef.getNumberOfFields(); index ++;
+              classDef.setNumberOfFields(index);
+              FieldDefinition def = new FieldDefinition(nameType,
+                      this.getLocation(), this.getVisibility(),
+                      classDef, index);
               Symbol symbol = this.getNameField().getName();
               try
               {
-                  localEnv.declare(symbol, def);
+                  classDef.getMembers().declare(symbol, def);
               }
               catch (DoubleDefException e)
               {
                   throw new ContextualError(symbol.toString()
                              + "is already defined", this.getLocation());
               }
-              Type nameField = this.getNameField().verifyExpr(compiler, localEnv, currentClass);
-              this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
-              //LOG.debug("End of verifyDeclField");
-    }       */
+              this.getNameField().setDefinition(def);
+              this.getNameField().setType(nameType);
+              // System.out.println(classDef.getNumberOfFields());
     }
     @Override
     protected void codeGenField(DecacCompiler compiler, int i)
     {
-        
-    }
 
+    }
+    @Override
+    String printNodeLine(PrintStream s, String prefix, boolean last,
+            boolean inlist, String nodeName) {
+            return super.printNodeLine(s, prefix, last, inlist,
+                      "[visibility=" + visib.getValue() + "] " + nodeName);
+          }
     @Override
     public void decompile(IndentPrintStream s) {
       this.type.decompile(s);

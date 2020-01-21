@@ -14,7 +14,7 @@ import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 /**
  * Declaration of a class (<code>class name extends superClass {members}<code>).
- * 
+ *
  * @author gl53
  * @date 01/01/2020
  */
@@ -23,7 +23,7 @@ public class DeclClass extends AbstractDeclClass {
     private AbstractIdentifier superName;
     private ListDeclField fields;
     private ListDeclMethod methods;
-    
+
     public DeclClass(AbstractIdentifier name, AbstractIdentifier superName,
                      ListDeclField fields, ListDeclMethod methods)
     {
@@ -48,7 +48,7 @@ public class DeclClass extends AbstractDeclClass {
     {
         return this.methods;
     }
-    
+
     @Override
     public void decompile(IndentPrintStream s) {
         s.print("class ");
@@ -69,31 +69,32 @@ public class DeclClass extends AbstractDeclClass {
         Symbol nameKey = this.getName().getName();
         Symbol superNameKey = this.getSuperName().getName();
         Definition def = compiler.get_env_types().get(superNameKey);
-        Location loc = def.getLocation();
+
         /*
         if (superNameKey.getName().equals("Object"))
         {
             loc = Location.BUILTIN;
         }
         */
-        ClassType superType = new ClassType(superNameKey, loc, null);
-        
-        if(compiler.get_env_types().get(superNameKey) == null)
+        if(def == null)
         {
-            throw new ContextualError("L'identificateur \"" 
-                    + superName.decompile() + "\" non déclarée (règle 1.3)", 
+            throw new ContextualError("L'identificateur \""
+                    + superName.decompile() + "\" non déclarée (règle 1.3)",
                     this.getLocation());
         }
-        else if(!compiler.get_env_types().get(superNameKey).isClass())
+        else if(!def.isClass())
         {
-            throw new ContextualError("L'identificateur \"" 
-                    + superName.decompile() + "\" n'est pas une class (règle 1.3)", 
+            throw new ContextualError("L'identificateur \""
+                    + superName.decompile() + "\" n'est pas une class (règle 1.3)",
                     this.getLocation());
         }
-        this.getSuperName().setDefinition(superType.getDefinition());
-        
-        ClassType currentType = new ClassType(nameKey, 
-                this.getName().getLocation(), superType.getDefinition());
+        // Location loc = def.getLocation();
+        // ClassType superType = new ClassType(superNameKey, loc, null);
+        this.getSuperName().setDefinition((ClassDefinition) def);
+        this.getSuperName().setType((ClassType) def.getType());
+
+        ClassType currentType = new ClassType(nameKey,
+                this.getName().getLocation(), (ClassDefinition) def);
         try
         {
             compiler.get_env_types().declare(nameKey, currentType.getDefinition());
@@ -104,14 +105,20 @@ public class DeclClass extends AbstractDeclClass {
                     nameKey.toString()
                        + "\" est déjà déclaré (règle 1.3)", this.getLocation());
         }
+        this.getName().setType(currentType);
         this.getName().setDefinition(currentType.getDefinition());
     }
     @Override
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
+
+          this.getFields().verifyListDeclField(compiler,
+          this.getSuperName(), this.getName());
+          // this.getMethods().verifyListDeclField(compiler,
+          // this.getSuperName().getClassDefinition());
         //throw new UnsupportedOperationException("not yet implemented");
     }
-    
+
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
         //throw new UnsupportedOperationException("not yet implemented");

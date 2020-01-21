@@ -37,13 +37,16 @@ public class ListDeclField extends TreeList<AbstractDeclField> {
      * @param currentClass
      *          corresponds to "class" attribute (null in the main bloc).
      */
-    void verifyListDeclField(DecacCompiler compiler, ClassDefinition superClass,
-                             ClassDefinition currentClass) throws ContextualError {
+    void verifyListDeclField(DecacCompiler compiler, AbstractIdentifier superIdentifier,
+                             AbstractIdentifier classIdentifier) throws ContextualError {
         Iterator<AbstractDeclField> declFields = this.iterator();
         while (declFields.hasNext())
         {
             AbstractDeclField declField = declFields.next();
-            declField.verifyDeclField(compiler, superClass, currentClass);
+            int index = superIdentifier.getClassDefinition().getNumberOfFields();
+            classIdentifier.getClassDefinition().setNumberOfFields(index);
+            // System.out.println("init" + index);
+            declField.verifyDeclField(compiler, superIdentifier, classIdentifier);
         }
 
     }
