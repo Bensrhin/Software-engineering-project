@@ -63,8 +63,9 @@ public class DeclField extends AbstractDeclField {
                           this.getNameField().getName().toString() +
                           "\" doit être différent de void (règle 2.5)", this.getLocation());
               }
+              Boolean isClass = compiler.get_env_types().get(superIdentifier.getName()).isClass();
               Definition override = superIdentifier.getClassDefinition().getMembers().get(getNameField().getName());
-              if (override != null && !(override instanceof FieldDefinition))
+              if (isClass && override != null && !(override instanceof FieldDefinition))
               {
                 throw new ContextualError("Le champs \""
                 + this.getNameField().getName().getName() + "\" est défini " +

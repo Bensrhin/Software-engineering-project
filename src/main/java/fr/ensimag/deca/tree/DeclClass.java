@@ -8,6 +8,7 @@ import fr.ensimag.deca.context.EnvironmentType;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.Definition;
+import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
@@ -118,8 +119,8 @@ public class DeclClass extends AbstractDeclClass {
 
           this.getFields().verifyListDeclField(compiler,
           this.getSuperName(), this.getName());
-          // this.getMethods().verifyListDeclField(compiler,
-          // this.getSuperName().getClassDefinition());
+          this.getMethods().verifyListDeclMethod(compiler,
+          this.getSuperName(), this.getName());
         //throw new UnsupportedOperationException("not yet implemented");
     }
 
@@ -153,28 +154,34 @@ public class DeclClass extends AbstractDeclClass {
         codeGenClas(compiler, current);
     }
     private static ArrayList<String> mth = new ArrayList<String>();
-    private static ArrayList<LabelOperand> lbl = new ArrayList<LabelOperand>();
+    private HashSet<Symbol> vu = new HashSet<Symbol>();
     protected void codeGenClas(DecacCompiler compiler, ClassDefinition current){
-        System.out.println(current.getMembers().getMapMethod());
-/*
-        if(current.getClassDefinition().getSuperClass() != null){
-            for(AbstractDeclMethod m : current.getMethods().getList()){
-                if(!mth.contains(m.getNameMethod().getName().toString())){
-                    mth.add(m.getNameMethod().getName().toString());
-                    LabelOperand op = new LabelOperand(new Label("code."+current.getName()+"."+m.getNameMethod().getName()));
-                    lbl.add(op);
-                }
-            }
-            codeGenClas(compiler, current.getClassDefinition().getSuperName());
-        }
-        else{
+       Symbol name = current.getType().getName();
+       if(name == this.name.getName()){
             compiler.addComment("construction de la table des methodes de " + current.getType());
-            DAddr addr = current.getClassDefinition().getOperand();
+            DAddr addr = current.getOperand();
             RegisterOffset gb = compiler.getRegisterManager().getRegOff();
             compiler.addInstruction(new LEA(addr, Register.R0));
             compiler.addInstruction(new STORE(Register.R0, gb));
-            current.getClassDefinition().setOperand(gb);
         }
-  **/ 
+        ExpDefinition mth;
+        Map<Symbol, ExpDefinition> dic = current.getMembers().getMapMethod();
+        Set<Map.Entry<Symbol, ExpDefinition>> couples = dic.entrySet();
+        Iterator<Map.Entry<Symbol, ExpDefinition>> itCouples = couples.iterator();
+        while(itCouples.hasNext()){
+            Map.Entry<Symbol, ExpDefinition> couple = itCouples.next();
+            mth = couple.getValue();
+            if(vu.add(couple.getKey())){
+                DAddr addr = current.getOperand();
+                MethodDefinition methode = (MethodDefinition)(mth);
+                compiler.addInstruction(new LOAD(new LabelOperand(methode.getLabel()), Register.R0));
+                RegisterOffset rg = new RegisterOffset(methode.getIndex(), Register.GB);
+                compiler.addInstruction(new STORE(Register.R0, rg));
+            }
+        }
+        ClassDefinition sup = current.getSuperClass();
+        if(sup != null){
+            codeGenClas(compiler, sup);
+        }
  }
   }

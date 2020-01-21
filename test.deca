@@ -3,7 +3,6 @@ class A {
   int getX(){
     return x;
 }
-
 }
 class B extends A{
     int y;

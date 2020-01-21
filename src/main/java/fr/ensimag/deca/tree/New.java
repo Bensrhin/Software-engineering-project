@@ -35,7 +35,12 @@ public class New extends AbstractExpr{
   @Override
   public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
           ClassDefinition currentClass) throws ContextualError {
-        return null;
+        Type type =  this.getIdExpr().verifyType(compiler);
+        if (!type.isClass())
+        {
+          throw new ContextualError("Le type doit être une classe (règle 3.42)", this.getLocation());
+        }
+        return type;
   }
 
 
