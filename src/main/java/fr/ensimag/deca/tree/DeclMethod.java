@@ -5,6 +5,7 @@ import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.context.*;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -86,6 +87,7 @@ public class DeclMethod extends AbstractDeclMethod
             classDef.setNumberOfMethods(index);
             MethodDefinition def = new MethodDefinition(type,
                     this.getLocation(), sig, index);
+            def.setLabel(new Label("code." + classIdentifier.getName().getName() + "." + this.getNameMethod().getName().getName()));
             Symbol symbol = this.getNameMethod().getName();
             try
             {

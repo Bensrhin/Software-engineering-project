@@ -1,14 +1,14 @@
 class A
 {
-  int getA(int a, int b)
+  int getA(int a, float b)
   {
-
+    int a = THISx;
   }
 }
 
 class B extends A
 {
-  int getA(int a, int c)
+  int getA(float a)
   {
 
   }
