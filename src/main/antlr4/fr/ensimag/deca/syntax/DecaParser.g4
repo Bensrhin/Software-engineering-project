@@ -400,6 +400,8 @@ select_expr returns[AbstractExpr tree]
     | e1=select_expr DOT i=ident {
             assert($e1.tree != null);
             assert($i.tree != null);
+            $tree = new Dot($e1.tree, $i.tree);
+            setLocation($tree, $DOT);
 
         }
         (o=OPARENT args=list_expr CPARENT {
@@ -557,8 +559,10 @@ decl_method returns[AbstractDeclMethod methods]
           assert($params.tree != null);
           assert($ident.tree != null);
           assert($type.tree != null);
-
-          $methods = new DeclMethod($type.tree, $ident.tree, $params.tree, new MethodBody($block.decls, $block.insts));
+          MethodBody mb = new MethodBody($block.decls, $block.insts);
+          setLocation(mb, $block.start);
+          $methods = new DeclMethod($type.tree, $ident.tree, $params.tree, mb);
+          
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
           assert($code.location != null);

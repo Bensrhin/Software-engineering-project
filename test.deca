@@ -1,7 +1,10 @@
 class C {
-  float a = false;
-}
-class A extends C
-{
-  int b;
-}
+  int x = 0;
+  int getX(){
+    return x;
+  }
+  }
+  {
+  C c = new C();
+  int a = c.x;
+  }
