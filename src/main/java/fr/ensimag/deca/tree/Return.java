@@ -9,6 +9,11 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.Label;
 import java.io.PrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
+
 
 import org.apache.commons.lang.Validate;
 /**
@@ -38,19 +43,22 @@ public class Return extends AbstractInst {
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
-              /*
+
         if (returnType.isVoid())
         {
             throw new ContextualError("return must be defferent than void", this.getLocation());
         }
-        this.setType(this.getRvalue().verifyExpr(compiler, localEnv, currentClass, returnType));
-        */
+        this.getRvalue().verifyRValue(compiler, localEnv, currentClass, returnType);
+
 
     }
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implemented");
+        GPRegister r = rvalue.codeGenLoad(compiler);
+        compiler.addInstruction(new STORE(r,
+                new RegisterOffset(-1, Register.LB)));
+        compiler.getRegisterManager().freeReg(compiler, r);
     }
 
     @Override

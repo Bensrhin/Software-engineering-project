@@ -7,6 +7,7 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.instructions.ADDSP;
 import fr.ensimag.ima.pseudocode.instructions.TSTO;
+import fr.ensimag.ima.pseudocode.instructions.RTS;
 
 /**
  * List of declarations (e.g. int x; float y,z).
@@ -37,27 +38,35 @@ public class ListDeclField extends TreeList<AbstractDeclField> {
      * @param currentClass
      *          corresponds to "class" attribute (null in the main bloc).
      */
-    void verifyListDeclField(DecacCompiler compiler, ClassDefinition superClass,
-                             ClassDefinition currentClass) throws ContextualError {
+    void verifyListDeclField(DecacCompiler compiler, AbstractIdentifier superIdentifier,
+                             AbstractIdentifier classIdentifier) throws ContextualError {
         Iterator<AbstractDeclField> declFields = this.iterator();
+        int index = superIdentifier.getClassDefinition().getNumberOfFields();
+        classIdentifier.getClassDefinition().setNumberOfFields(index);
         while (declFields.hasNext())
         {
             AbstractDeclField declField = declFields.next();
-            declField.verifyDeclField(compiler, superClass, currentClass);
+            declField.verifyDeclField(compiler, superIdentifier, classIdentifier);
         }
 
     }
+
+    void verifyListDeclFieldValue(DecacCompiler compiler,
+        EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError
+        {
+          Iterator<AbstractDeclField> declFields = this.iterator();
+          while (declFields.hasNext())
+          {
+              AbstractDeclField declField = declFields.next();
+              declField.verifyFieldValue(compiler, localEnv, currentClass);
+          }
+        }
+
     public void codeGenListField(DecacCompiler compiler){
-        int j = 1;
-        int n = getList().size();
-        if(n > 0){
-            compiler.addInstruction(new TSTO(getList().size()));
-            compiler.addInstruction(new ADDSP(getList().size()));
-        }
         for (AbstractDeclField i : getList()) {
-            i.codeGenField(compiler, j);
-            j ++;
-        }
+            i.codeGenField(compiler);
+       }
+        compiler.addInstruction(new RTS());
     }
 
 

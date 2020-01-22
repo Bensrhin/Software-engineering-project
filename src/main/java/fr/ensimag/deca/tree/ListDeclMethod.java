@@ -37,23 +37,30 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
      * @param currentClass
      *          corresponds to "class" attribute (null in the main bloc).
      */
-    void verifyListDeclMethod(DecacCompiler compiler, 
-                ClassDefinition superClass) throws ContextualError {
+    void verifyListDeclMethod(DecacCompiler compiler,
+                AbstractIdentifier superIdentifier, AbstractIdentifier classIdentifier) throws ContextualError {
         Iterator<AbstractDeclMethod> declMethods = this.iterator();
+        int index = superIdentifier.getClassDefinition().getNumberOfMethods();
+        classIdentifier.getClassDefinition().setNumberOfMethods(index);
         while (declMethods.hasNext())
         {
             AbstractDeclMethod declMethod = declMethods.next();
-            declMethod.verifyDeclMethod(compiler, superClass);
+            declMethod.verifyDeclMethod(compiler, superIdentifier, classIdentifier);
         }
-
     }
+    void verifyListDeclMethodBody(DecacCompiler compiler,
+        EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError
+        {
+          Iterator<AbstractDeclMethod> declMethods = this.iterator();
+          while (declMethods.hasNext())
+          {
+              AbstractDeclMethod declMethod = declMethods.next();
+              declMethod.verifyMethodBody(compiler, localEnv, currentClass);
+          }
+        }
     public void codeGenListMethod(DecacCompiler compiler){
         int j = 1;
         int n = getList().size();
-        if(n > 0){
-            compiler.addInstruction(new TSTO(getList().size()));
-            compiler.addInstruction(new ADDSP(getList().size()));
-        }
         for (AbstractDeclMethod i : getList()) {
             i.codeGenMethod(compiler, j);
             j ++;

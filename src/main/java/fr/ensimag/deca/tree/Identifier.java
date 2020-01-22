@@ -21,10 +21,8 @@ import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
-import fr.ensimag.ima.pseudocode.instructions.LOAD;
-import fr.ensimag.ima.pseudocode.instructions.WINT;
-import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
-import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.instructions.*;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.deca.codegen.RegisterManager;
 
 /**
@@ -176,22 +174,21 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        /*
-        Set<Symbol> sym = localEnv.stringIsIn();
-        for (Symbol s:sym)
-        {
-            System.out.println(s.getName());
-        }
-        */
-        //System.out.println(this.getName().getName());
-        Symbol s = localEnv.stringIsIn(this.getName());
-        if (s == null)
+
+        // Set<Symbol> sym = localEnv.getParent().stringIsIn();
+        // for (Symbol s:sym)
+        // {
+        //     System.out.println(s.getName());
+        // }
+
+        ExpDefinition def = localEnv.get(this.getName());
+        if (def == null)
         {
                 throw new ContextualError("Identificateur \""
                         + this.getName().toString()
                         + "\" non déclaré (règle 0.1)", this.getLocation());
         }
-        ExpDefinition def = localEnv.get(s);
+
         this.setDefinition(def);
         this.setType(def.getType());
         return this.getType();
@@ -203,14 +200,16 @@ public class Identifier extends AbstractIdentifier {
      */
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
-      if (!compiler.getSymbols().checkSymbol(this.getName().toString())){
+      TypeDefinition def = compiler.get_env_types().get(this.getName());
+      if (def == null){
               throw new ContextualError("Type \"" + this.getName().toString() +
                 "\" n'est pas un type prédéfini (règle 0.2)", this.getLocation());
           }
 
-          Type type = this.getName().getType();
-          //ExpDefinition def = this.getName().
-          TypeDefinition def = new TypeDefinition(type, Location.BUILTIN);
+          // Type type = this.getName().getType();
+          Type type = def.getType();
+          // TypeDefinition def = new TypeDefinition(type, Location.BUILTIN);
+          // System.out.println(def.getType());
           this.setDefinition(def);
           this.setType(type);
           return this.getType();
@@ -269,5 +268,20 @@ public class Identifier extends AbstractIdentifier {
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
         return r1;
     }
+    private static HashMap<LabelOperand, String> Vu = new HashMap<LabelOperand, String>();
+    @Override
+    protected void codeGenObj(DecacCompiler compiler){
+        compiler.addComment("construction de la table des methodes de " + this.getType());
+        LabelOperand obj = new LabelOperand(new Label("code.Object.equals"));
+        compiler.addInstruction(new LOAD(new ImmediateNull(), Register.R0));
+        RegisterOffset gb1 = new RegisterOffset(1, Register.GB);
+        RegisterOffset gb2 = new RegisterOffset(2, Register.GB);
+        compiler.addInstruction(new STORE(Register.R0, gb1));
+        compiler.addInstruction(new LOAD(obj, Register.R0));
+        Vu.put(obj, this.getType().toString());
+        compiler.addInstruction(new STORE(Register.R0, gb2));
+        this.getClassDefinition().setOperand(gb1);
+    }
+
 
 }

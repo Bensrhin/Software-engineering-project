@@ -1,11 +1,22 @@
 class A {
-int x;
-int getX()
-{
-  return x;
-}
-}
-class A extends B
-{
+  protected int x;
+  int z;
+  void getX(){
 
-}
+  }
+  }
+  class B extends A {
+    protected int x;
+    int z;
+    void getX(){
+
+    }
+    }
+
+    class C extends B {
+      protected int x;
+      int z;
+      void getX(){
+
+      }
+      }

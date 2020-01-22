@@ -1,7 +1,7 @@
 package fr.ensimag.deca.tree;
 import java.util.Iterator;
 import fr.ensimag.deca.DecacCompiler;
-import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -37,16 +37,26 @@ public class ListDeclParam extends TreeList<AbstractDeclParam> {
      * @param currentClass
      *          corresponds to "class" attribute (null in the main bloc).
      */
-    void verifyListDeclParam(DecacCompiler compiler, 
-                ClassDefinition superClass) throws ContextualError {
+    Signature verifyListDeclParam(DecacCompiler compiler) throws ContextualError {
         Iterator<AbstractDeclParam> declParams = this.iterator();
+        Signature sig = new Signature();
         while (declParams.hasNext())
         {
             AbstractDeclParam declParam = declParams.next();
-            declParam.verifyDeclParam(compiler);
+            sig.add(declParam.verifyDeclParam(compiler));
         }
-
+        return sig;
     }
+    void verifyParams(DecacCompiler compiler,
+        EnvironmentExp paramEnv)  throws ContextualError
+        {
+          Iterator<AbstractDeclParam> declParams = this.iterator();
+          while (declParams.hasNext())
+          {
+              AbstractDeclParam declParam = declParams.next();
+              declParam.verifyParam(compiler, paramEnv);
+          }
+        }
     public void codeGenListParam(DecacCompiler compiler){
         int j = 1;
         int n = getList().size();

@@ -32,7 +32,41 @@ public class EnvironmentExp {
         this.parentEnvironment = parentEnvironment;
         dictionary = new HashMap<Symbol, ExpDefinition>();
     }
+    public void setParent(EnvironmentExp parentEnvironment)
+    {
+      this.parentEnvironment = parentEnvironment;
+    }
+    public EnvironmentExp getParent()
+    {
+      return this.parentEnvironment;
+    }
 
+    public Map<Symbol, ExpDefinition> getMapMethod(){
+        Set<Map.Entry<Symbol, ExpDefinition>> couples = dictionary.entrySet();
+        Iterator<Map.Entry<Symbol, ExpDefinition>> itCouples = couples.iterator();
+        HashMap<Symbol, ExpDefinition> dic = new HashMap<Symbol, ExpDefinition>();
+        while (itCouples.hasNext()) {
+            Map.Entry<Symbol, ExpDefinition> couple = itCouples.next();
+            ExpDefinition def = couple.getValue();
+            if(def.isMethod()){
+                dic.put(couple.getKey(), def);
+            }
+        }
+        return dic;
+    }
+    public Map<Symbol, ExpDefinition> getMapField(){
+        Set<Map.Entry<Symbol, ExpDefinition>> couples = dictionary.entrySet();
+        Iterator<Map.Entry<Symbol, ExpDefinition>> itCouples = couples.iterator();
+        HashMap<Symbol, ExpDefinition> dic = new HashMap<Symbol, ExpDefinition>();
+        while (itCouples.hasNext()) {
+            Map.Entry<Symbol, ExpDefinition> couple = itCouples.next();
+            ExpDefinition def = couple.getValue();
+            if(def.isField()){
+                dic.put(couple.getKey(), def);
+            }
+        }
+        return dic;
+    }
     public static class DoubleDefException extends Exception {
         private static final long serialVersionUID = -2733379901827316441L;
     }
@@ -53,7 +87,7 @@ public class EnvironmentExp {
         {
             if (this.parentEnvironment != null)
             {
-                return this.parentEnvironment.get(s);
+                return this.parentEnvironment.get(key);
             }
             else
             {
@@ -116,7 +150,8 @@ public class EnvironmentExp {
                 return s;
             }
         }
-        return null;
+          return null;
+
     }
     public boolean isIn(Symbol key)
     {

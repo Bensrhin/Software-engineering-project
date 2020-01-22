@@ -1,9 +1,11 @@
 package fr.ensimag.deca.tree;
+import java.util.*;
 
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
-import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.*;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -20,17 +22,16 @@ public class DeclMethod extends AbstractDeclMethod
     final private AbstractIdentifier type;
     final private AbstractIdentifier method;
     final private ListDeclParam params;
-    private AbstractMain methodBody;
+    private MethodBody methodBody;
     final private String code;
 
     private static final Logger LOG = Logger.getLogger(DeclMethod.class);
     public DeclMethod(AbstractIdentifier type, AbstractIdentifier method,
-        ListDeclParam params, AbstractMain methodBody) {
+        ListDeclParam params, MethodBody methodBody) {
         Validate.notNull(type);
         Validate.notNull(method);
         Validate.notNull(params);
         Validate.notNull(methodBody);
-
         this.type = type;
         this.method = method;
         this.params = params;
@@ -50,7 +51,14 @@ public class DeclMethod extends AbstractDeclMethod
         this.code = code;
         this.methodBody = null;
     }
-
+    public MethodBody getBody()
+    {
+        return this.methodBody;
+    }
+    public String getCode()
+    {
+        return this.code;
+    }
     public AbstractIdentifier getNameType()
     {
         return this.type;
@@ -63,32 +71,69 @@ public class DeclMethod extends AbstractDeclMethod
     }
 
     @Override
-    protected void verifyDeclMethod(DecacCompiler compiler, ClassDefinition supermethod) throws ContextualError {
-            /*
-              Type nameType = this.getNameType().verifyType(compiler);
-              if (nameType.isVoid())
-              {
-                  throw new ContextualError("type must be defferent than void", this.getLocation());
-              }
+    protected void verifyDeclMethod(DecacCompiler compiler,
+            AbstractIdentifier superIdentifier, AbstractIdentifier classIdentifier) throws ContextualError {
+            Type type = this.getNameType().verifyType(compiler);
+            Signature sig = this.getParams().verifyListDeclParam(compiler);
+            Boolean isClass = compiler.get_env_types().get(superIdentifier.getName()).isClass();
+            MethodDefinition override = (MethodDefinition)superIdentifier.getClassDefinition().getMembers().get(getNameMethod().getName());
 
-              methodeDefinition def = new methodeDefinition(nameType, this.getLocation());
-              Symbol symbol = this.getNamemethodetName();
-              try
-              {
-                  localEnv.declare(symbol, def);
-              }
-              catch (DoubleDefException e)
-              {
-                  throw new ContextualError(symbol.toString()
-                             + "is already defined", this.getLocation());
-              }
-              Type namemethodhis.getNamemethoderifyExpr(compiler, localEnv, currentClass);
-              this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
-              //LOG.debug("End of verifyDeclmethod */
+            if (isClass && override != null &&
+                !((override instanceof MethodDefinition) &&
+                  override.getSignature().equals(sig) &&
+                  compiler.get_env_types().subType(type, override.getType())))
+            {
+              throw new ContextualError("Méthode \""
+              + this.getNameMethod().getName().getName() + "\" est redéfinie " +
+              "dans une super classe avec une autre définition (règle 2.7)",
+              this.getLocation());
+            }
+            ClassDefinition classDef = classIdentifier.getClassDefinition();
+            int index = classDef.getNumberOfMethods();
+            index ++;
+            classDef.setNumberOfMethods(index);
+            System.out.println(index);
+            MethodDefinition def = new MethodDefinition(type,
+                    this.getLocation(), sig, index);
+            def.setLabel(new Label("code." + classIdentifier.getName().getName() + "." + this.getNameMethod().getName().getName()));
+            Symbol symbol = this.getNameMethod().getName();
+            try
+            {
+                classDef.getMembers().declare(symbol, def);
+            }
+            catch (DoubleDefException e)
+            {
+                throw new ContextualError(symbol.toString()
+                           + "is already defined", this.getLocation());
+            }
+            this.getNameMethod().verifyExpr(compiler, classDef.getMembers(), classDef);
     }
+    @Override
+    protected void verifyMethodBody(DecacCompiler compiler,
+        EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError
+        {
+          Type rType = this.getNameType().getType();
+          EnvironmentExp paramEnv = new EnvironmentExp(localEnv);
+          this.getParams().verifyParams(compiler, paramEnv);
+
+          MethodBody mBody = this.getBody();
+          if (mBody != null)
+          {
+            mBody.verifyBody(compiler, localEnv, paramEnv, currentClass, rType);
+          }
+
+        }
     @Override
     protected void codeGenMethod(DecacCompiler compiler, int i){
         //method.codeGenIdent(compiler, i);
+        LinkedList<Instruction>  l = new LinkedList<Instruction>();
+        compiler.addLabel(new Label(getNameMethod().
+                getMethodDefinition().getLabel().toString() ));
+        MethodBody body = methodBody;
+        if (methodBody != null){
+
+            methodBody.codeGenBody(compiler);
+        }
 
     }
 

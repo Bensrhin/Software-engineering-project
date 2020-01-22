@@ -71,7 +71,6 @@ public class DeclVar extends AbstractDeclVar {
                           this.getLocation());
               }
               Type nameVar = this.getNameVar().verifyExpr(compiler, localEnv, currentClass);
-
               //LOG.debug("End of verifyDeclVar");
     }
     @Override

@@ -3,7 +3,7 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
-import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -20,7 +20,7 @@ public class DeclParam extends AbstractDeclParam
     final private AbstractIdentifier type;
     final private AbstractIdentifier param;
 
-    
+
     private static final Logger LOG = Logger.getLogger(DeclParam.class);
     public DeclParam(AbstractIdentifier type, AbstractIdentifier param) {
         Validate.notNull(type);
@@ -38,35 +38,42 @@ public class DeclParam extends AbstractDeclParam
     }
 
     @Override
-    protected void verifyDeclParam(DecacCompiler compiler) throws ContextualError {
-            /*
+    protected Type verifyDeclParam(DecacCompiler compiler) throws ContextualError {
               Type nameType = this.getNameType().verifyType(compiler);
               if (nameType.isVoid())
               {
-                  throw new ContextualError("type must be defferent than void", this.getLocation());
+                  throw new ContextualError("Type de l'indentificateur \""+
+                          this.getNameType().getName().toString() +
+                          "\" doit être différent de void (règle 2.5)", this.getLocation());
               }
-              
-                parameDefinition def = ne    parameDefinition(nameType, this.getLocation());
-              Symbol symbol = this.getNa    parametName();
-              try
-              {
-                  localEnv.declare(symbol, def);
-              }
-              catch (DoubleDefException e)
-              {
-                  throw new ContextualError(symbol.toString()
-                             + "is already defined", this.getLocation());
-              }
-              Type na   paramhis.getNa   paramerifyExpr(compiler, localEnv, currentClass);
-              this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
-              //LOG.debug("End of verifyDe  param */   
+              this.getNameType().setType(nameType);
+
+
+              return nameType;
+
     }
     @Override
     protected void codeGenParam(DecacCompiler compiler, int i){
             param.codeGenIdent(compiler, i);
-        
-    }
 
+    }
+    @Override
+    protected void verifyParam(DecacCompiler compiler,
+        EnvironmentExp paramEnv) throws ContextualError{
+          Type nameType = this.getNameType().getType();
+          Symbol symbol = getParam().getName();
+          ParamDefinition def = new ParamDefinition(nameType, this.getLocation());
+          try
+          {
+              paramEnv.declare(symbol, def);
+          }
+          catch (DoubleDefException e)
+          {
+              throw new ContextualError("Parameter " +
+              symbol.toString() + " is already defined", this.getLocation());
+          }
+          this.getParam().verifyExpr(compiler, paramEnv, null);
+        }
     @Override
     public void decompile(IndentPrintStream s) {
       this.type.decompile(s);

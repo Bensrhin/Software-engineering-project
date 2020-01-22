@@ -14,18 +14,16 @@ import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tools.SymbolTable;
 import java.io.File;
-import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
+
+import fr.ensimag.deca.context.EnvironmentType.DoubleDefException;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import fr.ensimag.deca.context.TypeDefinition;
-import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.context.*;
+
 import fr.ensimag.deca.tree.Location;
-import fr.ensimag.deca.context.IntType;
-import fr.ensimag.deca.context.VoidType;
-import fr.ensimag.deca.context.BooleanType;
-import fr.ensimag.deca.context.ClassType;
+
 
 import java.io.PrintStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -82,20 +80,37 @@ public class DecacCompiler {
     }
     public void initialisation_symbols()
     {
-        this.symbols.create("void");
-        this.symbols.create("boolean");
-        this.symbols.create("float");
-        this.symbols.create("int");
+        Symbol voidS = this.symbols.create("void");
+        Symbol boolS = this.symbols.create("boolean");
+        Symbol floatS = this.symbols.create("float");
+        Symbol intS = this.symbols.create("int");
         this.symbols.create("String");
+        TypeDefinition voidDef = new TypeDefinition(voidS.getType(), Location.BUILTIN);
+        TypeDefinition boolDef = new TypeDefinition(boolS.getType(), Location.BUILTIN);
+        TypeDefinition floatDef = new TypeDefinition(floatS.getType(), Location.BUILTIN);
+        TypeDefinition intDef = new TypeDefinition(intS.getType(), Location.BUILTIN);
         this.symbols.create("null");
 
         Symbol object = this.symbols.create("Object");
         ClassType objectType = new ClassType(object, Location.BUILTIN, null);
+        /*********************************************/
+        Signature sig = new Signature();
+        sig.add(objectType);
+        Symbol equal = this.symbols.create("equals");
+        MethodDefinition def = new MethodDefinition(boolS.getType(),
+                Location.BUILTIN, sig, 1);
+        def.setLabel(new Label("code.Object.equals"));
+        objectType.getDefinition().setNumberOfMethods(1);
         try
         {
+            objectType.getDefinition().getMembers().declare(equal, def);
+            this.get_env_types().declare(voidS, voidDef);
+            this.get_env_types().declare(boolS, boolDef);
+            this.get_env_types().declare(floatS, floatDef);
+            this.get_env_types().declare(intS, intDef);
             this.get_env_types().declare(object, objectType.getDefinition());
         }
-        catch (EnvironmentType.DoubleDefException e)
+        catch (EnvironmentType.DoubleDefException | EnvironmentExp.DoubleDefException e)
         {
             System.out.println("C'est impossible : C'est la première déclaration");
         }
@@ -113,6 +128,19 @@ public class DecacCompiler {
     public EnvironmentType get_env_types()
     {
         return this.env_types;
+    }
+    public void set_env_types(Symbol name, TypeDefinition def) throws ContextualError
+    {
+        this.env_types = new EnvironmentType(this.get_env_types());
+        try
+        {
+            this.get_env_types().declare(name, def);
+        }
+        catch (EnvironmentType.DoubleDefException e)
+        {
+            throw new ContextualError("règle 2.3", def.getLocation());
+        }
+
     }
     /**
      * Source file associated with this compiler instance.
@@ -254,17 +282,17 @@ public class DecacCompiler {
             prog.decompile(fstream);
             return false;
         }
-        assert(prog.checkAllLocations());
-        prog.verifyProgram(this);
-        assert(prog.checkAllDecorations());
+        //assert(prog.checkAllLocations());
+       prog.verifyProgram(this);
+        //assert(prog.checkAllDecorations());
         if (cond.getVerification()){
             return false;
         }
 
-        addComment("start main program");
+        //addComment("start main program");
         prog.getMain().codeGenEntete(this, prog.getMain().getDeclVariables().getList().size());
         prog.codeGenProgram(this);
-        addComment("end main program");
+        //addComment("end main program");
         this.codeGenErr();
 
         LOG.debug("Generated assembly code:" + nl + program.display());
