@@ -93,16 +93,24 @@ public class DecacCompiler {
 
         Symbol object = this.symbols.create("Object");
         ClassType objectType = new ClassType(object, Location.BUILTIN, null);
-
+        /*********************************************/
+        Signature sig = new Signature();
+        sig.add(objectType);
+        Symbol equal = this.symbols.create("equals");
+        MethodDefinition def = new MethodDefinition(boolS.getType(),
+                Location.BUILTIN, sig, 1);
+        def.setLabel(new Label("code.Object.equals"));
+        objectType.getDefinition().setNumberOfMethods(2);
         try
         {
+            objectType.getDefinition().getMembers().declare(equal, def);
             this.get_env_types().declare(voidS, voidDef);
             this.get_env_types().declare(boolS, boolDef);
             this.get_env_types().declare(floatS, floatDef);
             this.get_env_types().declare(intS, intDef);
             this.get_env_types().declare(object, objectType.getDefinition());
         }
-        catch (EnvironmentType.DoubleDefException e)
+        catch (EnvironmentType.DoubleDefException | EnvironmentExp.DoubleDefException e)
         {
             System.out.println("C'est impossible : C'est la première déclaration");
         }

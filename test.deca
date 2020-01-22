@@ -7,5 +7,20 @@ class A {
     println(z);
     return x;
 	}
+  boolean equals(int o)
+  {
+
+  }
+
+}
+class B extends A{
+  int x;
+  int z;
+
+  int getX(int a){
+    this.a;
+    println(z);
+    return x;
+	}
 
 }

@@ -47,7 +47,6 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
             AbstractDeclMethod declMethod = declMethods.next();
             declMethod.verifyDeclMethod(compiler, superIdentifier, classIdentifier);
         }
-
     }
     void verifyListDeclMethodBody(DecacCompiler compiler,
         EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError
@@ -59,7 +58,7 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
               declMethod.verifyMethodBody(compiler, localEnv, currentClass);
           }
         }
-    public void codeGenListMethod(DecacCompiler compiler){        
+    public void codeGenListMethod(DecacCompiler compiler){
         int j = 1;
         int n = getList().size();
         for (AbstractDeclMethod i : getList()) {
