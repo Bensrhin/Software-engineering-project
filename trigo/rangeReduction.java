@@ -1,0 +1,2 @@
+public class rangeReduction {
+}
