@@ -6,7 +6,7 @@
 package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
-import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.ima.pseudocode.GPRegister;
@@ -31,8 +31,22 @@ public class Selection extends AbstractLValue{
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        Type class2 = this.expr.verifyExpr(compiler, localEnv, currentClass);
-        return class2;
+        ClassType class2 = (ClassType)this.expr.verifyExpr(compiler, localEnv, currentClass);
+        EnvironmentExp exp2 = class2.getDefinition().getMembers();
+
+        Definition def = compiler.get_env_types().get(class2.getName());
+        if (def == null)
+        {
+          throw new ContextualError(class2.getName() + " is not yet declared ",
+            this.getLocation());
+        }
+        FieldDefinition field = (FieldDefinition) this.id.verifydef(exp2);
+        if (field.getVisibility().getValue().equals("PUBLIC") && !def.isClass())
+        {
+          throw new ContextualError(class2.getName() + " is not a class ",
+            this.getLocation());
+        }
+        return field.getType();
     }
     @Override
     protected void iterChildren(TreeFunction f) {

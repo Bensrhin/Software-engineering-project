@@ -1,5 +1,5 @@
 package fr.ensimag.deca.tree;
-
+import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.DecacCompiler;
@@ -92,10 +92,11 @@ public abstract class AbstractIdentifier extends AbstractLValue {
      * @return the type corresponding to this identifier
      *         (corresponds to the "type" attribute)
      */
+    public abstract ExpDefinition verifydef(EnvironmentExp localEnv) throws ContextualError;
     public abstract Type verifyType(DecacCompiler compiler) throws ContextualError;
     public abstract void codeGenIdent(DecacCompiler compiler,int i);
     protected abstract void codeGenObj(DecacCompiler compiler);
     protected void codeGenClass(DecacCompiler compiler, ListDeclMethod methods){
     }
-   
+
 }

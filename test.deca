@@ -20,3 +20,7 @@ class A {
 
       }
       }
+{
+  A a = new A();
+  a.z = 0;
+}
