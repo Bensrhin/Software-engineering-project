@@ -38,13 +38,13 @@ public class Return extends AbstractInst {
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
-              /*
+
         if (returnType.isVoid())
         {
             throw new ContextualError("return must be defferent than void", this.getLocation());
         }
-        this.setType(this.getRvalue().verifyExpr(compiler, localEnv, currentClass, returnType));
-        */
+        this.getRvalue().verifyRValue(compiler, localEnv, currentClass, returnType);
+
 
     }
 

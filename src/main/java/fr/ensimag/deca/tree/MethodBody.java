@@ -1,4 +1,5 @@
 package fr.ensimag.deca.tree;
+import java.util.*;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
@@ -7,7 +8,7 @@ import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
-import fr.ensimag.deca.tools.SymbolTable;
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import fr.ensimag.ima.pseudocode.instructions.TSTO;
@@ -37,7 +38,6 @@ public class MethodBody extends Tree {
               EnvironmentExp paramEnv, ClassDefinition currentClass,
               Type rType) throws ContextualError
       {
-        paramEnv.setParent(localEnv);
         declVariables.verifyListDeclVariable(compiler, paramEnv, currentClass);
         insts.verifyListInst(compiler, paramEnv, currentClass, rType);
       }

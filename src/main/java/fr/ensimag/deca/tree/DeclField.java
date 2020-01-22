@@ -94,9 +94,8 @@ public class DeclField extends AbstractDeclField {
                   throw new ContextualError(symbol.toString()
                              + "is already defined", this.getLocation());
               }
-              this.getNameField().setDefinition(def);
-              this.getNameField().setType(nameType);
-              // System.out.println(classDef.getNumberOfFields());
+              this.getNameField().verifyExpr(compiler, classDef.getMembers(), classDef);
+              // System.out.println(symbol.getName());
     }
     @Override
     protected void verifyFieldValue(DecacCompiler compiler,

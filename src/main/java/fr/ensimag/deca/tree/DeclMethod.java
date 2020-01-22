@@ -113,9 +113,10 @@ public class DeclMethod extends AbstractDeclMethod
     protected void verifyMethodBody(DecacCompiler compiler,
         EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError
         {
-          Type rType = this.getNameMethod().getType();
-          EnvironmentExp paramEnv = new EnvironmentExp(null);
+          Type rType = this.getNameType().getType();
+          EnvironmentExp paramEnv = new EnvironmentExp(localEnv);
           this.getParams().verifyParams(compiler, paramEnv);
+          
           MethodBody mBody = this.getBody();
           if (mBody != null)
           {

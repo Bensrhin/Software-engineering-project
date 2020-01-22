@@ -174,22 +174,21 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        /*
-        Set<Symbol> sym = localEnv.stringIsIn();
-        for (Symbol s:sym)
-        {
-            System.out.println(s.getName());
-        }
-        */
-        //System.out.println(this.getName().getName());
-        Symbol s = localEnv.stringIsIn(this.getName());
-        if (s == null)
+
+        // Set<Symbol> sym = localEnv.getParent().stringIsIn();
+        // for (Symbol s:sym)
+        // {
+        //     System.out.println(s.getName());
+        // }
+
+        ExpDefinition def = localEnv.get(this.getName());
+        if (def == null)
         {
                 throw new ContextualError("Identificateur \""
                         + this.getName().toString()
                         + "\" non déclaré (règle 0.1)", this.getLocation());
         }
-        ExpDefinition def = localEnv.get(s);
+
         this.setDefinition(def);
         this.setType(def.getType());
         return this.getType();
@@ -283,6 +282,6 @@ public class Identifier extends AbstractIdentifier {
         compiler.addInstruction(new STORE(Register.R0, gb2));
         this.getClassDefinition().setOperand(gb1);
     }
-    
-   
+
+
 }

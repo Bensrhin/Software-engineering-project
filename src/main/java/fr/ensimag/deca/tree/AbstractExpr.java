@@ -95,6 +95,7 @@ public abstract class AbstractExpr extends AbstractInst {
         }
         if (expectedType.sameType(type2))
         {
+            this.setType(expectedType);
             return this;
         }
         else
@@ -136,7 +137,7 @@ public abstract class AbstractExpr extends AbstractInst {
                                               this.getLocation());
               }
               this.setType(condType);
-              
+
     }
 
     /**
@@ -156,17 +157,17 @@ public abstract class AbstractExpr extends AbstractInst {
         else{
             if(this.getType().toString().equals("int")){
                 compiler.addInstruction(new WINT());
-            
+
             }
             if(this.getType().toString().equals("float")){
                 compiler.addInstruction(new WFLOAT());
-            
+
             }
         }
 
 
     }
-    
+
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {

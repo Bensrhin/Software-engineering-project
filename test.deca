@@ -1,16 +1,11 @@
 class A {
   int x;
   int z;
-  int getX(){
+
+  int getX(int a){
+    this.a;
+    println(z);
     return x;
 	}
-   void m(){}
-}
 
-class B extends A{
-    int y;
-    int getY(){
-        return y;
-        }
-    void m(){}
 }
