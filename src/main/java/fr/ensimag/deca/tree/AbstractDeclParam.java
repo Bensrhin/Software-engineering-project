@@ -27,5 +27,7 @@ public abstract class AbstractDeclParam extends Tree {
      *          corresponds to the "class" attribute (null in the main bloc).
      */
     protected abstract Type verifyDeclParam(DecacCompiler compiler) throws ContextualError;
+    protected abstract void verifyParam(DecacCompiler compiler,
+        EnvironmentExp paramEnv) throws ContextualError;
     protected abstract void codeGenParam(DecacCompiler compiler, int i);
 }

@@ -50,16 +50,24 @@ public class Initialization extends AbstractInitialization {
                 " : non autorisée (règle 3.8)"
                 , this.getExpression().getLocation());
         }
-        
+
         if (t.sameType(type2))
         {
             this.expression.setType(type2);
         }
         else
         {
-            this.expression = new ConvFloat(this.expression);
-            this.expression.verifyExpr(compiler, localEnv,currentClass);
-            this.expression.setType(t);
+            if (type2.isInt())
+            {
+              this.expression = new ConvFloat(this.expression);
+              this.expression.verifyExpr(compiler, localEnv,currentClass);
+              this.expression.setType(t);
+            }
+            else if (type2.isClass())
+            {
+              /* todo */
+            }
+
         }
 
     }

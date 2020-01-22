@@ -4,7 +4,7 @@ import fr.ensimag.deca.context.EnvironmentType.DoubleDefException;
 import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
-import fr.ensimag.deca.context.EnvironmentType;
+import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.Definition;
@@ -126,7 +126,10 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
-        //throw new UnsupportedOperationException("not yet implemented");
+        ClassDefinition currentClass = this.getName().getClassDefinition();
+        EnvironmentExp localEnv = currentClass.getMembers();
+        this.getFields().verifyListDeclFieldValue(compiler, localEnv, currentClass);
+        this.getMethods().verifyListDeclMethodBody(compiler, localEnv, currentClass);
     }
 
 

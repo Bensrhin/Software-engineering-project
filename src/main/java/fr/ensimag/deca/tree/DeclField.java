@@ -98,6 +98,14 @@ public class DeclField extends AbstractDeclField {
               this.getNameField().setType(nameType);
               // System.out.println(classDef.getNumberOfFields());
     }
+    
+    protected void verifyFieldValue(DecacCompiler compiler,
+        EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError
+        {
+          Type type = this.getNameField().getType();
+          this.getInitialization().verifyInitialization(compiler, type, localEnv, currentClass);
+
+        }
     @Override
     protected void codeGenField(DecacCompiler compiler)
     {

@@ -32,6 +32,10 @@ public class EnvironmentExp {
         this.parentEnvironment = parentEnvironment;
         dictionary = new HashMap<Symbol, ExpDefinition>();
     }
+    public void setParent(EnvironmentExp parentEnvironment)
+    {
+      this.parentEnvironment = parentEnvironment;
+    }
     public Map<Symbol, ExpDefinition> getMapMethod(){
         Set<Map.Entry<Symbol, ExpDefinition>> couples = dictionary.entrySet();
         Iterator<Map.Entry<Symbol, ExpDefinition>> itCouples = couples.iterator();

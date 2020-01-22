@@ -82,17 +82,26 @@ public class DecacCompiler {
     }
     public void initialisation_symbols()
     {
-        this.symbols.create("void");
-        this.symbols.create("boolean");
-        this.symbols.create("float");
-        this.symbols.create("int");
+        Symbol voidS = this.symbols.create("void");
+        Symbol boolS = this.symbols.create("boolean");
+        Symbol floatS = this.symbols.create("float");
+        Symbol intS = this.symbols.create("int");
         this.symbols.create("String");
+        TypeDefinition voidDef = new TypeDefinition(voidS.getType(), Location.BUILTIN);
+        TypeDefinition boolDef = new TypeDefinition(boolS.getType(), Location.BUILTIN);
+        TypeDefinition floatDef = new TypeDefinition(floatS.getType(), Location.BUILTIN);
+        TypeDefinition intDef = new TypeDefinition(intS.getType(), Location.BUILTIN);
         this.symbols.create("null");
 
         Symbol object = this.symbols.create("Object");
         ClassType objectType = new ClassType(object, Location.BUILTIN, null);
+
         try
         {
+            this.get_env_types().declare(voidS, voidDef);
+            this.get_env_types().declare(boolS, boolDef);
+            this.get_env_types().declare(floatS, floatDef);
+            this.get_env_types().declare(intS, intDef);
             this.get_env_types().declare(object, objectType.getDefinition());
         }
         catch (EnvironmentType.DoubleDefException e)
