@@ -12,13 +12,13 @@ import org.apache.commons.lang.Validate;
  * @date 01/01/2020
  */
 public class ClassType extends Type {
-    
+
     protected ClassDefinition definition;
-    
+
     public ClassDefinition getDefinition() {
         return this.definition;
     }
-            
+
     @Override
     public ClassType asClassType(String errorMessage, Location l) {
         return this;
@@ -49,18 +49,22 @@ public class ClassType extends Type {
     protected ClassType(Symbol className) {
         super(className);
     }
-    
+
 
     @Override
     public boolean sameType(Type otherType) {
-        throw new UnsupportedOperationException("not yet implemented");
+       if (otherType.isClass())
+       {
+         return true;
+       }
+       return false;
     }
 
     /**
      * Return true if potentialSuperClass is a superclass of this class.
      */
     public boolean isSubClassOf(ClassType potentialSuperClass) {
-        throw new UnsupportedOperationException("not yet implemented"); 
+        throw new UnsupportedOperationException("not yet implemented");
     }
 
 

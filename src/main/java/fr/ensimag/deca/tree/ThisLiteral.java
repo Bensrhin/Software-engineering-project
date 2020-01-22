@@ -29,13 +29,19 @@ public class ThisLiteral extends AbstractExpr{
     }
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
-            ClassDefinition currentClass) throws ContextualError 
+            ClassDefinition currentClass) throws ContextualError
     {
-        return null;
+          if (currentClass == null)
+          {
+            throw new ContextualError("On peut pas utiliser This dans le main",
+                    this.getLocation());
+          }
+          this.setType(currentClass.getType());
+          return this.getType();
     }
     @Override
     public void decompile(IndentPrintStream s) {
-        
+
     }
     @Override
     String prettyPrintNode() {
@@ -57,6 +63,6 @@ public class ThisLiteral extends AbstractExpr{
     public GPRegister codeGenLoad(DecacCompiler compiler){
         return null;
     }
-    
+
 
 }

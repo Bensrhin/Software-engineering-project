@@ -203,14 +203,16 @@ public class Identifier extends AbstractIdentifier {
      */
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
-      if (!compiler.getSymbols().checkSymbol(this.getName().toString())){
+      TypeDefinition def = compiler.get_env_types().get(this.getName());
+      if (def == null){
               throw new ContextualError("Type \"" + this.getName().toString() +
                 "\" n'est pas un type prédéfini (règle 0.2)", this.getLocation());
           }
 
-          Type type = this.getName().getType();
-          //ExpDefinition def = this.getName().
-          TypeDefinition def = new TypeDefinition(type, Location.BUILTIN);
+          // Type type = this.getName().getType();
+          Type type = def.getType();
+          // TypeDefinition def = new TypeDefinition(type, Location.BUILTIN);
+          // System.out.println(def.getType());
           this.setDefinition(def);
           this.setType(type);
           return this.getType();

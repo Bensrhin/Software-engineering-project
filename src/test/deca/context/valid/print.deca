@@ -2,10 +2,9 @@
     Title : print
 */
 {
-  String s = "A journey through time";
   if (true)
   {
-    print(s);
+    print("A journey");
   }
   if (!false)
   {

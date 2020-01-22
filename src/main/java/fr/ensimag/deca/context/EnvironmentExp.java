@@ -32,7 +32,10 @@ public class EnvironmentExp {
         this.parentEnvironment = parentEnvironment;
         dictionary = new HashMap<Symbol, ExpDefinition>();
     }
-
+    public void setParent(EnvironmentExp parentEnvironment)
+    {
+      this.parentEnvironment = parentEnvironment;
+    }
     public static class DoubleDefException extends Exception {
         private static final long serialVersionUID = -2733379901827316441L;
     }

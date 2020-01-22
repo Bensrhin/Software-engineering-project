@@ -47,6 +47,16 @@ public class ListDeclParam extends TreeList<AbstractDeclParam> {
         }
         return sig;
     }
+    void verifyParams(DecacCompiler compiler,
+        EnvironmentExp paramEnv)  throws ContextualError
+        {
+          Iterator<AbstractDeclParam> declParams = this.iterator();
+          while (declParams.hasNext())
+          {
+              AbstractDeclParam declParam = declParams.next();
+              declParam.verifyParam(compiler, paramEnv);
+          }
+        }
     public void codeGenListParam(DecacCompiler compiler){
         int j = 1;
         int n = getList().size();

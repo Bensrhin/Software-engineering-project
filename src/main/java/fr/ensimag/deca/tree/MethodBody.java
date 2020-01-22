@@ -19,7 +19,7 @@ import fr.ensimag.ima.pseudocode.Label;
  * @author gl53
  * @date 01/01/2020
  */
-public class MethodBody extends AbstractMain {
+public class MethodBody extends Tree {
     private static final Logger LOG = Logger.getLogger(MethodBody.class);
 
     private ListDeclVar declVariables;
@@ -32,27 +32,22 @@ public class MethodBody extends AbstractMain {
         this.insts = insts;
     }
 
-    @Override
-    protected void verifyMain(DecacCompiler compiler) throws ContextualError {
-      //LOG.debug("verify MethodBody: start");
-      EnvironmentExp localEnv = compiler.get_env_exp();
-      Type returnType = new VoidType(compiler.getSymbols().getSymbol("void"));
-      declVariables.verifyListDeclVariable(compiler, localEnv, null);
-      insts.verifyListInst(compiler, localEnv, null, returnType);
-      //LOG.debug("verify MethodBody: end");
 
-    }
+    protected void verifyBody(DecacCompiler compiler, EnvironmentExp localEnv,
+              EnvironmentExp paramEnv, ClassDefinition currentClass,
+              Type rType) throws ContextualError
+      {
+        paramEnv.setParent(localEnv);
+        declVariables.verifyListDeclVariable(compiler, paramEnv, currentClass);
+        insts.verifyListInst(compiler, paramEnv, currentClass, rType);
+      }
     public ListDeclVar getDeclVariables(){
         return this.declVariables;
 
     }
 
-    @Override
-    protected void codeGenMain(DecacCompiler compiler) {
-        // A FAIRE: traiter les déclarations de variables.
-        compiler.addComment("Beginning of MethodBody instructions:");
-        declVariables.codeGenListVar(compiler);
-        insts.codeGenListInst(compiler);
+    protected void codeGenBody(DecacCompiler compiler) {
+
     }
 
     @Override
@@ -76,14 +71,14 @@ public class MethodBody extends AbstractMain {
         declVariables.prettyPrint(s, prefix, false);
         insts.prettyPrint(s, prefix, true);
     }
-    public void codeGenEntete(DecacCompiler compiler, int n){
-        if(n > 0){
-            Label pilePleine= new Label("pile_pleine");
-            if (!compiler.getCompilerOptions().getNoCheck()){
-                compiler.addInstruction(new TSTO(n));
-                compiler.addInstruction(new BOV(pilePleine));
-            }
-            compiler.addInstruction(new ADDSP(n));
-        }
-    }
+    // public void codeGenEntete(DecacCompiler compiler, int n){
+    //     if(n > 0){
+    //         Label pilePleine= new Label("pile_pleine");
+    //         if (!compiler.getCompilerOptions().getNoCheck()){
+    //             compiler.addInstruction(new TSTO(n));
+    //             compiler.addInstruction(new BOV(pilePleine));
+    //         }
+    //         compiler.addInstruction(new ADDSP(n));
+    //     }
+    // }
 }

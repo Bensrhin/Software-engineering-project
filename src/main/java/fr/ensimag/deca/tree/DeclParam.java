@@ -3,7 +3,7 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
-import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -46,26 +46,34 @@ public class DeclParam extends AbstractDeclParam
                           this.getNameType().getName().toString() +
                           "\" doit être différent de void (règle 2.5)", this.getLocation());
               }
+              this.getNameType().setType(nameType);
+
+
               return nameType;
-              // Symbol symbol = getParam().getName();
-              // Definition def = new ParamDefinition(nameType, this.getLocation());
-              // try
-              // {
-              //     localEnv.declare(symbol, def);
-              // }
-              // catch (DoubleDefException e)
-              // {
-              //     throw new ContextualError("Parameter " +
-              //     symbol.toString() + " is already defined", this.getLocation());
-              // }
-              // this.getParam().verifyExpr(compiler, localEnv, null);
+
     }
     @Override
     protected void codeGenParam(DecacCompiler compiler, int i){
             param.codeGenIdent(compiler, i);
 
     }
-
+    @Override
+    protected void verifyParam(DecacCompiler compiler,
+        EnvironmentExp paramEnv) throws ContextualError{
+          Type nameType = this.getNameType().getType();
+          Symbol symbol = getParam().getName();
+          ParamDefinition def = new ParamDefinition(nameType, this.getLocation());
+          try
+          {
+              paramEnv.declare(symbol, def);
+          }
+          catch (DoubleDefException e)
+          {
+              throw new ContextualError("Parameter " +
+              symbol.toString() + " is already defined", this.getLocation());
+          }
+          this.getParam().verifyExpr(compiler, paramEnv, null);
+        }
     @Override
     public void decompile(IndentPrintStream s) {
       this.type.decompile(s);

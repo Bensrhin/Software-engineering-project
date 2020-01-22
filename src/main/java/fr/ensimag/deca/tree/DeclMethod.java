@@ -22,17 +22,16 @@ public class DeclMethod extends AbstractDeclMethod
     final private AbstractIdentifier type;
     final private AbstractIdentifier method;
     final private ListDeclParam params;
-    private AbstractMain methodBody;
+    private MethodBody methodBody;
     final private String code;
 
     private static final Logger LOG = Logger.getLogger(DeclMethod.class);
     public DeclMethod(AbstractIdentifier type, AbstractIdentifier method,
-        ListDeclParam params, AbstractMain methodBody) {
+        ListDeclParam params, MethodBody methodBody) {
         Validate.notNull(type);
         Validate.notNull(method);
         Validate.notNull(params);
         Validate.notNull(methodBody);
-
         this.type = type;
         this.method = method;
         this.params = params;
@@ -52,7 +51,14 @@ public class DeclMethod extends AbstractDeclMethod
         this.code = code;
         this.methodBody = null;
     }
-
+    public MethodBody getBody()
+    {
+        return this.methodBody;
+    }
+    public String getCode()
+    {
+        return this.code;
+    }
     public AbstractIdentifier getNameType()
     {
         return this.type;
@@ -83,10 +89,13 @@ public class DeclMethod extends AbstractDeclMethod
               this.getLocation());
             }
             ClassDefinition classDef = classIdentifier.getClassDefinition();
-            int index = classDef.getNumberOfMethods(); index ++;
+            int index = classDef.getNumberOfMethods();
+            index ++;
             classDef.setNumberOfMethods(index);
+
             MethodDefinition def = new MethodDefinition(type,
                     this.getLocation(), sig, index);
+            System.out.println(def.getIndex());
             def.setLabel(new Label("code." + classIdentifier.getName().getName() + "." + this.getNameMethod().getName().getName()));
             Symbol symbol = this.getNameMethod().getName();
             try
@@ -98,30 +107,22 @@ public class DeclMethod extends AbstractDeclMethod
                 throw new ContextualError(symbol.toString()
                            + "is already defined", this.getLocation());
             }
-            this.getNameMethod().setDefinition(def);
-            this.getNameMethod().setType(type);
-            /*
-              Type nameType = this.getNameType().verifyType(compiler);
-              if (nameType.isVoid())
-              {
-                  throw new ContextualError("type must be defferent than void", this.getLocation());
-              }
-
-              methodeDefinition def = new methodeDefinition(nameType, this.getLocation());
-              Symbol symbol = this.getNamemethodetName();
-              try
-              {
-                  localEnv.declare(symbol, def);
-              }
-              catch (DoubleDefException e)
-              {
-                  throw new ContextualError(symbol.toString()
-                             + "is already defined", this.getLocation());
-              }
-              Type namemethodhis.getNamemethoderifyExpr(compiler, localEnv, currentClass);
-              this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
-              //LOG.debug("End of verifyDeclmethod */
+            this.getNameMethod().verifyExpr(compiler, classDef.getMembers(), classDef);
     }
+    @Override
+    protected void verifyMethodBody(DecacCompiler compiler,
+        EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError
+        {
+          Type rType = this.getNameMethod().getType();
+          EnvironmentExp paramEnv = new EnvironmentExp(null);
+          this.getParams().verifyParams(compiler, paramEnv);
+          MethodBody mBody = this.getBody();
+          if (mBody != null)
+          {
+            mBody.verifyBody(compiler, localEnv, paramEnv, currentClass, rType);
+          }
+
+        }
     @Override
     protected void codeGenMethod(DecacCompiler compiler, int i){
         //method.codeGenIdent(compiler, i);

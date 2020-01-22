@@ -2,21 +2,24 @@ class A
 {
   int getA(int a, float b)
   {
-    int a = THISx;
+     b = a;
   }
 }
 
 class B extends A
 {
-  int getA(float a)
+  int getA(int a, float b)
   {
 
   }
 }
 class C extends B
 {
-  int getA(float a, int c)
+  int getA(int a, float b)
   {
 
   }
+}
+{
+ C c = new int();
 }
