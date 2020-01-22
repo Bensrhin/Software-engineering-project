@@ -155,8 +155,11 @@ public class DeclClass extends AbstractDeclClass {
         }
         ClassDefinition current =  name.getClassDefinition();
         codeGenClass(compiler, current);
+        
+        
     }
     private Set<Symbol> vu = new HashSet<Symbol>();
+    private Set<LabelOperand> labels = new HashSet<LabelOperand>();
     protected void codeGenClass(DecacCompiler compiler, ClassDefinition current){
        if(current.getType().getName() == this.name.getName()){
             compiler.addComment("construction de la table des methodes de " + current.getType());
@@ -177,7 +180,9 @@ public class DeclClass extends AbstractDeclClass {
                 DAddr addr = current.getOperand();
                 MethodDefinition methode = (MethodDefinition)(mth);
                 RegisterOffset gb0 = compiler.getRegisterManager().getRegOff();
-                compiler.addInstruction(new LOAD(new LabelOperand(methode.getLabel()), Register.R0));
+                LabelOperand label = new LabelOperand(methode.getLabel());
+                labels.add(label);
+                compiler.addInstruction(new LOAD(label, Register.R0));
                 compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex(), Register.GB)));
                 
             }
@@ -188,14 +193,36 @@ public class DeclClass extends AbstractDeclClass {
         }
     }
     
-    
-    protected void codeGenClass2(DecacCompiler compiler){
-        //System.out.println(this.getName().getClassDefinition().toString());
-        Label labelInit = new Label("init."+this.getName().getClassDefinition().getType().toString());
-        compiler.addLabel(labelInit);
-        fields.codeGenListField(compiler);
-        //methods.codeGenListMethod(compiler);
+    protected void codeGenField(DecacCompiler compiler, ClassDefinition current){
+        if(current.getType().getName() == this.name.getName()){
+            compiler.addComment("init." + current.getType().getName());
+            if(fields.getList().size() > 0){
+                compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
+                compiler.addInstruction(new LOAD(0, Register.R0));
+            }
+            for(AbstractDeclField i: fields.getList()){
+                FieldDefinition fld =((Identifier)(((DeclField)(i)).getNameField())).getFieldDefinition();
+                compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(fld.getIndex(), Register.R1)));
+            }
+        }
+        if(current.getSuperClass() != null && !current.getSuperClass().getType().getName().toString().equals("Object")){
+            System.out.println(current.getType().getName());
+            codeGenField(compiler, current.getSuperClass());
+            compiler.addInstruction(new PUSH(Register.R1));
+            compiler.addInstruction(new BSR(new LabelOperand(new Label("init." + current.getSuperClass().getType()))));
+            compiler.addInstruction(new SUBSP(1));
+            compiler.addInstruction(new POP(Register.R1));
+        }
+        if(current.getType().getName() == this.name.getName()){
+            fields.codeGenListField(compiler);
+        }
     }
     
+    @Override
+
+    protected void codeGenClassPass2(DecacCompiler compiler){
+        ClassDefinition current =  name.getClassDefinition();
+        codeGenField(compiler, current);
+    }
     
   }

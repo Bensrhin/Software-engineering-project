@@ -50,6 +50,7 @@ public class ListDeclField extends TreeList<AbstractDeclField> {
         }
 
     }
+
     void verifyListDeclFieldValue(DecacCompiler compiler,
         EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError
         {
@@ -60,17 +61,11 @@ public class ListDeclField extends TreeList<AbstractDeclField> {
               declField.verifyFieldValue(compiler, localEnv, currentClass);
           }
         }
+
     public void codeGenListField(DecacCompiler compiler){
-        int j = 1;
-        int n = getList().size();
-        if(n > 0){
-            compiler.addInstruction(new TSTO(getList().size()));
-            compiler.addInstruction(new ADDSP(getList().size()));
-        }
         for (AbstractDeclField i : getList()) {
-            i.codeGenField(compiler, j);
-            j ++;
-        }
+            i.codeGenField(compiler);
+       }
         compiler.addInstruction(new RTS());
     }
 
