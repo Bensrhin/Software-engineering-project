@@ -117,5 +117,8 @@ WS : (SKIPCAR | COMMENT) {skip();};
 
 //Inclusion de Fichier
 fragment FILENAME : (LETTER | DIGIT | '.' | '-' | '_')+;
-INCLUDE : '#include' (' ')* '"' FILENAME '"';
+//La fonction doInclude est situé dans AbstractDecaLexer.java
+
+
+INCLUDE : '#include' (' ')* '"' FILENAME '"'{doInclude(getText());};
 IDENT : (((LETTER |'$' |'_')(LETTER |DIGIT |'$' |'_')*));
