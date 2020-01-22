@@ -20,6 +20,19 @@
 	STORE R0, 4(GB)
 	LOAD code.A.getX, R0
 	STORE R0, 1(GB)
+; pass2
+init.A:
+	TSTO #1
+	ADDSP #1
+	LOAD #0, R0
+	LOAD -2(LB), R1
+	STORE R0, 1(R1)
+init.B:
+	TSTO #1
+	ADDSP #1
+	LOAD #0, R0
+	LOAD -2(LB), R1
+	STORE R0, 1(R1)
 ; Main program
 	HALT
 pile_pleine:

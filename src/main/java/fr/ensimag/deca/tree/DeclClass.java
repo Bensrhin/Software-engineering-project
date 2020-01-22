@@ -183,5 +183,16 @@ public class DeclClass extends AbstractDeclClass {
         if(current.getSuperClass() != null){
             codeGenClass(compiler, current.getSuperClass());
         }
- }
+    }
+    
+    
+    protected void codeGenClass2(DecacCompiler compiler){
+        //System.out.println(this.getName().getClassDefinition().toString());
+        Label labelInit = new Label("init."+this.getName().getClassDefinition().getType().toString());
+        compiler.addLabel(labelInit);
+        fields.codeGenListField(compiler);
+        //methods.codeGenListMethod(compiler);
+    }
+    
+    
   }
