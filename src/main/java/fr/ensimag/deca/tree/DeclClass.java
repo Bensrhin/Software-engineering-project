@@ -1,5 +1,6 @@
 package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.EnvironmentType.DoubleDefException;
+import java.util.*;
 
 import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.context.Type;
@@ -92,7 +93,7 @@ public class DeclClass extends AbstractDeclClass {
                     + superName.decompile() + "\" n'est pas une class (règle 1.3)",
                     this.getLocation());
         }
-        
+
         // Location loc = def.getLocation();
         // ClassType superType = new ClassType(superNameKey, loc, null);
         this.getSuperName().setDefinition((ClassDefinition) def);
@@ -112,6 +113,7 @@ public class DeclClass extends AbstractDeclClass {
         }
         this.getName().setType(currentType);
         this.getName().setDefinition(currentType.getDefinition());
+
     }
     @Override
     protected void verifyClassMembers(DecacCompiler compiler)
@@ -121,8 +123,7 @@ public class DeclClass extends AbstractDeclClass {
           this.getSuperName(), this.getName());
           this.getMethods().verifyListDeclMethod(compiler,
           this.getSuperName(), this.getName());
-        //throw new UnsupportedOperationException("not yet implemented");
-    }
+        }
 
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
@@ -150,13 +151,13 @@ public class DeclClass extends AbstractDeclClass {
     }
     @Override
     protected void codeGenClass(DecacCompiler compiler){
-        if(superName.getType().toString().equals("Object")){ 
+        if(superName.getType().toString().equals("Object")){
             superName.codeGenObj(compiler);
         }
         ClassDefinition current =  name.getClassDefinition();
         codeGenClass(compiler, current);
-        
-        
+
+
     }
     private Set<Symbol> vu = new HashSet<Symbol>();
     private Set<LabelOperand> labels = new HashSet<LabelOperand>();
@@ -184,15 +185,21 @@ public class DeclClass extends AbstractDeclClass {
                 labels.add(label);
                 compiler.addInstruction(new LOAD(label, Register.R0));
                 compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex(), Register.GB)));
-                
+
             }
         }
-        
+
         if(current.getSuperClass() != null){
             codeGenClass(compiler, current.getSuperClass());
         }
     }
-    
+    // protected void codeGenClass2(DecacCompiler compiler){
+    //     //System.out.println(this.getName().getClassDefinition().toString());
+    //     Label labelInit = new Label("init."+this.getName().getClassDefinition().getType().toString());
+    //     compiler.addLabel(labelInit);
+    //     fields.codeGenListField(compiler);
+    //     //methods.codeGenListMethod(compiler);
+    // }
     protected void codeGenField(DecacCompiler compiler, ClassDefinition current){
         if(current.getType().getName() == this.name.getName()){
             compiler.addComment("init." + current.getType().getName());
@@ -217,12 +224,13 @@ public class DeclClass extends AbstractDeclClass {
             fields.codeGenListField(compiler);
         }
     }
-    
+
     @Override
 
     protected void codeGenClassPass2(DecacCompiler compiler){
         ClassDefinition current =  name.getClassDefinition();
         codeGenField(compiler, current);
+        methods.codeGenListMethod(compiler);
     }
-    
+
   }

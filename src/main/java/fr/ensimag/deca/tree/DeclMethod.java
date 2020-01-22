@@ -113,9 +113,10 @@ public class DeclMethod extends AbstractDeclMethod
     protected void verifyMethodBody(DecacCompiler compiler,
         EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError
         {
-          Type rType = this.getNameMethod().getType();
-          EnvironmentExp paramEnv = new EnvironmentExp(null);
+          Type rType = this.getNameType().getType();
+          EnvironmentExp paramEnv = new EnvironmentExp(localEnv);
           this.getParams().verifyParams(compiler, paramEnv);
+          
           MethodBody mBody = this.getBody();
           if (mBody != null)
           {
@@ -126,7 +127,15 @@ public class DeclMethod extends AbstractDeclMethod
     @Override
     protected void codeGenMethod(DecacCompiler compiler, int i){
         //method.codeGenIdent(compiler, i);
-
+        LinkedList<Instruction>  l = new LinkedList<Instruction>();
+        compiler.addLabel(new Label(getNameMethod().
+                getMethodDefinition().getLabel().toString() ));
+        MethodBody body = methodBody;
+        if (methodBody != null){
+            
+            methodBody.codeGenBody(compiler);     
+        }
+       
     }
 
     @Override

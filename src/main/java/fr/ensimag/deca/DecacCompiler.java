@@ -14,18 +14,16 @@ import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tools.SymbolTable;
 import java.io.File;
-import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
+
+import fr.ensimag.deca.context.EnvironmentType.DoubleDefException;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import fr.ensimag.deca.context.TypeDefinition;
-import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.context.*;
+
 import fr.ensimag.deca.tree.Location;
-import fr.ensimag.deca.context.IntType;
-import fr.ensimag.deca.context.VoidType;
-import fr.ensimag.deca.context.BooleanType;
-import fr.ensimag.deca.context.ClassType;
+
 
 import java.io.PrintStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -122,6 +120,19 @@ public class DecacCompiler {
     public EnvironmentType get_env_types()
     {
         return this.env_types;
+    }
+    public void set_env_types(Symbol name, TypeDefinition def) throws ContextualError
+    {
+        this.env_types = new EnvironmentType(this.get_env_types());
+        try
+        {
+            this.get_env_types().declare(name, def);
+        }
+        catch (EnvironmentType.DoubleDefException e)
+        {
+            throw new ContextualError("règle 2.3", def.getLocation());
+        }
+
     }
     /**
      * Source file associated with this compiler instance.

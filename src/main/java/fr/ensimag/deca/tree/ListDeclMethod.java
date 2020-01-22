@@ -59,9 +59,13 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
               declMethod.verifyMethodBody(compiler, localEnv, currentClass);
           }
         }
-    public void codeGenListMethod(DecacCompiler compiler){
-        
-        
+    public void codeGenListMethod(DecacCompiler compiler){        
+        int j = 1;
+        int n = getList().size();
+        for (AbstractDeclMethod i : getList()) {
+            i.codeGenMethod(compiler, j);
+            j ++;
+        }
     }
 
 

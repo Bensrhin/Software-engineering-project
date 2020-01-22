@@ -36,6 +36,11 @@ public class EnvironmentExp {
     {
       this.parentEnvironment = parentEnvironment;
     }
+    public EnvironmentExp getParent()
+    {
+      return this.parentEnvironment;
+    }
+
     public Map<Symbol, ExpDefinition> getMapMethod(){
         Set<Map.Entry<Symbol, ExpDefinition>> couples = dictionary.entrySet();
         Iterator<Map.Entry<Symbol, ExpDefinition>> itCouples = couples.iterator();
@@ -82,7 +87,7 @@ public class EnvironmentExp {
         {
             if (this.parentEnvironment != null)
             {
-                return this.parentEnvironment.get(s);
+                return this.parentEnvironment.get(key);
             }
             else
             {
@@ -145,7 +150,8 @@ public class EnvironmentExp {
                 return s;
             }
         }
-        return null;
+          return null;
+
     }
     public boolean isIn(Symbol key)
     {

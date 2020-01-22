@@ -23,7 +23,7 @@ public class EnvironmentType {
     public EnvironmentType(EnvironmentType parentEnvironment) {
         this.parentEnvironment = parentEnvironment;
         dictionary = new HashMap<Symbol, TypeDefinition>();
-        
+
 
     }
 
@@ -45,7 +45,7 @@ public class EnvironmentType {
         {
             if (this.parentEnvironment != null)
             {
-                return this.parentEnvironment.get(s);
+                return this.parentEnvironment.get(key);
             }
             else
             {
