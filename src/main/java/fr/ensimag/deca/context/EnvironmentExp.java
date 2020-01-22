@@ -45,6 +45,19 @@ public class EnvironmentExp {
         }
         return dic;
     }
+    public Map<Symbol, ExpDefinition> getMapField(){
+        Set<Map.Entry<Symbol, ExpDefinition>> couples = dictionary.entrySet();
+        Iterator<Map.Entry<Symbol, ExpDefinition>> itCouples = couples.iterator();
+        HashMap<Symbol, ExpDefinition> dic = new HashMap<Symbol, ExpDefinition>();
+        while (itCouples.hasNext()) {
+            Map.Entry<Symbol, ExpDefinition> couple = itCouples.next();
+            ExpDefinition def = couple.getValue();
+            if(def.isField()){
+                dic.put(couple.getKey(), def);
+            }
+        }
+        return dic;
+    }
     public static class DoubleDefException extends Exception {
         private static final long serialVersionUID = -2733379901827316441L;
     }
