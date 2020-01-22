@@ -1,26 +1,9 @@
-class A {
-  int x;
-  int z;
-
-  int getX(int a){
-    this.a;
-    println(z);
-    return x;
-	}
-  boolean equals(int o)
-  {
-
-  }
-
+class A{
+    int x = 0;
+    int getX(){
+    }
 }
 class B extends A{
-  int x;
-  int z;
-
-  int getX(int a){
-    this.a;
-    println(z);
-    return x;
-	}
-
-}
+    int getY(){
+    }
+    }

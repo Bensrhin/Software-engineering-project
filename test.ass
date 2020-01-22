@@ -1,0 +1,57 @@
+; table des methodes
+; construction de la table des methodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; construction de la table des methodes de A
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.A.getX, R0
+	STORE R0, 6(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+; construction de la table des methodes de B
+	LEA 3(GB), R0
+	STORE R0, 6(GB)
+	LOAD code.B.getY, R0
+	STORE R0, 10(GB)
+	LOAD code.A.getX, R0
+	STORE R0, 9(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 7(GB)
+; init.A
+	LOAD -2(LB), R1
+	LOAD #0, R0
+	STORE R0, 1(R1)
+	LOAD #0, R2
+	LOAD R2, R0
+	LOAD -2(LB), R1
+	STORE R0, 1(R1)
+	RTS
+code.A.getX:
+; init.B
+	PUSH R1
+	BSR init.A
+	SUBSP #1
+	POP R1
+	RTS
+code.B.getY:
+; Main program
+	HALT
+pile_pleine:
+	WSTR "Error: Stack Overflow"
+	WNL
+	ERROR
+over_flow:
+	WSTR "Error: Overflow during arithmetic operation"
+	WNL
+	ERROR
+i0_error:
+	WSTR "Error: Input/Output error"
+	WNL
+	ERROR
+divisionErr:
+	WSTR "Error :Division par 0"
+	WNL
+	ERROR

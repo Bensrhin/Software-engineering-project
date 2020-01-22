@@ -178,13 +178,13 @@ public class DeclClass extends AbstractDeclClass {
             Map.Entry<Symbol, ExpDefinition> couple = itCouples.next();
             mth = couple.getValue();
             if(vu.add(couple.getKey())){
-                DAddr addr = current.getOperand();
+                RegisterOffset addr = current.getOperand();
                 MethodDefinition methode = (MethodDefinition)(mth);
                 RegisterOffset gb0 = compiler.getRegisterManager().getRegOff();
                 LabelOperand label = new LabelOperand(methode.getLabel());
                 labels.add(label);
                 compiler.addInstruction(new LOAD(label, Register.R0));
-                compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex(), Register.GB)));
+                compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex() + addr.getOffset(), Register.GB)));
 
             }
         }
@@ -193,13 +193,7 @@ public class DeclClass extends AbstractDeclClass {
             codeGenClass(compiler, current.getSuperClass());
         }
     }
-    // protected void codeGenClass2(DecacCompiler compiler){
-    //     //System.out.println(this.getName().getClassDefinition().toString());
-    //     Label labelInit = new Label("init."+this.getName().getClassDefinition().getType().toString());
-    //     compiler.addLabel(labelInit);
-    //     fields.codeGenListField(compiler);
-    //     //methods.codeGenListMethod(compiler);
-    // }
+   
     protected void codeGenField(DecacCompiler compiler, ClassDefinition current){
         if(current.getType().getName() == this.name.getName()){
             compiler.addComment("init." + current.getType().getName());

@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class ClassDefinition extends TypeDefinition {
 
-    private static LinkedList<DAddr> superTypes = new LinkedList<DAddr>();
+    private static LinkedList<RegisterOffset> superTypes = new LinkedList<RegisterOffset>();
     public void setNumberOfFields(int numberOfFields) {
         this.numberOfFields = numberOfFields;
     }
@@ -78,10 +78,10 @@ public class ClassDefinition extends TypeDefinition {
         members = new EnvironmentExp(parent);
         this.superClass = superClass;
     }
-    public void setOperand(DAddr op){
+    public void setOperand(RegisterOffset op){
         this.superTypes.add(op);
     }
-    public DAddr getOperand(){
+    public RegisterOffset getOperand(){
         return superTypes.getLast();
     }
     
