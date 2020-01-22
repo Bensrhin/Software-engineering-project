@@ -19,34 +19,36 @@ import java.io.PrintStream;
 
 /**
  *
- * @author 
+ * @author
  */
-public class Dot extends AbstractExpr{
+public class Selection extends AbstractLValue{
     private AbstractExpr expr;
     private AbstractIdentifier id;
-    public Dot(AbstractExpr expr, AbstractIdentifier id){
+    public Selection(AbstractExpr expr, AbstractIdentifier id){
        this.id = id;
-       this.expr = expr; 
+       this.expr = expr;
     }
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        return null;
+        Type class2 = this.expr.verifyExpr(compiler, localEnv, currentClass);
+        return class2;
     }
     @Override
     protected void iterChildren(TreeFunction f) {
-        id.iterChildren(f);
         expr.iterChildren(f);
+        id.iterChildren(f);
+
     }
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        id.prettyPrint(s, prefix, true);
       expr.prettyPrint(s, prefix, true);
+        id.prettyPrint(s, prefix, true);
+
     }
     @Override public void decompile(IndentPrintStream s){
-        
-    }
-    
+
     }
 
+    }

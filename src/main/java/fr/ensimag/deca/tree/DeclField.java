@@ -97,7 +97,10 @@ public class DeclField extends AbstractDeclField {
               this.getNameField().verifyExpr(compiler, classDef.getMembers(), classDef);
               // System.out.println(symbol.getName());
     }
-    
+    protected  void verifyIdent(EnvironmentExp localEnv) throws ContextualError
+    {
+      
+    }
     protected void verifyFieldValue(DecacCompiler compiler,
         EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError
         {
@@ -128,7 +131,7 @@ public class DeclField extends AbstractDeclField {
             return super.printNodeLine(s, prefix, last, inlist,
                       "[visibility=" + visib.getValue() + "] " + nodeName);
           }
-    
+
     @Override
     public void decompile(IndentPrintStream s) {
       this.type.decompile(s);
