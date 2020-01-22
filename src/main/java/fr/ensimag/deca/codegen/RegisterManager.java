@@ -5,8 +5,7 @@ package fr.ensimag.deca.codegen;
  * @date 01/01/2020
  */
 
-import fr.ensimag.ima.pseudocode.GPRegister;
-import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.instructions.PUSH;
 import fr.ensimag.ima.pseudocode.instructions.POP;
@@ -15,7 +14,7 @@ import fr.ensimag.ima.pseudocode.instructions.BOV;
 import java.util.*;
 public class RegisterManager{
     private static InitManager initR;
-    
+    private static int cptOffset = 3;
     public RegisterManager(DecacCompiler compiler){
         initR = new InitManager
         (compiler.getCompilerOptions().getRegisters()-1);
@@ -47,6 +46,10 @@ public class RegisterManager{
             initR.regDispo.push(r);        
         }
     }
-
+    public RegisterOffset getRegOff(){
+        RegisterOffset reg = new RegisterOffset(cptOffset, Register.GB);
+        cptOffset ++;
+        return reg;
+    }
 
 }

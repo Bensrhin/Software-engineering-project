@@ -60,16 +60,8 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
           }
         }
     public void codeGenListMethod(DecacCompiler compiler){
-        int j = 1;
-        int n = getList().size();
-        if(n > 0){
-            compiler.addInstruction(new TSTO(getList().size()));
-            compiler.addInstruction(new ADDSP(getList().size()));
-        }
-        for (AbstractDeclMethod i : getList()) {
-            i.codeGenMethod(compiler, j);
-            j ++;
-        }
+        
+        
     }
 
 

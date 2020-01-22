@@ -1,25 +1,16 @@
-class A
-{
-  int getA(int a, float b)
-  {
-     b = a;
-  }
+class A {
+  int x;
+  int z;
+  int getX(){
+    return x;
+	}
+   void m(){}
 }
 
-class B extends A
-{
-  int getA(int a, float b)
-  {
-
-  }
-}
-class C extends B
-{
-  int getA(int a, float b)
-  {
-
-  }
-}
-{
- C c = new int();
+class B extends A{
+    int y;
+    int getY(){
+        return y;
+        }
+    void m(){}
 }

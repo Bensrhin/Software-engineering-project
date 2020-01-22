@@ -11,6 +11,12 @@ import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+
 /**
  * @author gl53
  * @date 01/01/2020
@@ -103,7 +109,20 @@ public class DeclField extends AbstractDeclField {
     @Override
     protected void codeGenField(DecacCompiler compiler, int i)
     {
-
+        if (getInitialization() instanceof NoInitialization){
+            // on suppose que c' est un integer a linstant
+            compiler.addInstruction(new LOAD(0, Register.R0));
+        }
+        else {
+            GPRegister r = ((Initialization) getInitialization())
+                    .getExpression().codeGenLoad(compiler);
+            compiler.addInstruction(new LOAD(r, Register.R0));
+            r.freeR();
+        }
+        compiler.addInstruction(new LOAD(
+                    new RegisterOffset(-2, Register.LB), Register.R1));
+        compiler.addInstruction(new STORE(
+                    Register.R0, new RegisterOffset(i, Register.R1)));
     }
     @Override
     String printNodeLine(PrintStream s, String prefix, boolean last,

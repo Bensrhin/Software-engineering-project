@@ -23,5 +23,4 @@ public class LOAD extends BinaryInstructionDValToReg {
         this(new ImmediateFloat(i), r);
     }
 
-
 }

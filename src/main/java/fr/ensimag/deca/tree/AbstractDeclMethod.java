@@ -32,4 +32,5 @@ public abstract class AbstractDeclMethod extends Tree {
         EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError;
 
     protected abstract void codeGenMethod(DecacCompiler compiler, int i);
+    public abstract AbstractIdentifier getNameMethod();
 }

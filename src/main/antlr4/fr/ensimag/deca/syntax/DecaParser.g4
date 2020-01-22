@@ -559,10 +559,9 @@ decl_method returns[AbstractDeclMethod methods]
           assert($params.tree != null);
           assert($ident.tree != null);
           assert($type.tree != null);
-          MethodBody mb = new MethodBody($block.decls, $block.insts);
-          setLocation(mb, $block.start);
-          $methods = new DeclMethod($type.tree, $ident.tree, $params.tree, mb);
-          
+          MethodBody body = new MethodBody($block.decls, $block.insts);
+          setLocation(body, $block.start);
+          $methods = new DeclMethod($type.tree, $ident.tree, $params.tree, body);
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
           assert($code.location != null);
