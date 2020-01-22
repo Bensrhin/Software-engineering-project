@@ -47,7 +47,10 @@ public class MethodBody extends Tree {
     }
 
     protected void codeGenBody(DecacCompiler compiler) {
-
+        //declVariables.codeGenListVar(compiler);
+        //loading class attributes
+        
+        insts.codeGenListInst(compiler);
     }
 
     @Override
