@@ -7,6 +7,7 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.instructions.ADDSP;
 import fr.ensimag.ima.pseudocode.instructions.TSTO;
+import fr.ensimag.ima.pseudocode.instructions.RTS;
 
 /**
  * List of declarations (e.g. int x; float y,z).
@@ -60,6 +61,7 @@ public class ListDeclField extends TreeList<AbstractDeclField> {
             i.codeGenField(compiler, j);
             j ++;
         }
+        compiler.addInstruction(new RTS());
     }
 
 

@@ -22,17 +22,22 @@
 	STORE R0, 1(GB)
 ; pass2
 init.A:
-	TSTO #1
-	ADDSP #1
+	TSTO #2
+	ADDSP #2
 	LOAD #0, R0
 	LOAD -2(LB), R1
 	STORE R0, 1(R1)
+	LOAD #0, R0
+	LOAD -2(LB), R1
+	STORE R0, 2(R1)
+	RTS
 init.B:
 	TSTO #1
 	ADDSP #1
 	LOAD #0, R0
 	LOAD -2(LB), R1
 	STORE R0, 1(R1)
+	RTS
 ; Main program
 	HALT
 pile_pleine:
