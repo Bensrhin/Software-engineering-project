@@ -27,7 +27,10 @@ public abstract class AbstractDeclField extends Tree {
      *          corresponds to the "class" attribute (null in the main bloc).
      */
     protected abstract void verifyDeclField(DecacCompiler compiler, AbstractIdentifier superIdentifier, AbstractIdentifier classIdentifier) throws ContextualError;
+    protected abstract void codeGenField(DecacCompiler compiler);
+ 
+
     protected abstract void verifyFieldValue(DecacCompiler compiler,
         EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError;
-    protected abstract void codeGenField(DecacCompiler compiler, int i);
+   
 }

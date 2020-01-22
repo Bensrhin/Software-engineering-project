@@ -97,7 +97,7 @@ public class DeclField extends AbstractDeclField {
               this.getNameField().verifyExpr(compiler, classDef.getMembers(), classDef);
               // System.out.println(symbol.getName());
     }
-    @Override
+    
     protected void verifyFieldValue(DecacCompiler compiler,
         EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError
         {
@@ -106,22 +106,21 @@ public class DeclField extends AbstractDeclField {
 
         }
     @Override
-    protected void codeGenField(DecacCompiler compiler, int i)
+    protected void codeGenField(DecacCompiler compiler)
     {
         if (getInitialization() instanceof NoInitialization){
             // on suppose que c' est un integer a linstant
             compiler.addInstruction(new LOAD(0, Register.R0));
         }
         else {
-            GPRegister r = ((Initialization) getInitialization())
-                    .getExpression().codeGenLoad(compiler);
-            compiler.addInstruction(new LOAD(r, Register.R0));
-            r.freeR();
+           GPRegister r = ((Initialization) getInitialization()).getExpression().codeGenLoad(compiler);
+           compiler.addInstruction(new LOAD(r, Register.R0));
+           compiler.getRegisterManager().freeReg(compiler, r);
         }
-        compiler.addInstruction(new LOAD(
-                    new RegisterOffset(-2, Register.LB), Register.R1));
-        compiler.addInstruction(new STORE(
-                    Register.R0, new RegisterOffset(i, Register.R1)));
+        FieldDefinition fld = ((Identifier)(fieldName)).getFieldDefinition();
+        System.out.println(fld.getContainingClass());
+        compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
+        compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(fld.getIndex(), Register.R1)));
     }
     @Override
     String printNodeLine(PrintStream s, String prefix, boolean last,
@@ -129,6 +128,7 @@ public class DeclField extends AbstractDeclField {
             return super.printNodeLine(s, prefix, last, inlist,
                       "[visibility=" + visib.getValue() + "] " + nodeName);
           }
+    
     @Override
     public void decompile(IndentPrintStream s) {
       this.type.decompile(s);
