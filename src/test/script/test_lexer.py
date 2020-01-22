@@ -33,6 +33,7 @@ def valid_lexer():
         else:
             print(file+color.BOLD+color.HEADER+"  *** [TEST PASSED EXPECTED] *** "+color.ENDC)
             counter += 1
+        # os.system("rm *.log")
         print("======================================================")
     return counter, tmp
 
@@ -59,7 +60,7 @@ def invalid_lexer():
             print(new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
         else:
             print(file+color.BOLD+color.WARNING+"  *** [TEST PASSED UNEXPECTED] ***"+color.ENDC)
-
+        # os.system("rm *.log")
         print("~======================================================~")
     return counter, tmp
 
@@ -86,4 +87,3 @@ if inval == 1:
     else:
         print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS INVALID LEXER ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
         print("~========================================================================~")
-os.system("rm *.log")
