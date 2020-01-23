@@ -28,7 +28,7 @@ public class DeclClass extends AbstractDeclClass {
     private AbstractIdentifier superName;
     private ListDeclField fields;
     private ListDeclMethod methods;
-
+    private static boolean flag = true;
     public DeclClass(AbstractIdentifier name, AbstractIdentifier superName,
                      ListDeclField fields, ListDeclMethod methods)
     {
@@ -151,8 +151,9 @@ public class DeclClass extends AbstractDeclClass {
     }
     @Override
     protected void codeGenClass(DecacCompiler compiler){
-        if(superName.getType().toString().equals("Object")){
+        if(superName.getType().toString().equals("Object") && flag){
             superName.codeGenObj(compiler);
+            flag = false;
         }
         ClassDefinition current =  name.getClassDefinition();
         codeGenClass(compiler, current, 0);
@@ -160,7 +161,7 @@ public class DeclClass extends AbstractDeclClass {
 
     }
     private Set<Symbol> vu = new HashSet<Symbol>();
-    private Set<LabelOperand> labels = new HashSet<LabelOperand>();
+    
     protected void codeGenClass(DecacCompiler compiler, ClassDefinition current, int offset){
        if(current.getType().getName() == this.name.getName()){
             compiler.addComment("construction de la table des methodes de " + current.getType());
@@ -183,7 +184,7 @@ public class DeclClass extends AbstractDeclClass {
                 MethodDefinition methode = (MethodDefinition)(mth);
                 RegisterOffset gb0 = compiler.getRegisterManager().getRegOff();
                 LabelOperand label = new LabelOperand(methode.getLabel());
-                labels.add(label);
+                compiler.addLab(label);
                 compiler.addInstruction(new LOAD(label, Register.R0));
                 compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex() + offset, Register.GB)));
 
@@ -197,10 +198,11 @@ public class DeclClass extends AbstractDeclClass {
    
     protected void codeGenField(DecacCompiler compiler, ClassDefinition current){
         if(current.getType().getName() == this.name.getName()){
-            compiler.addComment("init." + current.getType().getName());
+            compiler.addComment("table des champs de " + current.getType().getName());
+            compiler.addLabel(new Label("init." + current.getType().getName()));
             if(fields.getList().size() > 0){
-                compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
                 compiler.addInstruction(new LOAD(0, Register.R0));
+                compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
             }
             for(AbstractDeclField i: fields.getList()){
                 FieldDefinition fld =((Identifier)(((DeclField)(i)).getNameField())).getFieldDefinition();

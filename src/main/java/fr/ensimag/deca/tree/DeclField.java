@@ -121,7 +121,6 @@ public class DeclField extends AbstractDeclField {
            compiler.getRegisterManager().freeReg(compiler, r);
         }
         FieldDefinition fld = ((Identifier)(fieldName)).getFieldDefinition();
-        System.out.println(fld.getContainingClass());
         compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
         compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(fld.getIndex(), Register.R1)));
     }

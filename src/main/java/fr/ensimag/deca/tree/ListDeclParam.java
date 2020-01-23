@@ -65,8 +65,7 @@ public class ListDeclParam extends TreeList<AbstractDeclParam> {
             compiler.addInstruction(new ADDSP(getList().size()));
         }
         for (AbstractDeclParam i : getList()) {
-            i.codeGenParam(compiler, j);
-            j ++;
+            i.codeGenParam(compiler);
         }
     }
 

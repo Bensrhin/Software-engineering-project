@@ -261,38 +261,42 @@ public class Identifier extends AbstractIdentifier {
         }
     }
     @Override
-    public void codeGenIdent(DecacCompiler compiler,int i){
-        RegisterOffset r = new RegisterOffset(i, Register.GB);
+    public int codeGenIdent(DecacCompiler compiler){
+        RegisterOffset r = compiler.getRegisterManager().getRegOff();
         ExpDefinition def = this.getExpDefinition();
         def.setOperand(r);
+        return r.getOffset();
     }
     @Override
      protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
         super.codeGenPrint(compiler, hex);
-        //throw new UnsupportedOperationException("not yet implemented55");
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
-        //throw new UnsupportedOperationException("not yet implemented55");
         GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
         return r1;
     }
-    private static HashMap<LabelOperand, String> Vu = new HashMap<LabelOperand, String>();
     @Override
     protected void codeGenObj(DecacCompiler compiler){
         compiler.addComment("construction de la table des methodes de " + this.getType());
         LabelOperand obj = new LabelOperand(new Label("code.Object.equals"));
+        
         compiler.addInstruction(new LOAD(new ImmediateNull(), Register.R0));
-        RegisterOffset gb1 = new RegisterOffset(1, Register.GB);
-        RegisterOffset gb2 = new RegisterOffset(2, Register.GB);
+        RegisterOffset gb1 = compiler.getRegisterManager().getRegOff();
+        RegisterOffset gb2 = compiler.getRegisterManager().getRegOff();
         compiler.addInstruction(new STORE(Register.R0, gb1));
         compiler.addInstruction(new LOAD(obj, Register.R0));
-        Vu.put(obj, this.getType().toString());
         compiler.addInstruction(new STORE(Register.R0, gb2));
         this.getClassDefinition().setOperand(this.getClassDefinition().getType(),gb1);
     }
-
-
+    @Override
+    protected void codeGenAppMethode(DecacCompiler compiler, GPRegister r){
+        System.out.println("oki");
+        RegisterOffset SP0 = new RegisterOffset(0, Register.SP);
+        compiler.addInstruction(new STORE(r, SP0));
+        compiler.addInstruction(new LOAD(new RegisterOffset(0, r), r));
+        compiler.addInstruction(new BSR(new RegisterOffset(this.getMethodDefinition().getIndex(), r)));
+    }
 }

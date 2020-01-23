@@ -67,6 +67,7 @@ public class New extends AbstractExpr{
   @Override
   protected GPRegister codeGenLoad(DecacCompiler compiler){
         //throw new UnsupportedOperationException("not yet implemented hm?");
+        compiler.addComment("instruction new");
         GPRegister r = compiler.getRegisterManager().allocReg(compiler);
         ClassDefinition def = ((Identifier)(idExpr)).getClassDefinition();
         compiler.addInstruction(new NEW(def.getNumberOfFields(), r));
@@ -75,7 +76,6 @@ public class New extends AbstractExpr{
         compiler.addInstruction(new PUSH(r));
         compiler.addInstruction(new BSR(new LabelOperand(new Label("init."+this.getType()))));
         compiler.addInstruction(new POP(r));
-        compiler.getRegisterManager().freeReg(compiler, r);
-        return null;
+        return r;
     }
 }

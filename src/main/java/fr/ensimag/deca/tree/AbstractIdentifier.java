@@ -11,6 +11,7 @@ import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.tools.SymbolTable;
+import fr.ensimag.ima.pseudocode.*;
 
 /**
  *
@@ -94,9 +95,10 @@ public abstract class AbstractIdentifier extends AbstractLValue {
      */
     public abstract ExpDefinition verifydef(EnvironmentExp localEnv) throws ContextualError;
     public abstract Type verifyType(DecacCompiler compiler) throws ContextualError;
-    public abstract void codeGenIdent(DecacCompiler compiler,int i);
+    public abstract int codeGenIdent(DecacCompiler compiler);
     protected abstract void codeGenObj(DecacCompiler compiler);
     protected void codeGenClass(DecacCompiler compiler, ListDeclMethod methods){
     }
-
+    protected void codeGenAppMethode(DecacCompiler compiler, GPRegister r){
+    }
 }
