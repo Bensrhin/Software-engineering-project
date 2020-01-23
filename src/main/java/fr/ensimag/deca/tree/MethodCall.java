@@ -1,6 +1,7 @@
 
 package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.Type;
+import java.util.Iterator;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ContextualError;
@@ -17,12 +18,14 @@ import java.io.PrintStream;
  *
  * @author
  */
-public class Selection extends AbstractLValue{
+public class MethodCall extends AbstractLValue{
     private AbstractExpr expr;
     private AbstractIdentifier id;
-    public Selection(AbstractExpr expr, AbstractIdentifier id){
+    private ListExpr args;
+    public MethodCall(AbstractExpr expr, AbstractIdentifier id, ListExpr args){
        this.id = id;
        this.expr = expr;
+       this.args = args;
     }
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
@@ -31,32 +34,36 @@ public class Selection extends AbstractLValue{
         EnvironmentExp exp2 = class2.getDefinition().getMembers();
 
         Definition def = compiler.get_env_types().get(class2.getName());
-        if (def == null && !def.isClass())
+        MethodDefinition method = (MethodDefinition) this.id.verifydef(exp2);
+        Signature sigExpected = method.getSignature();
+        Signature sig = new Signature();
+        Iterator<AbstractExpr> exprs = this.args.iterator();
+            while (exprs.hasNext())
+            {
+                AbstractExpr expr = exprs.next();
+                Type type = expr.verifyExpr(compiler, localEnv, currentClass);
+                sig.add(type);
+            }
+        if (!sig.equals(sigExpected))
         {
-          throw new ContextualError(class2.getName() + " is not yet declared or is not a class ",
-            this.getLocation());
+          throw new ContextualError("règele 3.74", this.getLocation());
         }
-        FieldDefinition field = (FieldDefinition) this.id.verifydef(exp2);
-        if (field.getVisibility().getValue().equals("PROTECTED"))
-        {
-          if (!compiler.get_env_types().subType(class2, currentClass.getType()) ||
-              !compiler.get_env_types().subType(currentClass.getType(), field.getContainingClass().getType()))
-          throw new ContextualError(class2.getName() + " problème de visibilité ",
-            this.getLocation());
-        }
-        return field.getType();
+        this.setType(method.getType());
+        return method.getType();
     }
     @Override
     protected void iterChildren(TreeFunction f) {
         expr.iterChildren(f);
         id.iterChildren(f);
+        args.iterChildren(f);
 
     }
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-      expr.prettyPrint(s, prefix, true);
+        expr.prettyPrint(s, prefix, true);
         id.prettyPrint(s, prefix, true);
+        args.prettyPrint(s, prefix, true);
 
     }
     @Override public void decompile(IndentPrintStream s){

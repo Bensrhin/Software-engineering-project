@@ -215,7 +215,18 @@ public class Identifier extends AbstractIdentifier {
           return this.getType();
     }
 
-
+    public ExpDefinition verifydef(EnvironmentExp localEnv) throws ContextualError
+    {
+      ExpDefinition def = localEnv.get(this.getName());
+      if (def == null)
+      {
+        throw new ContextualError("Identificateur \"" + this.getName().toString() +
+          "\" is not defined at this class", this.getLocation());
+      }
+      this.setType(def.getType());
+      this.setDefinition(def);
+      return def;
+    }
     private Definition definition;
 
 
