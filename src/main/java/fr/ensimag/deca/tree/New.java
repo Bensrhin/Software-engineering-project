@@ -70,7 +70,7 @@ public class New extends AbstractExpr{
         compiler.addComment("instruction new");
         GPRegister r = compiler.getRegisterManager().allocReg(compiler);
         ClassDefinition def = ((Identifier)(idExpr)).getClassDefinition();
-        compiler.addInstruction(new NEW(def.getNumberOfFields(), r));
+        compiler.addInstruction(new NEW(def.getNumberOfFields() + 1, r));
         compiler.addInstruction(new LEA(def.getOperand(idExpr.getType()), Register.R0));
         compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(0, r)));
         compiler.addInstruction(new PUSH(r));

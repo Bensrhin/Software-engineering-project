@@ -101,4 +101,6 @@ public abstract class AbstractIdentifier extends AbstractLValue {
     }
     protected void codeGenAppMethode(DecacCompiler compiler, GPRegister r){
     }
+    public void codeGenOperand(DecacCompiler compiler){
+    }
 }

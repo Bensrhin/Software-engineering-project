@@ -197,9 +197,8 @@ public class DeclClass extends AbstractDeclClass {
     }
    
     protected void codeGenField(DecacCompiler compiler, ClassDefinition current){
-        if(current.getType().getName() == this.name.getName()){
-            compiler.addComment("table des champs de " + current.getType().getName());
-            compiler.addLabel(new Label("init." + current.getType().getName()));
+         compiler.addLabel(new Label("init." + current.getType().getName()));
+         if(current.getSuperClass() != null && !current.getSuperClass().getType().getName().toString().equals("Object")){
             if(fields.getList().size() > 0){
                 compiler.addInstruction(new LOAD(0, Register.R0));
                 compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
@@ -208,16 +207,12 @@ public class DeclClass extends AbstractDeclClass {
                 FieldDefinition fld =((Identifier)(((DeclField)(i)).getNameField())).getFieldDefinition();
                 compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(fld.getIndex(), Register.R1)));
             }
-        }
-        if(current.getSuperClass() != null && !current.getSuperClass().getType().getName().toString().equals("Object")){
-            System.out.println(current.getType().getName());
-            codeGenField(compiler, current.getSuperClass());
             compiler.addInstruction(new PUSH(Register.R1));
             compiler.addInstruction(new BSR(new LabelOperand(new Label("init." + current.getSuperClass().getType()))));
             compiler.addInstruction(new SUBSP(1));
             compiler.addInstruction(new POP(Register.R1));
         }
-        if(current.getType().getName() == this.name.getName()){
+        else{
             fields.codeGenListField(compiler);
         }
     }

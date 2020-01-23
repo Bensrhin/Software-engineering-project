@@ -124,22 +124,27 @@ public class DeclMethod extends AbstractDeclMethod
           }
 
         }
-    @Override
+   /** @Override
     protected void codeGenMethod(DecacCompiler compiler, GPRegister r){
         //method.codeGenIdent(compiler, i);
         compiler.addLabel(new Label(getNameMethod().
                 getMethodDefinition().getLabel().toString() ));      
         
-        compiler.addComment("heeeere");
+        //compiler.addComment("heeeere");
         compiler.addInstruction(new LOAD(
                     new RegisterOffset(-2, Register.LB), r));
-        compiler.addComment("heeeere2");
+        //compiler.addComment("heeeere2");
 
         MethodBody body = methodBody;
         if (methodBody != null){
             methodBody.codeGenBody(compiler);
         }
 
+    }**/
+    @Override 
+    protected void codeGenMethod(DecacCompiler compiler){
+       compiler.addLabel(new Label(getNameMethod().getMethodDefinition().getLabel().toString() ));  
+       methodBody.codeGenMethodBody(compiler);
     }
 
     @Override

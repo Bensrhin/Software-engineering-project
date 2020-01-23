@@ -268,6 +268,11 @@ public class Identifier extends AbstractIdentifier {
         return r.getOffset();
     }
     @Override
+    public void codeGenOperand(DecacCompiler compiler){
+        ExpDefinition def = this.getExpDefinition();
+        def.setOperand(new RegisterOffset(-2, Register.LB));
+    }
+    @Override
      protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
         super.codeGenPrint(compiler, hex);
@@ -293,9 +298,10 @@ public class Identifier extends AbstractIdentifier {
     }
     @Override
     protected void codeGenAppMethode(DecacCompiler compiler, GPRegister r){
-        System.out.println("oki");
+        //System.out.println("oki");
         RegisterOffset SP0 = new RegisterOffset(0, Register.SP);
         compiler.addInstruction(new STORE(r, SP0));
+        compiler.addInstruction(new LOAD(SP0, r));
         compiler.addInstruction(new LOAD(new RegisterOffset(0, r), r));
         compiler.addInstruction(new BSR(new RegisterOffset(this.getMethodDefinition().getIndex(), r)));
     }

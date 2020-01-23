@@ -80,10 +80,10 @@ public class Main extends AbstractMain {
         if(n > 0){
             Label pilePleine= new Label("pile_pleine");
             if (!compiler.getCompilerOptions().getNoCheck()){
-                compiler.addInstruction(new TSTO(n));
+                compiler.addInstruction(new TSTO(11));
                 compiler.addInstruction(new BOV(pilePleine));
             }
-            compiler.addInstruction(new ADDSP(n));
+            compiler.addInstruction(new ADDSP(7));
         }
     }
 }

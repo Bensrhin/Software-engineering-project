@@ -62,7 +62,7 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
               declMethod.verifyMethodBody(compiler, localEnv, currentClass);
           }
         }
-    public void codeGenListMethod(DecacCompiler compiler, ListDeclField fields){
+    /*public void codeGenListMethod(DecacCompiler compiler, ListDeclField fields){
         //setting the fields
         int k = 1;
         GPRegister rtmp = compiler.getRegisterManager().allocReg(compiler);
@@ -77,6 +77,12 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
             i.codeGenMethod(compiler, rtmp);
             j ++;
         }
+    }**/
+    public void codeGenListMethod(DecacCompiler compiler, ListDeclField fields){
+        for (AbstractDeclMethod method : getList()) {
+            method.codeGenMethod(compiler);
+        }
+    
     }
 
 

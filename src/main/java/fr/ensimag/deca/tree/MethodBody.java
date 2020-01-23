@@ -13,7 +13,7 @@ import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import fr.ensimag.ima.pseudocode.instructions.TSTO;
 import fr.ensimag.ima.pseudocode.instructions.ADDSP;
-import fr.ensimag.ima.pseudocode.instructions.BOV;
+import fr.ensimag.ima.pseudocode.instructions.*;
 import fr.ensimag.ima.pseudocode.Label;
 
 /**
@@ -45,12 +45,17 @@ public class MethodBody extends Tree {
         return this.declVariables;
 
     }
-
+/**
     protected void codeGenBody(DecacCompiler compiler) {
         declVariables.codeGenListVar(compiler);
         //loading class attributes
         
         insts.codeGenListInst(compiler);
+    }
+*/
+    protected void codeGenMethodBody(DecacCompiler compiler){
+        insts.codeGenListInst(compiler);
+        compiler.addInstruction(new RTS());
     }
 
     @Override
@@ -74,14 +79,4 @@ public class MethodBody extends Tree {
         declVariables.prettyPrint(s, prefix, false);
         insts.prettyPrint(s, prefix, true);
     }
-    // public void codeGenEntete(DecacCompiler compiler, int n){
-    //     if(n > 0){
-    //         Label pilePleine= new Label("pile_pleine");
-    //         if (!compiler.getCompilerOptions().getNoCheck()){
-    //             compiler.addInstruction(new TSTO(n));
-    //             compiler.addInstruction(new BOV(pilePleine));
-    //         }
-    //         compiler.addInstruction(new ADDSP(n));
-    //     }
-    // }
 }
