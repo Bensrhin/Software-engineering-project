@@ -6,6 +6,8 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.GPRegister;
+
 /**
  * Field declaration
  *
@@ -27,7 +29,7 @@ public abstract class AbstractDeclField extends Tree {
      *          corresponds to the "class" attribute (null in the main bloc).
      */
     protected abstract void verifyDeclField(DecacCompiler compiler, AbstractIdentifier superIdentifier, AbstractIdentifier classIdentifier) throws ContextualError;
-    protected abstract void codeGenField(DecacCompiler compiler);
+    protected abstract void codeGenField(DecacCompiler compiler, int i, GPRegister rtmp);
 
 
     protected abstract void verifyFieldValue(DecacCompiler compiler,

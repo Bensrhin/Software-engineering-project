@@ -227,7 +227,7 @@ public class DeclClass extends AbstractDeclClass {
     protected void codeGenClassPass2(DecacCompiler compiler){
         ClassDefinition current =  name.getClassDefinition();
         codeGenField(compiler, current);
-        methods.codeGenListMethod(compiler);
+        methods.codeGenListMethod(compiler, fields);
     }
 
   }

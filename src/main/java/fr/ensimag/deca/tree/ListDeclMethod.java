@@ -7,6 +7,10 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.instructions.ADDSP;
 import fr.ensimag.ima.pseudocode.instructions.TSTO;
+import fr.ensimag.deca.context.*;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.GPRegister;
+
 
 /**
  * List of declarations (e.g. int x; float y,z).
@@ -58,11 +62,19 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
               declMethod.verifyMethodBody(compiler, localEnv, currentClass);
           }
         }
-    public void codeGenListMethod(DecacCompiler compiler){
+    public void codeGenListMethod(DecacCompiler compiler, ListDeclField fields){
+        //setting the fields
+        int k = 1;
+        GPRegister rtmp = compiler.getRegisterManager().allocReg(compiler);
+        for (AbstractDeclField field : fields.getList()){
+            ExpDefinition def = ((DeclField)field).getNameField().getExpDefinition();
+            def.setOperand(new RegisterOffset(k, rtmp)); k++;
+        }
+        
         int j = 1;
         int n = getList().size();
         for (AbstractDeclMethod i : getList()) {
-            i.codeGenMethod(compiler, j);
+            i.codeGenMethod(compiler, j, rtmp);
             j ++;
         }
     }

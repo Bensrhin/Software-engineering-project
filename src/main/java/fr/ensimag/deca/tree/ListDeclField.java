@@ -5,7 +5,11 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.ADDSP;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.TSTO;
 import fr.ensimag.ima.pseudocode.instructions.RTS;
 
@@ -63,8 +67,14 @@ public class ListDeclField extends TreeList<AbstractDeclField> {
         }
 
     public void codeGenListField(DecacCompiler compiler){
+        int j = 1;
+        GPRegister rtmp = compiler.getRegisterManager().allocReg(compiler);
+        compiler.addComment("heeeere0");
+        /*compiler.addInstruction(new LOAD(
+                    new RegisterOffset(-2, Register.LB), rtmp));*/
+        compiler.addComment("heeeere20");
         for (AbstractDeclField i : getList()) {
-            i.codeGenField(compiler);
+            i.codeGenField(compiler, j, rtmp); j++;
        }
         compiler.addInstruction(new RTS());
     }
