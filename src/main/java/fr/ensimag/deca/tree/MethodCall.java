@@ -79,7 +79,7 @@ public class MethodCall extends AbstractLValue{
     }
     @Override 
     protected GPRegister codeGenLoad(DecacCompiler compiler){
-        compiler.addComment("appel de methode");
+        compiler.addComment("appel de methode" + ((Identifier)(id)).getMethodDefinition().getIndex());
         compiler.addInstruction(new ADDSP(args.size() + 1));
         GPRegister r = expr.codeGenLoad(compiler);
         System.out.println(expr.getType());
@@ -87,5 +87,10 @@ public class MethodCall extends AbstractLValue{
         compiler.addInstruction(new SUBSP(args.size() + 1));
         compiler.getRegisterManager().freeReg(compiler, r);
         return Register.R0;
+    }
+    @Override
+    protected void codeGenInst(DecacCompiler compiler){
+        //throw new UnsupportedOperationException("not yet implemented à m3alem");
+        this.codeGenLoad(compiler);
     }
     }

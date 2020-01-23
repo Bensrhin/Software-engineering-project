@@ -83,7 +83,7 @@ public class Main extends AbstractMain {
                 compiler.addInstruction(new TSTO(11));
                 compiler.addInstruction(new BOV(pilePleine));
             }
-            compiler.addInstruction(new ADDSP(9));
+            compiler.addInstruction(new ADDSP(13));
         }
     }
 }

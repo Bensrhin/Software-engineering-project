@@ -1,6 +1,6 @@
 	TSTO #11
 	BOV pile_pleine
-	ADDSP #9
+	ADDSP #13
 ; table des methodes
 ; construction de la table des methodes de Object
 	LOAD #null, R0
@@ -10,8 +10,10 @@
 ; construction de la table des methodes de A
 	LEA 1(GB), R0
 	STORE R0, 3(GB)
-	LOAD code.A.getX, R0
+	LOAD code.A.fact, R0
 	STORE R0, 5(GB)
+	LOAD code.A.setX, R0
+	STORE R0, 6(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 4(GB)
 ; Main program
@@ -23,17 +25,19 @@
 	PUSH R2
 	BSR init.A
 	POP R2
-	STORE R2, 6(GB)
-; appel de methode
+	STORE R2, 7(GB)
+	LOAD #0, R2
+	STORE R2, 8(GB)
+; appel de methode2
 	ADDSP #1
-	LOAD 6(GB), R2
+	LOAD 7(GB), R2
 	STORE R2, 0(SP)
 	LOAD 0(SP), R2
 	LOAD 0(R2), R2
 	BSR 2(R2)
 	SUBSP #1
-	STORE R0, 7(GB)
-	LOAD 7(GB), R1
+	STORE R0, 8(GB)
+	LOAD 8(GB), R1
 	WINT
 	WNL
 	HALT
@@ -43,13 +47,43 @@ init.A:
 	LOAD -2(LB), R1
 	STORE R0, 1(R1)
 	RTS
-code.A.getX:
-	LOAD -2(LB), R2
-	LOAD 1(R2), R2
-	LOAD #3, R3
-	MUL R3, R2
+code.A.fact:
+	LOAD #1, R2
+	STORE R2, 9(GB)
+	LOAD #1, R2
+	STORE R2, 10(GB)
+While_cond_a610:
+	LOAD 9(GB), R3
+	LOAD #7, R4
+	SUB R4, R3
+	LOAD R3, R1
+	BLT OpCmp_if_in_a610
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a610
+OpCmp_if_in_a610:
+	LOAD #0, R1
+OpCmp_fin_in_a610:
+	LOAD R1, R2
+	LOAD R2, R1
+	BNE While_fin_a610
+	LOAD 10(GB), R5
+	LOAD 9(GB), R6
+	MUL R6, R5
 	BOV over_flow
-	LOAD R2, R0
+	STORE R5, 10(GB)
+	LOAD 9(GB), R6
+	LOAD #1, R7
+	ADD R7, R6
+	STORE R6, 9(GB)
+	BRA While_cond_a610
+While_fin_a610:
+	LOAD 10(GB), R7
+	LOAD R7, R0
+	RTS
+code.A.setX:
+	LOAD #1, R7
+	LOAD -2(LB), R8
+	STORE R7, 1(R8)
 	RTS
 code.Object.equals:
 pile_pleine:
