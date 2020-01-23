@@ -27,22 +27,43 @@ public class Selection extends AbstractLValue{
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        ClassType class2 = (ClassType)this.expr.verifyExpr(compiler, localEnv, currentClass);
-        EnvironmentExp exp2 = class2.getDefinition().getMembers();
-
-        Definition def = compiler.get_env_types().get(class2.getName());
-        if (def == null && !def.isClass())
+        Type class2 = this.expr.verifyExpr(compiler, localEnv, currentClass);
+        if (class2 == null || !class2.isClass())
         {
-          throw new ContextualError(class2.getName() + " is not yet declared or is not a class ",
-            this.getLocation());
+          throw new ContextualError("L'identificateur \"" + expr.decompile() +
+          "\" n'est pas une classe (règle 3.65)", expr.getLocation());
         }
-        FieldDefinition field = (FieldDefinition) this.id.verifydef(exp2);
+        EnvironmentExp exp2 = ((ClassType)class2).getDefinition().getMembers();
+        Definition field0 = this.id.verifydef(exp2);
+        if (!field0.isField())
+        {
+          throw new ContextualError("L'identificateur \"" + id.decompile() +
+          "\" n'est pas un field (règle 3.65)", id.getLocation());
+        }
+        FieldDefinition field = (FieldDefinition) field0;
         if (field.getVisibility().getValue().equals("PROTECTED"))
         {
-          if (!compiler.get_env_types().subType(class2, currentClass.getType()) ||
-              !compiler.get_env_types().subType(currentClass.getType(), field.getContainingClass().getType()))
-          throw new ContextualError(class2.getName() + " problème de visibilité ",
+          if (currentClass == null)
+          {
+            throw new ContextualError("Le programme principale n'est pas un sous " +
+            "type de la classe \"" + expr.decompile() + "\" (règle 3.66)",this.getLocation());
+          }
+          else if (!compiler.get_env_types().subType(class2, currentClass.getType()))
+          {
+            throw new ContextualError("Le type de l'expression \"" +
+            expr.decompile() + "\" doit être un sous type de la classe courante \"" +
+            currentClass.getType().toString() + "\" : problème de visibilité (règle 3.66)",
             this.getLocation());
+          }
+          else if (!compiler.get_env_types().subType(currentClass.getType(),
+                                                     field.getContainingClass().getType()))
+          {
+            throw new ContextualError("la classe courante \"" +
+            currentClass.getType().toString() + "\" doit être un sous " +
+            "type de la classe \"" + field.getContainingClass().getType().toString() +
+            "\" où le champ protégé \"" +
+            id.decompile() + "\" est déclaré : problème de visibilité (règle 3.66)",this.getLocation());
+          }
         }
         return field.getType();
     }

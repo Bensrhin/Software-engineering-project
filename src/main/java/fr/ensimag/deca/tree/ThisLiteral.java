@@ -33,7 +33,8 @@ public class ThisLiteral extends AbstractExpr{
     {
           if (currentClass == null)
           {
-            throw new ContextualError("On peut pas utiliser This dans le main",
+            throw new ContextualError("\"this\" ne doit pas apparaître " +
+                  "dans le programme principale (règle 3.43)",
                     this.getLocation());
           }
           this.setType(currentClass.getType());

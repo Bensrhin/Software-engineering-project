@@ -23,7 +23,7 @@ public class DeclMethod extends AbstractDeclMethod
     final private AbstractIdentifier method;
     final private ListDeclParam params;
     private MethodBody methodBody;
-    final private String code;
+    final private MethodAsmBody code;
 
     private static final Logger LOG = Logger.getLogger(DeclMethod.class);
     public DeclMethod(AbstractIdentifier type, AbstractIdentifier method,
@@ -39,7 +39,7 @@ public class DeclMethod extends AbstractDeclMethod
         this.code = null;
     }
     public DeclMethod(AbstractIdentifier type, AbstractIdentifier method,
-        ListDeclParam params, String code) {
+        ListDeclParam params, MethodAsmBody code) {
         Validate.notNull(type);
         Validate.notNull(method);
         Validate.notNull(params);
@@ -55,7 +55,7 @@ public class DeclMethod extends AbstractDeclMethod
     {
         return this.methodBody;
     }
-    public String getCode()
+    public MethodAsmBody getCode()
     {
         return this.code;
     }
@@ -75,24 +75,35 @@ public class DeclMethod extends AbstractDeclMethod
             AbstractIdentifier superIdentifier, AbstractIdentifier classIdentifier) throws ContextualError {
             Type type = this.getNameType().verifyType(compiler);
             Signature sig = this.getParams().verifyListDeclParam(compiler);
-            Boolean isClass = compiler.get_env_types().get(superIdentifier.getName()).isClass();
-            MethodDefinition override = (MethodDefinition)superIdentifier.getClassDefinition().getMembers().get(getNameMethod().getName());
-
-            if (isClass && override != null &&
-                !((override instanceof MethodDefinition) &&
-                  override.getSignature().equals(sig) &&
-                  compiler.get_env_types().subType(type, override.getType())))
+            Definition override = superIdentifier.getClassDefinition().getMembers().get(getNameMethod().getName());
+            String erreur = new String("La méthode \""
+                      + this.method.decompile() + "\" est déja définie "
+                      + "dans la super classe \"");
+            if (override != null && !(override instanceof MethodDefinition))
             {
-              throw new ContextualError("Méthode \""
-              + this.getNameMethod().getName().getName() + "\" est redéfinie " +
-              "dans une super classe avec une autre définition (règle 2.7)",
-              this.getLocation());
+              erreur += override.getType().toString() + "\" en tant que \"" + override.getNature() + "\" à "+
+                      override.getLocation() + " (règle 2.7)";
+              throw new ContextualError(erreur, method.getLocation());
+            }
+            else if (override != null && !((MethodDefinition) override).getSignature().equals(sig))
+            {
+              erreur +=  override.getType().toString() + "\" à " + override.getLocation() +
+                        " avec une autre signature (règle 2.7)";
+              throw new ContextualError(erreur, method.getLocation());
+            }
+            else if (override != null && !compiler.get_env_types().subType(type, override.getType()))
+            {
+              erreur +=  override.getType().toString() + "\" à " + override.getLocation() +
+                      ". Le type de retour \"" + type.toString() +
+                      "\" n'est pas un sous type de \"" +
+                      override.getType().toString() + "\" (règle 2.7)";
+              throw new ContextualError(erreur, method.getLocation());
+
             }
             ClassDefinition classDef = classIdentifier.getClassDefinition();
             int index = classDef.getNumberOfMethods();
             index ++;
             classDef.setNumberOfMethods(index);
-            System.out.println(index);
             MethodDefinition def = new MethodDefinition(type,
                     this.getLocation(), sig, index);
             def.setLabel(new Label("code." + classIdentifier.getName().getName() + "." + this.getNameMethod().getName().getName()));
@@ -103,8 +114,11 @@ public class DeclMethod extends AbstractDeclMethod
             }
             catch (DoubleDefException e)
             {
-                throw new ContextualError(symbol.toString()
-                           + "is already defined", this.getLocation());
+              throw new ContextualError("La méthode \"" +
+                      method.decompile() +
+                      "\" est déjà déclarée dans cette classe  à " +
+                      classDef.getMembers().get(symbol).getLocation() +
+                      " (règle 2.6)", method.getLocation());
             }
             this.getNameMethod().verifyExpr(compiler, classDef.getMembers(), classDef);
     }
@@ -121,6 +135,10 @@ public class DeclMethod extends AbstractDeclMethod
           {
             mBody.verifyBody(compiler, localEnv, paramEnv, currentClass, rType);
           }
+          else if (getCode() != null)
+          {
+            getCode().verifyBody(compiler, paramEnv, currentClass);
+          }
 
         }
     @Override
@@ -134,7 +152,10 @@ public class DeclMethod extends AbstractDeclMethod
 
             methodBody.codeGenBody(compiler);
         }
-
+        else if(getCode() != null)
+        {
+            // getCode()
+        }
     }
 
     @Override
@@ -155,6 +176,10 @@ public class DeclMethod extends AbstractDeclMethod
         {
             methodBody.iter(f);
         }
+        else
+        {
+          code.iter(f);
+        }
     }
 
     @Override
@@ -168,7 +193,7 @@ public class DeclMethod extends AbstractDeclMethod
         }
         else
         {
-          //code.prettyPrint(s, prefix, true);
+          code.prettyPrint(s, prefix, true);
         }
     }
 }

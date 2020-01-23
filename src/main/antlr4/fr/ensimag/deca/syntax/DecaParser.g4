@@ -572,7 +572,10 @@ decl_method returns[AbstractDeclMethod methods]
           assert($params.tree != null);
           assert($ident.tree != null);
           assert($type.tree != null);
-          $methods = new DeclMethod($type.tree, $ident.tree, $params.tree,$code.text);
+          StringLiteral string = new StringLiteral($code.text);
+          MethodAsmBody code = new MethodAsmBody(string);
+          setLocation(code, $code.start);
+          $methods = new DeclMethod($type.tree, $ident.tree, $params.tree, code);
         }
       ) {
         setLocation($methods, $m.start);

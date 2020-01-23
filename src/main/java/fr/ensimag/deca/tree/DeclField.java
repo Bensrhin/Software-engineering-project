@@ -65,18 +65,18 @@ public class DeclField extends AbstractDeclField {
               Type nameType = this.getNameType().verifyType(compiler);
               if (nameType.isVoid())
               {
-                  throw new ContextualError("Type de l'indentificateur \""+
+                  throw new ContextualError("Type du field \""+
                           this.getNameField().getName().toString() +
-                          "\" doit être différent de void (règle 2.5)", this.getLocation());
+                          "\" doit être différent de \"void\" (règle 2.5)", this.getLocation());
               }
-              Boolean isClass = compiler.get_env_types().get(superIdentifier.getName()).isClass();
               Definition override = superIdentifier.getClassDefinition().getMembers().get(getNameField().getName());
-              if (isClass && override != null && !(override instanceof FieldDefinition))
+              if ((override != null) && !(override instanceof FieldDefinition))
               {
-                throw new ContextualError("Le champs \""
-                + this.getNameField().getName().getName() + "\" est défini " +
-                "dans une super classe avec une autre définition (règle 2.5)",
-                this.getLocation());
+                throw new ContextualError("Le field \""
+                + this.getNameField().getName().getName() + "\" est déja défini " +
+                "dans une super classe en tant que \"" + override.getNature() + "\" à "+
+                override.getLocation() + " (règle 2.5)",
+                fieldName.getLocation());
               }
               ClassDefinition classDef = classIdentifier.getClassDefinition();
               int index = classDef.getNumberOfFields(); index ++;
@@ -91,15 +91,17 @@ public class DeclField extends AbstractDeclField {
               }
               catch (DoubleDefException e)
               {
-                  throw new ContextualError(symbol.toString()
-                             + "is already defined", this.getLocation());
+                throw new ContextualError("Le field \"" +
+                        fieldName.decompile() + "\" est déjà déclaré à " +
+                        classDef.getMembers().get(symbol).getLocation() +
+                        " (règle 2.4)", fieldName.getLocation());
+
               }
               this.getNameField().verifyExpr(compiler, classDef.getMembers(), classDef);
-              // System.out.println(symbol.getName());
     }
     protected  void verifyIdent(EnvironmentExp localEnv) throws ContextualError
     {
-      
+
     }
     protected void verifyFieldValue(DecacCompiler compiler,
         EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError

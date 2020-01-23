@@ -2,7 +2,7 @@ package fr.ensimag.deca.context;
 
 import fr.ensimag.deca.tree.Location;
 import fr.ensimag.ima.pseudocode.DAddr;
-
+import fr.ensimag.deca.tree.Location;
 /**
  * Definition associated to identifier in expressions.
  *

@@ -89,9 +89,9 @@ public abstract class AbstractExpr extends AbstractInst {
         Type type2 = this.verifyExpr(compiler, localEnv, currentClass);
         if (!localEnv.assignCompatible(expectedType, type2))
         {
-            throw new ContextualError("On ne peut pas affecter un " +
-                type2.toString()+ " à un identificateur de type " +
-                expectedType.toString() + " (règle 3.28)", this.getLocation());
+            throw new ContextualError("On ne peut pas affecter une expression de type \"" +
+                type2.toString()+ "\" à un identificateur de type \"" +
+                expectedType.toString() + "\" (règle 3.28)", this.getLocation());
         }
         if (expectedType.sameType(type2))
         {
