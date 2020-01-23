@@ -125,11 +125,10 @@ public class DeclMethod extends AbstractDeclMethod
 
         }
     @Override
-    protected void codeGenMethod(DecacCompiler compiler, int i, GPRegister r){
+    protected void codeGenMethod(DecacCompiler compiler, GPRegister r){
         //method.codeGenIdent(compiler, i);
         compiler.addLabel(new Label(getNameMethod().
-                getMethodDefinition().getLabel().toString() ));
-        
+                getMethodDefinition().getLabel().toString() ));      
         
         compiler.addComment("heeeere");
         compiler.addInstruction(new LOAD(
