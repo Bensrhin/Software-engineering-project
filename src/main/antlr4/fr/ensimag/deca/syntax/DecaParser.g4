@@ -469,13 +469,30 @@ type returns[AbstractIdentifier tree]
 
 literal returns[AbstractExpr tree]
     : INT {
-          $tree = new IntLiteral(Integer.parseInt($INT.text));
-          setLocation($tree, $INT);
-        }
+          try {
+                $tree = new IntLiteral(Integer.parseInt($INT.text));
+                setLocation($tree,$INT);
+            } catch (NumberFormatException e) {
+                $tree = null;
+                throw new InvalidInteger($INT.text,this,$ctx);
+            }
+        } {$tree != null}?
     | fd=FLOAT {
-        $tree = new FloatLiteral(Float.parseFloat($fd.text));
-         setLocation($tree, $fd);
-        }
+        try {
+            $tree = new FloatLiteral(Float.parseFloat($fd.text));
+            setLocation($tree, $fd);            
+            } catch (NumberFormatException e) {
+                $tree = null;
+                throw new InvalidFloat($fd.text,this,$ctx);
+            }
+            if (Float.isInfinite(Float.parseFloat($fd.text))){
+                throw new InvalidFloat($fd.text,this,$ctx);
+             }
+            if (Float.isNaN(Float.parseFloat($fd.text))){
+                throw new InvalidFloat($fd.text,this,$ctx);
+            }
+        } {$tree != null}?
+        
     | STRING {
         $tree = new StringLiteral($STRING.text);
          setLocation($tree, $STRING);
