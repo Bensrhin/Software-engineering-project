@@ -1,6 +1,6 @@
 	TSTO #11
 	BOV pile_pleine
-	ADDSP #7
+	ADDSP #9
 ; table des methodes
 ; construction de la table des methodes de Object
 	LOAD #null, R0
@@ -38,14 +38,18 @@
 	WNL
 	HALT
 init.A:
-	LOAD #1, R0
-	LOAD R0, R0
+	LOAD #8, R2
+	LOAD R2, R0
 	LOAD -2(LB), R1
 	STORE R0, 1(R1)
 	RTS
 code.A.getX:
-	LOAD #5, R0
-	LOAD R0, R0
+	LOAD -2(LB), R2
+	LOAD 1(R2), R2
+	LOAD #3, R3
+	MUL R3, R2
+	BOV over_flow
+	LOAD R2, R0
 	RTS
 code.Object.equals:
 pile_pleine:

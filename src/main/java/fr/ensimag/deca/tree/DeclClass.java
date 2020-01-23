@@ -211,6 +211,7 @@ public class DeclClass extends AbstractDeclClass {
             compiler.addInstruction(new BSR(new LabelOperand(new Label("init." + current.getSuperClass().getType()))));
             compiler.addInstruction(new SUBSP(1));
             compiler.addInstruction(new POP(Register.R1));
+            fields.codeGenListField(compiler);
         }
         else{
             fields.codeGenListField(compiler);

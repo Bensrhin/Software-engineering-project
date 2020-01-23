@@ -281,6 +281,9 @@ public class Identifier extends AbstractIdentifier {
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
         GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
+        if(this.getExpDefinition().isField()){
+            compiler.addInstruction(new LOAD(new RegisterOffset(this.getFieldDefinition().getIndex(), r1), r1));
+        }
         return r1;
     }
     @Override
@@ -298,7 +301,6 @@ public class Identifier extends AbstractIdentifier {
     }
     @Override
     protected void codeGenAppMethode(DecacCompiler compiler, GPRegister r){
-        //System.out.println("oki");
         RegisterOffset SP0 = new RegisterOffset(0, Register.SP);
         compiler.addInstruction(new STORE(r, SP0));
         compiler.addInstruction(new LOAD(SP0, r));
