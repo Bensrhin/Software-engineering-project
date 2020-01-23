@@ -53,8 +53,8 @@ public class DeclParam extends AbstractDeclParam
 
     }
     @Override
-    protected void codeGenParam(DecacCompiler compiler, int i){
-            param.codeGenIdent(compiler, i);
+    protected void codeGenParam(DecacCompiler compiler){
+            param.codeGenIdent(compiler);
 
     }
     @Override

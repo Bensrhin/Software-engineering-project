@@ -74,9 +74,9 @@ public class DeclVar extends AbstractDeclVar {
               //LOG.debug("End of verifyDeclVar");
     }
     @Override
-    protected void codeGenVar(DecacCompiler compiler, int i){
-        varName.codeGenIdent(compiler, i);
-        initialization.codeGenInt(compiler, i);
+    protected void codeGenVar(DecacCompiler compiler){
+        int j = varName.codeGenIdent(compiler);
+        initialization.codeGenInt(compiler, j);
 
     }
 

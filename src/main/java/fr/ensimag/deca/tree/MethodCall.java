@@ -7,8 +7,8 @@ import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.ima.pseudocode.GPRegister;
-import fr.ensimag.ima.pseudocode.Register;
-import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.*;
+import fr.ensimag.ima.pseudocode.instructions.*;
 import fr.ensimag.ima.pseudocode.instructions.OPP;
 import fr.ensimag.deca.codegen.RegisterManager;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -69,5 +69,28 @@ public class MethodCall extends AbstractLValue{
     @Override public void decompile(IndentPrintStream s){
 
     }
+    @Override
+    protected void codeGenPrint(DecacCompiler compiler, boolean hex){
+        //throw new UnsupportedOperationException("not yet implemented44");
+        System.out.println(id.getType());
+        
 
+        
+    }
+    @Override 
+    protected GPRegister codeGenLoad(DecacCompiler compiler){
+        compiler.addComment("appel de methode" + ((Identifier)(id)).getMethodDefinition().getIndex());
+        compiler.addInstruction(new ADDSP(args.size() + 1));
+        GPRegister r = expr.codeGenLoad(compiler);
+        System.out.println(expr.getType());
+        id.codeGenAppMethode(compiler, r);
+        compiler.addInstruction(new SUBSP(args.size() + 1));
+        compiler.getRegisterManager().freeReg(compiler, r);
+        return Register.R0;
+    }
+    @Override
+    protected void codeGenInst(DecacCompiler compiler){
+        //throw new UnsupportedOperationException("not yet implemented à m3alem");
+        this.codeGenLoad(compiler);
+    }
     }

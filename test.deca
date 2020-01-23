@@ -1,25 +1,22 @@
-class A
-{
-
-  void a(){
-
-  }
-
+class A{
+int x = 8;
+int fact(){
+    int i = 1;
+    int res = 1;
+    while(i < 7){
+        res = res*i;
+        i = i+1;
+    }
+    return res;
+    }
+void setX(){
+x = 1;
 }
-class C extends A
-{
-  int getA(int a, int c)
-  {
-    //return this.a();
-    return f;
-
-  }
-  int f=0;
 }
 class B extends A
 {
-
-}
-{
-
+A a = new A();
+int x = 0;
+x = a.fact();
+println(x);
 }

@@ -11,6 +11,7 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 /**
@@ -142,20 +143,9 @@ public class DeclMethod extends AbstractDeclMethod
 
         }
     @Override
-    protected void codeGenMethod(DecacCompiler compiler, int i){
-        //method.codeGenIdent(compiler, i);
-        LinkedList<Instruction>  l = new LinkedList<Instruction>();
-        compiler.addLabel(new Label(getNameMethod().
-                getMethodDefinition().getLabel().toString() ));
-        MethodBody body = methodBody;
-        if (methodBody != null){
-
-            methodBody.codeGenBody(compiler);
-        }
-        else if(getCode() != null)
-        {
-            // getCode()
-        }
+    protected void codeGenMethod(DecacCompiler compiler){
+       compiler.addLabel(new Label(getNameMethod().getMethodDefinition().getLabel().toString() ));
+       methodBody.codeGenMethodBody(compiler);
     }
 
     @Override

@@ -28,7 +28,7 @@ public class DeclClass extends AbstractDeclClass {
     private AbstractIdentifier superName;
     private ListDeclField fields;
     private ListDeclMethod methods;
-
+    private static boolean flag = true;
     public DeclClass(AbstractIdentifier name, AbstractIdentifier superName,
                      ListDeclField fields, ListDeclMethod methods)
     {
@@ -149,24 +149,26 @@ public class DeclClass extends AbstractDeclClass {
     }
     @Override
     protected void codeGenClass(DecacCompiler compiler){
-        if(superName.getType().toString().equals("Object")){
+        if(superName.getType().toString().equals("Object") && flag){
             superName.codeGenObj(compiler);
+            flag = false;
         }
         ClassDefinition current =  name.getClassDefinition();
-        codeGenClass(compiler, current);
+        codeGenClass(compiler, current, 0);
 
 
     }
     private Set<Symbol> vu = new HashSet<Symbol>();
-    private Set<LabelOperand> labels = new HashSet<LabelOperand>();
-    protected void codeGenClass(DecacCompiler compiler, ClassDefinition current){
+    
+    protected void codeGenClass(DecacCompiler compiler, ClassDefinition current, int offset){
        if(current.getType().getName() == this.name.getName()){
             compiler.addComment("construction de la table des methodes de " + current.getType());
-            DAddr addr = current.getOperand();
+            RegisterOffset addr = current.getOperand(current.getSuperClass().getType());
             RegisterOffset gb = compiler.getRegisterManager().getRegOff();
             compiler.addInstruction(new LEA(addr, Register.R0));
-            compiler.addInstruction(new STORE(Register.R0, gb));
-            current.setOperand(gb);
+            compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(gb.getOffset() + offset, Register.GB)));
+            current.setOperand(current.getType(), gb);
+            offset = gb.getOffset();
         }
         Map<Symbol, ExpDefinition> dic = current.getMembers().getMapMethod();
         Set<Map.Entry<Symbol, ExpDefinition>> couples = dic.entrySet();
@@ -176,49 +178,40 @@ public class DeclClass extends AbstractDeclClass {
             Map.Entry<Symbol, ExpDefinition> couple = itCouples.next();
             mth = couple.getValue();
             if(vu.add(couple.getKey())){
-                DAddr addr = current.getOperand();
+                RegisterOffset addr = current.getOperand(current.getType());
                 MethodDefinition methode = (MethodDefinition)(mth);
                 RegisterOffset gb0 = compiler.getRegisterManager().getRegOff();
                 LabelOperand label = new LabelOperand(methode.getLabel());
-                labels.add(label);
+                compiler.addLab(label);
                 compiler.addInstruction(new LOAD(label, Register.R0));
-                compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex(), Register.GB)));
+                compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex() + offset, Register.GB)));
 
             }
         }
 
         if(current.getSuperClass() != null){
-            codeGenClass(compiler, current.getSuperClass());
+            codeGenClass(compiler, current.getSuperClass(), offset);
         }
     }
-    // protected void codeGenClass2(DecacCompiler compiler){
-    //     //System.out.println(this.getName().getClassDefinition().toString());
-    //     Label labelInit = new Label("init."+this.getName().getClassDefinition().getType().toString());
-    //     compiler.addLabel(labelInit);
-    //     fields.codeGenListField(compiler);
-    //     //methods.codeGenListMethod(compiler);
-    // }
+   
     protected void codeGenField(DecacCompiler compiler, ClassDefinition current){
-        if(current.getType().getName() == this.name.getName()){
-            compiler.addComment("init." + current.getType().getName());
+         compiler.addLabel(new Label("init." + current.getType().getName()));
+         if(current.getSuperClass() != null && !current.getSuperClass().getType().getName().toString().equals("Object")){
             if(fields.getList().size() > 0){
-                compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
                 compiler.addInstruction(new LOAD(0, Register.R0));
+                compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
             }
             for(AbstractDeclField i: fields.getList()){
                 FieldDefinition fld =((Identifier)(((DeclField)(i)).getNameField())).getFieldDefinition();
                 compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(fld.getIndex(), Register.R1)));
             }
-        }
-        if(current.getSuperClass() != null && !current.getSuperClass().getType().getName().toString().equals("Object")){
-            System.out.println(current.getType().getName());
-            codeGenField(compiler, current.getSuperClass());
             compiler.addInstruction(new PUSH(Register.R1));
             compiler.addInstruction(new BSR(new LabelOperand(new Label("init." + current.getSuperClass().getType()))));
             compiler.addInstruction(new SUBSP(1));
             compiler.addInstruction(new POP(Register.R1));
+            fields.codeGenListField(compiler);
         }
-        if(current.getType().getName() == this.name.getName()){
+        else{
             fields.codeGenListField(compiler);
         }
     }
@@ -228,7 +221,7 @@ public class DeclClass extends AbstractDeclClass {
     protected void codeGenClassPass2(DecacCompiler compiler){
         ClassDefinition current =  name.getClassDefinition();
         codeGenField(compiler, current);
-        methods.codeGenListMethod(compiler);
+        methods.codeGenListMethod(compiler, fields);
     }
 
   }

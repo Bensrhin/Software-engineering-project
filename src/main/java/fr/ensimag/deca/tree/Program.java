@@ -49,10 +49,12 @@ public class Program extends AbstractProgram {
         compiler.addComment("table des methodes");
         classes.codeGenListClasse(compiler);
         //compiler.addComment("pass2");
-        classes.codeGenListClassPass2(compiler);
         compiler.addComment("Main program");
         main.codeGenMain(compiler);
         compiler.addInstruction(new HALT());
+        classes.codeGenListClassPass2(compiler);
+        
+        
     }
 
     @Override

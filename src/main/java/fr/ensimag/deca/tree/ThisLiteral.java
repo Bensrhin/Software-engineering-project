@@ -13,7 +13,7 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.NullType;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
-import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 import java.io.PrintStream;
@@ -62,7 +62,9 @@ public class ThisLiteral extends AbstractExpr{
     protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
     }
     public GPRegister codeGenLoad(DecacCompiler compiler){
-        return null;
+        GPRegister r = compiler.getRegisterManager().allocReg(compiler);
+        compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), r));
+        return r;
     }
 
 

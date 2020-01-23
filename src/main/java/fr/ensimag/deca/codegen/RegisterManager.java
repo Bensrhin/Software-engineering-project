@@ -14,10 +14,9 @@ import fr.ensimag.ima.pseudocode.instructions.BOV;
 import java.util.*;
 public class RegisterManager{
     private static InitManager initR;
-    private static int cptOffset = 3;
+    private static int cptOffset = 1;
     public RegisterManager(DecacCompiler compiler){
-        initR = new InitManager
-        (compiler.getCompilerOptions().getRegisters()-1);
+        initR = new InitManager(compiler.getCompilerOptions().getRegisters()-1);
     }
     //System.out.println(initR);
     public static GPRegister allocReg(DecacCompiler compiler){
@@ -40,7 +39,7 @@ public class RegisterManager{
             compiler.addInstruction(new POP(r));
             initR.regEcrase.pop();
         }
-        else{
+        else if(r.getNumber() != 0){
             r.freeR();
             initR.regNonDispo.remove(r);
             initR.regDispo.push(r);        

@@ -6,7 +6,7 @@ import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.ima.pseudocode.GPRegister;
-import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.OPP;
 import fr.ensimag.deca.codegen.RegisterManager;
@@ -82,6 +82,12 @@ public class Selection extends AbstractLValue{
     }
     @Override public void decompile(IndentPrintStream s){
 
+    }
+     public GPRegister codeGenLoad(DecacCompiler compiler){
+        GPRegister r = expr.codeGenLoad(compiler);
+        FieldDefinition fld = ((Identifier)(id)).getFieldDefinition();
+        compiler.addInstruction(new LOAD(new RegisterOffset(fld.getIndex(), r), r));
+        return r;
     }
 
     }

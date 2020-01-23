@@ -10,10 +10,11 @@ import fr.ensimag.deca.codegen.RegisterManager;
 import fr.ensimag.ima.pseudocode.AbstractLine;
 import fr.ensimag.ima.pseudocode.IMAProgram;
 import fr.ensimag.ima.pseudocode.Instruction;
-import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tools.SymbolTable;
 import java.io.File;
+import java.util.*;
 
 import fr.ensimag.deca.context.EnvironmentType.DoubleDefException;
 import java.io.FileNotFoundException;
@@ -59,7 +60,7 @@ public class DecacCompiler {
      * Portable newline character.
      */
     private static final String nl = System.getProperty("line.separator", "\n");
-
+    private Set<LabelOperand> labels = new HashSet<LabelOperand>();
     /************************ Partie B  ***************************/
     private EnvironmentExp env_exp;
     private EnvironmentType env_types;
@@ -196,7 +197,9 @@ public class DecacCompiler {
     public void addInstruction(Instruction instruction, String comment) {
         program.addInstruction(instruction, comment);
     }
-
+    public void addLab(LabelOperand lab){
+        labels.add(lab);
+    }
     private RegisterManager registerManager;
     public RegisterManager getRegisterManager(){
         return registerManager;
@@ -290,9 +293,10 @@ public class DecacCompiler {
         }
 
         //addComment("start main program");
-        prog.getMain().codeGenEntete(this, prog.getMain().getDeclVariables().getList().size());
+        prog.getMain().codeGenEntete(this, 13);
         prog.codeGenProgram(this);
         //addComment("end main program");
+        this.addLabel(new Label("code.Object.equals"));
         this.codeGenErr();
 
         LOG.debug("Generated assembly code:" + nl + program.display());

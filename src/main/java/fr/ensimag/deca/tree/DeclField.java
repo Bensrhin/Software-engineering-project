@@ -111,8 +111,8 @@ public class DeclField extends AbstractDeclField {
 
         }
     @Override
-    protected void codeGenField(DecacCompiler compiler)
-    {
+    protected void codeGenField(DecacCompiler compiler){
+        fieldName.codeGenOperand(compiler);
         if (getInitialization() instanceof NoInitialization){
             // on suppose que c' est un integer a linstant
             compiler.addInstruction(new LOAD(0, Register.R0));
@@ -123,7 +123,6 @@ public class DeclField extends AbstractDeclField {
            compiler.getRegisterManager().freeReg(compiler, r);
         }
         FieldDefinition fld = ((Identifier)(fieldName)).getFieldDefinition();
-        System.out.println(fld.getContainingClass());
         compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
         compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(fld.getIndex(), Register.R1)));
     }
