@@ -100,7 +100,7 @@ public class DecacCompiler {
         MethodDefinition def = new MethodDefinition(boolS.getType(),
                 Location.BUILTIN, sig, 1);
         def.setLabel(new Label("code.Object.equals"));
-        objectType.getDefinition().setNumberOfMethods(2);
+        objectType.getDefinition().setNumberOfMethods(1);
         try
         {
             objectType.getDefinition().getMembers().declare(equal, def);

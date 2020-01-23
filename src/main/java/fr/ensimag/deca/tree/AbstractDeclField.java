@@ -28,9 +28,10 @@ public abstract class AbstractDeclField extends Tree {
      */
     protected abstract void verifyDeclField(DecacCompiler compiler, AbstractIdentifier superIdentifier, AbstractIdentifier classIdentifier) throws ContextualError;
     protected abstract void codeGenField(DecacCompiler compiler);
- 
+
 
     protected abstract void verifyFieldValue(DecacCompiler compiler,
         EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError;
-   
+    protected abstract void verifyIdent(EnvironmentExp localEnv) throws ContextualError;
+
 }

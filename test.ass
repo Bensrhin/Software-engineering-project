@@ -1,3 +1,6 @@
+	TSTO #1
+	BOV pile_pleine
+	ADDSP #1
 ; table des methodes
 ; construction de la table des methodes de Object
 	LOAD #null, R0
@@ -8,18 +11,9 @@
 	LEA 1(GB), R0
 	STORE R0, 3(GB)
 	LOAD code.A.getX, R0
-	STORE R0, 6(GB)
+	STORE R0, 5(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 4(GB)
-; construction de la table des methodes de B
-	LEA 3(GB), R0
-	STORE R0, 6(GB)
-	LOAD code.B.getY, R0
-	STORE R0, 10(GB)
-	LOAD code.A.getX, R0
-	STORE R0, 9(GB)
-	LOAD code.Object.equals, R0
-	STORE R0, 7(GB)
 ; init.A
 	LOAD -2(LB), R1
 	LOAD #0, R0
@@ -30,14 +24,16 @@
 	STORE R0, 1(R1)
 	RTS
 code.A.getX:
-; init.B
-	PUSH R1
-	BSR init.A
-	SUBSP #1
-	POP R1
-	RTS
-code.B.getY:
+	LOAD #0, R2
+	STORE R2, -1(LB)
 ; Main program
+; Beginning of main instructions:
+	NEW #1, R2
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
 	HALT
 pile_pleine:
 	WSTR "Error: Stack Overflow"

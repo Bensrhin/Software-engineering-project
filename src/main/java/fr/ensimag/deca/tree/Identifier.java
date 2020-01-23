@@ -280,7 +280,7 @@ public class Identifier extends AbstractIdentifier {
         compiler.addInstruction(new LOAD(obj, Register.R0));
         Vu.put(obj, this.getType().toString());
         compiler.addInstruction(new STORE(Register.R0, gb2));
-        this.getClassDefinition().setOperand(gb1);
+        this.getClassDefinition().setOperand(this.getClassDefinition().getType(),gb1);
     }
 
 

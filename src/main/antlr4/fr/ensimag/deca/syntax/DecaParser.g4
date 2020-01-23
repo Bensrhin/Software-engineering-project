@@ -400,7 +400,7 @@ select_expr returns[AbstractExpr tree]
     | e1=select_expr DOT i=ident {
             assert($e1.tree != null);
             assert($i.tree != null);
-            $tree = new Dot($e1.tree, $i.tree);
+            $tree = new Selection($e1.tree, $i.tree);
             setLocation($tree, $DOT);
 
         }

@@ -77,9 +77,11 @@ public class Initialization extends AbstractInitialization {
         //throw new UnsupportedOperationException("not yet implemented");
         //GPRegister r = Register.getR(Register.getCpt());
         GPRegister r = this.expression.codeGenLoad(compiler);
-       // System.out.println(this.getType());
-        compiler.addInstruction(new STORE(r,new RegisterOffset(i, Register.GB)));
-        r.freeR();
+        //System.out.println(this.expression.getType());
+        if(r != null){
+            compiler.addInstruction(new STORE(r,new RegisterOffset(i, Register.GB)));
+            r.freeR();
+        }
 
     }
     @Override

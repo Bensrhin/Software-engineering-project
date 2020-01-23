@@ -155,20 +155,21 @@ public class DeclClass extends AbstractDeclClass {
             superName.codeGenObj(compiler);
         }
         ClassDefinition current =  name.getClassDefinition();
-        codeGenClass(compiler, current);
+        codeGenClass(compiler, current, 0);
 
 
     }
     private Set<Symbol> vu = new HashSet<Symbol>();
     private Set<LabelOperand> labels = new HashSet<LabelOperand>();
-    protected void codeGenClass(DecacCompiler compiler, ClassDefinition current){
+    protected void codeGenClass(DecacCompiler compiler, ClassDefinition current, int offset){
        if(current.getType().getName() == this.name.getName()){
             compiler.addComment("construction de la table des methodes de " + current.getType());
-            DAddr addr = current.getOperand();
+            RegisterOffset addr = current.getOperand(current.getSuperClass().getType());
             RegisterOffset gb = compiler.getRegisterManager().getRegOff();
             compiler.addInstruction(new LEA(addr, Register.R0));
-            compiler.addInstruction(new STORE(Register.R0, gb));
-            current.setOperand(gb);
+            compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(gb.getOffset() + offset, Register.GB)));
+            current.setOperand(current.getType(), gb);
+            offset = gb.getOffset();
         }
         Map<Symbol, ExpDefinition> dic = current.getMembers().getMapMethod();
         Set<Map.Entry<Symbol, ExpDefinition>> couples = dic.entrySet();
@@ -178,19 +179,19 @@ public class DeclClass extends AbstractDeclClass {
             Map.Entry<Symbol, ExpDefinition> couple = itCouples.next();
             mth = couple.getValue();
             if(vu.add(couple.getKey())){
-                RegisterOffset addr = current.getOperand();
+                RegisterOffset addr = current.getOperand(current.getType());
                 MethodDefinition methode = (MethodDefinition)(mth);
                 RegisterOffset gb0 = compiler.getRegisterManager().getRegOff();
                 LabelOperand label = new LabelOperand(methode.getLabel());
                 labels.add(label);
                 compiler.addInstruction(new LOAD(label, Register.R0));
-                compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex() + addr.getOffset(), Register.GB)));
+                compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex() + offset, Register.GB)));
 
             }
         }
 
         if(current.getSuperClass() != null){
-            codeGenClass(compiler, current.getSuperClass());
+            codeGenClass(compiler, current.getSuperClass(), offset);
         }
     }
    
