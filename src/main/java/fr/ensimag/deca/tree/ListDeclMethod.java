@@ -74,7 +74,7 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
         int j = 1;
         int n = getList().size();
         for (AbstractDeclMethod i : getList()) {
-            i.codeGenMethod(compiler, j, rtmp);
+            i.codeGenMethod(compiler, rtmp);
             j ++;
         }
     }

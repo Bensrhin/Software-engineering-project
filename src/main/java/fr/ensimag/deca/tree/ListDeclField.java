@@ -68,13 +68,8 @@ public class ListDeclField extends TreeList<AbstractDeclField> {
 
     public void codeGenListField(DecacCompiler compiler){
         int j = 1;
-        GPRegister rtmp = compiler.getRegisterManager().allocReg(compiler);
-        compiler.addComment("heeeere0");
-        /*compiler.addInstruction(new LOAD(
-                    new RegisterOffset(-2, Register.LB), rtmp));*/
-        compiler.addComment("heeeere20");
         for (AbstractDeclField i : getList()) {
-            i.codeGenField(compiler, j, rtmp); j++;
+            i.codeGenField(compiler); j++;
        }
         compiler.addInstruction(new RTS());
     }

@@ -109,7 +109,7 @@ public class DeclField extends AbstractDeclField {
 
         }
     @Override
-    protected void codeGenField(DecacCompiler compiler, int i, GPRegister rtmp)
+    protected void codeGenField(DecacCompiler compiler)
     {
         /*ExpDefinition def = fieldName.getExpDefinition();
         def.setOperand(new RegisterOffset(i, rtmp));*/
