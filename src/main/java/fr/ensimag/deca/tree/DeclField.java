@@ -7,6 +7,7 @@ import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.deca.tree.FloatLiteral;
 import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import org.apache.commons.lang.Validate;
@@ -114,8 +115,18 @@ public class DeclField extends AbstractDeclField {
     protected void codeGenField(DecacCompiler compiler){
         fieldName.codeGenOperand(compiler);
         if (getInitialization() instanceof NoInitialization){
-            // on suppose que c' est un integer a linstant
-            compiler.addInstruction(new LOAD(0, Register.R0));
+            if (type.getDefinition().getType().toString()=="int"){
+                compiler.addInstruction(new LOAD(0, Register.R0));
+            }
+            else if (type.getDefinition().getType().toString()=="float"){
+                FloatLiteral f = new FloatLiteral((float)0);
+                GPRegister r = f.codeGenLoad(compiler);
+                compiler.addInstruction(new LOAD(r, Register.R0));
+                compiler.getRegisterManager().freeReg(compiler,r);
+            }
+            else{
+                compiler.addInstruction(new LOAD(null, Register.R0));
+            }
         }
         else {
            GPRegister r = ((Initialization) getInitialization()).getExpression().codeGenLoad(compiler);
