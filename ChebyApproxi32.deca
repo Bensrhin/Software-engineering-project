@@ -1,4 +1,8 @@
+#include "Taylor.deca"
+
 class ChebyApproxi32{
+    Methods m = new Methods();
+
 
     float ChebychevActan(float x){
         float c1 = 137.772398556992967072803545f;
