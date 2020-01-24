@@ -5,7 +5,13 @@ public class methods {
         float result = 1.0F;
 
         if (value2 < 0.0F){
-            return power(1/value1, -value2);
+            float value4 = - value2;
+            while (value4 > counter){
+                result *= 1/value1;
+                ++counter;
+
+            }
+            return result;
         }
 
         else {
