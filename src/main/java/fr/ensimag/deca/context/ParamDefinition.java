@@ -19,6 +19,16 @@ public class ParamDefinition extends ExpDefinition {
         return "parameter";
     }
 
+    private int index;
+
+    public int getIndex()
+    {
+      return index;
+    }
+    public void setIndex(int i)
+    {
+      index = i;
+    }
     @Override
     public boolean isExpression() {
         return true;

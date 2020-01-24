@@ -12,7 +12,7 @@ import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.ExpDefinition;
-import fr.ensimag.deca.context.VariableDefinition;
+import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
@@ -153,7 +153,17 @@ public class Identifier extends AbstractIdentifier {
                             + " is not a Exp identifier, you can't call getExpDefinition on it");
         }
     }
-
+    @Override
+    public ParamDefinition getParamDefinition() {
+        try {
+            return (ParamDefinition) definition;
+        } catch (ClassCastException e) {
+            throw new DecacInternalError(
+                    "Identifier "
+                            + getName()
+                            + " is not a param identifier, you can't call getparamDefinition on it");
+        }
+    }
     @Override
     public void setDefinition(Definition definition) {
         this.definition = definition;
@@ -174,12 +184,12 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-
-        // Set<Symbol> sym = localEnv.getParent().stringIsIn();
-        // for (Symbol s:sym)
-        // {
-        //     System.out.println(s.getName());
-        // }
+        if (compiler.getSymbols().getSymbol(name.toString()) != null)
+        {
+          throw new ContextualError("L'identificateur \"" +
+                  name.toString() + "\" est un type prédéfini" +
+                  " (essayer de le renommer)", this.getLocation());
+        }
 
         ExpDefinition def = localEnv.get(this.getName());
         if (def == null)
@@ -205,17 +215,24 @@ public class Identifier extends AbstractIdentifier {
               throw new ContextualError("Type \"" + this.getName().toString() +
                 "\" n'est pas un type prédéfini (règle 0.2)", this.getLocation());
           }
-
-          // Type type = this.getName().getType();
           Type type = def.getType();
-          // TypeDefinition def = new TypeDefinition(type, Location.BUILTIN);
-          // System.out.println(def.getType());
           this.setDefinition(def);
           this.setType(type);
           return this.getType();
     }
 
-
+    public ExpDefinition verifydef(EnvironmentExp localEnv) throws ContextualError
+    {
+      ExpDefinition def = localEnv.get(this.getName());
+      if (def == null)
+      {
+        throw new ContextualError("Identificateur \"" + this.decompile() +
+          "\" n'est pas défini au sein de la classe (règle)", this.getLocation());
+      }
+      this.setType(def.getType());
+      this.setDefinition(def);
+      return def;
+    }
     private Definition definition;
 
 
@@ -250,38 +267,77 @@ public class Identifier extends AbstractIdentifier {
         }
     }
     @Override
-    public void codeGenIdent(DecacCompiler compiler,int i){
-        RegisterOffset r = new RegisterOffset(i, Register.GB);
+    public int codeGenIdent(DecacCompiler compiler){
+        RegisterOffset r = compiler.getRegisterManager().getRegOff();
         ExpDefinition def = this.getExpDefinition();
         def.setOperand(r);
+        return r.getOffset();
+    }
+    @Override
+    public void codeGenOperand(DecacCompiler compiler){
+        ExpDefinition def = this.getExpDefinition();
+        FieldDefinition fld = (FieldDefinition)(def);
+        def.setOperand(new RegisterOffset(fld.getIndex(), Register.R1));
+    }
+    @Override
+    protected void codeGenIdentparam(DecacCompiler compiler){
+        ExpDefinition def = this.getExpDefinition();
+        ParamDefinition prm = this.getParamDefinition();
+        def.setOperand(new RegisterOffset(-(prm.getIndex() + 2), Register.LB));
+        
     }
     @Override
      protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
         super.codeGenPrint(compiler, hex);
-        //throw new UnsupportedOperationException("not yet implemented55");
+        
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
-        //throw new UnsupportedOperationException("not yet implemented55");
         GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
-        compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
+        
+        if(this.getExpDefinition().isField()){
+            compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
+            compiler.addInstruction(new LOAD(new RegisterOffset(this.getFieldDefinition().getIndex(), Register.R1), r1));
+            return r1;
+        }
+        else{
+            compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
+        }
         return r1;
     }
-    private static HashMap<LabelOperand, String> Vu = new HashMap<LabelOperand, String>();
+    @Override
+    protected RegisterOffset codeGenField(DecacCompiler compiler){
+       compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
+       RegisterOffset off = new RegisterOffset(this.getFieldDefinition().getIndex(), Register.R1);
+       return off;
+    }
     @Override
     protected void codeGenObj(DecacCompiler compiler){
         compiler.addComment("construction de la table des methodes de " + this.getType());
         LabelOperand obj = new LabelOperand(new Label("code.Object.equals"));
+        
         compiler.addInstruction(new LOAD(new ImmediateNull(), Register.R0));
-        RegisterOffset gb1 = new RegisterOffset(1, Register.GB);
-        RegisterOffset gb2 = new RegisterOffset(2, Register.GB);
+        RegisterOffset gb1 = compiler.getRegisterManager().getRegOff();
+        RegisterOffset gb2 = compiler.getRegisterManager().getRegOff();
         compiler.addInstruction(new STORE(Register.R0, gb1));
         compiler.addInstruction(new LOAD(obj, Register.R0));
-        Vu.put(obj, this.getType().toString());
         compiler.addInstruction(new STORE(Register.R0, gb2));
-        this.getClassDefinition().setOperand(gb1);
+        this.getClassDefinition().setOperand(this.getClassDefinition().getType(),gb1);
     }
-
-
+    @Override
+    protected void codeGenAppMethode(DecacCompiler compiler, GPRegister r, ListExpr args){
+        RegisterOffset SP0 = new RegisterOffset(0, Register.SP);
+        compiler.addInstruction(new STORE(r, SP0));
+        int j = 1;
+        for(AbstractExpr e : args.getList()){
+            GPRegister reg = e.codeGenLoad(compiler);
+            compiler.addInstruction(new STORE(reg, new RegisterOffset(-j, Register.SP)));
+            j ++;
+            compiler.getRegisterManager().freeReg(compiler, reg);
+        }
+        compiler.addInstruction(new LOAD(SP0, r));
+        compiler.addInstruction(new LOAD(new RegisterOffset(0, r), r));
+        compiler.addInstruction(new BSR(new RegisterOffset(this.getMethodDefinition().getIndex(), r)));
+    }
 }

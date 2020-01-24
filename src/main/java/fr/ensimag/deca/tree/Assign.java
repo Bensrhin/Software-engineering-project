@@ -4,13 +4,13 @@ import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
-import fr.ensimag.deca.context.Definition;
+import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.ima.pseudocode.GPRegister;
-import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 import fr.ensimag.ima.pseudocode.instructions.FLOAT;
-import fr.ensimag.ima.pseudocode.instructions.INT;
+import fr.ensimag.ima.pseudocode.instructions.*;
 
 /**
  * Assignment, i.e. lvalue = expr.
@@ -56,8 +56,18 @@ public class Assign extends AbstractBinaryExpr {
     }
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
+        ExpDefinition def = this.getLeftOperand().getExpDefinition();
         GPRegister r1 = this.getRightOperand().codeGenLoad(compiler);
-        compiler.addInstruction(new STORE(r1, this.getLeftOperand().getExpDefinition().getOperand()));
+        if(!def.isField()){
+            compiler.addInstruction(new STORE(r1, this.getLeftOperand().getExpDefinition().getOperand()));
+        }
+        else{
+            FieldDefinition fld = (FieldDefinition)(def);
+            RegisterOffset r2 = this.getLeftOperand().codeGenField(compiler);
+            compiler.addInstruction(new STORE(r1, r2));
+        }
+        compiler.getRegisterManager().freeReg(compiler, r1);
+        
         
         
 }

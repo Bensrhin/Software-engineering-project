@@ -42,9 +42,9 @@ public class DeclParam extends AbstractDeclParam
               Type nameType = this.getNameType().verifyType(compiler);
               if (nameType.isVoid())
               {
-                  throw new ContextualError("Type de l'indentificateur \""+
-                          this.getNameType().getName().toString() +
-                          "\" doit être différent de void (règle 2.5)", this.getLocation());
+                  throw new ContextualError("Type du paramètre \""+
+                          this.getParam().getName().toString() +
+                          "\" doit être différent de void (règle 2.9)", this.getLocation());
               }
               this.getNameType().setType(nameType);
 
@@ -53,8 +53,8 @@ public class DeclParam extends AbstractDeclParam
 
     }
     @Override
-    protected void codeGenParam(DecacCompiler compiler, int i){
-            param.codeGenIdent(compiler, i);
+    protected void codeGenParam(DecacCompiler compiler){
+            param.codeGenIdentparam(compiler);
 
     }
     @Override
@@ -62,15 +62,16 @@ public class DeclParam extends AbstractDeclParam
         EnvironmentExp paramEnv) throws ContextualError{
           Type nameType = this.getNameType().getType();
           Symbol symbol = getParam().getName();
-          ParamDefinition def = new ParamDefinition(nameType, this.getLocation());
+          ParamDefinition def = new ParamDefinition(nameType, param.getLocation());
           try
           {
               paramEnv.declare(symbol, def);
           }
           catch (DoubleDefException e)
           {
-              throw new ContextualError("Parameter " +
-              symbol.toString() + " is already defined", this.getLocation());
+              throw new ContextualError("Le paramètre \"" +
+              symbol.toString() + "\" est déja déclaré à " +
+              paramEnv.get(symbol).getLocation() + " (règle 3.12)", param.getLocation());
           }
           this.getParam().verifyExpr(compiler, paramEnv, null);
         }

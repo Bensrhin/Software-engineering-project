@@ -13,10 +13,10 @@ import fr.ensimag.deca.context.BooleanType;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
-import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.FLOAT;
-import fr.ensimag.ima.pseudocode.instructions.INT;
+import fr.ensimag.ima.pseudocode.instructions.*;
 
 
 
@@ -38,7 +38,9 @@ public class New extends AbstractExpr{
         Type type =  this.getIdExpr().verifyType(compiler);
         if (!type.isClass())
         {
-          throw new ContextualError("Le type doit être une classe (règle 3.42)", this.getLocation());
+          throw new ContextualError("L'identificateur \"" +
+                  idExpr.decompile() + "\" doit être une classe (règle 3.42)",
+                  idExpr.getLocation());
         }
         return type;
   }
@@ -66,6 +68,16 @@ public class New extends AbstractExpr{
   }
   @Override
   protected GPRegister codeGenLoad(DecacCompiler compiler){
-        return null;
+        //throw new UnsupportedOperationException("not yet implemented hm?");
+        compiler.addComment("instruction new");
+        GPRegister r = compiler.getRegisterManager().allocReg(compiler);
+        ClassDefinition def = ((Identifier)(idExpr)).getClassDefinition();
+        compiler.addInstruction(new NEW(def.getNumberOfFields() + 1, r));
+        compiler.addInstruction(new LEA(def.getOperand(idExpr.getType()), Register.R0));
+        compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(0, r)));
+        compiler.addInstruction(new PUSH(r));
+        compiler.addInstruction(new BSR(new LabelOperand(new Label("init."+this.getType()))));
+        compiler.addInstruction(new POP(r));
+        return r;
     }
 }

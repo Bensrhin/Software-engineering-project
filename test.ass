@@ -1,0 +1,99 @@
+	TSTO #11
+	BOV pile_pleine
+	ADDSP #13
+; table des methodes
+; construction de la table des methodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; construction de la table des methodes de A
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.A.fact, R0
+	STORE R0, 5(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+; Main program
+; Beginning of main instructions:
+; instruction new
+	NEW #2, R2
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 6(GB)
+	RINT
+	BOV i0_error
+	LOAD R1, R2
+	STORE R2, 7(GB)
+	RINT
+	BOV i0_error
+	LOAD R1, R2
+	STORE R2, 8(GB)
+; appel de methode2
+	ADDSP #3
+	LOAD 6(GB), R2
+	STORE R2, 0(SP)
+	LOAD 7(GB), R3
+	STORE R3, -1(SP)
+	LOAD 8(GB), R3
+	STORE R3, -2(SP)
+	LOAD 0(SP), R2
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	STORE R0, 9(GB)
+	LOAD 9(GB), R1
+	WINT
+	WNL
+	HALT
+init.A:
+	LOAD #8, R2
+	LOAD R2, R0
+	LOAD -2(LB), R1
+	STORE R0, 1(R1)
+	RTS
+code.A.fact:
+	LOAD -3(LB), R3
+	LOAD #0, R4
+	SUB R4, R3
+	LOAD R3, R1
+	BEQ OpCmp_if_in_a47
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a47
+OpCmp_if_in_a47:
+	LOAD #0, R1
+OpCmp_fin_in_a47:
+	LOAD R1, R2
+	LOAD R2, R1
+	BNE IfThenElse_else_a47
+	LOAD #1, R5
+	LOAD R5, R0
+	BRA IfThenElse_fin_a47
+IfThenElse_else_a47:
+	LOAD -4(LB), R5
+	LOAD -3(LB), R6
+	QUO R6, R5
+	BOV divisionErr
+	LOAD R5, R0
+IfThenElse_fin_a47:
+	RTS
+code.Object.equals:
+pile_pleine:
+	WSTR "Error: Stack Overflow"
+	WNL
+	ERROR
+over_flow:
+	WSTR "Error: Overflow during arithmetic operation"
+	WNL
+	ERROR
+i0_error:
+	WSTR "Error: Input/Output error"
+	WNL
+	ERROR
+divisionErr:
+	WSTR "Error :Division par 0"
+	WNL
+	ERROR

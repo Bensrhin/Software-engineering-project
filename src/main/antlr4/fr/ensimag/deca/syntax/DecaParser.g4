@@ -398,18 +398,21 @@ select_expr returns[AbstractExpr tree]
             setLocation($tree, $e.start);
         }
     | e1=select_expr DOT i=ident {
-            assert($e1.tree != null);
-            assert($i.tree != null);
-            $tree = new Selection($e1.tree, $i.tree);
-            setLocation($tree, $DOT);
+      assert($e1.tree != null);
+      assert($i.tree != null);
 
         }
         (o=OPARENT args=list_expr CPARENT {
+
             // we matched "e1.i(args)"
             assert($args.tree != null);
+            $tree = new MethodCall($e1.tree, $i.tree, $args.tree);
+            setLocation($tree, $DOT);
         }
         | /* epsilon */ {
-            // we matched "e.i"
+
+          $tree = new Selection($e1.tree, $i.tree);
+          setLocation($tree, $DOT);
         }
         )
     ;
@@ -466,13 +469,30 @@ type returns[AbstractIdentifier tree]
 
 literal returns[AbstractExpr tree]
     : INT {
-          $tree = new IntLiteral(Integer.parseInt($INT.text));
-          setLocation($tree, $INT);
-        }
+          try {
+                $tree = new IntLiteral(Integer.parseInt($INT.text));
+                setLocation($tree,$INT);
+            } catch (NumberFormatException e) {
+                $tree = null;
+                throw new InvalidInteger($INT.text,this,$ctx);
+            }
+        } {$tree != null}?
     | fd=FLOAT {
-        $tree = new FloatLiteral(Float.parseFloat($fd.text));
-         setLocation($tree, $fd);
-        }
+        try {
+            $tree = new FloatLiteral(Float.parseFloat($fd.text));
+            setLocation($tree, $fd);            
+            } catch (NumberFormatException e) {
+                $tree = null;
+                throw new InvalidFloat($fd.text,this,$ctx);
+            }
+            if (Float.isInfinite(Float.parseFloat($fd.text))){
+                throw new InvalidFloat($fd.text,this,$ctx);
+             }
+            if (Float.isNaN(Float.parseFloat($fd.text))){
+                throw new InvalidFloat($fd.text,this,$ctx);
+            }
+        } {$tree != null}?
+        
     | STRING {
         $tree = new StringLiteral($STRING.text);
          setLocation($tree, $STRING);
@@ -569,7 +589,10 @@ decl_method returns[AbstractDeclMethod methods]
           assert($params.tree != null);
           assert($ident.tree != null);
           assert($type.tree != null);
-          $methods = new DeclMethod($type.tree, $ident.tree, $params.tree,$code.text);
+          StringLiteral string = new StringLiteral($code.text);
+          MethodAsmBody code = new MethodAsmBody(string);
+          setLocation(code, $code.start);
+          $methods = new DeclMethod($type.tree, $ident.tree, $params.tree, code);
         }
       ) {
         setLocation($methods, $m.start);

@@ -51,9 +51,9 @@ public class Cordic {
             return z;
         }
         else {
-            return 9999f; 
+            return 9999f;
         }
-        
+
     }
 
     public float atan(float a){
@@ -64,7 +64,6 @@ public class Cordic {
     //fonction utilisée dans asin()
     public float gain1Cordic(){
         return Cordic2(1,0,0,-1,1);
-
     }
     public float asin(float a){
         float x = 1/gain1Cordic();
@@ -194,6 +193,10 @@ public class Cordic {
     }
     public static void main(String[] args) {
         //Decommenter la ligne si besoin sinon l'affichage sera merdique//
+        /*File file = new File("/home/redouane/plot/test.txt");
+        FileOutputStream fos = new FileOutputStream(file);
+        PrintStream ps = new PrintStream(fos);
+        System.setOut(ps);*/
         Cordic c = new Cordic();
 
         for (int i=0; i<58; i ++) {
@@ -201,12 +204,26 @@ public class Cordic {
             //System.out.format("Sin: %.1f (rad: %.6f) CORDIC: %.6f / java: %.6f %n", i, rad, c.sin(rad), Math.sin(rad) );
             //System.out.format("%.6f %.6f %.6f %n", rad, c.sin(rad), Math.sin(rad) );
             //System.out.format("%.6f %.6f %.6f %n", rad, c.atan(rad), Math.atan((double)rad));
-            //System.out.format("rad = %.6f  ||  atanCordic (%.9f)  ||  atanJava(%.9f)  || erreur(%e) %n", rad, c.atan(rad), Math.atan((double)rad), erreurQuad(c.atan(rad),(float) Math.atan((double)rad)));
+            float err = (float) (Math.abs(c.atan(rad) - Math.atan(rad))/Math.ulp(Math.atan(rad)));
+            System.out.format("rad = %.6f  ||  atanCordic (%.9f)  ||  atanJava(%.9f)  || erreur(%e) %n", rad, c.atan(rad), Math.atan((double)rad), err);
 
-            System.out.format("rad = %.6f  ||  sinCordic (%.9f)  ||  sinJava(%.9f)  || erreur(%e) %n", rad, c.asin(rad), Math.asin((double)rad), erreurQuad(c.asin(rad),(float) Math.asin((double)rad)));
+            //System.out.format("rad = %.6f  ||  sinCordic (%.9f)  ||  sinJava(%.9f)  || erreur(%e) %n", rad, c.asin(rad), Math.asin((double)rad), erreurQuad(c.asin(rad),(float) Math.asin((double)rad)));
 
 
         }
+
+        /*int count = 0;
+        for (int i = 130000000; i < 140000000; i++) {
+            System.out.println(" my actan is : " + c.atan(i) + " ~~~~~~ Java actan is : " + Math.atan(i));
+
+            float err = (float) (Math.abs(c.atan(i) - Math.atan(i))/Math.ulp(Math.atan(i)));
+            if (err > 1){
+                count++;
+                System.out.println(" The error is : " + err);
+            }
+
+        }
+        System.out.println(count);*/
 
         // float x = 11000 * Pi;
         // while (x > 0){

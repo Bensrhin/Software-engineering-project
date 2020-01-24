@@ -12,7 +12,7 @@ import java.io.PrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
-import fr.ensimag.ima.pseudocode.instructions.STORE;
+import fr.ensimag.ima.pseudocode.instructions.*;
 
 
 import org.apache.commons.lang.Validate;
@@ -46,7 +46,8 @@ public class Return extends AbstractInst {
 
         if (returnType.isVoid())
         {
-            throw new ContextualError("return must be defferent than void", this.getLocation());
+            throw new ContextualError("Il s'agit d'une méthode de type \"void\", " +
+                                      "le \"return\" pose un problème (règle 3.24)", this.getLocation());
         }
         this.getRvalue().verifyRValue(compiler, localEnv, currentClass, returnType);
 
@@ -56,8 +57,7 @@ public class Return extends AbstractInst {
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
         GPRegister r = rvalue.codeGenLoad(compiler);
-        compiler.addInstruction(new STORE(r,
-                new RegisterOffset(-1, Register.LB)));
+        compiler.addInstruction(new LOAD(r, Register.R0));
         compiler.getRegisterManager().freeReg(compiler, r);
     }
 

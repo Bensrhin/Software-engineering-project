@@ -1,0 +1,8 @@
+#include "Math.decah"
+#include "AutreInclude.decah"
+
+{
+    int x=0;
+    int y=0;
+
+}
