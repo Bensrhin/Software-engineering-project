@@ -1,6 +1,6 @@
 	TSTO #11
 	BOV pile_pleine
-	ADDSP #30
+	ADDSP #110
 ; table des methodes
 ; construction de la table des methodes de Object
 	LOAD #null, R0
@@ -60,14 +60,70 @@ init.A:
 	STORE R0, 1(R1)
 	RTS
 code.A.setX:
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	LOAD -3(LB), R2
 	LOAD -2(LB), R1
 	STORE R2, 1(R1)
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	RTS
 code.A.getX:
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	LOAD -2(LB), R2
 	LOAD 1(R2), R2
 	LOAD R2, R0
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	RTS
 code.Object.equals:
 pile_pleine:

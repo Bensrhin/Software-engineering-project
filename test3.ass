@@ -49,6 +49,17 @@ code.fct.fact:
 	PUSH R2
 	PUSH R3
 	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	LOAD -3(LB), R3
 	LOAD #0, R4
 	SUB R4, R3
@@ -62,47 +73,38 @@ OpCmp_fin_in_a311:
 	LOAD R1, R2
 	LOAD R2, R1
 	BNE IfThenElse_else_a311
-	TSTO #1
-	BOV pile_pleine
-	PUSH R2
-	LOAD #1, R2
-	LOAD R2, R0
-	POP R2
+	LOAD #1, R5
+	LOAD R5, R0
 	BRA IfThenElse_fin_a311
 IfThenElse_else_a311:
-	TSTO #1
-	BOV pile_pleine
-	PUSH R3
-	LOAD -3(LB), R3
+	LOAD -3(LB), R5
 ; appel de methode2
 	ADDSP #2
-	TSTO #1
-	BOV pile_pleine
-	PUSH R4
-	LOAD -2(LB), R4
-	STORE R4, 0(SP)
-	TSTO #1
-	BOV pile_pleine
-	PUSH R2
-	LOAD -3(LB), R2
-	TSTO #1
-	BOV pile_pleine
-	PUSH R3
-	LOAD #1, R3
-	SUB R3, R2
-	POP R3
-	STORE R2, -1(SP)
-	POP R2
-	LOAD 0(SP), R4
-	LOAD 0(R4), R4
-	BSR 2(R4)
+	LOAD -2(LB), R6
+	STORE R6, 0(SP)
+	LOAD -3(LB), R7
+	LOAD #1, R8
+	SUB R8, R7
+	STORE R7, -1(SP)
+	LOAD 0(SP), R6
+	LOAD 0(R6), R6
+	BSR 2(R6)
 	SUBSP #2
-	POP R4
-	MUL R0, R3
+	MUL R0, R5
 	BOV over_flow
-	LOAD R3, R0
-	POP R3
+	LOAD R5, R0
 IfThenElse_fin_a311:
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
 	POP R4
 	POP R3
 	POP R2

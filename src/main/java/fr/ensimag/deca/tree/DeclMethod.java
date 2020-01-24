@@ -145,13 +145,13 @@ public class DeclMethod extends AbstractDeclMethod
     @Override
     protected void codeGenMethod(DecacCompiler compiler){
        compiler.addLabel(new Label(getNameMethod().getMethodDefinition().getLabel().toString() ));
-       for(int i = 2; i<compiler.getCompilerOptions().getRegisters(); i++){
+       for(int i = 2; i<16; i++){
             compiler.addInstruction(new PUSH(Register.getR(i)));
         }
        params.codeGenListParam(compiler);
        methodBody.codeGenMethodBody(compiler);
-       for(int i = 2; i<compiler.getCompilerOptions().getRegisters(); i++){
-            compiler.addInstruction(new POP(Register.getR(compiler.getCompilerOptions().getRegisters()-i + 1)));
+       for(int i = 2; i<16; i++){
+            compiler.addInstruction(new POP(Register.getR(15-i + 2)));
         }
         compiler.addInstruction(new RTS());
     }
@@ -163,7 +163,8 @@ public class DeclMethod extends AbstractDeclMethod
       this.method.decompile(s);
       s.print("(");
       this.params.decompile(s);
-      s.print(")");
+      s.println(")");
+      
       if (getBody() != null)
       {
         getBody().decompile(s);

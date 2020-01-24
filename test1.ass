@@ -1,6 +1,6 @@
 	TSTO #11
 	BOV pile_pleine
-	ADDSP #30
+	ADDSP #110
 ; table des methodes
 ; construction de la table des methodes de Object
 	LOAD #null, R0
@@ -166,14 +166,56 @@ init.Point:
 	STORE R0, 2(R1)
 	RTS
 code.Point.setXY:
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	LOAD -3(LB), R2
 	LOAD -2(LB), R1
 	STORE R2, 1(R1)
 	LOAD -4(LB), R2
 	LOAD -2(LB), R1
 	STORE R2, 2(R1)
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	RTS
 code.Point.move:
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	LOAD -2(LB), R1
 	LOAD 1(R1), R2
 	LOAD -3(LB), R3
@@ -186,16 +228,86 @@ code.Point.move:
 	ADD R3, R2
 	LOAD -2(LB), R1
 	STORE R2, 2(R1)
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	RTS
 code.Point.getX:
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	LOAD -2(LB), R1
 	LOAD 1(R1), R2
 	LOAD R2, R0
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	RTS
 code.Point.getY:
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	LOAD -2(LB), R1
 	LOAD 2(R1), R2
 	LOAD R2, R0
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	RTS
 init.P2:
 ; instruction new
@@ -220,6 +332,20 @@ init.P2:
 	STORE R0, 2(R1)
 	RTS
 code.P2.op:
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 ; appel de methode4
 	ADDSP #1
 	LOAD -2(LB), R1
@@ -245,6 +371,20 @@ code.P2.op:
 	MUL R3, R2
 	BOV over_flow
 	LOAD R2, R0
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	RTS
 init.po:
 	LOAD #0, R0
@@ -260,16 +400,86 @@ init.po:
 	STORE R0, 3(R1)
 	RTS
 code.po.setZ:
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	LOAD -3(LB), R2
 	LOAD -2(LB), R1
 	STORE R2, 3(R1)
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	RTS
 code.po.getZ:
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	LOAD -2(LB), R1
 	LOAD 3(R1), R2
 	LOAD R2, R0
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	RTS
 code.po.op:
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	LOAD -2(LB), R1
 	LOAD 1(R1), R2
 	LOAD -2(LB), R1
@@ -281,6 +491,20 @@ code.po.op:
 	MUL R3, R2
 	BOV over_flow
 	LOAD R2, R0
+	POP R15
+	POP R14
+	POP R13
+	POP R12
+	POP R11
+	POP R10
+	POP R9
+	POP R8
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
 	RTS
 code.Object.equals:
 pile_pleine:

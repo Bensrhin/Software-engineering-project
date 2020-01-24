@@ -50,5 +50,5 @@ public class RegisterManager{
         cptOffset ++;
         return reg;
     }
-    
+
 }
