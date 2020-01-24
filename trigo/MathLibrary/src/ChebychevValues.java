@@ -34,32 +34,32 @@ public class ChebychevValues {
         if (i == 0) {
             return -0.09849139859277231f;
         }
-        if (i == 1) {
+        else if (i == 1) {
             return -2.909727065921128f;
         }
-        if (i == 2) {
+        else if (i == 2) {
             return 0.9508941577113765f;
         }
-        if (i == 3) {
+        else if (i == 3) {
             return -0.4009904007516215f;
         }
-        if (i == 4) {
+        else if (i == 4) {
             return -20.88540204971548f;
         }
-        if (i == 5) {
+        else if (i == 5) {
             return 0.5168632143106962f;
         }
-        if (i == 6) {
+        else if (i == 6) {
             return -0.7834144432251993f;
         }
-        if (i == 7) {
+        else if (i == 7) {
             return 4.170396957285327f;
         }
-        if (i == 8) {
+        else if (i == 8) {
             return 0.1963273487588419f;
         }
         else {
-            return 0;
+            return 0.0f;
         }
 
     }

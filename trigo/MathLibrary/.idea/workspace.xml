@@ -2,28 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="206b755a-9ec6-4a00-9070-a2f41135cfca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/ActanValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/ActanValues.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/Chebychev$couple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/Chebychev$couple.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/Chebychev.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/Chebychev.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/ChebychevValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/ChebychevValues.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/Cordic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/Cordic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/META-INF/MathLibrary.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/Taylor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/Taylor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestIndex$couple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestIndex$couple.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestIndex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestIndex.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestMethod.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestMethod.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestTaylor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestTaylor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestrangeReduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestrangeReduction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/doubleComp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/doubleComp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/methods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/methods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/rangeReduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/rangeReduction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Chebychev.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Chebychev.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChebychevValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChebychevValues.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TestMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/methods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/methods.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +62,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579876199205</updated>
-      <workItem from="1579876202604" duration="3066000" />
+      <workItem from="1579876202604" duration="5507000" />
     </task>
     <servers />
   </component>
