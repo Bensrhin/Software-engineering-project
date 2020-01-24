@@ -163,7 +163,8 @@ public class DeclMethod extends AbstractDeclMethod
       this.method.decompile(s);
       s.print("(");
       this.params.decompile(s);
-      s.print(")");
+      s.println(")");
+      
       if (getBody() != null)
       {
         getBody().decompile(s);
