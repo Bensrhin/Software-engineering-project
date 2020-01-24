@@ -19,10 +19,10 @@ class BreakPoints{
                     index.x = j;
                     index.y = k;
                 }
-                k += 1;
+                k = k+1;
             }
             k = 0;
-            j += 1;
+            j = j+1;
         }
         if (temoin == 0){
             index.x = 1;
