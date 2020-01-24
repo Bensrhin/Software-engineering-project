@@ -1,16 +1,18 @@
 class A{
 int x = 8;
-int y = 4;
-int fact(){
-    x = x + 2;
-    y = 10 * x;
-    println(x);
-    return y;
+int fact(int n, int k){
+    if(n == 0){
+        return 1;
     }
+    else{
+        return k/n;
     }
+}
+}
 {
 A a = new A();
-int d = a.fact();
-println(d);
-
+int n = readInt();
+int k = readInt();
+int x = a.fact(n, k);
+println(x);
 }

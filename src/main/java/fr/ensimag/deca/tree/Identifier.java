@@ -12,7 +12,7 @@ import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.ExpDefinition;
-import fr.ensimag.deca.context.VariableDefinition;
+import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
@@ -153,7 +153,17 @@ public class Identifier extends AbstractIdentifier {
                             + " is not a Exp identifier, you can't call getExpDefinition on it");
         }
     }
-
+    @Override
+    public ParamDefinition getParamDefinition() {
+        try {
+            return (ParamDefinition) definition;
+        } catch (ClassCastException e) {
+            throw new DecacInternalError(
+                    "Identifier "
+                            + getName()
+                            + " is not a param identifier, you can't call getparamDefinition on it");
+        }
+    }
     @Override
     public void setDefinition(Definition definition) {
         this.definition = definition;
@@ -270,6 +280,13 @@ public class Identifier extends AbstractIdentifier {
         def.setOperand(new RegisterOffset(fld.getIndex(), Register.R1));
     }
     @Override
+    protected void codeGenIdentparam(DecacCompiler compiler){
+        ExpDefinition def = this.getExpDefinition();
+        ParamDefinition prm = this.getParamDefinition();
+        def.setOperand(new RegisterOffset(-(prm.getIndex() + 2), Register.LB));
+        
+    }
+    @Override
      protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
         super.codeGenPrint(compiler, hex);
@@ -309,9 +326,16 @@ public class Identifier extends AbstractIdentifier {
         this.getClassDefinition().setOperand(this.getClassDefinition().getType(),gb1);
     }
     @Override
-    protected void codeGenAppMethode(DecacCompiler compiler, GPRegister r){
+    protected void codeGenAppMethode(DecacCompiler compiler, GPRegister r, ListExpr args){
         RegisterOffset SP0 = new RegisterOffset(0, Register.SP);
         compiler.addInstruction(new STORE(r, SP0));
+        int j = 1;
+        for(AbstractExpr e : args.getList()){
+            GPRegister reg = e.codeGenLoad(compiler);
+            compiler.addInstruction(new STORE(reg, new RegisterOffset(-j, Register.SP)));
+            j ++;
+            compiler.getRegisterManager().freeReg(compiler, reg);
+        }
         compiler.addInstruction(new LOAD(SP0, r));
         compiler.addInstruction(new LOAD(new RegisterOffset(0, r), r));
         compiler.addInstruction(new BSR(new RegisterOffset(this.getMethodDefinition().getIndex(), r)));

@@ -84,7 +84,7 @@ public abstract class AbstractIdentifier extends AbstractLValue {
     public abstract VariableDefinition getVariableDefinition();
 
     public abstract void setDefinition(Definition definition);
-
+    public abstract ParamDefinition getParamDefinition();
 
 
     /**
@@ -99,9 +99,9 @@ public abstract class AbstractIdentifier extends AbstractLValue {
     protected abstract void codeGenObj(DecacCompiler compiler);
     protected void codeGenClass(DecacCompiler compiler, ListDeclMethod methods){
     }
-    protected void codeGenAppMethode(DecacCompiler compiler, GPRegister r){
+    protected void codeGenAppMethode(DecacCompiler compiler, GPRegister r, ListExpr args){
     }
     public void codeGenOperand(DecacCompiler compiler){
     }
-    
+    protected abstract void codeGenIdentparam(DecacCompiler compiler);
 }

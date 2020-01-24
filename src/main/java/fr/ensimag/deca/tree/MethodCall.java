@@ -82,8 +82,7 @@ public class MethodCall extends AbstractLValue{
         compiler.addComment("appel de methode" + ((Identifier)(id)).getMethodDefinition().getIndex());
         compiler.addInstruction(new ADDSP(args.size() + 1));
         GPRegister r = expr.codeGenLoad(compiler);
-        System.out.println(expr.getType());
-        id.codeGenAppMethode(compiler, r);
+        id.codeGenAppMethode(compiler, r, args);
         compiler.addInstruction(new SUBSP(args.size() + 1));
         compiler.getRegisterManager().freeReg(compiler, r);
         return Register.R0;
