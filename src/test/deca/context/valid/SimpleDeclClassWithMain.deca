@@ -5,8 +5,8 @@ class Simple{
 }
 
 {
-    Simple s = new Simple():
+    Simple s = new Simple();
     s.x = 1;
-    S.y = 2;
+    s.y = 2;
     s.z = 3;
 }
