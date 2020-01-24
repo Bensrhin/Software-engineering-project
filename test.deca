@@ -14,7 +14,11 @@ A a = new A();
 int n = readInt();
 int k = readInt();
 int x = a.fact(n, k);
-println(x);
+if (n == 0)
+{
+  println(x);
+}
+
 }
 
 
