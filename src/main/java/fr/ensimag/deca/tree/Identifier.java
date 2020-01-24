@@ -270,21 +270,34 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public void codeGenOperand(DecacCompiler compiler){
         ExpDefinition def = this.getExpDefinition();
-        def.setOperand(new RegisterOffset(-2, Register.LB));
+        FieldDefinition fld = (FieldDefinition)(def);
+        def.setOperand(new RegisterOffset(fld.getIndex(), Register.R1));
     }
     @Override
      protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
         super.codeGenPrint(compiler, hex);
+        
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
         GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
-        compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
+        
         if(this.getExpDefinition().isField()){
-            compiler.addInstruction(new LOAD(new RegisterOffset(this.getFieldDefinition().getIndex(), r1), r1));
+            compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
+            compiler.addInstruction(new LOAD(new RegisterOffset(this.getFieldDefinition().getIndex(), Register.R1), r1));
+            return r1;
+        }
+        else{
+            compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
         }
         return r1;
+    }
+    @Override
+    protected RegisterOffset codeGenField(DecacCompiler compiler){
+       compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
+       RegisterOffset off = new RegisterOffset(this.getFieldDefinition().getIndex(), Register.R1);
+       return off;
     }
     @Override
     protected void codeGenObj(DecacCompiler compiler){
