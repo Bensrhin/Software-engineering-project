@@ -1,13 +1,12 @@
 class Methods {
 
-
     int factoriel(int n){
         if (n == 0){
             return 1;
         }
-        return n * factoriel(n - 1);
+        return n * this.factoriel(n - 1);
     }
-    
+
     float power(float value1, float value2){
         float counter = 0.0F;
         float result = 1.0F;
