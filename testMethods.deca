@@ -1,0 +1,69 @@
+class Methods {
+    
+    float power(float value1, float value2){
+        float counter = 0.0F;
+        float result = 1.0F;
+        float value4 = -value2;
+
+        if (value2 < 0.0F){
+            while (value4 > counter){
+                result = result * (1/value1);
+                counter=counter+1;
+            }
+            return result;
+        }
+        else {
+            while (value2 > counter){
+                result = result * value1;
+                counter= counter+1;
+            }
+            return result;
+        }
+    }
+
+    float abs(float x){
+        if (x > 0.0F){
+            return x;
+        }
+        return -x;
+    }
+
+    float ulp(float x){
+        int e_min = -126;
+        int e_max = 127;
+
+        if (abs(x) <= power(2.0F, -127.0F)) {
+            return 1.4E-45F;
+        }
+
+        else if (abs(x) > power(2.0F, 127.0F) - power(2.0F, 104.0F)) {
+            return abs(x);
+        }
+
+        else {
+            while(e_max - e_min > 1) {
+                int median = (e_max + e_min) / 2;
+                float y = power(2.0F, median);
+                if (abs(x) > y) {
+                    e_min = median;
+                }
+                else {
+                    e_max = median;
+                }
+            }
+
+            if (abs(x) == power(2.0F, e_max)) {
+                return power(2.0F, e_max - 23);
+            }
+            else {
+                return power(2.0F, e_max - 24);
+            }
+        }
+    }
+    
+}
+
+{
+    Methods m = new Methods();
+    float x = m.power(2.0,2.0);
+}
