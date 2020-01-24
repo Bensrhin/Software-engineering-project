@@ -1,0 +1,16 @@
+class fct{
+    int fact(int n){
+        if(n == 0){
+            return 1;
+        }
+        else{
+            return n*this.fact(n-1);
+        }
+    }
+}
+{
+fct f = new fct();
+int n = readInt();
+int x = f.fact(n);
+println(x);
+}

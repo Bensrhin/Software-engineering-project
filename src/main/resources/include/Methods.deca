@@ -1,17 +1,24 @@
 class Methods {
-    
-    float power(float value1, float value2){
-        float counter = 0.0F;
+
+    int factoriel(int n){
+        if (n == 0){
+            return 1;
+        }
+        return n * this.factoriel(n - 1);
+    }
+
+    float power(float value1, int value2){
+        int counter = 0;
         float result = 1.0F;
 
-        if (value2 < 0.0F){
-            return power(1/value1, -value2);
-        }
+        if (value2 < 0){
+            return this.power(1/value1, -value2);
 
+        }
         else {
             while (value2 > counter){
-                result *= value1;
-                ++counter;
+                result = result * value1;
+                counter= counter+1;
             }
             return result;
         }
@@ -23,24 +30,25 @@ class Methods {
         }
         return -x;
     }
-
     float ulp(float x){
         int e_min = -126;
         int e_max = 127;
+        int median = 0;
+        float y = 0.0F;
 
-        if (abs(x) <= power(2.0F, -127.0F)) {
+        if (this.abs(x) <= this.power(2.0F, -e_max)) {
             return 1.4E-45F;
         }
 
-        else if (abs(x) > power(2.0F, 127.0F) - power(2.0F, 104.0F)) {
-            return abs(x);
+        else if (this.abs(x) > this.power(2.0F, e_max) - this.power(2.0F, 104)) {
+            return this.abs(x);
         }
 
         else {
             while(e_max - e_min > 1) {
-                int median = (e_max + e_min) / 2;
-                float y = power(2.0F, median);
-                if (abs(x) > y) {
+                median = (e_max + e_min) / 2;
+                y = this.power(2.0F, median);
+                if (this.abs(x) > y) {
                     e_min = median;
                 }
                 else {
@@ -48,12 +56,14 @@ class Methods {
                 }
             }
 
-            if (abs(x) == power(2.0F, e_max)) {
-                return power(2.0F, e_max - 23);
+            if (this.abs(x) == this.power(2.0F, e_max)) {
+                return this.power(2.0F, e_max - 23);
             }
             else {
-                return power(2.0F, e_max - 24);
+                return this.power(2.0F, e_max - 24);
             }
         }
     }
+
+
 }

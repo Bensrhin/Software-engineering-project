@@ -57,7 +57,7 @@ public class MethodBody extends Tree {
         declVariables.codeGenListVar(compiler);
         insts.codeGenListInst(compiler);
         
-        compiler.addInstruction(new RTS());
+        
     }
 
     @Override

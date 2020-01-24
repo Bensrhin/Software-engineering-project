@@ -93,5 +93,8 @@ public class Selection extends AbstractLValue{
         compiler.addInstruction(new LOAD(new RegisterOffset(fld.getIndex(), r), r));
         return r;
     }
+    protected RegisterOffset codeGenField(DecacCompiler compiler){
+        return id.codeGenField(compiler);
+    }
 
     }

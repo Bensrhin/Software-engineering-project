@@ -1,6 +1,5 @@
-public class ChebychevValues {
-
-    public float ChebyValuesCos(int j, int k){
+class ChebychevValues {
+   float ChebyValuesCos(int j, int k){
         if (j == 1){
             return 0.8775825618903728f;
         }
@@ -15,7 +14,7 @@ public class ChebychevValues {
         }
     }
 
-    public float ChebyValuesSin(int j, int k){
+    float ChebyValuesSin(int j, int k){
         if (j == 1){
             return 0.479425538604203f;
         }
@@ -30,7 +29,7 @@ public class ChebychevValues {
         }
     }
 
-    public float ChebyValuesActan(int i){
+    float ChebyValuesActan(int i){
         if (i == 0) {
             return -0.09849139859277231f;
         }
@@ -61,7 +60,6 @@ public class ChebychevValues {
         else {
             return 0.0f;
         }
-
     }
 
 }
