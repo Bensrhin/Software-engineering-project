@@ -1,6 +1,6 @@
 	TSTO #11
 	BOV pile_pleine
-	ADDSP #110
+	ADDSP #30
 ; table des methodes
 ; construction de la table des methodes de Object
 	LOAD #null, R0
@@ -196,20 +196,20 @@
 init.Methods:
 	RTS
 code.Methods.factoriel:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	LOAD -3(LB), R5
 	LOAD #0, R9
 	SUB R9, R5
@@ -260,20 +260,20 @@ IfThenElse_fin_a412:
 	POP R2
 	RTS
 code.Methods.power:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	LOAD #0, R10
 	STORE R10, 51(GB)
 	LOAD #0x1.0p0, R10
@@ -378,20 +378,20 @@ IfThenElse_fin_a1412:
 	POP R2
 	RTS
 code.Methods.abs:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R5
@@ -446,20 +446,20 @@ IfThenElse_fin_a2812:
 	POP R2
 	RTS
 code.Methods.ulp:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R15
@@ -918,20 +918,20 @@ IfThenElse_fin_a3912:
 init.ChebychevValues:
 	RTS
 code.ChebychevValues.ChebyValuesCos:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R9
@@ -1047,20 +1047,20 @@ IfThenElse_fin_a312:
 	POP R2
 	RTS
 code.ChebychevValues.ChebyValuesSin:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R5
@@ -1176,20 +1176,20 @@ IfThenElse_fin_a1812:
 	POP R2
 	RTS
 code.ChebychevValues.ChebyValuesActan:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R2
@@ -1514,20 +1514,20 @@ init.RangeReduction:
 	STORE R0, 1(R1)
 	RTS
 code.RangeReduction.FirstReductionSin:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R4
@@ -1655,20 +1655,20 @@ IfThenElse_fin_a1212:
 	POP R2
 	RTS
 code.RangeReduction.FirstReductionCos:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R7
@@ -1773,20 +1773,20 @@ init.BreakPoints:
 	STORE R0, 1(R1)
 	RTS
 code.BreakPoints.breakPoint:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 ; appel de methode3
 	ADDSP #3
 	TSTO #1
@@ -1850,20 +1850,20 @@ code.BreakPoints.breakPoint:
 	POP R2
 	RTS
 code.BreakPoints.BPOptVal:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 ; instruction new
 	TSTO #1
 	BOV pile_pleine
@@ -2207,20 +2207,20 @@ init.Taylor:
 	STORE R0, 1(R1)
 	RTS
 code.Taylor.coefTaylorSinus:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 ; appel de methode3
 	ADDSP #3
 	TSTO #1
@@ -2338,20 +2338,20 @@ code.Taylor.coefTaylorSinus:
 	POP R2
 	RTS
 code.Taylor.taylorSinus:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R7
@@ -2455,20 +2455,20 @@ While_fin_a2015:
 	POP R2
 	RTS
 code.Taylor.coefTaylorCosinus:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 ; appel de methode3
 	ADDSP #3
 	TSTO #1
@@ -2574,20 +2574,20 @@ code.Taylor.coefTaylorCosinus:
 	POP R2
 	RTS
 code.Taylor.taylorCosinus:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R15
@@ -2691,20 +2691,20 @@ While_fin_a3415:
 	POP R2
 	RTS
 code.Taylor.coefTaylorArctan:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 ; appel de methode3
 	ADDSP #3
 	TSTO #1
@@ -2807,20 +2807,20 @@ code.Taylor.coefTaylorArctan:
 	POP R2
 	RTS
 code.Taylor.taylorArctan:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R5
@@ -2924,20 +2924,20 @@ While_fin_a4815:
 	POP R2
 	RTS
 code.Taylor.coefTaylorArcsin:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 ; appel de methode3
 	ADDSP #3
 	TSTO #1
@@ -3146,20 +3146,20 @@ code.Taylor.coefTaylorArcsin:
 	POP R2
 	RTS
 code.Taylor.taylorArcsin:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R13
@@ -3279,20 +3279,20 @@ init.ChebyApproxi32:
 	STORE R0, 1(R1)
 	RTS
 code.ChebyApproxi32.ChebychevActan:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R15
@@ -3691,20 +3691,20 @@ code.ChebyApproxi32.ChebychevActan:
 	POP R2
 	RTS
 code.ChebyApproxi32.ChebychevSinus:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R2
@@ -3885,20 +3885,20 @@ code.ChebyApproxi32.ChebychevSinus:
 	POP R2
 	RTS
 code.ChebyApproxi32.ChebychevCosinus:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 	TSTO #1
 	BOV pile_pleine
 	PUSH R13
@@ -4214,20 +4214,20 @@ init.Chebychev:
 	STORE R0, 7(R1)
 	RTS
 code.Chebychev.sinCheb:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 ; instruction new
 	TSTO #1
 	BOV pile_pleine
@@ -4798,20 +4798,20 @@ IfThenElse_fin_a13112:
 	POP R2
 	RTS
 code.Chebychev.cosCheb:
-	POP R15
-	POP R14
-	POP R13
-	POP R12
-	POP R11
-	POP R10
-	POP R9
-	POP R8
-	POP R7
-	POP R6
-	POP R5
-	POP R4
-	POP R3
-	POP R2
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+	PUSH R8
+	PUSH R9
+	PUSH R10
+	PUSH R11
+	PUSH R12
+	PUSH R13
+	PUSH R14
+	PUSH R15
 ; instruction new
 	TSTO #1
 	BOV pile_pleine

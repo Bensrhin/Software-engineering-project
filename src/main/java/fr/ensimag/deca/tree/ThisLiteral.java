@@ -24,8 +24,10 @@ import fr.ensimag.deca.codegen.RegisterManager;
  * @author ensimag
  */
 public class ThisLiteral extends AbstractExpr{
-    public ThisLiteral(){
+    private boolean visibility;
+    public ThisLiteral(boolean visibility){
         super();
+        this.visibility = visibility;
     }
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
@@ -42,7 +44,10 @@ public class ThisLiteral extends AbstractExpr{
     }
     @Override
     public void decompile(IndentPrintStream s) {
-
+      if (visibility)
+      {
+        s.print("this");
+      }
     }
     @Override
     String prettyPrintNode() {

@@ -80,7 +80,6 @@ public class DeclParam extends AbstractDeclParam
       this.type.decompile(s);
       s.print(" ");
       this.param.decompile(s);
-      s.print(";");
     }
 
     @Override

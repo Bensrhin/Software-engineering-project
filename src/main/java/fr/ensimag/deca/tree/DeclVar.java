@@ -85,7 +85,7 @@ public class DeclVar extends AbstractDeclVar {
       this.type.decompile(s);
       s.print(" ");
       this.varName.decompile(s);
-      this.initialization.decompile();
+      this.initialization.decompile(s);
       s.print(";");
     }
 

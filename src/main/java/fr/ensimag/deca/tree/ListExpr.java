@@ -27,9 +27,9 @@ public class ListExpr extends TreeList<AbstractExpr> {
           Type type = expr.verifyExpr(compiler, localEnv, currentClass);
           if (this.checkType(type))
           {
-              throw new ContextualError("Type de l'expression" + 
-                      " doit être un String, un int ou un float" + 
-                      " (règle 3.31)", 
+              throw new ContextualError("Type de l'expression" +
+                      " doit être un String, un int ou un float" +
+                      " (règle 3.31)",
                       this.getLocation());
           }
       }
@@ -45,15 +45,17 @@ public class ListExpr extends TreeList<AbstractExpr> {
   @Override
   public void decompile(IndentPrintStream s) {
       Iterator<AbstractExpr> exprs = this.iterator();
-      AbstractExpr expr = exprs.next();
-      if (expr != null)
+      AbstractExpr expr;
+      if (exprs.hasNext())
       {
+          expr = exprs.next();
           expr.decompile(s);
       }
       while (exprs.hasNext())
       {
           expr = exprs.next();
           s.print(",");
+          s.println();
           expr.decompile(s);
       }
 

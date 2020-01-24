@@ -65,7 +65,7 @@ public class Return extends AbstractInst {
     public void decompile(IndentPrintStream s) {
         s.print("return ");
         this.getRvalue().decompile(s);
-        s.println(";");
+        s.print(";");
 
 
     }

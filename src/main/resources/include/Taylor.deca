@@ -9,7 +9,7 @@ class Taylor {
         return m.power(-1.0,n) * m.power(x, ((2*n) + 1/m.factoriel((2*n)+1)));
     }
 
-    float taylorSinus(float x, int n){
+    float taylorSinus(int x, int n){
         float s = 0;
         int i = 0;
         while (i < n) {
@@ -44,7 +44,7 @@ class Taylor {
             s = s + this.coefTaylorArctan(i, x);
             i = i + 1;
         }
-    
+
         return s;
     }
 
