@@ -426,6 +426,10 @@ primary_expr returns[AbstractExpr tree]
     | m=ident OPARENT args=list_expr CPARENT {
             assert($args.tree != null);
             assert($m.tree != null);
+            ThisLiteral thisI = new ThisLiteral(false);
+            $tree = new MethodCall(thisI, $m.tree, $args.tree);
+            setLocation($tree, $m.start);
+
         }
     | OPARENT expr CPARENT {
             assert($expr.tree != null);
@@ -480,7 +484,7 @@ literal returns[AbstractExpr tree]
     | fd=FLOAT {
         try {
             $tree = new FloatLiteral(Float.parseFloat($fd.text));
-            setLocation($tree, $fd);            
+            setLocation($tree, $fd);
             } catch (NumberFormatException e) {
                 $tree = null;
                 throw new InvalidFloat($fd.text,this,$ctx);
@@ -492,7 +496,7 @@ literal returns[AbstractExpr tree]
                 throw new InvalidFloat($fd.text,this,$ctx);
             }
         } {$tree != null}?
-        
+
     | STRING {
         $tree = new StringLiteral($STRING.text);
          setLocation($tree, $STRING);
@@ -506,7 +510,7 @@ literal returns[AbstractExpr tree]
         setLocation($tree, $FALSE);
         }
     | THIS {
-        $tree = new ThisLiteral();
+        $tree = new ThisLiteral(true);
         setLocation($tree, $THIS);
         }
     | NULL {

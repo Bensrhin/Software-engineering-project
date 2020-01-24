@@ -82,6 +82,9 @@ public class Selection extends AbstractLValue{
 
     }
     @Override public void decompile(IndentPrintStream s){
+      expr.decompile(s);
+      s.print(".");
+      id.decompile(s);
 
     }
      public GPRegister codeGenLoad(DecacCompiler compiler){

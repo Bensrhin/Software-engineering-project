@@ -19,10 +19,20 @@ public class ListDeclParam extends TreeList<AbstractDeclParam> {
     @Override
     public void decompile(IndentPrintStream s) {
 
-      for (AbstractDeclParam param : getList()) {
+      Iterator<AbstractDeclParam> params = this.iterator();
+      AbstractDeclParam param;
+      if (params.hasNext())
+      {
+          param =  params.next();
           param.decompile(s);
-          s.println();
       }
+      while (params.hasNext())
+      {
+          param = params.next();
+          s.print(",");
+          param.decompile(s);
+      }
+
     }
 
     /**

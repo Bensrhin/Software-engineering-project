@@ -78,7 +78,7 @@ public abstract class AbstractPrint extends AbstractInst {
       //s.indent();
       this.getArguments().decompile(s);
       //s.unindent();
-      s.println(")");
+      s.print(");");
     }
 
     @Override

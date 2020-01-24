@@ -42,8 +42,9 @@ public class MethodAsmBody extends Tree {
 
     @Override
     public void decompile(IndentPrintStream s) {
-
+        s.print("asm()");
         code.decompile(s);
+        s.print(");");
     }
 
     @Override

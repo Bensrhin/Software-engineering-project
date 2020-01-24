@@ -89,7 +89,8 @@ public class MethodCall extends AbstractLValue{
 
     }
     @Override public void decompile(IndentPrintStream s){
-
+        expr.decompile(s);
+        
     }
     @Override
     protected void codeGenPrint(DecacCompiler compiler, boolean hex){
