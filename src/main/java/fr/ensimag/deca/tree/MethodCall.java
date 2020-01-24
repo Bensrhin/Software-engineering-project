@@ -30,11 +30,23 @@ public class MethodCall extends AbstractLValue{
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        ClassType class2 = (ClassType)this.expr.verifyExpr(compiler, localEnv, currentClass);
-        EnvironmentExp exp2 = class2.getDefinition().getMembers();
+        Type class2 = this.expr.verifyExpr(compiler, localEnv, currentClass);
+        if (class2 == null || !class2.isClass())
+        {
+          throw new ContextualError("L'identificateur \"" + expr.decompile() +
+          "\" n'est pas une classe (règle 3.71)", expr.getLocation());
+        }
+        EnvironmentExp exp2 = ((ClassType)class2).getDefinition().getMembers();
 
-        Definition def = compiler.get_env_types().get(class2.getName());
-        MethodDefinition method = (MethodDefinition) this.id.verifydef(exp2);
+        // Definition def = compiler.get_env_types().get(class2.getName());
+        this.id.verifyExpr(compiler, exp2, currentClass);
+        Definition method0 = this.id.getDefinition();
+        if (method0 == null || !method0.isMethod())
+        {
+          throw new ContextualError("L'identificateur \"" + id.decompile() +
+          "\" n'est pas une méthode (règle 3.72)", id.getLocation());
+        }
+        MethodDefinition method = (MethodDefinition) method0;
         Signature sigExpected = method.getSignature();
         Signature sig = new Signature();
         Iterator<AbstractExpr> exprs = this.args.iterator();
@@ -44,9 +56,19 @@ public class MethodCall extends AbstractLValue{
                 Type type = expr.verifyExpr(compiler, localEnv, currentClass);
                 sig.add(type);
             }
+        if (sig.size() == 0 && sigExpected.size() != 0)
+        {
+          throw new ContextualError("Veuillez inserer les " +
+                          "paramètres pour la méthode \""
+                          + expr.decompile() + "\" définie à " +
+                          method.getLocation() + " règle(3.73)", this.getLocation());
+        }
         if (!sig.equals(sigExpected))
         {
-          throw new ContextualError("règele 3.74", this.getLocation());
+          throw new ContextualError("Veuillez inserer les bons types " +
+                          "de paramètres pour la méthode \""
+                          + expr.decompile() + "\" définie à " +
+                          method.getLocation() + " règle(3.74)", this.getLocation());
         }
         this.setType(method.getType());
         return method.getType();
@@ -73,11 +95,11 @@ public class MethodCall extends AbstractLValue{
     protected void codeGenPrint(DecacCompiler compiler, boolean hex){
         //throw new UnsupportedOperationException("not yet implemented44");
         System.out.println(id.getType());
-        
 
-        
+
+
     }
-    @Override 
+    @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler){
         compiler.addComment("appel de methode" + ((Identifier)(id)).getMethodDefinition().getIndex());
         compiler.addInstruction(new ADDSP(args.size() + 1));

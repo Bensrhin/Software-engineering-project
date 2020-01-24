@@ -16,9 +16,8 @@ a = 0;
 
 {
 A a = new A();
-int x = 0;
+a.int = 0;
 
-x = a.fact();
 
 println(x);
 }

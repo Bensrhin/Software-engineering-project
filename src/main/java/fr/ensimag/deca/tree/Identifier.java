@@ -211,18 +211,6 @@ public class Identifier extends AbstractIdentifier {
           return this.getType();
     }
 
-    public ExpDefinition verifydef(EnvironmentExp localEnv) throws ContextualError
-    {
-      ExpDefinition def = localEnv.get(this.getName());
-      if (def == null)
-      {
-        throw new ContextualError("Identificateur \"" + this.decompile() +
-          "\" n'est pas défini au sein de la classe (règle)", this.getLocation());
-      }
-      this.setType(def.getType());
-      this.setDefinition(def);
-      return def;
-    }
     private Definition definition;
 
 
@@ -286,7 +274,7 @@ public class Identifier extends AbstractIdentifier {
     protected void codeGenObj(DecacCompiler compiler){
         compiler.addComment("construction de la table des methodes de " + this.getType());
         LabelOperand obj = new LabelOperand(new Label("code.Object.equals"));
-        
+
         compiler.addInstruction(new LOAD(new ImmediateNull(), Register.R0));
         RegisterOffset gb1 = compiler.getRegisterManager().getRegOff();
         RegisterOffset gb2 = compiler.getRegisterManager().getRegOff();
