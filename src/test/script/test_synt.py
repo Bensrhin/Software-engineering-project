@@ -20,7 +20,7 @@ def valid_synt():
     counter = 0
     tmp = 0
     test_synt = "launchers/test_synt"
-    valid_synt = "../deca/syntax/valid/Objet"
+    valid_synt = "../deca/syntax/valid/"
     # print("Details d'execution des tests valides [1/0] ?")
     # x = int(input())
     x=1
@@ -40,6 +40,7 @@ def valid_synt():
         else:
             print(file+color.BOLD+color.HEADER+"  *** [TEST PASSED EXPECTED] *** "+color.ENDC)
             counter+=1
+        os.system("rm *.log")
         print("======================================================")
     return counter, tmp
 
@@ -48,7 +49,7 @@ def invalid_synt():
     counter = 0
     tmp = 0
     test_synt = "launchers/test_synt"
-    invalid_synt = "../deca/syntax/valid/Objet"
+    invalid_synt = "../deca/syntax/invalid/"
     print("~======================================================~")
     for file in files(invalid_synt):
         tmp += 1
@@ -59,13 +60,14 @@ def invalid_synt():
             fichier = open("{}.log".format(str(file)), "r")
             read = fichier.readlines()[0]
             if read[0] == '.':
-                new_read = read[len(invalid_synt) + 1:]
+                new_read = read[len(invalid_synt):]
                 print(new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
             else:
                 new_read = read
                 print(file+": "+new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
         else:
             print(file+color.BOLD+color.WARNING+"  *** [TEST PASSED UNEXPECTED] ***"+color.ENDC)
+        #os.system("rm *.log")
 
         print("~======================================================~")
     return counter, tmp
@@ -93,4 +95,3 @@ if inval == 1:
     else:
         print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS INVALID SYNT ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
         print("~========================================================================~")
-os.system("rm *.log")

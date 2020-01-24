@@ -1,0 +1,7 @@
+#include "Methods.deca"
+
+class Taylor {
+
+    Methods m = new Methods();
+
+}
