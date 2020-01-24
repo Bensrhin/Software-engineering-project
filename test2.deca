@@ -1,5 +1,17 @@
+class A{
+    float x = 1.5;
+    void setX(float y){
+        this.x = y;
+    }
+    float getX(){
+        return this.x;
+    }
+}
 {
-int x = 1;
-int y = 2;
-println(x, y);
+A a = new A();
+float x;
+float y = readFloat();
+a.setX(y);
+x = a.getX();
+println(x);
 }

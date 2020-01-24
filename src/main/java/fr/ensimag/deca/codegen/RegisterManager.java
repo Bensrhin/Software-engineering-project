@@ -39,7 +39,7 @@ public class RegisterManager{
             compiler.addInstruction(new POP(r));
             initR.regEcrase.pop();
         }
-        else if(r.getNumber() != 0){
+        else if(r.getNumber() != 0 && r.getNumber() != 1){
             r.freeR();
             initR.regNonDispo.remove(r);
             initR.regDispo.push(r);        
@@ -50,5 +50,19 @@ public class RegisterManager{
         cptOffset ++;
         return reg;
     }
-
+    public void copy(Stack<GPRegister> org, Stack<GPRegister> tmp){
+        for(GPRegister reg : org){
+            tmp.push(reg);
+        }
+    }
+    public void reset(){
+        tmpDispo = initR.regDispo;
+        regDispo = new Stack<GPRegister>();
+        tmpNonDispo = regNonDispo;
+        
+    }
+    public void reReset(){
+        regDispo = tmp;
+        
+    }
 }
