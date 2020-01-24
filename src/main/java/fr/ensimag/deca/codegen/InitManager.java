@@ -15,11 +15,8 @@ import fr.ensimag.ima.pseudocode.Register;
 import java.util.*;
 public class InitManager {
     protected Stack<GPRegister> regDispo = new Stack<GPRegister>();
-    protected Stack<GPRegister> tmpDispo = new Stack<GPRegister>();
     protected LinkedList<GPRegister> regNonDispo = new LinkedList<GPRegister>();
-    protected LinkedList<GPRegister> tmpNonDispo = new LinkedList<GPRegister>();
     protected Stack<GPRegister> regEcrase = new Stack<GPRegister>();
-    protected Stack<GPRegister> tmpEcrase = new Stack<GPRegister>();
     public InitManager(int j){
         for(int i = 2; i<j+1; i++){
             regDispo.push(Register.getR(j+2-i));
