@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="206b755a-9ec6-4a00-9070-a2f41135cfca" name="Default Changelist" comment="" />
+    <list default="true" id="206b755a-9ec6-4a00-9070-a2f41135cfca" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestrangeReduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestrangeReduction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/rangeReduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/rangeReduction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestrangeReduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestrangeReduction.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +35,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.TestrangeReduction">
     <configuration name="TestMethod" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TestMethod" />
       <module name="MathLibrary" />
@@ -38,8 +43,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestrangeReduction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestrangeReduction" />
+      <module name="MathLibrary" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestrangeReduction" />
         <item itemvalue="Application.TestMethod" />
       </list>
     </recent_temporary>
@@ -54,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579876199205</updated>
-      <workItem from="1579876202604" duration="6084000" />
+      <workItem from="1579876202604" duration="8447000" />
     </task>
     <servers />
   </component>

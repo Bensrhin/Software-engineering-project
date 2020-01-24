@@ -1,0 +1,84 @@
+#include ""
+class Chebychev {
+
+    float Pi = 3.1415926f;
+
+    ChebychevValues values = new ChebychevValues();
+    Couple c = new Couple();
+    static methods m = new methods();
+    RangeReduction range = new RangeReduction();
+    ChebyApproxi32 a = new ChebyApproxi32();
+    BreakPoints b = new BreakPoints();
+
+
+    float sinCheb(float value){
+        if (value <= Pi/4 && value >= 0){
+            if(m.abs(value) <= 0.03125f){
+                return a.ChebychevSinus(value);
+            }
+
+            couple c = b.BPOptVal(value);
+            float BP = b.breakPoint(c.x, c.y);
+            float r = value - BP;
+
+            return values.ChebyValuesSin(c.x, c.y)*a.ChebychevCosinus(r) + values.ChebyValuesCos(c.x,c.y)*a.ChebychevSinus(r);
+        }
+
+        else if (value < 0){
+            return -this.sinCheb(-value);
+        }
+
+        else {
+            if (value > Pi){
+                float newValue = range.FirstReductionSin(value);
+                return this.sinCheb(newValue);
+            }
+
+            else if (value > Pi/2){
+                return this.cosCheb(Pi/2 - value);
+            }
+
+            else {
+                return 2 * this.sinCheb(value/2) * this.cosCheb(value/2);
+            }
+        }
+
+    }
+
+
+
+    float cosCheb(float value){
+        if (value <= Pi/4 && value >= 0){
+            if(m.abs(value) <= 0.03125f){
+                return a.ChebychevCosinus(value);
+            }
+
+            couple c = b.BPOptVal(value);
+            float BP = b.breakPoint(c.x, c.y);
+            float r = value - BP;
+            return values.ChebyValuesCos(c.x, c.y)*a.ChebychevCosinus(r) - values.ChebyValuesSin(c.x, c.y)*a.ChebychevSinus(r);
+        }
+
+        else if (value < 0){
+            return this.cosCheb(-value);
+        }
+
+        else {
+            if (value > 2* Pi){
+                float newValue = range.FirstReductionCos(value);
+                return this.cosCheb(newValue);
+            }
+            else if (value > Pi && value < 2*Pi){
+                return -this.cosCheb(value - Pi);
+            }
+
+            else if (value > Pi/2){
+                return this.sinCheb(Pi/2 - value);
+            }
+
+            else {
+                return 1 - 2 * m.power(this.sinCheb(value/2), 2);
+            }
+        }
+    }
+}
