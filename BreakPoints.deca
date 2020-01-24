@@ -1,6 +1,5 @@
-#include ""
-
 class BreakPoints{
+    Methods m = new Methods();
 
     float breakPoint(int j, int k){
         return m.power(2.0F, -j)*(1 + k/8);
@@ -14,9 +13,9 @@ class BreakPoints{
         int k = 0;
         while (j < 5){
             while (k < 8){
-                if(m.abs(BP - value) > m.abs(breakPoint(j, k) - value)){
+                if(m.abs(BP - value) > m.abs(this.breakPoint(j, k) - value)){
                     temoin = 1;
-                    BP = breakPoint(j, k);
+                    BP = this.breakPoint(j, k);
                     index.x = j;
                     index.y = k;
                 }
