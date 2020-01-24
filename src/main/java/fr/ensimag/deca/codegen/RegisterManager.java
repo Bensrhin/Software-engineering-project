@@ -50,19 +50,5 @@ public class RegisterManager{
         cptOffset ++;
         return reg;
     }
-    public void copy(Stack<GPRegister> org, Stack<GPRegister> tmp){
-        for(GPRegister reg : org){
-            tmp.push(reg);
-        }
-    }
-    public void reset(){
-        tmpDispo = initR.regDispo;
-        regDispo = new Stack<GPRegister>();
-        tmpNonDispo = regNonDispo;
-        
-    }
-    public void reReset(){
-        regDispo = tmp;
-        
-    }
+    
 }

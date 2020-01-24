@@ -29,10 +29,6 @@ public class IntLiteral extends AbstractExpr {
     private int value;
 
     public IntLiteral(int value) {
-        Validate.isTrue(value >= -2147483648,
-                "int values connot be less than -2147483648");
-        Validate.isTrue(value <= 2147483647,
-                "int values connot depass +2147483648");
         this.value = value;
     }
 

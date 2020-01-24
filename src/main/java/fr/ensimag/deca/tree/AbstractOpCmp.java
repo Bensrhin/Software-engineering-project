@@ -44,14 +44,12 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
         {
             return type;
         }
-        /* comparaison class todo */
-
         /***/
         else if ((op.equals("==")||op.equals("!=")||op.equals("<")
             ||op.equals("<=")||op.equals(">")||op.equals(">="))
             & t1.isTypeBinary() & t2.isTypeBinary())
         {
-            
+
             if (t2.isFloat() & t1.isInt())
             {
                 this.getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
@@ -68,7 +66,7 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
                 this.getRightOperand().verifyExpr(compiler, localEnv, currentClass);
                 this.getRightOperand().setType(t1);
             }
-            
+
             return type;
         }
         /*if ((op.equals("==")||op.equals("!="))
@@ -77,11 +75,11 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
             return type;
         }
         */
-        else 
+        else
         {
             throw new ContextualError("Opération de comparaison " + decompile()
                     + " : (" +
-                t1.toString() + " " + getOperatorName() +  " " + t2.toString() + 
+                t1.toString() + " " + getOperatorName() +  " " + t2.toString() +
                 ") : non autorisée (règle 3.33)"
                 , this.getLocation());
         }
@@ -115,7 +113,7 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
     };
 
     public abstract void codeGenIma(DecacCompiler compiler, Label label);
-    
+
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
         GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);

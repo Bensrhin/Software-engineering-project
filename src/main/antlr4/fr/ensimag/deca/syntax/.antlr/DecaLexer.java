@@ -46,7 +46,7 @@ public class DecaLexer extends AbstractDecaLexer {
 	private static final String[] _LITERAL_NAMES = {
 		null, "';'", "'asm'", "'instanceof'", "'println'", "'true'", "'class'", 
 		"'new'", "'printlnx'", "'while'", "'extends'", "'null'", "'printx'", "'else'", 
-		"'ReadInt'", "'protected'", "'false'", "'ReadFloat'", "'return'", "'if'", 
+		"'readInt'", "'protected'", "'false'", "'readFloat'", "'return'", "'if'", 
 		"'print'", "'this'", "'+'", "'-'", "'*'", "'/'", "'%'", "'!'", "'<='", 
 		"'>='", "'<'", "'>'", "'='", "'=='", "'!='", "'.'", "','", "'('", "')'", 
 		"'{'", "'}'", "'||'", "'&&'"
@@ -125,6 +125,9 @@ public class DecaLexer extends AbstractDecaLexer {
 		case 64:
 			WS_action((RuleContext)_localctx, actionIndex);
 			break;
+		case 66:
+			INCLUDE_action((RuleContext)_localctx, actionIndex);
+			break;
 		}
 	}
 	private void WS_action(RuleContext _localctx, int actionIndex) {
@@ -134,9 +137,16 @@ public class DecaLexer extends AbstractDecaLexer {
 			break;
 		}
 	}
+	private void INCLUDE_action(RuleContext _localctx, int actionIndex) {
+		switch (actionIndex) {
+		case 1:
+			doInclude(getText());
+			break;
+		}
+	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\2\63\u01f4\b\1\4\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\2\63\u01f5\b\1\4\2"+
 		"\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4"+
 		"\13\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22"+
 		"\t\22\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31"+
@@ -166,14 +176,14 @@ public class DecaLexer extends AbstractDecaLexer {
 		"\n@\f@\16@\u01ac\13@\3@\3@\3A\3A\3A\3A\7A\u01b4\nA\fA\16A\u01b7\13A\3"+
 		"A\3A\3A\3A\3A\3A\7A\u01bf\nA\fA\16A\u01c2\13A\3A\5A\u01c5\nA\5A\u01c7"+
 		"\nA\3B\3B\5B\u01cb\nB\3B\3B\3C\3C\3C\6C\u01d2\nC\rC\16C\u01d3\3D\3D\3"+
-		"D\3D\3D\3D\3D\3D\3D\3D\7D\u01e0\nD\fD\16D\u01e3\13D\3D\3D\3D\3D\3E\3E"+
-		"\5E\u01eb\nE\3E\3E\3E\7E\u01f0\nE\fE\16E\u01f3\13E\4\u01b5\u01c0\2F\3"+
-		"\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n\23\13\25\f\27\r\31\16\33\17\35\20\37"+
-		"\21!\22#\23%\24\'\25)\26+\27-\30/\31\61\32\63\33\65\34\67\359\36;\37="+
-		" ?!A\"C#E$G%I&K\'M(O)Q*S+U,W\2Y\2[\2]\2_\2a\2c-e\2g\2i\2k\2m\2o\2q\2s"+
-		"\2u\2w\2y.{\2}/\177\60\u0081\2\u0083\61\u0085\2\u0087\62\u0089\63\3\2"+
+		"D\3D\3D\3D\3D\3D\3D\3D\7D\u01e0\nD\fD\16D\u01e3\13D\3D\3D\3D\3D\3D\3E"+
+		"\3E\5E\u01ec\nE\3E\3E\3E\7E\u01f1\nE\fE\16E\u01f4\13E\4\u01b5\u01c0\2"+
+		"F\3\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n\23\13\25\f\27\r\31\16\33\17\35\20"+
+		"\37\21!\22#\23%\24\'\25)\26+\27-\30/\31\61\32\63\33\65\34\67\359\36;\37"+
+		"= ?!A\"C#E$G%I&K\'M(O)Q*S+U,W\2Y\2[\2]\2_\2a\2c-e\2g\2i\2k\2m\2o\2q\2"+
+		"s\2u\2w\2y.{\2}/\177\60\u0081\2\u0083\61\u0085\2\u0087\62\u0089\63\3\2"+
 		"\13\4\2C\\c|\4\2--//\4\2GGgg\4\2HHhh\4\2RRrr\5\2\f\f$$^^\3\3\f\f\4\2/"+
-		"\60aa\4\2&&aa\2\u0202\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2"+
+		"\60aa\4\2&&aa\2\u0203\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2"+
 		"\2\13\3\2\2\2\2\r\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25"+
 		"\3\2\2\2\2\27\3\2\2\2\2\31\3\2\2\2\2\33\3\2\2\2\2\35\3\2\2\2\2\37\3\2"+
 		"\2\2\2!\3\2\2\2\2#\3\2\2\2\2%\3\2\2\2\2\'\3\2\2\2\2)\3\2\2\2\2+\3\2\2"+
@@ -197,7 +207,7 @@ public class DecaLexer extends AbstractDecaLexer {
 		"\2\2q\u0170\3\2\2\2s\u0178\3\2\2\2u\u017b\3\2\2\2w\u0183\3\2\2\2y\u0190"+
 		"\3\2\2\2{\u0192\3\2\2\2}\u0194\3\2\2\2\177\u01a1\3\2\2\2\u0081\u01c6\3"+
 		"\2\2\2\u0083\u01ca\3\2\2\2\u0085\u01d1\3\2\2\2\u0087\u01d5\3\2\2\2\u0089"+
-		"\u01ea\3\2\2\2\u008b\u008c\7=\2\2\u008c\4\3\2\2\2\u008d\u008e\7c\2\2\u008e"+
+		"\u01eb\3\2\2\2\u008b\u008c\7=\2\2\u008c\4\3\2\2\2\u008d\u008e\7c\2\2\u008e"+
 		"\u008f\7u\2\2\u008f\u0090\7o\2\2\u0090\6\3\2\2\2\u0091\u0092\7k\2\2\u0092"+
 		"\u0093\7p\2\2\u0093\u0094\7u\2\2\u0094\u0095\7v\2\2\u0095\u0096\7c\2\2"+
 		"\u0096\u0097\7p\2\2\u0097\u0098\7e\2\2\u0098\u0099\7g\2\2\u0099\u009a"+
@@ -218,13 +228,13 @@ public class DecaLexer extends AbstractDecaLexer {
 		"\7r\2\2\u00d0\u00d1\7t\2\2\u00d1\u00d2\7k\2\2\u00d2\u00d3\7p\2\2\u00d3"+
 		"\u00d4\7v\2\2\u00d4\u00d5\7z\2\2\u00d5\32\3\2\2\2\u00d6\u00d7\7g\2\2\u00d7"+
 		"\u00d8\7n\2\2\u00d8\u00d9\7u\2\2\u00d9\u00da\7g\2\2\u00da\34\3\2\2\2\u00db"+
-		"\u00dc\7T\2\2\u00dc\u00dd\7g\2\2\u00dd\u00de\7c\2\2\u00de\u00df\7f\2\2"+
+		"\u00dc\7t\2\2\u00dc\u00dd\7g\2\2\u00dd\u00de\7c\2\2\u00de\u00df\7f\2\2"+
 		"\u00df\u00e0\7K\2\2\u00e0\u00e1\7p\2\2\u00e1\u00e2\7v\2\2\u00e2\36\3\2"+
 		"\2\2\u00e3\u00e4\7r\2\2\u00e4\u00e5\7t\2\2\u00e5\u00e6\7q\2\2\u00e6\u00e7"+
 		"\7v\2\2\u00e7\u00e8\7g\2\2\u00e8\u00e9\7e\2\2\u00e9\u00ea\7v\2\2\u00ea"+
 		"\u00eb\7g\2\2\u00eb\u00ec\7f\2\2\u00ec \3\2\2\2\u00ed\u00ee\7h\2\2\u00ee"+
 		"\u00ef\7c\2\2\u00ef\u00f0\7n\2\2\u00f0\u00f1\7u\2\2\u00f1\u00f2\7g\2\2"+
-		"\u00f2\"\3\2\2\2\u00f3\u00f4\7T\2\2\u00f4\u00f5\7g\2\2\u00f5\u00f6\7c"+
+		"\u00f2\"\3\2\2\2\u00f3\u00f4\7t\2\2\u00f4\u00f5\7g\2\2\u00f5\u00f6\7c"+
 		"\2\2\u00f6\u00f7\7f\2\2\u00f7\u00f8\7H\2\2\u00f8\u00f9\7n\2\2\u00f9\u00fa"+
 		"\7q\2\2\u00fa\u00fb\7c\2\2\u00fb\u00fc\7v\2\2\u00fc$\3\2\2\2\u00fd\u00fe"+
 		"\7t\2\2\u00fe\u00ff\7g\2\2\u00ff\u0100\7v\2\2\u0100\u0101\7w\2\2\u0101"+
@@ -297,14 +307,14 @@ public class DecaLexer extends AbstractDecaLexer {
 		"\7g\2\2\u01dd\u01e1\3\2\2\2\u01de\u01e0\7\"\2\2\u01df\u01de\3\2\2\2\u01e0"+
 		"\u01e3\3\2\2\2\u01e1\u01df\3\2\2\2\u01e1\u01e2\3\2\2\2\u01e2\u01e4\3\2"+
 		"\2\2\u01e3\u01e1\3\2\2\2\u01e4\u01e5\7$\2\2\u01e5\u01e6\5\u0085C\2\u01e6"+
-		"\u01e7\7$\2\2\u01e7\u0088\3\2\2\2\u01e8\u01eb\5[.\2\u01e9\u01eb\t\n\2"+
-		"\2\u01ea\u01e8\3\2\2\2\u01ea\u01e9\3\2\2\2\u01eb\u01f1\3\2\2\2\u01ec\u01f0"+
-		"\5[.\2\u01ed\u01f0\5]/\2\u01ee\u01f0\t\n\2\2\u01ef\u01ec\3\2\2\2\u01ef"+
-		"\u01ed\3\2\2\2\u01ef\u01ee\3\2\2\2\u01f0\u01f3\3\2\2\2\u01f1\u01ef\3\2"+
-		"\2\2\u01f1\u01f2\3\2\2\2\u01f2\u008a\3\2\2\2\u01f3\u01f1\3\2\2\2\36\2"+
-		"\u014e\u0154\u0156\u015f\u0162\u0170\u0173\u0178\u017d\u0183\u018c\u0190"+
-		"\u019a\u019c\u01a8\u01aa\u01b5\u01c0\u01c4\u01c6\u01ca\u01d1\u01d3\u01e1"+
-		"\u01ea\u01ef\u01f1\3\3B\2";
+		"\u01e7\7$\2\2\u01e7\u01e8\bD\3\2\u01e8\u0088\3\2\2\2\u01e9\u01ec\5[.\2"+
+		"\u01ea\u01ec\t\n\2\2\u01eb\u01e9\3\2\2\2\u01eb\u01ea\3\2\2\2\u01ec\u01f2"+
+		"\3\2\2\2\u01ed\u01f1\5[.\2\u01ee\u01f1\5]/\2\u01ef\u01f1\t\n\2\2\u01f0"+
+		"\u01ed\3\2\2\2\u01f0\u01ee\3\2\2\2\u01f0\u01ef\3\2\2\2\u01f1\u01f4\3\2"+
+		"\2\2\u01f2\u01f0\3\2\2\2\u01f2\u01f3\3\2\2\2\u01f3\u008a\3\2\2\2\u01f4"+
+		"\u01f2\3\2\2\2\36\2\u014e\u0154\u0156\u015f\u0162\u0170\u0173\u0178\u017d"+
+		"\u0183\u018c\u0190\u019a\u019c\u01a8\u01aa\u01b5\u01c0\u01c4\u01c6\u01ca"+
+		"\u01d1\u01d3\u01e1\u01eb\u01f0\u01f2\4\3B\2\3D\3";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

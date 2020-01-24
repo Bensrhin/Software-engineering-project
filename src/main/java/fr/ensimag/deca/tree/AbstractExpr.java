@@ -157,11 +157,9 @@ public abstract class AbstractExpr extends AbstractInst {
         else{
             if(this.getType().toString().equals("int")){
                 compiler.addInstruction(new WINT());
-
             }
             if(this.getType().toString().equals("float")){
-                compiler.addInstruction(new WFLOAT());
-
+                compiler.addInstruction(new WFLOAT());    
             }
         }
 

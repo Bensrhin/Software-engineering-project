@@ -1,0 +1,7 @@
+#include "Methods.deca"
+
+{
+    //Methods m = new Methods();
+    //float x = m.power(1.0,2.0);
+    //println(x);
+}
