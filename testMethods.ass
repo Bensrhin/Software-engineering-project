@@ -1,0 +1,1500 @@
+	TSTO #11
+	BOV pile_pleine
+	ADDSP #13
+; table des methodes
+; construction de la table des methodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; construction de la table des methodes de Methods
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Methods.factoriel, R0
+	STORE R0, 5(GB)
+	LOAD code.Methods.abs, R0
+	STORE R0, 7(GB)
+	LOAD code.Methods.ulp, R0
+	STORE R0, 8(GB)
+	LOAD code.Methods.power, R0
+	STORE R0, 6(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+; construction de la table des methodes de Taylor
+	LEA 1(GB), R0
+	STORE R0, 9(GB)
+	LOAD code.Taylor.taylorCosinus, R0
+	STORE R0, 14(GB)
+	LOAD code.Taylor.coefTaylorSinus, R0
+	STORE R0, 11(GB)
+	LOAD code.Taylor.taylorArctan, R0
+	STORE R0, 16(GB)
+	LOAD code.Taylor.coefTaylorArcsin, R0
+	STORE R0, 17(GB)
+	LOAD code.Taylor.taylorSinus, R0
+	STORE R0, 12(GB)
+	LOAD code.Taylor.taylorArcsin, R0
+	STORE R0, 18(GB)
+	LOAD code.Taylor.coefTaylorCosinus, R0
+	STORE R0, 13(GB)
+	LOAD code.Taylor.coefTaylorArctan, R0
+	STORE R0, 15(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 10(GB)
+; Main program
+; Beginning of main instructions:
+; instruction new
+	NEW #2, R2
+	LEA 9(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.Taylor
+	POP R2
+	STORE R2, 19(GB)
+; appel de methode5
+	ADDSP #3
+	LOAD 19(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x0.0p0, R3
+	STORE R3, -1(SP)
+	LOAD #7, R3
+	STORE R3, -2(SP)
+	LOAD 0(SP), R2
+	LOAD 0(R2), R2
+	BSR 5(R2)
+	SUBSP #3
+	STORE R0, 20(GB)
+	LOAD 20(GB), R1
+	WFLOAT
+	HALT
+init.Methods:
+	RTS
+code.Methods.factoriel:
+	LOAD -3(LB), R3
+	LOAD #0, R4
+	SUB R4, R3
+	LOAD R3, R1
+	BEQ OpCmp_if_in_a412
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a412
+OpCmp_if_in_a412:
+	LOAD #0, R1
+OpCmp_fin_in_a412:
+	LOAD R1, R2
+	LOAD R2, R1
+	BNE IfThenElse_else_a412
+	LOAD #1, R5
+	LOAD R5, R0
+	BRA IfThenElse_fin_a412
+IfThenElse_else_a412:
+IfThenElse_fin_a412:
+	LOAD -3(LB), R5
+; appel de methode2
+	ADDSP #2
+	LOAD -2(LB), R6
+	STORE R6, 0(SP)
+	LOAD -3(LB), R7
+	LOAD #1, R8
+	SUB R8, R7
+	STORE R7, -1(SP)
+	LOAD 0(SP), R6
+	LOAD 0(R6), R6
+	BSR 2(R6)
+	SUBSP #2
+	MUL R0, R5
+	BOV over_flow
+	LOAD R5, R0
+	RTS
+code.Methods.power:
+	LOAD #0x0.0p0, R5
+	STORE R5, 21(GB)
+	LOAD #0x1.0p0, R5
+	STORE R5, 22(GB)
+	LOAD -4(LB), R6
+	LOAD #0x0.0p0, R7
+	SUB R7, R6
+	LOAD R6, R1
+	BLT OpCmp_if_in_a1412
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a1412
+OpCmp_if_in_a1412:
+	LOAD #0, R1
+OpCmp_fin_in_a1412:
+	LOAD R1, R5
+	LOAD R5, R1
+	BNE IfThenElse_else_a1412
+; appel de methode3
+	ADDSP #3
+	LOAD -2(LB), R8
+	STORE R8, 0(SP)
+	LOAD #1, R9
+	FLOAT R9, R9
+	LOAD -3(LB), R10
+	DIV R10, R9
+	BOV divisionErr
+	STORE R9, -1(SP)
+	LOAD -4(LB), R9
+	OPP R9, R9
+	STORE R9, -2(SP)
+	LOAD 0(SP), R8
+	LOAD 0(R8), R8
+	BSR 3(R8)
+	SUBSP #3
+	LOAD R0, R0
+	BRA IfThenElse_fin_a1412
+IfThenElse_else_a1412:
+While_cond_a1919:
+	LOAD -4(LB), R9
+	LOAD 21(GB), R11
+	SUB R11, R9
+	LOAD R9, R1
+	BGT OpCmp_if_in_a1919
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a1919
+OpCmp_if_in_a1919:
+	LOAD #0, R1
+OpCmp_fin_in_a1919:
+	LOAD R1, R8
+	LOAD R8, R1
+	BNE While_fin_a1919
+	LOAD 22(GB), R12
+	LOAD -3(LB), R13
+	MUL R13, R12
+	BOV over_flow
+	STORE R12, 22(GB)
+	LOAD 21(GB), R12
+	LOAD #1, R13
+	FLOAT R13, R13
+	ADD R13, R12
+	STORE R12, 21(GB)
+	BRA While_cond_a1919
+While_fin_a1919:
+	LOAD 22(GB), R12
+	LOAD R12, R0
+IfThenElse_fin_a1412:
+	RTS
+code.Methods.abs:
+	LOAD -3(LB), R13
+	LOAD #0x0.0p0, R14
+	SUB R14, R13
+	LOAD R13, R1
+	BGT OpCmp_if_in_a2812
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a2812
+OpCmp_if_in_a2812:
+	LOAD #0, R1
+OpCmp_fin_in_a2812:
+	LOAD R1, R12
+	LOAD R12, R1
+	BNE IfThenElse_else_a2812
+	LOAD -3(LB), R15
+	LOAD R15, R0
+	BRA IfThenElse_fin_a2812
+IfThenElse_else_a2812:
+IfThenElse_fin_a2812:
+	LOAD -3(LB), R15
+	OPP R15, R15
+	LOAD R15, R0
+	RTS
+code.Methods.ulp:
+	LOAD #0x1.f8p6, R15
+	OPP R15, R15
+	STORE R15, 23(GB)
+	LOAD #0x1.fcp6, R15
+	STORE R15, 24(GB)
+	LOAD #0x0.0p0, R15
+	STORE R15, 25(GB)
+	LOAD #0x0.0p0, R15
+	STORE R15, 26(GB)
+; appel de methode4
+	ADDSP #2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	LOAD -3(LB), R3
+	STORE R3, -1(SP)
+	POP R3
+	LOAD 0(SP), R2
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	POP R2
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD -2(LB), R4
+	STORE R4, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	LOAD #0x1.0p1, R5
+	STORE R5, -1(SP)
+	POP R5
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD #0x1.fcp6, R6
+	OPP R6, R6
+	STORE R6, -2(SP)
+	POP R6
+	LOAD 0(SP), R4
+	LOAD 0(R4), R4
+	BSR 3(R4)
+	SUBSP #3
+	POP R4
+	SUB R0, R0
+	LOAD R0, R1
+	BLE OpCmp_if_in_a3912
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a3912
+OpCmp_if_in_a3912:
+	LOAD #0, R1
+OpCmp_fin_in_a3912:
+	LOAD R1, R15
+	LOAD R15, R1
+	BNE IfThenElse_else_a3912
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+	LOAD #0x0.000002p-126, R7
+	LOAD R7, R0
+	POP R7
+	BRA IfThenElse_fin_a3912
+IfThenElse_else_a3912:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+; appel de methode4
+	ADDSP #2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD -2(LB), R8
+	STORE R8, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	LOAD -3(LB), R9
+	STORE R9, -1(SP)
+	POP R9
+	LOAD 0(SP), R8
+	LOAD 0(R8), R8
+	BSR 4(R8)
+	SUBSP #2
+	POP R8
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	LOAD -2(LB), R11
+	STORE R11, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	LOAD #0x1.0p1, R12
+	STORE R12, -1(SP)
+	POP R12
+	TSTO #1
+	BOV pile_pleine
+	PUSH R13
+	LOAD #0x1.fcp6, R13
+	STORE R13, -2(SP)
+	POP R13
+	LOAD 0(SP), R11
+	LOAD 0(R11), R11
+	BSR 3(R11)
+	SUBSP #3
+	POP R11
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R14
+	LOAD -2(LB), R14
+	STORE R14, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R15
+	LOAD #0x1.0p1, R15
+	STORE R15, -1(SP)
+	POP R15
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD #0x1.ap6, R2
+	STORE R2, -2(SP)
+	POP R2
+	LOAD 0(SP), R14
+	LOAD 0(R14), R14
+	BSR 3(R14)
+	SUBSP #3
+	POP R14
+	SUB R0, R0
+	SUB R0, R0
+	LOAD R0, R1
+	BGT OpCmp_if_in_a4317
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a4317
+OpCmp_if_in_a4317:
+	LOAD #0, R1
+OpCmp_fin_in_a4317:
+	LOAD R1, R10
+	LOAD R10, R1
+	BNE IfThenElse_else_a4317
+; appel de methode4
+	ADDSP #2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	LOAD -2(LB), R3
+	STORE R3, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD -3(LB), R4
+	STORE R4, -1(SP)
+	POP R4
+	LOAD 0(SP), R3
+	LOAD 0(R3), R3
+	BSR 4(R3)
+	SUBSP #2
+	POP R3
+	LOAD R0, R0
+	BRA IfThenElse_fin_a4317
+IfThenElse_else_a4317:
+While_cond_a4818:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD 24(GB), R6
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+	LOAD 23(GB), R7
+	SUB R7, R6
+	POP R7
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+	LOAD #1, R10
+	FLOAT R10, R10
+	SUB R10, R6
+	LOAD R6, R1
+	BGT OpCmp_if_in_a4818
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a4818
+OpCmp_if_in_a4818:
+	LOAD #0, R1
+OpCmp_fin_in_a4818:
+	LOAD R1, R5
+	LOAD R5, R1
+	BNE While_fin_a4818
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD 24(GB), R8
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	LOAD 23(GB), R9
+	ADD R9, R8
+	POP R9
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	LOAD #2, R11
+	FLOAT R11, R11
+	DIV R11, R8
+	BOV divisionErr
+	STORE R8, 25(GB)
+	POP R8
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	LOAD -2(LB), R12
+	STORE R12, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R13
+	LOAD #0x1.0p1, R13
+	STORE R13, -1(SP)
+	POP R13
+	TSTO #1
+	BOV pile_pleine
+	PUSH R14
+	LOAD 25(GB), R14
+	STORE R14, -2(SP)
+	POP R14
+	LOAD 0(SP), R12
+	LOAD 0(R12), R12
+	BSR 3(R12)
+	SUBSP #3
+	POP R12
+	STORE R0, 26(GB)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R15
+; appel de methode4
+	ADDSP #2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	LOAD -3(LB), R3
+	STORE R3, -1(SP)
+	POP R3
+	LOAD 0(SP), R2
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	POP R2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD 26(GB), R4
+	SUB R4, R0
+	LOAD R0, R1
+	BGT OpCmp_if_in_a5120
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a5120
+OpCmp_if_in_a5120:
+	LOAD #0, R1
+OpCmp_fin_in_a5120:
+	LOAD R1, R15
+	LOAD R15, R1
+	BNE IfThenElse_else_a5120
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	LOAD 25(GB), R5
+	STORE R5, 23(GB)
+	POP R5
+	BRA IfThenElse_fin_a5120
+IfThenElse_else_a5120:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD 25(GB), R6
+	STORE R6, 24(GB)
+	POP R6
+IfThenElse_fin_a5120:
+	BRA While_cond_a4818
+While_fin_a4818:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+; appel de methode4
+	ADDSP #2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+	LOAD -2(LB), R10
+	STORE R10, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD -3(LB), R8
+	STORE R8, -1(SP)
+	POP R8
+	LOAD 0(SP), R10
+	LOAD 0(R10), R10
+	BSR 4(R10)
+	SUBSP #2
+	POP R10
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	LOAD -2(LB), R9
+	STORE R9, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	LOAD #0x1.0p1, R11
+	STORE R11, -1(SP)
+	POP R11
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	LOAD 24(GB), R12
+	STORE R12, -2(SP)
+	POP R12
+	LOAD 0(SP), R9
+	LOAD 0(R9), R9
+	BSR 3(R9)
+	SUBSP #3
+	POP R9
+	SUB R0, R0
+	LOAD R0, R1
+	BEQ OpCmp_if_in_a5916
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a5916
+OpCmp_if_in_a5916:
+	LOAD #0, R1
+OpCmp_fin_in_a5916:
+	LOAD R1, R7
+	LOAD R7, R1
+	BNE IfThenElse_else_a5916
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R13
+	LOAD -2(LB), R13
+	STORE R13, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R14
+	LOAD #0x1.0p1, R14
+	STORE R14, -1(SP)
+	POP R14
+	TSTO #1
+	BOV pile_pleine
+	PUSH R15
+	LOAD 24(GB), R15
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD #23, R2
+	FLOAT R2, R2
+	SUB R2, R15
+	POP R2
+	STORE R15, -2(SP)
+	POP R15
+	LOAD 0(SP), R13
+	LOAD 0(R13), R13
+	BSR 3(R13)
+	SUBSP #3
+	POP R13
+	LOAD R0, R0
+	BRA IfThenElse_fin_a5916
+IfThenElse_else_a5916:
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	LOAD -2(LB), R3
+	STORE R3, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD #0x1.0p1, R4
+	STORE R4, -1(SP)
+	POP R4
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	LOAD 24(GB), R5
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD #24, R6
+	FLOAT R6, R6
+	SUB R6, R5
+	POP R6
+	STORE R5, -2(SP)
+	POP R5
+	LOAD 0(SP), R3
+	LOAD 0(R3), R3
+	BSR 3(R3)
+	SUBSP #3
+	POP R3
+	LOAD R0, R0
+IfThenElse_fin_a5916:
+IfThenElse_fin_a4317:
+IfThenElse_fin_a3912:
+	RTS
+init.Taylor:
+; instruction new
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+	NEW #1, R7
+	LEA 3(GB), R0
+	STORE R0, 0(R7)
+	PUSH R7
+	BSR init.Methods
+	POP R7
+	LOAD R7, R0
+	POP R7
+	LOAD -2(LB), R1
+	STORE R0, 1(R1)
+	RTS
+code.Taylor.coefTaylorSinus:
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+	LOAD -2(LB), R1
+	LOAD 1(R1), R10
+	STORE R10, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD #0x1.0p0, R8
+	OPP R8, R8
+	STORE R8, -1(SP)
+	POP R8
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	LOAD -3(LB), R9
+	FLOAT R9, R9
+	STORE R9, -2(SP)
+	POP R9
+	LOAD 0(SP), R10
+	LOAD 0(R10), R10
+	BSR 3(R10)
+	SUBSP #3
+	POP R10
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	LOAD -2(LB), R1
+	LOAD 1(R1), R11
+	STORE R11, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	LOAD -4(LB), R12
+	STORE R12, -1(SP)
+	POP R12
+	TSTO #1
+	BOV pile_pleine
+	PUSH R13
+	LOAD #2, R13
+	TSTO #1
+	BOV pile_pleine
+	PUSH R14
+	LOAD -3(LB), R14
+	MUL R14, R13
+	BOV over_flow
+	POP R14
+	TSTO #1
+	BOV pile_pleine
+	PUSH R15
+	LOAD #1, R15
+	ADD R15, R13
+	POP R15
+; appel de methode2
+	ADDSP #2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R1
+	LOAD 1(R1), R2
+	STORE R2, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	LOAD #2, R3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD -3(LB), R4
+	MUL R4, R3
+	BOV over_flow
+	POP R4
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	LOAD #1, R5
+	ADD R5, R3
+	POP R5
+	STORE R3, -1(SP)
+	POP R3
+	LOAD 0(SP), R2
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	POP R2
+	QUO R0, R13
+	BOV divisionErr
+	FLOAT R13, R13
+	STORE R13, -2(SP)
+	POP R13
+	LOAD 0(SP), R11
+	LOAD 0(R11), R11
+	BSR 3(R11)
+	SUBSP #3
+	POP R11
+	MUL R0, R0
+	BOV over_flow
+	LOAD R0, R0
+	RTS
+code.Taylor.taylorSinus:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD #0, R6
+	FLOAT R6, R6
+	STORE R6, 27(GB)
+	POP R6
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+	LOAD #0, R7
+	STORE R7, 28(GB)
+	POP R7
+While_cond_a1515:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD 28(GB), R8
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	LOAD -4(LB), R9
+	SUB R9, R8
+	LOAD R8, R1
+	BLT OpCmp_if_in_a1515
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a1515
+OpCmp_if_in_a1515:
+	LOAD #0, R1
+OpCmp_fin_in_a1515:
+	LOAD R1, R10
+	LOAD R10, R1
+	BNE While_fin_a1515
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	LOAD 27(GB), R11
+; appel de methode2
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	LOAD -2(LB), R12
+	STORE R12, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R13
+	LOAD 28(GB), R13
+	STORE R13, -1(SP)
+	POP R13
+	TSTO #1
+	BOV pile_pleine
+	PUSH R14
+	LOAD -3(LB), R14
+	STORE R14, -2(SP)
+	POP R14
+	LOAD 0(SP), R12
+	LOAD 0(R12), R12
+	BSR 2(R12)
+	SUBSP #3
+	POP R12
+	ADD R0, R11
+	STORE R11, 27(GB)
+	POP R11
+	TSTO #1
+	BOV pile_pleine
+	PUSH R15
+	LOAD 28(GB), R15
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD #1, R2
+	ADD R2, R15
+	POP R2
+	STORE R15, 28(GB)
+	POP R15
+	BRA While_cond_a1515
+While_fin_a1515:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	LOAD 27(GB), R3
+	LOAD R3, R0
+	POP R3
+	RTS
+code.Taylor.coefTaylorCosinus:
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD -2(LB), R1
+	LOAD 1(R1), R4
+	STORE R4, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	LOAD #0x1.0p0, R5
+	OPP R5, R5
+	STORE R5, -1(SP)
+	POP R5
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD -3(LB), R6
+	FLOAT R6, R6
+	STORE R6, -2(SP)
+	POP R6
+	LOAD 0(SP), R4
+	LOAD 0(R4), R4
+	BSR 3(R4)
+	SUBSP #3
+	POP R4
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+	LOAD -2(LB), R1
+	LOAD 1(R1), R7
+	STORE R7, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+	LOAD -4(LB), R10
+	STORE R10, -1(SP)
+	POP R10
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD #2, R8
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	LOAD -3(LB), R9
+	MUL R9, R8
+	BOV over_flow
+	POP R9
+	FLOAT R8, R8
+; appel de methode2
+	ADDSP #2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	LOAD -2(LB), R1
+	LOAD 1(R1), R11
+	STORE R11, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	LOAD #2, R12
+	TSTO #1
+	BOV pile_pleine
+	PUSH R13
+	LOAD -3(LB), R13
+	MUL R13, R12
+	BOV over_flow
+	POP R13
+	STORE R12, -1(SP)
+	POP R12
+	LOAD 0(SP), R11
+	LOAD 0(R11), R11
+	BSR 2(R11)
+	SUBSP #2
+	POP R11
+	FLOAT R0, R0
+	DIV R0, R8
+	BOV divisionErr
+	STORE R8, -2(SP)
+	POP R8
+	LOAD 0(SP), R7
+	LOAD 0(R7), R7
+	BSR 3(R7)
+	SUBSP #3
+	POP R7
+	MUL R0, R0
+	BOV over_flow
+	LOAD R0, R0
+	RTS
+code.Taylor.taylorCosinus:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R14
+	LOAD #0, R14
+	FLOAT R14, R14
+	STORE R14, 29(GB)
+	POP R14
+	TSTO #1
+	BOV pile_pleine
+	PUSH R15
+	LOAD #0, R15
+	STORE R15, 30(GB)
+	POP R15
+While_cond_a2915:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	LOAD 30(GB), R3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD -4(LB), R4
+	SUB R4, R3
+	LOAD R3, R1
+	BLT OpCmp_if_in_a2915
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a2915
+OpCmp_if_in_a2915:
+	LOAD #0, R1
+OpCmp_fin_in_a2915:
+	LOAD R1, R2
+	LOAD R2, R1
+	BNE While_fin_a2915
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	LOAD 29(GB), R5
+; appel de methode4
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD -2(LB), R6
+	STORE R6, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+	LOAD 30(GB), R7
+	STORE R7, -1(SP)
+	POP R7
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+	LOAD -3(LB), R10
+	STORE R10, -2(SP)
+	POP R10
+	LOAD 0(SP), R6
+	LOAD 0(R6), R6
+	BSR 4(R6)
+	SUBSP #3
+	POP R6
+	ADD R0, R5
+	STORE R5, 29(GB)
+	POP R5
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD 30(GB), R8
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	LOAD #1, R9
+	ADD R9, R8
+	POP R9
+	STORE R8, 30(GB)
+	POP R8
+	BRA While_cond_a2915
+While_fin_a2915:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	LOAD 29(GB), R11
+	LOAD R11, R0
+	POP R11
+	RTS
+code.Taylor.coefTaylorArctan:
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	LOAD -2(LB), R1
+	LOAD 1(R1), R12
+	STORE R12, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R13
+	LOAD #0x1.0p0, R13
+	OPP R13, R13
+	STORE R13, -1(SP)
+	POP R13
+	TSTO #1
+	BOV pile_pleine
+	PUSH R14
+	LOAD -3(LB), R14
+	FLOAT R14, R14
+	STORE R14, -2(SP)
+	POP R14
+	LOAD 0(SP), R12
+	LOAD 0(R12), R12
+	BSR 3(R12)
+	SUBSP #3
+	POP R12
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R15
+	LOAD -2(LB), R1
+	LOAD 1(R1), R15
+	STORE R15, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD -4(LB), R2
+	STORE R2, -1(SP)
+	POP R2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	LOAD #2, R3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD -3(LB), R4
+	MUL R4, R3
+	BOV over_flow
+	POP R4
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	LOAD #1, R5
+	ADD R5, R3
+	POP R5
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD #2, R6
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+	LOAD -3(LB), R7
+	MUL R7, R6
+	BOV over_flow
+	POP R7
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+	LOAD #1, R10
+	ADD R10, R6
+	POP R10
+	QUO R6, R3
+	BOV divisionErr
+	FLOAT R3, R3
+	STORE R3, -2(SP)
+	POP R3
+	LOAD 0(SP), R15
+	LOAD 0(R15), R15
+	BSR 3(R15)
+	SUBSP #3
+	POP R15
+	MUL R0, R0
+	BOV over_flow
+	LOAD R0, R0
+	RTS
+code.Taylor.taylorArctan:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD #0, R8
+	FLOAT R8, R8
+	STORE R8, 31(GB)
+	POP R8
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	LOAD #0, R9
+	STORE R9, 32(GB)
+	POP R9
+While_cond_a4315:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	LOAD 32(GB), R12
+	TSTO #1
+	BOV pile_pleine
+	PUSH R13
+	LOAD -4(LB), R13
+	SUB R13, R12
+	LOAD R12, R1
+	BLT OpCmp_if_in_a4315
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a4315
+OpCmp_if_in_a4315:
+	LOAD #0, R1
+OpCmp_fin_in_a4315:
+	LOAD R1, R11
+	LOAD R11, R1
+	BNE While_fin_a4315
+	TSTO #1
+	BOV pile_pleine
+	PUSH R14
+	LOAD 31(GB), R14
+; appel de methode6
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R15
+	LOAD -2(LB), R15
+	STORE R15, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD 32(GB), R2
+	STORE R2, -1(SP)
+	POP R2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	LOAD -3(LB), R3
+	STORE R3, -2(SP)
+	POP R3
+	LOAD 0(SP), R15
+	LOAD 0(R15), R15
+	BSR 6(R15)
+	SUBSP #3
+	POP R15
+	ADD R0, R14
+	STORE R14, 31(GB)
+	POP R14
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD 32(GB), R4
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	LOAD #1, R5
+	ADD R5, R4
+	POP R5
+	STORE R4, 32(GB)
+	POP R4
+	BRA While_cond_a4315
+While_fin_a4315:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD 31(GB), R6
+	LOAD R6, R0
+	POP R6
+	RTS
+code.Taylor.coefTaylorArcsin:
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+	LOAD -2(LB), R1
+	LOAD 1(R1), R7
+	STORE R7, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+	LOAD #0x1.0p0, R10
+	OPP R10, R10
+	STORE R10, -1(SP)
+	POP R10
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD -3(LB), R8
+	FLOAT R8, R8
+	STORE R8, -2(SP)
+	POP R8
+	LOAD 0(SP), R7
+	LOAD 0(R7), R7
+	BSR 3(R7)
+	SUBSP #3
+	POP R7
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	LOAD -2(LB), R1
+	LOAD 1(R1), R9
+	STORE R9, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	LOAD -4(LB), R11
+	STORE R11, -1(SP)
+	POP R11
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	LOAD #2, R12
+	TSTO #1
+	BOV pile_pleine
+	PUSH R13
+	LOAD -3(LB), R13
+	MUL R13, R12
+	BOV over_flow
+	POP R13
+	TSTO #1
+	BOV pile_pleine
+	PUSH R14
+	LOAD #1, R14
+	ADD R14, R12
+	POP R14
+	FLOAT R12, R12
+	STORE R12, -2(SP)
+	POP R12
+	LOAD 0(SP), R9
+	LOAD 0(R9), R9
+	BSR 3(R9)
+	SUBSP #3
+	POP R9
+	MUL R0, R0
+	BOV over_flow
+; appel de methode2
+	ADDSP #2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R15
+	LOAD -2(LB), R1
+	LOAD 1(R1), R15
+	STORE R15, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD #2, R2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	LOAD -3(LB), R3
+	MUL R3, R2
+	BOV over_flow
+	POP R3
+	STORE R2, -1(SP)
+	POP R2
+	LOAD 0(SP), R15
+	LOAD 0(R15), R15
+	BSR 2(R15)
+	SUBSP #2
+	POP R15
+	FLOAT R0, R0
+	MUL R0, R0
+	BOV over_flow
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD #2, R4
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	LOAD -3(LB), R5
+	MUL R5, R4
+	BOV over_flow
+	POP R5
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD #1, R6
+	ADD R6, R4
+	POP R6
+	FLOAT R4, R4
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+	LOAD -2(LB), R1
+	LOAD 1(R1), R7
+	STORE R7, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+	LOAD #0x1.0p1, R10
+	STORE R10, -1(SP)
+	POP R10
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD #2, R8
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	LOAD -3(LB), R9
+	MUL R9, R8
+	BOV over_flow
+	POP R9
+	FLOAT R8, R8
+	STORE R8, -2(SP)
+	POP R8
+	LOAD 0(SP), R7
+	LOAD 0(R7), R7
+	BSR 3(R7)
+	SUBSP #3
+	POP R7
+	MUL R0, R4
+	BOV over_flow
+; appel de methode3
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	LOAD -2(LB), R1
+	LOAD 1(R1), R11
+	STORE R11, 0(SP)
+; appel de methode2
+	ADDSP #2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	LOAD -2(LB), R1
+	LOAD 1(R1), R12
+	STORE R12, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R13
+	LOAD -3(LB), R13
+	STORE R13, -1(SP)
+	POP R13
+	LOAD 0(SP), R12
+	LOAD 0(R12), R12
+	BSR 2(R12)
+	SUBSP #2
+	POP R12
+	FLOAT R0, R0
+	STORE R0, -1(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R14
+	LOAD #0x1.0p1, R14
+	STORE R14, -2(SP)
+	POP R14
+	LOAD 0(SP), R11
+	LOAD 0(R11), R11
+	BSR 3(R11)
+	SUBSP #3
+	POP R11
+	MUL R0, R4
+	BOV over_flow
+	DIV R4, R0
+	BOV divisionErr
+	LOAD R0, R0
+	RTS
+code.Taylor.taylorArcsin:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R15
+	LOAD #0, R15
+	FLOAT R15, R15
+	STORE R15, 33(GB)
+	POP R15
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD #0, R2
+	STORE R2, 34(GB)
+	POP R2
+While_cond_a5815:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD 34(GB), R4
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	LOAD -4(LB), R5
+	SUB R5, R4
+	LOAD R4, R1
+	BLT OpCmp_if_in_a5815
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a5815
+OpCmp_if_in_a5815:
+	LOAD #0, R1
+OpCmp_fin_in_a5815:
+	LOAD R1, R3
+	LOAD R3, R1
+	BNE While_fin_a5815
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD 33(GB), R6
+; appel de methode8
+	ADDSP #3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+	LOAD -2(LB), R7
+	STORE R7, 0(SP)
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+	LOAD 34(GB), R10
+	STORE R10, -1(SP)
+	POP R10
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD -3(LB), R8
+	STORE R8, -2(SP)
+	POP R8
+	LOAD 0(SP), R7
+	LOAD 0(R7), R7
+	BSR 8(R7)
+	SUBSP #3
+	POP R7
+	ADD R0, R6
+	STORE R6, 33(GB)
+	POP R6
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	LOAD 34(GB), R9
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	LOAD #1, R11
+	ADD R11, R9
+	POP R11
+	STORE R9, 34(GB)
+	POP R9
+	BRA While_cond_a5815
+While_fin_a5815:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	LOAD 33(GB), R12
+	LOAD R12, R0
+	POP R12
+	RTS
+code.Object.equals:
+pile_pleine:
+	WSTR "Error: Stack Overflow"
+	WNL
+	ERROR
+over_flow:
+	WSTR "Error: Overflow during arithmetic operation"
+	WNL
+	ERROR
+i0_error:
+	WSTR "Error: Input/Output error"
+	WNL
+	ERROR
+divisionErr:
+	WSTR "Error :Division par 0"
+	WNL
+	ERROR

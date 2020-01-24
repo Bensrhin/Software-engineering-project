@@ -7,11 +7,11 @@ class Methods {
         return n * this.factoriel(n - 1);
     }
 
-    float power(float value1, float value2){
-        float counter = 0.0F;
+    float power(float value1, int value2){
+        int counter = 0;
         float result = 1.0F;
 
-        if (value2 < 0.0F){
+        if (value2 < 0){
             return this.power(1/value1, -value2);
 
         }
@@ -31,16 +31,16 @@ class Methods {
         return -x;
     }
     float ulp(float x){
-        float e_min = -126.0F;
-        float e_max = 127.0;
-        float median = 0.0F;
+        int e_min = -126;
+        int e_max = 127;
+        int median = 0;
         float y = 0.0F;
 
-        if (this.abs(x) <= this.power(2.0F, -127.0F)) {
+        if (this.abs(x) <= this.power(2.0F, -e_max)) {
             return 1.4E-45F;
         }
 
-        else if (this.abs(x) > this.power(2.0F, 127.0F) - this.power(2.0F, 104.0F)) {
+        else if (this.abs(x) > this.power(2.0F, e_max) - this.power(2.0F, 104)) {
             return this.abs(x);
         }
 
