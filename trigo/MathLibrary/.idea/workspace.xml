@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3fe4bba-2514-491b-a406-12b597ef3933" name="Default Changelist" comment="" />
+    <list default="true" id="206b755a-9ec6-4a00-9070-a2f41135cfca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/ActanValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/ActanValues.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/Chebychev$couple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/Chebychev$couple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/Chebychev.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/Chebychev.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/ChebychevValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/ChebychevValues.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/Cordic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/Cordic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/META-INF/MathLibrary.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/Taylor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/Taylor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestIndex$couple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestIndex$couple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestIndex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestIndex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestMethod.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestMethod.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestTaylor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestTaylor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestrangeReduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestrangeReduction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/doubleComp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/doubleComp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/methods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/methods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/rangeReduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/rangeReduction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Chebychev.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Chebychev.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChebychevValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChebychevValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestMethod.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectId" id="1WO7Vo2kj0G0h2aerUC1e2jJj5C" />
+  <component name="ProjectId" id="1WqTbsZIXq7aFHuV4u3rbNrZF4Y" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -33,37 +53,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestrangeReduction">
-    <configuration name="Chebychev" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Chebychev" />
-      <module name="MathLibrary" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ChebychevValues" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ChebychevValues" />
-      <module name="MathLibrary" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestIndex" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestIndex" />
-      <module name="MathLibrary" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestTaylor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestTaylor" />
-      <module name="MathLibrary" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestrangeReduction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestrangeReduction" />
+  <component name="RunManager">
+    <configuration name="TestMethod" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestMethod" />
       <module name="MathLibrary" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -71,11 +63,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestrangeReduction" />
-        <item itemvalue="Application.Chebychev" />
-        <item itemvalue="Application.TestIndex" />
-        <item itemvalue="Application.ChebychevValues" />
-        <item itemvalue="Application.TestTaylor" />
+        <item itemvalue="Application.TestMethod" />
       </list>
     </recent_temporary>
   </component>
@@ -84,28 +72,27 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d3fe4bba-2514-491b-a406-12b597ef3933" name="Default Changelist" comment="" />
-      <created>1579008813776</created>
+      <changelist id="206b755a-9ec6-4a00-9070-a2f41135cfca" name="Default Changelist" comment="" />
+      <created>1579876199205</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1579008813776</updated>
-      <workItem from="1579008818648" duration="22947000" />
-      <workItem from="1579223022208" duration="1523000" />
-      <workItem from="1579262084230" duration="5363000" />
-      <workItem from="1579387565826" duration="1179000" />
-      <workItem from="1579537480320" duration="59000" />
-      <workItem from="1579537618440" duration="7014000" />
-      <workItem from="1579622706979" duration="2431000" />
-      <workItem from="1579628108870" duration="14652000" />
-      <workItem from="1579696673281" duration="8568000" />
-      <workItem from="1579735565344" duration="11546000" />
-      <workItem from="1579794429649" duration="2799000" />
-      <workItem from="1579798098106" duration="20185000" />
-      <workItem from="1579832751621" duration="7618000" />
+      <updated>1579876199205</updated>
+      <workItem from="1579876202604" duration="3066000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

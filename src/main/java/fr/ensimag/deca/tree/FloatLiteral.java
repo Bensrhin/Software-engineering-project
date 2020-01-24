@@ -52,7 +52,7 @@ public class FloatLiteral extends AbstractExpr {
         }
        Type returnType = new FloatType(compiler.getSymbols().getSymbol("float"));
        this.setType(returnType);
-       return this.getType();       
+       return this.getType();
     }
 
 

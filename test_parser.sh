@@ -1,1 +1,1 @@
-src/test/script/launchers/test_synt test.deca
+src/test/script/launchers/test_synt testMethods.deca
