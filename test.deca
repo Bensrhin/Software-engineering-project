@@ -9,14 +9,16 @@ int fact(){
     }
     return res;
     }
-void setX(){
-x = 1;
+void setX(int a){
+a = 0;
 }
 }
-class B extends A
+
 {
 A a = new A();
 int x = 0;
+
 x = a.fact();
+
 println(x);
 }

@@ -40,26 +40,30 @@ public class ListDeclParam extends TreeList<AbstractDeclParam> {
     Signature verifyListDeclParam(DecacCompiler compiler) throws ContextualError {
         Iterator<AbstractDeclParam> declParams = this.iterator();
         Signature sig = new Signature();
-        int i = 1;
+
         while (declParams.hasNext())
         {
             DeclParam declParam = (DeclParam) declParams.next();
             sig.add(declParam.verifyDeclParam(compiler));
-            ParamDefinition def = (ParamDefinition)(declParam.getParam().getDefinition());
-            def.setIndex(i);
-            i ++;
+
 
         }
         return sig;
     }
+    int i = 1;
     void verifyParams(DecacCompiler compiler,
         EnvironmentExp paramEnv)  throws ContextualError
+
         {
           Iterator<AbstractDeclParam> declParams = this.iterator();
           while (declParams.hasNext())
+
           {
-              AbstractDeclParam declParam = declParams.next();
+              DeclParam declParam = (DeclParam) declParams.next();
               declParam.verifyParam(compiler, paramEnv);
+              ParamDefinition def = (ParamDefinition)(declParam.getParam().getDefinition());
+              def.setIndex(i);
+              i ++;
           }
         }
     public void codeGenListParam(DecacCompiler compiler){

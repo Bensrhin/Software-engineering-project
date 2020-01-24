@@ -38,7 +38,9 @@ public class New extends AbstractExpr{
         Type type =  this.getIdExpr().verifyType(compiler);
         if (!type.isClass())
         {
-          throw new ContextualError("Le type doit être une classe (règle 3.42)", this.getLocation());
+          throw new ContextualError("L'identificateur \"" +
+                  idExpr.decompile() + "\" doit être une classe (règle 3.42)",
+                  idExpr.getLocation());
         }
         return type;
   }
