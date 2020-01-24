@@ -82,28 +82,34 @@ public class Chebychev {
     }
 
     static float arctan(float value){
-        if(value < 0){
+        float tanCoef = 0.09849140335716425f;
+        float Pi32 = 0.098174766f;
+
+        if (value < 0){
             return -arctan(-value);
         }
-        else if (value >= 0 && value <= (float)Math.tan(Math.PI/32)){
 
+        else if (value >= 0 && value <= tanCoef){
             return ChebychevActan(value);
         }
-        else{
-            int i ;
-            for( i = 1 ; i <= 8; i++){
-                if(value <= Math.tan((2 * i - Pi/32)) && Math.tan((2*(i-1)-Pi/32))<=value){
+
+        else {
+            int i = 1;
+            while (i < 9) {
+                if (value <= values.ChebyValuesActan(i) && value >= values.ChebyValuesActan(i - 1)) {
                     break;
                 }
+                i = i + 1;
             }
-            float x= (float)Math.tan((2*i-2)*Math.PI/32);
-            float t = ((1/x) - (m.power(x, -2)+1)/(m.power(x, -1)+value));
-            return (float) ((2*i-2)*Math.PI/32 + arctan(t));
+
+            float x = values.ChebyValuesActan(i - 1);
+            float t = 1/x - (m.power(x, -2) + 1)/(m.power(x, -1)+value);
+
+            return (2*i - 2)*Pi32 + arctan(t);
         }
     }
 
     static float sin(float value){
-
         if (value <= Pi/4 && value >= 0){
 
             if(m.abs(value) <= 0.03125f){
