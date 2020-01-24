@@ -1,0 +1,69 @@
+class Methods {
+
+    int factoriel(int n){
+        if (n == 0){
+            return 1;
+        }
+        return n * this.factoriel(n - 1);
+    }
+
+    float power(float value1, float value2){
+        float counter = 0.0F;
+        float result = 1.0F;
+
+        if (value2 < 0.0F){
+            return this.power(1/value1, -value2);
+
+        }
+        else {
+            while (value2 > counter){
+                result = result * value1;
+                counter= counter+1;
+            }
+            return result;
+        }
+    }
+
+    float abs(float x){
+        if (x > 0.0F){
+            return x;
+        }
+        return -x;
+    }
+    float ulp(float x){
+        float e_min = -126.0F;
+        float e_max = 127.0;
+        float median = 0.0F;
+        float y = 0.0F;
+
+        if (this.abs(x) <= this.power(2.0F, -127.0F)) {
+            return 1.4E-45F;
+        }
+
+        else if (this.abs(x) > this.power(2.0F, 127.0F) - this.power(2.0F, 104.0F)) {
+            return this.abs(x);
+        }
+
+        else {
+            while(e_max - e_min > 1) {
+                median = (e_max + e_min) / 2;
+                y = this.power(2.0F, median);
+                if (this.abs(x) > y) {
+                    e_min = median;
+                }
+                else {
+                    e_max = median;
+                }
+            }
+
+            if (this.abs(x) == this.power(2.0F, e_max)) {
+                return this.power(2.0F, e_max - 23);
+            }
+            else {
+                return this.power(2.0F, e_max - 24);
+            }
+        }
+    }
+
+
+}

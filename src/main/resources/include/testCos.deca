@@ -1,0 +1,7 @@
+#include "Math.decah"
+
+{
+    //float PI = 3.1415926f;
+    //Math m = new Math();
+    //println("Cos(PI) = ",m.cos(PI));
+}

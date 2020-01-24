@@ -1,27 +1,21 @@
-class A{
-int x = 8;
-int fact(int n, int k){
-    if(n == 0){
-        return 1;
+class Methods {
+    
+    float power(float value1, float value2){
+        float counter = 0.0F;
+        float result = 1.0F;
+
+        if (value2 < 0.0F){
+            return power(1/value1, -value2);
+        }
+
+        else {
+            while (value2 > counter){
+                result *= value1;
+                ++counter;
+            }
+            return result;
+        }
     }
-    else{
-        return k/n + 1 + 4 / 4;
-    }
-}
-}
-{
-A a = new A();
-int n = readInt();
-int k = readInt();
-int x = a.fact(n, k);
-if (n == 0)
-{
-  println(x);
-}
-
-}
-
-
 
     float abs(float x){
         if (x > 0.0F){
@@ -62,3 +56,4 @@ if (n == 0)
             }
         }
     }
+}
