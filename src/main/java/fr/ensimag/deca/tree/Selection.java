@@ -34,8 +34,9 @@ public class Selection extends AbstractLValue{
           "\" n'est pas une classe (règle 3.65)", expr.getLocation());
         }
         EnvironmentExp exp2 = ((ClassType)class2).getDefinition().getMembers();
-        Definition field0 = this.id.verifydef(exp2);
-        if (!field0.isField())
+        this.id.verifyExpr(compiler, exp2, currentClass);
+        Definition field0 = this.id.getDefinition();
+        if (field0 == null || !field0.isField())
         {
           throw new ContextualError("L'identificateur \"" + id.decompile() +
           "\" n'est pas un field (règle 3.65)", id.getLocation());

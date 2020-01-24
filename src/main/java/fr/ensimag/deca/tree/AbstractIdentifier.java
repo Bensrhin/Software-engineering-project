@@ -93,7 +93,7 @@ public abstract class AbstractIdentifier extends AbstractLValue {
      * @return the type corresponding to this identifier
      *         (corresponds to the "type" attribute)
      */
-    public abstract ExpDefinition verifydef(EnvironmentExp localEnv) throws ContextualError;
+    // public abstract ExpDefinition verifydef(EnvironmentExp localEnv) throws ContextualError;
     public abstract Type verifyType(DecacCompiler compiler) throws ContextualError;
     public abstract int codeGenIdent(DecacCompiler compiler);
     protected abstract void codeGenObj(DecacCompiler compiler);
