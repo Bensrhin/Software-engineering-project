@@ -1,0 +1,46 @@
+#include "Algos.deca"
+
+
+{   
+    float PI = 3.141593F;
+    float var = (float) (-1/32);
+    float var2 = (float) (PI/4);
+    
+    Taylor t = new Taylor();
+    RangeReduction r = new RangeReduction();
+    ChebyApproxi32 c = new ChebyApproxi32();
+    Chebychev ch = new Chebychev();
+
+
+    float chebyAtanReduit = c.ChebychevActan(var);
+    float chebySinReduit = c.ChebychevSinus(var);
+    float chebyCosReduit = c.ChebychevCosinus(var);
+    
+    float chebySin = ch.sinCheb(var2);
+    float chebyCos = ch.cosCheb(var2);
+
+    float rangeCos = r.FirstReductionCos(100*PI);
+    float rangeSin = r.FirstReductionSin(100*PI);
+
+    float cos = t.taylorCosinus(0.0f,7);
+    float sin = t.taylorSinus(PI/2,7);
+    float atan = t.taylorArctan(PI/4,7);
+    float asin = t.taylorArcsin(PI/4,7);
+
+
+    print(cos);
+    print(sin);
+    print(atan);
+    print(asin);
+
+    print(rangeCos);
+    print(rangeSin);
+
+    print(chebySin);
+    print(chebyCos);
+    
+    print(chebyAtanReduit);
+    print(chebySinReduit);
+    print(chebyCosReduit);
+
+}
