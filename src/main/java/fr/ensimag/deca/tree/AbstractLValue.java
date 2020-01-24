@@ -17,5 +17,7 @@ public abstract class AbstractLValue extends AbstractExpr {
      public ExpDefinition getExpDefinition(){
         return null;
       }
-     
+     protected RegisterOffset codeGenField(DecacCompiler compiler){
+        return null;
+    }
 }

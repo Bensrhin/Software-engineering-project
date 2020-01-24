@@ -145,6 +145,7 @@ public class DeclMethod extends AbstractDeclMethod
     @Override
     protected void codeGenMethod(DecacCompiler compiler){
        compiler.addLabel(new Label(getNameMethod().getMethodDefinition().getLabel().toString() ));
+       params.codeGenListParam(compiler);
        methodBody.codeGenMethodBody(compiler);
     }
 

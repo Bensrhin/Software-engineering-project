@@ -12,8 +12,6 @@
 	STORE R0, 3(GB)
 	LOAD code.A.fact, R0
 	STORE R0, 5(GB)
-	LOAD code.A.setX, R0
-	STORE R0, 6(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 4(GB)
 ; Main program
@@ -25,19 +23,29 @@
 	PUSH R2
 	BSR init.A
 	POP R2
+	STORE R2, 6(GB)
+	RINT
+	BOV i0_error
+	LOAD R1, R2
 	STORE R2, 7(GB)
-	LOAD #0, R2
+	RINT
+	BOV i0_error
+	LOAD R1, R2
 	STORE R2, 8(GB)
 ; appel de methode2
-	ADDSP #1
-	LOAD 7(GB), R2
+	ADDSP #3
+	LOAD 6(GB), R2
 	STORE R2, 0(SP)
+	LOAD 7(GB), R3
+	STORE R3, -1(SP)
+	LOAD 8(GB), R3
+	STORE R3, -2(SP)
 	LOAD 0(SP), R2
 	LOAD 0(R2), R2
 	BSR 2(R2)
-	SUBSP #1
-	STORE R0, 8(GB)
-	LOAD 8(GB), R1
+	SUBSP #3
+	STORE R0, 9(GB)
+	LOAD 9(GB), R1
 	WINT
 	WNL
 	HALT
@@ -48,42 +56,29 @@ init.A:
 	STORE R0, 1(R1)
 	RTS
 code.A.fact:
-	LOAD #1, R2
-	STORE R2, 9(GB)
-	LOAD #1, R2
-	STORE R2, 10(GB)
-While_cond_a610:
-	LOAD 9(GB), R3
-	LOAD #7, R4
+	LOAD -3(LB), R3
+	LOAD #0, R4
 	SUB R4, R3
 	LOAD R3, R1
-	BLT OpCmp_if_in_a610
+	BEQ OpCmp_if_in_a47
 	LOAD #1, R1
-	BRA OpCmp_fin_in_a610
-OpCmp_if_in_a610:
+	BRA OpCmp_fin_in_a47
+OpCmp_if_in_a47:
 	LOAD #0, R1
-OpCmp_fin_in_a610:
+OpCmp_fin_in_a47:
 	LOAD R1, R2
 	LOAD R2, R1
-	BNE While_fin_a610
-	LOAD 10(GB), R5
-	LOAD 9(GB), R6
-	MUL R6, R5
-	BOV over_flow
-	STORE R5, 10(GB)
-	LOAD 9(GB), R6
-	LOAD #1, R7
-	ADD R7, R6
-	STORE R6, 9(GB)
-	BRA While_cond_a610
-While_fin_a610:
-	LOAD 10(GB), R7
-	LOAD R7, R0
-	RTS
-code.A.setX:
-	LOAD #1, R7
-	LOAD -2(LB), R8
-	STORE R7, 1(R8)
+	BNE IfThenElse_else_a47
+	LOAD #1, R5
+	LOAD R5, R0
+	BRA IfThenElse_fin_a47
+IfThenElse_else_a47:
+	LOAD -4(LB), R5
+	LOAD -3(LB), R6
+	QUO R6, R5
+	BOV divisionErr
+	LOAD R5, R0
+IfThenElse_fin_a47:
 	RTS
 code.Object.equals:
 pile_pleine:
