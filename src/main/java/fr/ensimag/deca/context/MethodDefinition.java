@@ -30,7 +30,14 @@ public class MethodDefinition extends ExpDefinition {
     public int getIndex() {
         return index;
     }
+    //private int numberOfParams;
 
+    public int getNumberOfParams()
+    {
+      return this.signature.size();
+    }
+
+    
     private int index;
 
     @Override
@@ -41,9 +48,9 @@ public class MethodDefinition extends ExpDefinition {
 
     private final Signature signature;
     private Label label;
-    
+
     /**
-     * 
+     *
      * @param type Return type of the method
      * @param location Location of the declaration of the method
      * @param signature List of arguments of the method

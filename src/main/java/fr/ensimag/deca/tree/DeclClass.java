@@ -74,28 +74,25 @@ public class DeclClass extends AbstractDeclClass {
         Symbol nameKey = this.getName().getName();
         Symbol superNameKey = this.getSuperName().getName();
         Definition def = compiler.get_env_types().get(superNameKey);
-
-        /*
-        if (superNameKey.getName().equals("Object"))
+        if (compiler.getSymbols().getSymbol(nameKey.toString()) != null)
         {
-            loc = Location.BUILTIN;
+          throw new ContextualError("L'identificateur \"" +
+                  nameKey.toString() + "\" est un type prédéfini" +
+                  " (essayer de le renommer)", name.getLocation());
         }
-        */
         if(def == null)
         {
-            throw new ContextualError("L'identificateur \""
-                    + superName.decompile() + "\" non déclarée (règle 1.3)",
-                    this.getLocation());
+            throw new ContextualError("La classe mère \""
+                    + superName.decompile() + "\" n'est préalablement pas déclarée (règle 1.3)",
+                    superName.getLocation());
         }
         else if(!def.isClass())
         {
             throw new ContextualError("L'identificateur \""
-                    + superName.decompile() + "\" n'est pas une class (règle 1.3)",
-                    this.getLocation());
+                    + superName.decompile() + "\" n'est pas une classe (règle 1.3)",
+                    superName.getLocation());
         }
-
-        // Location loc = def.getLocation();
-        // ClassType superType = new ClassType(superNameKey, loc, null);
+        /** déf */
         this.getSuperName().setDefinition((ClassDefinition) def);
         this.getSuperName().setType((ClassType) def.getType());
 
@@ -107,9 +104,10 @@ public class DeclClass extends AbstractDeclClass {
         }
         catch (DoubleDefException e)
         {
-            throw new ContextualError("L'identificateur \"" +
-                    nameKey.toString()
-                       + "\" est déjà déclaré (règle 1.3)", this.getLocation());
+            throw new ContextualError("La classe \"" +
+                    nameKey.toString() + "\" est déjà déclarée à " +
+                    compiler.get_env_types().get(nameKey).getLocation() +
+                    " (règle 1.3)", name.getLocation());
         }
         this.getName().setType(currentType);
         this.getName().setDefinition(currentType.getDefinition());

@@ -174,12 +174,12 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-
-        // Set<Symbol> sym = localEnv.getParent().stringIsIn();
-        // for (Symbol s:sym)
-        // {
-        //     System.out.println(s.getName());
-        // }
+        if (compiler.getSymbols().getSymbol(name.toString()) != null)
+        {
+          throw new ContextualError("L'identificateur \"" +
+                  name.toString() + "\" est un type prédéfini" +
+                  " (essayer de le renommer)", this.getLocation());
+        }
 
         ExpDefinition def = localEnv.get(this.getName());
         if (def == null)
@@ -205,11 +205,7 @@ public class Identifier extends AbstractIdentifier {
               throw new ContextualError("Type \"" + this.getName().toString() +
                 "\" n'est pas un type prédéfini (règle 0.2)", this.getLocation());
           }
-
-          // Type type = this.getName().getType();
           Type type = def.getType();
-          // TypeDefinition def = new TypeDefinition(type, Location.BUILTIN);
-          // System.out.println(def.getType());
           this.setDefinition(def);
           this.setType(type);
           return this.getType();
@@ -220,8 +216,8 @@ public class Identifier extends AbstractIdentifier {
       ExpDefinition def = localEnv.get(this.getName());
       if (def == null)
       {
-        throw new ContextualError("Identificateur \"" + this.getName().toString() +
-          "\" is not defined at this class", this.getLocation());
+        throw new ContextualError("Identificateur \"" + this.decompile() +
+          "\" n'est pas défini au sein de la classe (règle)", this.getLocation());
       }
       this.setType(def.getType());
       this.setDefinition(def);

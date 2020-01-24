@@ -77,18 +77,19 @@ public class EnvironmentType {
     /** Relation de sous-typage */
     public boolean subType(Type t1, Type t2)
     {
-        if (t1.toString().equals(t2.toString()))
+        System.out.println(t1.toString() +  t2.toString());
+        if (!t2.isClass() && t1.sameType(t2))
         {
             return true;
         }
-        String obj = new String( (new Object()).getClass().getName() );
-        String objT2 = new String( t2.getClass().getName() );
-        if(obj.equals(objT2))
+        else if (t1.isClass() && t2.isClass() && ((ClassType)t1).isSubClassOf((ClassType)t2))
         {
-            System.out.println(obj + objT2);
-            return true;
+          return true;
         }
-        /* todo */
+        else if (t1.isNull() && t2.isClass())
+        {
+          return true;
+        }
         return false;
     }
     public Set<Symbol> stringIsIn()

@@ -12,4 +12,5 @@ int fact(){
 A a = new A();
 int d = a.fact();
 println(d);
+
 }
