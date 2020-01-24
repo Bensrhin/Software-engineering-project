@@ -1,20 +1,25 @@
 // Grenoble INP - Ensimag projet GL -*- mode: java -*-
 // Library for class Math of Deca, coded in Deca
 
+#include "Taylor.deca"
+
 class Math {
+    Taylor t = new Taylor();
+
     float sin(float f) {
-        println("sin(f) not yet implemented");
+        return t.taylorSinus(f,7);
     }
+
     float cos(float f) {
-        println("cos(f) not yet implemented");
+        return t.taylorCosinus(f,7);
     }
     float asin(float f) {
-        println("asin(f) not yet implemented");
+        return t.taylorArcsin(f,7);
     }
     float atan(float f) {
-        println("atan(f) not yet implemented");
+        return t.taylorArctan(f,7);
     }
-    float ulp(float f) {
+    void ulp(float f) {
         println("ulp(f) not yet implemented");
     }
 }

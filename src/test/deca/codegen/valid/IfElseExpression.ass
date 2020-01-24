@@ -1,0 +1,64 @@
+	TSTO #11
+	BOV pile_pleine
+	ADDSP #13
+; table des methodes
+; Main program
+; Beginning of main instructions:
+	LOAD #3, R2
+	STORE R2, 1(GB)
+	LOAD 1(GB), R3
+	LOAD #22, R4
+	SUB R4, R3
+	LOAD R3, R1
+	BGT OpCmp_if_in_a35
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a35
+OpCmp_if_in_a35:
+	LOAD #0, R1
+OpCmp_fin_in_a35:
+	LOAD R1, R2
+	LOAD R2, R1
+	BNE IfThenElse_else_a35
+	WSTR "x est sup à 2"
+	WNL
+	BRA IfThenElse_fin_a35
+IfThenElse_else_a35:
+	LOAD 1(GB), R6
+	LOAD #4, R7
+	SUB R7, R6
+	LOAD R6, R1
+	BLT OpCmp_if_in_a610
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a610
+OpCmp_if_in_a610:
+	LOAD #0, R1
+OpCmp_fin_in_a610:
+	LOAD R1, R5
+	LOAD R5, R1
+	BNE IfThenElse_else_a610
+	WSTR "x est inf à 4"
+	WNL
+	BRA IfThenElse_fin_a610
+IfThenElse_else_a610:
+	WSTR "x est entre 2 et 4"
+	WNL
+IfThenElse_fin_a610:
+IfThenElse_fin_a35:
+	HALT
+code.Object.equals:
+pile_pleine:
+	WSTR "Error: Stack Overflow"
+	WNL
+	ERROR
+over_flow:
+	WSTR "Error: Overflow during arithmetic operation"
+	WNL
+	ERROR
+i0_error:
+	WSTR "Error: Input/Output error"
+	WNL
+	ERROR
+divisionErr:
+	WSTR "Error :Division par 0"
+	WNL
+	ERROR

@@ -24,7 +24,7 @@ import fr.ensimag.deca.tree.LocationException;
 /**
  * This is the super class for the lexer. It is extended by the lexer class
  * generated from DecaLexer.g.
- * 
+ *
  * @author gl53, Based on template by Jim Idle - Temporal Wave LLC
  *         (jimi@idle.ws)
  * @date 01/01/2020
@@ -63,10 +63,10 @@ public abstract class AbstractDecaLexer extends Lexer {
 
     /**
      * Display the list of tokens for the lexer in semi-human-readable form.
-     * 
+     *
      * This consumes the stream of tokens, hence should never be called if the
      * parser has to read these tokens afterwards.
-     * 
+     *
      * @return true if the lexer raised an error.
      */
     @SuppressWarnings("deprecation")
@@ -102,7 +102,7 @@ public abstract class AbstractDecaLexer extends Lexer {
     /**
      * Helper for test drivers, that creates a lexer from command-line
      * arguments.
-     * 
+     *
      * @param args
      *            Either empty (read from stdin), or 1-element array (the file
      *            to read from)
@@ -152,7 +152,7 @@ public abstract class AbstractDecaLexer extends Lexer {
     /**
      * Look up the file to include in the current directory, or in the
      * $CLASSPATH (either a file or the content of a .jar file).
-     * 
+     *
      * @return An ANTLR stream to read from
      * @throws IOException
      *             when the file was found but could not be opened
@@ -187,11 +187,11 @@ public abstract class AbstractDecaLexer extends Lexer {
 
     /**
      * Apply a <code>#include</code> directive.
-     * 
+     *
      * Look up the file "name" using {@link #findFile(String)}, and set the
      * input stream of the lexer to this object. The previous input stream is
      * saved an {@link #includes} and will be restored by {@link #nextToken()}.
-     * 
+     *
      * @throws IncludeFileNotFound
      *             When the file could not be found or opened.
      * @throws CircularInclude
@@ -220,7 +220,7 @@ public abstract class AbstractDecaLexer extends Lexer {
         setInputStream(newInput);
         throw new SkipANTLRPostAction();
     }
-
+    
     /**
      * Exception used to skip ANTLR code from doInclude to nextToken().
      *

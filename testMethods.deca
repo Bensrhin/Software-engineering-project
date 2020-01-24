@@ -1,0 +1,7 @@
+#include "Taylor.deca"
+
+{
+    Taylor t = new Taylor();
+    float cos = t.taylorCosinus(0.0f,7);
+    print (cos);
+} 

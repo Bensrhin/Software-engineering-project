@@ -30,14 +30,16 @@ public class FloatLiteral extends AbstractExpr {
     private float value;
 
     public FloatLiteral(float value) {
-        Validate.isTrue(value <= Float.MAX_VALUE,
+        if (value != 0){
+            Validate.isTrue(value <= Float.MAX_VALUE,
                 "Floatliteral values connot depass 2^128 - 2^104");
-        Validate.isTrue(value >= Float.MIN_VALUE,
-                "Floatliteral values connot be under  2^-{149}");
-        Validate.isTrue(!Float.isInfinite(value),
-                "literal values cannot be infinite");
-        Validate.isTrue(!Float.isNaN(value),
-                "literal values cannot be NaN");
+            Validate.isTrue(value >= Float.MIN_VALUE,
+                    "Floatliteral values connot be under  2^-{149}");
+            Validate.isTrue(!Float.isInfinite(value),
+                    "literal values cannot be infinite");
+            Validate.isTrue(!Float.isNaN(value),
+                    "literal values cannot be NaN");
+        }
         this.value = value;
     }
 
@@ -50,7 +52,7 @@ public class FloatLiteral extends AbstractExpr {
         }
        Type returnType = new FloatType(compiler.getSymbols().getSymbol("float"));
        this.setType(returnType);
-       return this.getType();       
+       return this.getType();
     }
 
 

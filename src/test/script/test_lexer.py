@@ -17,7 +17,7 @@ def valid_lexer():
     valid_lexer = "../deca/lexicographie/valid"
     # print("Details d'execution des tests valides [1/0] ?")
     # x = int(input())
-    x=0
+    x=1
     print("======================================================")
     for file in os.listdir(valid_lexer):
         tmp += 1
@@ -33,7 +33,7 @@ def valid_lexer():
         else:
             print(file+color.BOLD+color.HEADER+"  *** [TEST PASSED EXPECTED] *** "+color.ENDC)
             counter += 1
-        # os.system("rm *.log")
+        os.system("rm *.log")
         print("======================================================")
     return counter, tmp
 
@@ -60,7 +60,7 @@ def invalid_lexer():
             print(new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
         else:
             print(file+color.BOLD+color.WARNING+"  *** [TEST PASSED UNEXPECTED] ***"+color.ENDC)
-        # os.system("rm *.log")
+        os.system("rm *.log")
         print("~======================================================~")
     return counter, tmp
 
