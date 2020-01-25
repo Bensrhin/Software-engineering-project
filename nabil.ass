@@ -1,6 +1,6 @@
-	TSTO #11
+	TSTO #14
 	BOV pile_pleine
-	ADDSP #30
+	ADDSP #10
 ; table des methodes
 ; construction de la table des methodes de Object
 	LOAD #null, R0
@@ -10,21 +10,27 @@
 ; construction de la table des methodes de A
 	LEA 1(GB), R0
 	STORE R0, 3(GB)
-	LOAD code.A.getX, R0
+	LOAD code.A.hello, R0
 	STORE R0, 5(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 4(GB)
 ; construction de la table des methodes de B
 	LEA 3(GB), R0
 	STORE R0, 6(GB)
-	LOAD code.B.getXY, R0
+	LOAD code.B.hello, R0
 	STORE R0, 9(GB)
-	LOAD code.A.getX, R0
-	STORE R0, 8(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 7(GB)
 ; Main program
 ; Beginning of main instructions:
+; instruction new
+	NEW #2, R2
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 9(GB)
 ; instruction new
 	NEW #3, R2
 	LEA 6(GB), R0
@@ -32,32 +38,45 @@
 	PUSH R2
 	BSR init.B
 	POP R2
-	STORE R2, 10(GB)
-; appel de methode3
-	ADDSP #1
-	LOAD 10(GB), R2
+	STORE R2, 9(GB)
+; appel de methode2
+	ADDSP #4
+	LOAD 9(GB), R2
 	STORE R2, 0(SP)
+	LOAD #1, R3
+	STORE R3, -1(SP)
+	LOAD #4, R3
+	FLOAT R3, R3
+	STORE R3, -2(SP)
+	LOAD #6, R3
+	FLOAT R3, R3
+	STORE R3, -3(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
 	BEQ pile_pleine
 	LOAD 0(R2), R2
-	BSR 3(R2)
-	SUBSP #1
-	STORE R0, 11(GB)
-	LOAD 11(GB), R1
+	BSR 2(R2)
+	SUBSP #4
+	LOAD R0, R3
+	STORE R3, 10(GB)
+	LOAD 9(GB), R3
+	LOAD 1(R3), R3
+	LOAD R3, R1
 	WINT
-	WNL
 	HALT
 init.A:
-	LOAD #5, R2
-	LOAD R2, R0
+	LOAD #0, R0
 	LOAD -2(LB), R1
 	STORE R0, 1(R1)
 	RTS
-code.A.getX:
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
-	LOAD R2, R0
+code.A.hello:
+	PUSH R3
+	PUSH R2
+	LOAD -3(LB), R3
+	FLOAT R3, R3
+	LOAD R3, R0
+	POP R2
+	POP R3
 	RTS
 init.B:
 	LOAD #0, R0
@@ -67,29 +86,19 @@ init.B:
 	BSR init.A
 	SUBSP #1
 	POP R1
-	LOAD #2, R2
-	LOAD R2, R0
+	LOAD #0, R3
+	LOAD R3, R0
 	LOAD -2(LB), R1
 	STORE R0, 2(R1)
 	RTS
-code.B.getXY:
-; appel de methode2
-	ADDSP #1
-	LOAD -2(LB), R2
-	STORE R2, 0(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ pile_pleine
-	LOAD 0(R2), R2
-	BSR 2(R2)
-	SUBSP #1
-	STORE R0, 12(GB)
-	LOAD 12(GB), R2
-	LOAD -2(LB), R1
-	LOAD 2(R1), R3
-	MUL R3, R2
-	BOV over_flow
-	LOAD R2, R0
+code.B.hello:
+	PUSH R3
+	PUSH R2
+	LOAD -3(LB), R3
+	FLOAT R3, R3
+	LOAD R3, R0
+	POP R2
+	POP R3
 	RTS
 code.Object.equals:
 pile_pleine:

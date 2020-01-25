@@ -82,11 +82,12 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
         for (AbstractDeclMethod method : getList()) {
             method.codeGenMethod(compiler);
             AbstractIdentifier meth = ((DeclMethod)(method)).getNameMethod();
-            compiler.addInstruction(new BRA(new Label("fin."+((Identifier)(meth)).getMethodDefinition().getLabel().toString())));
+            /*compiler.addInstruction(new BRA(new Label("fin."+((Identifier)(meth)).getMethodDefinition().getLabel().toString())));
             compiler.addInstruction(new WSTR("erreur sortie sans return"));
             compiler.addInstruction(new WNL());
             compiler.addInstruction(new ERROR());
             compiler.addLabel(new Label("fin."+((Identifier)(meth)).getMethodDefinition().getLabel().toString()));
+            compiler.addInstruction(new RTS());**/
         }
     
     }

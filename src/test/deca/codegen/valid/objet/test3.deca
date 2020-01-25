@@ -24,7 +24,8 @@ class fct{
 }
 {
 fct f = new fct();
-int n = readInt();
-int x = f.fibo(n);
-println(x);
+int n = 6;
+int x = f.fact(n);
+int y = f.fibo(n);
+println(x, y);
 }

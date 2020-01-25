@@ -15,7 +15,7 @@ class B extends A
   }
 }
 {
-  A r = new B();
+  A r = new A();
   float e;
   r = new B();
   e = r.hello(1, 4, 6);

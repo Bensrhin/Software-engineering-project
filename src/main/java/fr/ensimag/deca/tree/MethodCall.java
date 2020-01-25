@@ -119,7 +119,7 @@ public class MethodCall extends AbstractLValue{
     }
     @Override
      protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
-        GPRegister r1 = id.codeGenLoad(compiler);
+        GPRegister r1 = this.codeGenLoad(compiler);
         compiler.addInstruction(new LOAD(r1, Register.R1));
         super.codeGenPrint(compiler, hex);
         compiler.getRegisterManager().freeReg(compiler, r1);

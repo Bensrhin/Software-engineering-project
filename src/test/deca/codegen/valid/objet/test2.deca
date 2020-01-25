@@ -10,7 +10,7 @@ class A{
 {
 A a = new A();
 float x;
-float y = readFloat();
+float y = 3.5;
 a.setX(y);
 x = a.getX();
 println(x);

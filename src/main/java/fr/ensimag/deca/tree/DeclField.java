@@ -14,7 +14,7 @@ import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
-import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 
@@ -125,7 +125,7 @@ public class DeclField extends AbstractDeclField {
                 compiler.getRegisterManager().freeReg(compiler,r);
             }
             else{
-                compiler.addInstruction(new LOAD(null, Register.R0));
+                compiler.addInstruction(new LOAD(new ImmediateNull(), Register.R0));
             }
         }
         else {
