@@ -93,20 +93,24 @@ public abstract class AbstractExpr extends AbstractInst {
                 type2.toString()+ "\" à un identificateur de type \"" +
                 expectedType.toString() + "\" (règle 3.28)", this.getLocation());
         }
+
         if (expectedType.sameType(type2))
         {
-            this.setType(expectedType);
+            this.setType(type2);
             return this;
         }
         else
         {
-            AbstractExpr expr = new ConvFloat(this);
+          if (type2.isInt())
+          {
+            System.out.println("dazz");
+            ConvFloat expr = new ConvFloat(this);
             Type t = expr.verifyExpr(compiler, localEnv, currentClass);
             expr.setType(t);
-            //this.setType(t);
             return expr;
+          }
+          return this;
         }
-        //throw new ContextualError("not yet implemented", this.getLocation());
     }
 
 
@@ -159,7 +163,7 @@ public abstract class AbstractExpr extends AbstractInst {
                 compiler.addInstruction(new WINT());
             }
             if(this.getType().toString().equals("float")){
-                compiler.addInstruction(new WFLOAT());    
+                compiler.addInstruction(new WFLOAT());
             }
         }
 
@@ -192,5 +196,5 @@ public abstract class AbstractExpr extends AbstractInst {
             s.println();
         }
     }
-   
+
 }

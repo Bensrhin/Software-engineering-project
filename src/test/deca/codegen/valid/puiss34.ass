@@ -1,6 +1,6 @@
 	TSTO #11
 	BOV pile_pleine
-	ADDSP #13
+	ADDSP #30
 ; table des methodes
 ; Main program
 ; Beginning of main instructions:
@@ -27,10 +27,10 @@ OpCmp_fin_in_a56:
 	MUL R6, R5
 	BOV over_flow
 	STORE R5, 1(GB)
-	LOAD 2(GB), R6
-	LOAD #1, R7
-	ADD R7, R6
-	STORE R6, 2(GB)
+	LOAD 2(GB), R5
+	LOAD #1, R6
+	ADD R6, R5
+	STORE R5, 2(GB)
 	BRA While_cond_a56
 While_fin_a56:
 	LOAD 1(GB), R1

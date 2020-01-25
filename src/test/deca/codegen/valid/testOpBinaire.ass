@@ -4,36 +4,35 @@
 ; table des methodes
 ; Main program
 ; Beginning of main instructions:
-	LOAD #1, R2
+	LOAD #0, R2
 	STORE R2, 1(GB)
-	LOAD #1, R2
+	LOAD #0, R2
 	STORE R2, 2(GB)
-While_cond_a47:
-	LOAD 1(GB), R3
-	LOAD #7, R4
+While_cond_a46:
+	LOAD 2(GB), R3
+	LOAD #100, R4
 	SUB R4, R3
 	LOAD R3, R1
-	BLT OpCmp_if_in_a47
+	BLT OpCmp_if_in_a46
 	LOAD #1, R1
-	BRA OpCmp_fin_in_a47
-OpCmp_if_in_a47:
+	BRA OpCmp_fin_in_a46
+OpCmp_if_in_a46:
 	LOAD #0, R1
-OpCmp_fin_in_a47:
+OpCmp_fin_in_a46:
 	LOAD R1, R2
 	LOAD R2, R1
-	BNE While_fin_a47
-	LOAD 2(GB), R5
-	LOAD 1(GB), R6
-	MUL R6, R5
-	BOV over_flow
-	STORE R5, 2(GB)
+	BNE While_fin_a46
 	LOAD 1(GB), R5
-	LOAD #1, R6
+	LOAD 2(GB), R6
 	ADD R6, R5
 	STORE R5, 1(GB)
-	BRA While_cond_a47
-While_fin_a47:
-	LOAD 2(GB), R1
+	LOAD 2(GB), R5
+	LOAD #1, R6
+	ADD R6, R5
+	STORE R5, 2(GB)
+	BRA While_cond_a46
+While_fin_a46:
+	LOAD 1(GB), R1
 	WINT
 	WNL
 	HALT

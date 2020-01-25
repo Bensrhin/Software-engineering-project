@@ -1,23 +1,23 @@
-class A{
-int x = 8;
-int fact(int n, int k){
-    if(n == 0){
-        return 1;
-    }
-    else{
-        return 4;
-    }
-}
-void hello()
+class A
 {
-  x = fact(0, 0);
+  int a;
+  float hello(int a, float b, float c)
+  {
+    return a;
+  }
 }
+class B extends A
+{
+  int a;
+  float hello(int a, float b, float c)
+  {
+    return a;
+  }
 }
 {
-int a = 0;int b=4;
-//a = 7;
-if (false)
-{
- println("sss");
-}
+  A r = new B();
+  float e;
+  r = new B();
+  e = r.hello(1, 4, 6);
+  print(1+0.6);
 }

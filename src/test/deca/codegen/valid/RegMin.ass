@@ -1,0 +1,350 @@
+	TSTO #11
+	BOV pile_pleine
+	ADDSP #30
+; table des methodes
+; Main program
+; Beginning of main instructions:
+	LOAD #1, R2
+	STORE R2, 1(GB)
+	LOAD 1(GB), R2
+	LOAD #1, R3
+	MUL R3, R2
+	BOV over_flow
+	LOAD 1(GB), R3
+	LOAD #2, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #3, R4
+	MUL R4, R3
+	BOV over_flow
+	LOAD 1(GB), R4
+	LOAD #4, R5
+	MUL R5, R4
+	BOV over_flow
+	ADD R4, R3
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #5, R4
+	MUL R4, R3
+	BOV over_flow
+	LOAD 1(GB), R4
+	LOAD #6, R5
+	MUL R5, R4
+	BOV over_flow
+	ADD R4, R3
+	LOAD 1(GB), R4
+	LOAD #7, R5
+	MUL R5, R4
+	BOV over_flow
+	LOAD 1(GB), R5
+	LOAD #8, R6
+	MUL R6, R5
+	BOV over_flow
+	ADD R5, R4
+	ADD R4, R3
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #9, R4
+	MUL R4, R3
+	BOV over_flow
+	LOAD 1(GB), R4
+	LOAD #10, R5
+	MUL R5, R4
+	BOV over_flow
+	ADD R4, R3
+	LOAD 1(GB), R4
+	LOAD #11, R5
+	MUL R5, R4
+	BOV over_flow
+	LOAD 1(GB), R5
+	LOAD #12, R6
+	MUL R6, R5
+	BOV over_flow
+	ADD R5, R4
+	ADD R4, R3
+	LOAD 1(GB), R4
+	LOAD #13, R5
+	MUL R5, R4
+	BOV over_flow
+	LOAD 1(GB), R5
+	LOAD #14, R6
+	MUL R6, R5
+	BOV over_flow
+	ADD R5, R4
+	LOAD 1(GB), R5
+	LOAD #15, R6
+	MUL R6, R5
+	BOV over_flow
+	LOAD 1(GB), R6
+	LOAD #16, R7
+	MUL R7, R6
+	BOV over_flow
+	ADD R6, R5
+	ADD R5, R4
+	ADD R4, R3
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #17, R4
+	MUL R4, R3
+	BOV over_flow
+	LOAD 1(GB), R4
+	LOAD #18, R5
+	MUL R5, R4
+	BOV over_flow
+	ADD R4, R3
+	LOAD 1(GB), R4
+	LOAD #19, R5
+	MUL R5, R4
+	BOV over_flow
+	LOAD 1(GB), R5
+	LOAD #20, R6
+	MUL R6, R5
+	BOV over_flow
+	ADD R5, R4
+	ADD R4, R3
+	LOAD 1(GB), R4
+	LOAD #21, R5
+	MUL R5, R4
+	BOV over_flow
+	LOAD 1(GB), R5
+	LOAD #22, R6
+	MUL R6, R5
+	BOV over_flow
+	ADD R5, R4
+	LOAD 1(GB), R5
+	LOAD #23, R6
+	MUL R6, R5
+	BOV over_flow
+	LOAD 1(GB), R6
+	LOAD #24, R7
+	MUL R7, R6
+	BOV over_flow
+	ADD R6, R5
+	ADD R5, R4
+	ADD R4, R3
+	LOAD 1(GB), R4
+	LOAD #25, R5
+	MUL R5, R4
+	BOV over_flow
+	LOAD 1(GB), R5
+	LOAD #26, R6
+	MUL R6, R5
+	BOV over_flow
+	ADD R5, R4
+	LOAD 1(GB), R5
+	LOAD #27, R6
+	MUL R6, R5
+	BOV over_flow
+	LOAD 1(GB), R6
+	LOAD #28, R7
+	MUL R7, R6
+	BOV over_flow
+	ADD R6, R5
+	ADD R5, R4
+	LOAD 1(GB), R5
+	LOAD #29, R6
+	MUL R6, R5
+	BOV over_flow
+	LOAD 1(GB), R6
+	LOAD #30, R7
+	MUL R7, R6
+	BOV over_flow
+	ADD R6, R5
+	LOAD 1(GB), R6
+	LOAD #31, R7
+	MUL R7, R6
+	BOV over_flow
+	LOAD 1(GB), R7
+	LOAD #32, R8
+	MUL R8, R7
+	BOV over_flow
+	ADD R7, R6
+	ADD R6, R5
+	ADD R5, R4
+	ADD R4, R3
+	ADD R3, R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 1(GB), R2
+	LOAD #1, R3
+	MUL R3, R2
+	BOV over_flow
+	LOAD 1(GB), R3
+	LOAD #2, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #3, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #4, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #5, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #6, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #7, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #8, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #9, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #10, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #11, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #12, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #13, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #14, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #15, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #16, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #17, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #18, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #19, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #20, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #21, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #22, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #23, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #24, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #25, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #26, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #27, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #28, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #29, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #30, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #31, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD 1(GB), R3
+	LOAD #32, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	LOAD R2, R1
+	WINT
+	WNL
+	HALT
+code.Object.equals:
+pile_pleine:
+	WSTR "Error: Stack Overflow"
+	WNL
+	ERROR
+over_flow:
+	WSTR "Error: Overflow during arithmetic operation"
+	WNL
+	ERROR
+i0_error:
+	WSTR "Error: Input/Output error"
+	WNL
+	ERROR
+divisionErr:
+	WSTR "Error :Division par 0"
+	WNL
+	ERROR

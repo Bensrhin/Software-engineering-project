@@ -4,27 +4,16 @@
 ; table des methodes
 ; Main program
 ; Beginning of main instructions:
-	LOAD #4, R2
-	STORE R2, 1(GB)
-	LOAD #2, R2
-	LOAD 1(GB), R3
-	MUL R3, R2
-	BOV over_flow
-	STORE R2, 2(GB)
-	LOAD #0x1.8p0, R2
-	LOAD 2(GB), R3
+	LOAD #0x1.4p1, R2
+	LOAD #3, R3
 	FLOAT R3, R3
-	MUL R3, R2
-	BOV over_flow
-	LOAD #2, R3
-	LOAD 1(GB), R4
-	MUL R4, R3
-	BOV over_flow
+	ADD R3, R2
+	LOAD #5, R3
 	FLOAT R3, R3
-	DIV R3, R2
-	BOV divisionErr
-	STORE R2, 3(GB)
-	LOAD 3(GB), R1
+	ADD R3, R2
+	LOAD #0x1.29999ap3, R3
+	ADD R3, R2
+	LOAD R2, R1
 	WFLOAT
 	WNL
 	HALT

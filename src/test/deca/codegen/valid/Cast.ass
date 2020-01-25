@@ -4,36 +4,42 @@
 ; table des methodes
 ; Main program
 ; Beginning of main instructions:
-	LOAD #1, R2
+	LOAD #0x1.ccccccp1, R2
 	STORE R2, 1(GB)
-	LOAD #1, R2
+	LOAD 1(GB), R2
+	INT R2, R2
 	STORE R2, 2(GB)
-While_cond_a47:
-	LOAD 1(GB), R3
-	LOAD #7, R4
-	SUB R4, R3
-	LOAD R3, R1
-	BLT OpCmp_if_in_a47
-	LOAD #1, R1
-	BRA OpCmp_fin_in_a47
-OpCmp_if_in_a47:
-	LOAD #0, R1
-OpCmp_fin_in_a47:
-	LOAD R1, R2
-	LOAD R2, R1
-	BNE While_fin_a47
-	LOAD 2(GB), R5
-	LOAD 1(GB), R6
-	MUL R6, R5
+	LOAD #3, R2
+	STORE R2, 3(GB)
+	LOAD 3(GB), R2
+	FLOAT R2, R2
+	STORE R2, 4(GB)
+	LOAD #8, R2
+	FLOAT R2, R2
+	LOAD #0x1.333334p1, R3
+	MUL R3, R2
 	BOV over_flow
-	STORE R5, 2(GB)
-	LOAD 1(GB), R5
-	LOAD #1, R6
-	ADD R6, R5
-	STORE R5, 1(GB)
-	BRA While_cond_a47
-While_fin_a47:
+	LOAD 4(GB), R3
+	LOAD 2(GB), R4
+	FLOAT R4, R4
+	MUL R4, R3
+	BOV over_flow
+	ADD R3, R2
+	INT R2, R2
+	STORE R2, 5(GB)
+	LOAD 1(GB), R1
+	WFLOAT
+	WSTR " "
 	LOAD 2(GB), R1
+	WINT
+	WSTR " "
+	LOAD 3(GB), R1
+	WINT
+	WSTR " "
+	LOAD 4(GB), R1
+	WFLOAT
+	WSTR " "
+	LOAD 5(GB), R1
 	WINT
 	WNL
 	HALT

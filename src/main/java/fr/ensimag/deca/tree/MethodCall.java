@@ -1,7 +1,7 @@
 
 package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.Type;
-import java.util.Iterator;
+import java.util.*;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.*;
 import fr.ensimag.deca.context.ContextualError;
@@ -49,12 +49,17 @@ public class MethodCall extends AbstractLValue{
         MethodDefinition method = (MethodDefinition) method0;
         Signature sigExpected = method.getSignature();
         Signature sig = new Signature();
+        List<Type> array = (sigExpected.getArgs());
+        Iterator<Type> types = array.iterator();
         Iterator<AbstractExpr> exprs = this.args.iterator();
-            while (exprs.hasNext())
+        int i = 0;
+            while (exprs.hasNext() && types.hasNext())
             {
-                AbstractExpr expr = exprs.next();
-                Type type = expr.verifyExpr(compiler, localEnv, currentClass);
-                sig.add(type);
+                AbstractExpr param = exprs.next();
+                Type t = types.next();
+                this.args.set(i, param.verifyRValue(compiler, localEnv, currentClass, t));
+                sig.add(t);
+                i ++;
             }
         if (sig.size() == 0 && sigExpected.size() != 0)
         {
@@ -90,7 +95,7 @@ public class MethodCall extends AbstractLValue{
     }
     @Override public void decompile(IndentPrintStream s){
         expr.decompile(s);
-        
+
     }
     @Override
     protected void codeGenPrint(DecacCompiler compiler, boolean hex){
