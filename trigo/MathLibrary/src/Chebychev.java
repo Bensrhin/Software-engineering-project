@@ -81,33 +81,80 @@ public class Chebychev {
         return 1 + a1*m.power(r, 2) + a2*m.power(r, 4) + a3*m.power(r, 6) + a4*m.power(r, 8) + a5*m.power(r, 10);
     }
 
+
+    static int getIndexActan(float value){
+        int i = 1;
+        while (i < 9){
+            if(value < values.ChebyValuesActan(i) && values.ChebyValuesActan(i - 1) < value){
+                return i;
+            }
+            i += 1;
+        }
+        return i;
+
+    }
     static float arctan(float value){
         float tanCoef = 0.09849140335716425f;
-        float Pi32 = 0.098174766f;
-
-        if (value < 0){
+        float Pi32 = 0.09817477042468103f;
+        if(value < 0){
             return -arctan(-value);
         }
-
         else if (value >= 0 && value <= tanCoef){
             return ChebychevActan(value);
         }
-
         else {
-            int i = 1;
-            while (i < 9) {
-                if (value <= values.ChebyValuesActan(i) && value >= values.ChebyValuesActan(i - 1)) {
-                    break;
-                }
-                i = i + 1;
-            }
-
-            float x = values.ChebyValuesActan(i - 1);
-            float t = 1/x - (m.power(x, -2) + 1)/(m.power(x, -1)+value);
-
-            return (2*i - 2)*Pi32 + arctan(t);
+            int i = getIndexActan(value);
+            System.out.println("the index is : " + i);
+            float x = values.otherActanVal(i - 1);
+            float t = 1/x - (m.power(x, -2) + 1)/(m.power(x, -1) + value);
+            return (2 * i - 2) * Pi32 + arctan(t);
         }
     }
+
+    /*public static float arcsin(float value){
+        float teta = 0;
+        float coefX = 0;
+        float coefY = 0;
+        float x = 1;
+        float y = 0;
+        float t = value;
+        int d = 1;
+        int i = 0;
+
+        while (i < 250){
+            if (y <= t) {
+                if (x >= 0){
+                    d = 1;
+                }
+                else {
+                    d = -1;
+                }
+
+            }
+            else {
+                if (x >= 0){
+                    d = -1;
+                }
+                else {
+                    d = 1;
+                }
+            }
+
+            coefX = x;
+            coefY = y;
+
+            x = coefX * (1 - m.power(2, -2 * i)) - coefY * d * m.power(2, 1 - i);
+            y = coefY * (1 - m.power(2, -2 * i)) + coefX * d * m.power(2, 1 - i);
+
+            teta = teta +  2 * d * (float)Math.atan(Math.pow(2, -i));
+
+            t = t + t * m.power(2, -2*i);
+
+            i = i + 1;
+        }
+
+        return teta;
+    }*/
 
     static float sin(float value){
         if (value <= Pi/4 && value >= 0){
@@ -183,8 +230,8 @@ public class Chebychev {
 
     public static void main(String[] args) {
         int count = 0;
-        /*for (float i = 0; i < 127; i++) {
-            float j = (float) m.power(2, -i);
+        for (float i = 0; i < 127; i++) {
+            float j = (float) m.power(2, i);
             float actan = arctan(j);
             float realactan = (float)Math.atan(j);
             float err = Math.abs(actan - realactan)/Math.ulp(realactan);
@@ -194,8 +241,8 @@ public class Chebychev {
             }
             System.out.println(err);
         }
-        */
-        for (float i = (Pi/64); i < 2* Pi; i+=0.01) {
+        System.out.println(count);
+        /*for (float i = (Pi/64); i < 2* Pi; i+=0.01) {
             float mine = sin(i);
             float real = (float) Math.sin(i);
             float err = Math.abs(real - mine)/Math.ulp(real);
@@ -206,7 +253,7 @@ public class Chebychev {
             }
 
         }
-        System.out.println(count);
+        System.out.println(count);*/
 
         /*for (float i = 0; i < 10 * Pi / 25; i+=0.01) {
             float mine = cos(i);
