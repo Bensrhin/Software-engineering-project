@@ -49,6 +49,8 @@ public class While extends AbstractInst {
         compiler.addInstruction(new BNE(labelFin));
         body.codeGenListInst(compiler);
         compiler.addInstruction(new BRA(labelCond));
+        compiler.getRegisterManager().freeReg(compiler, r1);
+        compiler.getRegisterManager().used.add(r1);
         compiler.addLabel(labelFin);
     }
 

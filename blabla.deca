@@ -1,0 +1,55 @@
+class Taylor {
+
+    int factoriel(int n){
+        if (n == 0){
+            return 1;
+        }
+        else{
+          return n * this.factoriel(n - 1);
+        }
+    }
+
+    float power(float value1, int value2){
+        int counter = 0;
+        float result = 1.0F;
+
+        if (value2 < 0){
+            return this.power(1/value1, -value2);
+
+        }
+        else {
+            while (value2 > counter){
+                result = result * value1;
+                counter= counter+1;
+            }
+            return result;
+        }
+    }
+
+
+    float coefTaylorCosinus(int n, float x){
+        return ((power(-1.0, n) * power(x, 2*n))/factoriel(2*n));
+    }
+
+    float taylorCosinus(float x, int n){
+        float s = 0;
+        int i = 0;
+        while (i < n) {
+            s = s + this.coefTaylorCosinus(i, x);
+            i = i + 1;
+        }
+        return s;
+    }
+}
+
+
+{  
+    Taylor t = new Taylor();
+    int x = 2;
+    float power = t.power(-5.0,2*x);
+    float cos = t.taylorCosinus(1.0,7);
+
+    println ("Power = ",power);
+   println("Cos(0) = ",cos);
+
+}

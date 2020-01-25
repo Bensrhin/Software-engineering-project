@@ -31,6 +31,8 @@ public class Multiply extends AbstractOpArith {
         GPRegister R1 = Register.R1;
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
+        compiler.getRegisterManager().used.add(r1);
+        compiler.getRegisterManager().used.add(r2);
         compiler.addInstruction(new MUL(r2, r1));
         if (compiler.getCompilerOptions().getNoCheck()){
             compiler.addInstruction(new BOV(compiler.over_flow));
@@ -47,6 +49,7 @@ public class Multiply extends AbstractOpArith {
         if (!compiler.getCompilerOptions().getNoCheck()){
             compiler.addInstruction(new BOV(compiler.over_flow));
         }
+        compiler.getRegisterManager().used.add(r2);
         compiler.getRegisterManager().freeReg(compiler, r2);
         return r1;
     }

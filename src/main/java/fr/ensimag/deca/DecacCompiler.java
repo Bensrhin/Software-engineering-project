@@ -219,7 +219,13 @@ public class DecacCompiler {
     /**
      * The main program. Every instruction generated will eventually end up here.
      */
-    private final IMAProgram program = new IMAProgram();
+    private IMAProgram program = new IMAProgram();
+    public IMAProgram getProg(){
+        return program;
+    }
+    public void setProgram(IMAProgram p){
+        this.program = p;
+    }
 
     /**
      * Run the compiler (parse source file, generate code)

@@ -131,6 +131,7 @@ public class DeclField extends AbstractDeclField {
         else {
            GPRegister r = ((Initialization) getInitialization()).getExpression().codeGenLoad(compiler);
            compiler.addInstruction(new LOAD(r, Register.R0));
+           compiler.getRegisterManager().used.add(r);
            compiler.getRegisterManager().freeReg(compiler, r);
         }
         FieldDefinition fld = ((Identifier)(fieldName)).getFieldDefinition();

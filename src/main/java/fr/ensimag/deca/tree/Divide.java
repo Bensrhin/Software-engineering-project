@@ -42,9 +42,11 @@ public class Divide extends AbstractOpArith {
             compiler.addInstruction(new DIV(r2, r1));
         }
         compiler.addInstruction(new BOV(compiler.divisionErr));
-        r2.freeR();
+        compiler.getRegisterManager().freeReg(compiler, r2);
+        compiler.getRegisterManager().used.add(r2);
         compiler.addInstruction(new LOAD(r1, R1));
-        r1.freeR();
+        compiler.getRegisterManager().used.add(r1);
+        compiler.getRegisterManager().freeReg(compiler, r1);
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
@@ -57,7 +59,8 @@ public class Divide extends AbstractOpArith {
             compiler.addInstruction(new DIV(r2, r1));
         }
         compiler.addInstruction(new BOV(compiler.divisionErr));
-        r2.freeR();
+         compiler.getRegisterManager().used.add(r2);
+        compiler.getRegisterManager().freeReg(compiler, r2);
         return r1;
     }
 

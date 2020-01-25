@@ -1,4 +1,16 @@
+class Q{
+    int abs(int x){
+        if(x < 0){
+            return -x;
+        }
+        else{
+            return x;
+        }
+    }
+}
 {
-int x;
-println(x);
+int x = readInt();
+Q q = new Q();
+float y = q.abs(x);
+println(y);
 }

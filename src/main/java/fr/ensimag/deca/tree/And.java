@@ -32,7 +32,8 @@ public class And extends AbstractOpBool {
         GPRegister R1 = Register.R1;
         GPRegister r3 = this.getLeftOperand().codeGenLoad(compiler);
         compiler.addInstruction(new LOAD(r3, R1));
-        r3.freeR();
+        compiler.getRegisterManager().used.add(r3);
+        compiler.getRegisterManager().freeReg(compiler, r3);
         Label andElse= new Label("And_else_in_"+this.getLeftOperand()
                 .getLocation().toStringLabel());
         Label andFin= new Label("And_fin_in_"+this.getLeftOperand()
@@ -45,6 +46,8 @@ public class And extends AbstractOpBool {
         compiler.addInstruction(new BRA(andFin));
         compiler.addLabel(andElse);
         compiler.addInstruction(new LOAD(1, R1));
+        compiler.getRegisterManager().used.add(r2);
+        compiler.getRegisterManager().freeReg(compiler, r2);
         compiler.addLabel(andFin);
     }
 

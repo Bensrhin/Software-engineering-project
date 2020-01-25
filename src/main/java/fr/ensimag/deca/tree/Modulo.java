@@ -52,8 +52,10 @@ public class Modulo extends AbstractOpArith {
         GPRegister R1 = Register.R1;
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
+        compiler.getRegisterManager().used.add(r1);
+        compiler.getRegisterManager().used.add(r2);
         compiler.addInstruction(new REM(r2, r1));
-         compiler.addInstruction(new BOV(compiler.divisionErr));
+        compiler.addInstruction(new BOV(compiler.divisionErr));
         compiler.getRegisterManager().freeReg(compiler, r2);
         compiler.addInstruction(new LOAD(r1, R1));
         compiler.getRegisterManager().freeReg(compiler, r1);
@@ -63,7 +65,8 @@ public class Modulo extends AbstractOpArith {
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new REM(r2, r1));
-         compiler.addInstruction(new BOV(compiler.divisionErr));
+        compiler.addInstruction(new BOV(compiler.divisionErr));
+        compiler.getRegisterManager().used.add(r2);
         compiler.getRegisterManager().freeReg(compiler, r2);
         return r1;
     }

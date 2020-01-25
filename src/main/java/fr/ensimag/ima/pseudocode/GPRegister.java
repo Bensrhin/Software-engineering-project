@@ -20,4 +20,16 @@ public class GPRegister extends Register {
         super(name);
         this.number = number;
     }
+    @Override
+    public boolean equals(Object o){
+        if( ! (o instanceof GPRegister)) {
+                return false ;
+            }
+        GPRegister r = (GPRegister)o;
+        return this.getNumber() == r.getNumber();
+    }
+    @Override
+    public int hashCode(){
+        return this.getNumber();
+    }
 }

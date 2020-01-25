@@ -30,7 +30,7 @@ public class ChebychevValues {
         }
     }
 
-    public float ChebyValuesActan(int i){
+    public double ChebyValuesActan(int i){
         if (i == 0) {
             return -0.09849139859277231f;
         }
@@ -63,5 +63,39 @@ public class ChebychevValues {
         }
 
     }
+
+    public float otherActanVal(int i){
+        if (i == 0) {
+            return 0.0f;
+        }
+        else if (i == 1) {
+            return 0.19891237f;
+        }
+        else if (i == 2) {
+            return 0.41421357f;
+        }
+        else if (i == 3) {
+            return 0.6681786f;
+        }
+        else if (i == 4) {
+            return 1.0f;
+        }
+        else if (i == 5) {
+            return 1.4966058f;
+        }
+        else if (i == 6) {
+            return 2.4142137f;
+        }
+        else if (i == 7) {
+            return 5.0273395f;
+        }
+        else if (i == 8) {
+            return 1.63312395E16f;
+        }
+        else {
+            return 0.0f;
+        }
+    }
+
 
 }
