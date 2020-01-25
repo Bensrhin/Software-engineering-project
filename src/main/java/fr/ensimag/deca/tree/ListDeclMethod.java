@@ -6,9 +6,9 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.instructions.ADDSP;
-import fr.ensimag.ima.pseudocode.instructions.TSTO;
+import fr.ensimag.ima.pseudocode.instructions.*;
 import fr.ensimag.deca.context.*;
-import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.ima.pseudocode.GPRegister;
 
 
@@ -81,6 +81,12 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod> {
     public void codeGenListMethod(DecacCompiler compiler, ListDeclField fields){
         for (AbstractDeclMethod method : getList()) {
             method.codeGenMethod(compiler);
+            AbstractIdentifier meth = ((DeclMethod)(method)).getNameMethod();
+            compiler.addInstruction(new BRA(new Label("fin."+((Identifier)(meth)).getMethodDefinition().getLabel().toString())));
+            compiler.addInstruction(new WSTR("erreur sortie sans return"));
+            compiler.addInstruction(new WNL());
+            compiler.addInstruction(new ERROR());
+            compiler.addLabel(new Label("fin."+((Identifier)(meth)).getMethodDefinition().getLabel().toString()));
         }
     
     }

@@ -1,6 +1,6 @@
-	TSTO #11
+	TSTO #22
 	BOV pile_pleine
-	ADDSP #30
+	ADDSP #11
 ; table des methodes
 ; construction de la table des methodes de Object
 	LOAD #null, R0
@@ -42,7 +42,7 @@
 	LOAD 0(R2), R2
 	BSR 3(R2)
 	SUBSP #2
-	STORE R0, 9(GB)
+	STORE R2, 9(GB)
 	LOAD 9(GB), R1
 	WINT
 	WNL
@@ -59,19 +59,19 @@ code.fct.fact:
 	LOAD #0, R4
 	SUB R4, R3
 	LOAD R3, R1
-	BEQ OpCmp_if_in_a311
+	BEQ OpCmp_if_in_a411
 	LOAD #1, R1
-	BRA OpCmp_fin_in_a311
-OpCmp_if_in_a311:
+	BRA OpCmp_fin_in_a411
+OpCmp_if_in_a411:
 	LOAD #0, R1
-OpCmp_fin_in_a311:
+OpCmp_fin_in_a411:
 	LOAD R1, R2
 	LOAD R2, R1
-	BNE IfThenElse_else_a311
+	BNE IfThenElse_else_a411
 	LOAD #1, R4
 	LOAD R4, R0
-	BRA IfThenElse_fin_a311
-IfThenElse_else_a311:
+	BRA IfThenElse_fin_a411
+IfThenElse_else_a411:
 	LOAD -3(LB), R4
 ; appel de methode2
 	ADDSP #2
@@ -87,17 +87,23 @@ IfThenElse_else_a311:
 	LOAD 0(R3), R3
 	BSR 2(R3)
 	SUBSP #2
-	MUL R0, R4
+	MUL R3, R4
 	BOV over_flow
 	LOAD R4, R0
-IfThenElse_fin_a311:
+IfThenElse_fin_a411:
 	POP R2
 	POP R3
 	POP R4
 	POP R5
 	POP R6
 	RTS
+	BRA fin.code.fct.fact
+	WSTR "rreur sortie sans retur"
+	WNL
+	ERROR
+fin.code.fct.fact:
 code.fct.fibo:
+	PUSH R7
 	PUSH R6
 	PUSH R5
 	PUSH R4
@@ -107,51 +113,36 @@ code.fct.fibo:
 	LOAD #0, R3
 	SUB R3, R4
 	LOAD R4, R1
-	BEQ OpCmp_if_in_a1311
+	BEQ OpCmp_if_in_a1411
 	LOAD #1, R1
-	BRA OpCmp_fin_in_a1311
-OpCmp_if_in_a1311:
+	BRA OpCmp_fin_in_a1411
+OpCmp_if_in_a1411:
 	LOAD #0, R1
-OpCmp_fin_in_a1311:
+OpCmp_fin_in_a1411:
 	LOAD R1, R2
 	LOAD R2, R1
-	BNE IfThenElse_else_a1311
+	BNE IfThenElse_else_a1411
 	LOAD #0, R3
 	LOAD R3, R0
-	BRA IfThenElse_fin_a1311
-IfThenElse_else_a1311:
+	BRA IfThenElse_fin_a1411
+IfThenElse_else_a1411:
 	LOAD -3(LB), R4
 	LOAD #1, R5
 	SUB R5, R4
 	LOAD R4, R1
-	BEQ OpCmp_if_in_a1616
+	BEQ OpCmp_if_in_a1716
 	LOAD #1, R1
-	BRA OpCmp_fin_in_a1616
-OpCmp_if_in_a1616:
+	BRA OpCmp_fin_in_a1716
+OpCmp_if_in_a1716:
 	LOAD #0, R1
-OpCmp_fin_in_a1616:
+OpCmp_fin_in_a1716:
 	LOAD R1, R3
 	LOAD R3, R1
-	BNE IfThenElse_else_a1616
+	BNE IfThenElse_else_a1716
 	LOAD #1, R5
 	LOAD R5, R0
-	BRA IfThenElse_fin_a1616
-IfThenElse_else_a1616:
-; appel de methode3
-	ADDSP #2
-	LOAD -2(LB), R5
-	STORE R5, 0(SP)
-	LOAD -3(LB), R4
-	LOAD #2, R6
-	SUB R6, R4
-	STORE R4, -1(SP)
-	LOAD 0(SP), R5
-	CMP #null, R5
-	BEQ pile_pleine
-	LOAD 0(R5), R5
-	BSR 3(R5)
-	SUBSP #2
-	STORE R0, 10(GB)
+	BRA IfThenElse_fin_a1716
+IfThenElse_else_a1716:
 ; appel de methode3
 	ADDSP #2
 	LOAD -2(LB), R5
@@ -166,19 +157,36 @@ IfThenElse_else_a1616:
 	LOAD 0(R5), R5
 	BSR 3(R5)
 	SUBSP #2
-	STORE R0, 11(GB)
-	LOAD 10(GB), R5
-	LOAD 11(GB), R4
+; appel de methode3
+	ADDSP #2
+	LOAD -2(LB), R4
+	STORE R4, 0(SP)
+	LOAD -3(LB), R6
+	LOAD #2, R7
+	SUB R7, R6
+	STORE R6, -1(SP)
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ pile_pleine
+	LOAD 0(R4), R4
+	BSR 3(R4)
+	SUBSP #2
 	ADD R4, R5
 	LOAD R5, R0
-IfThenElse_fin_a1616:
-IfThenElse_fin_a1311:
+IfThenElse_fin_a1716:
+IfThenElse_fin_a1411:
 	POP R2
 	POP R3
 	POP R4
 	POP R5
 	POP R6
+	POP R7
 	RTS
+	BRA fin.code.fct.fibo
+	WSTR "rreur sortie sans retur"
+	WNL
+	ERROR
+fin.code.fct.fibo:
 code.Object.equals:
 pile_pleine:
 	WSTR "Error: Stack Overflow"

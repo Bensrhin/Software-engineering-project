@@ -29,7 +29,7 @@ public class RegisterManager{
         }
         else{
             GPRegister r = initR.getNonDispo();
-            compiler.addInstruction(new TSTO(1));
+            compiler.incTs();
             compiler.addInstruction(new BOV(compiler.pilePleine));
             compiler.addInstruction(new PUSH(r));
             return r;

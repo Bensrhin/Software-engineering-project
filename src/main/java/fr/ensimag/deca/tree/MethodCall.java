@@ -92,14 +92,7 @@ public class MethodCall extends AbstractLValue{
         expr.decompile(s);
         
     }
-    @Override
-    protected void codeGenPrint(DecacCompiler compiler, boolean hex){
-        //throw new UnsupportedOperationException("not yet implemented44");
-        System.out.println(id.getType());
-
-
-
-    }
+    
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler){
         compiler.addComment("appel de methode" + ((Identifier)(id)).getMethodDefinition().getIndex());
@@ -107,12 +100,22 @@ public class MethodCall extends AbstractLValue{
         GPRegister r = expr.codeGenLoad(compiler);
         id.codeGenAppMethode(compiler, r, args);
         compiler.addInstruction(new SUBSP(args.size() + 1));
-        compiler.getRegisterManager().freeReg(compiler, r);
-        return Register.R0;
+        return r;
+        //compiler.getRegisterManager().freeReg(compiler, r);
+        
     }
     @Override
     protected void codeGenInst(DecacCompiler compiler){
         //throw new UnsupportedOperationException("not yet implemented à m3alem");
         this.codeGenLoad(compiler);
     }
+    @Override
+     protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
+        GPRegister r1 = id.codeGenLoad(compiler);
+        compiler.addInstruction(new LOAD(r1, Register.R1));
+        super.codeGenPrint(compiler, hex);
+        compiler.getRegisterManager().freeReg(compiler, r1);
+        
+    }
+
     }

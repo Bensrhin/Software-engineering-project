@@ -21,5 +21,5 @@ public abstract class AbstractMain extends Tree {
     protected abstract void verifyMain(DecacCompiler compiler) throws ContextualError;
 
     public abstract ListDeclVar getDeclVariables();
-    public abstract void codeGenEntete(DecacCompiler compiler, int n);
+    
 }

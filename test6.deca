@@ -1,0 +1,16 @@
+class P{
+    float power(int n1, int n2){
+        int cpt = 0;
+        float res = 1;
+        if(n2 < 0){
+            return 1.1;
+        }
+            return 1.2;
+    }
+}
+{
+P p = new P();
+float y = p.power(1, -1);
+println(y);
+}
+

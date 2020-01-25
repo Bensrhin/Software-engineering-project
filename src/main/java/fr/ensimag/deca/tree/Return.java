@@ -10,7 +10,7 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.Label;
 import java.io.PrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
-import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.*;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.*;
 
@@ -58,6 +58,7 @@ public class Return extends AbstractInst {
     protected void codeGenInst(DecacCompiler compiler) {
         GPRegister r = rvalue.codeGenLoad(compiler);
         compiler.addInstruction(new LOAD(r, Register.R0));
+        compiler.getRegisterManager().used.add(r);
         compiler.getRegisterManager().freeReg(compiler, r);
     }
 

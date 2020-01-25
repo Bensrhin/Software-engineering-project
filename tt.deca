@@ -47,7 +47,7 @@ class Taylor {
    float PI = 3.141593F;
    float var = (float) (-1/32);
    float var2 =  PI/4;
-
+    
 
    Taylor t = new Taylor();
 
