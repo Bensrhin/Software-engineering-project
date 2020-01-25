@@ -56,9 +56,11 @@ public class DeclVar extends AbstractDeclVar {
                           "\" doit être différent de void (règle 3.17)", this.getLocation());
               }
               /* declaration of nameVar in the invironment */
-              VariableDefinition def = new VariableDefinition(nameType, this.getLocation());
+
+              Type t = this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
+              VariableDefinition def = new VariableDefinition(t, this.getLocation());
               Symbol symbol = this.getNameVar().getName();
-              this.getInitialization().verifyInitialization(compiler, nameType, localEnv, currentClass);
+
               try
               {
                   localEnv.declare(symbol, def);

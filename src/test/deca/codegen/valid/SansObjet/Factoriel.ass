@@ -1,0 +1,56 @@
+	TSTO #11
+	BOV pile_pleine
+	ADDSP #30
+; table des methodes
+; Main program
+; Beginning of main instructions:
+	LOAD #10, R2
+	STORE R2, 1(GB)
+	LOAD #1, R2
+	STORE R2, 2(GB)
+While_cond_a57:
+	LOAD 1(GB), R3
+	LOAD #0, R4
+	SUB R4, R3
+	LOAD R3, R1
+	BGT OpCmp_if_in_a57
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a57
+OpCmp_if_in_a57:
+	LOAD #0, R1
+OpCmp_fin_in_a57:
+	LOAD R1, R2
+	LOAD R2, R1
+	BNE While_fin_a57
+	LOAD 2(GB), R5
+	LOAD 1(GB), R6
+	MUL R6, R5
+	BOV over_flow
+	STORE R5, 2(GB)
+	LOAD 1(GB), R5
+	LOAD #1, R6
+	SUB R6, R5
+	STORE R5, 1(GB)
+	BRA While_cond_a57
+While_fin_a57:
+	LOAD 2(GB), R1
+	WINT
+	WNL
+	HALT
+code.Object.equals:
+pile_pleine:
+	WSTR "Error: Stack Overflow"
+	WNL
+	ERROR
+over_flow:
+	WSTR "Error: Overflow during arithmetic operation"
+	WNL
+	ERROR
+i0_error:
+	WSTR "Error: Input/Output error"
+	WNL
+	ERROR
+divisionErr:
+	WSTR "Error :Division par 0"
+	WNL
+	ERROR

@@ -38,7 +38,7 @@ public class Initialization extends AbstractInitialization {
     }
 
     @Override
-    protected void verifyInitialization(DecacCompiler compiler, Type t,
+    protected Type verifyInitialization(DecacCompiler compiler, Type t,
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
         Type type2 = this.getExpression().verifyExpr(compiler, localEnv, currentClass);
@@ -54,6 +54,7 @@ public class Initialization extends AbstractInitialization {
         if (t.sameType(type2))
         {
             this.expression.setType(type2);
+            return type2;
         }
         else
         {
@@ -63,12 +64,11 @@ public class Initialization extends AbstractInitialization {
               this.expression.verifyExpr(compiler, localEnv,currentClass);
               this.expression.setType(t);
             }
-            else if (type2.isClass())
-            {
-              /* todo */
-            }
+
 
         }
+        return t;
+
 
     }
 

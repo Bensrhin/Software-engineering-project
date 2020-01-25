@@ -1,0 +1,212 @@
+	TSTO #25
+	BOV pile_pleine
+	ADDSP #16
+; table des methodes
+; construction de la table des methodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; construction de la table des methodes de A
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.A.factoriel, R0
+	STORE R0, 8(GB)
+	LOAD code.A.get1, R0
+	STORE R0, 5(GB)
+	LOAD code.A.get2, R0
+	STORE R0, 6(GB)
+	LOAD code.A.get3, R0
+	STORE R0, 7(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+; Main program
+; Beginning of main instructions:
+	LOAD #2, R2
+	OPP R2, R2
+	FLOAT R2, R2
+	STORE R2, 9(GB)
+	LOAD #3, R2
+	OPP R2, R2
+	STORE R2, 10(GB)
+; instruction new
+	NEW #1, R2
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 11(GB)
+; appel de methode5
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+	LOAD #10, R3
+	STORE R3, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ pile_pleine
+	LOAD 0(R2), R2
+	BSR 5(R2)
+	SUBSP #2
+	LOAD R0, R3
+	STORE R3, 12(GB)
+	LOAD 12(GB), R1
+	WFLOAT
+	WNL
+	HALT
+init.A:
+	RTS
+code.A.get1:
+	PUSH R3
+	PUSH R2
+	LOAD #0x1.0p0, R3
+	LOAD R3, R0
+	POP R2
+	POP R3
+	RTS
+	BRA fin.code.A.get1
+	WSTR "rreur sortie sans retur"
+	WNL
+	ERROR
+fin.code.A.get1:
+code.A.get2:
+	PUSH R3
+	PUSH R2
+	LOAD #0x1.da5e36p1, R3
+	LOAD R3, R0
+	POP R2
+	POP R3
+	RTS
+	BRA fin.code.A.get2
+	WSTR "rreur sortie sans retur"
+	WNL
+	ERROR
+fin.code.A.get2:
+code.A.get3:
+	PUSH R3
+	PUSH R2
+	LOAD #40320, R3
+	LOAD R3, R0
+	POP R2
+	POP R3
+	RTS
+	BRA fin.code.A.get3
+	WSTR "rreur sortie sans retur"
+	WNL
+	ERROR
+fin.code.A.get3:
+code.A.factoriel:
+	PUSH R4
+	PUSH R3
+	PUSH R2
+; appel de methode2
+	ADDSP #1
+	LOAD -2(LB), R3
+	STORE R3, 0(SP)
+	LOAD 0(SP), R3
+	CMP #null, R3
+	BEQ pile_pleine
+	LOAD 0(R3), R3
+	BSR 2(R3)
+	SUBSP #1
+	LOAD R0, R2
+	STORE R2, 13(GB)
+; appel de methode3
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ pile_pleine
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #1
+	LOAD R0, R3
+	STORE R3, 14(GB)
+; appel de methode4
+	ADDSP #1
+	LOAD -2(LB), R3
+	STORE R3, 0(SP)
+	LOAD 0(SP), R3
+	CMP #null, R3
+	BEQ pile_pleine
+	LOAD 0(R3), R3
+	BSR 4(R3)
+	SUBSP #1
+	LOAD R0, R2
+	FLOAT R2, R2
+	STORE R2, 15(GB)
+	LOAD 13(GB), R2
+	LOAD 14(GB), R3
+	MUL R3, R2
+	BOV over_flow
+	LOAD 15(GB), R3
+	DIV R3, R2
+	BOV divisionErr
+	STORE R2, 16(GB)
+; appel de methode2
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ pile_pleine
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #1
+	LOAD R0, R3
+; appel de methode3
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ pile_pleine
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #1
+	LOAD R0, R4
+	MUL R4, R3
+	BOV over_flow
+; appel de methode4
+	ADDSP #1
+	LOAD -2(LB), R4
+	STORE R4, 0(SP)
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ pile_pleine
+	LOAD 0(R4), R4
+	BSR 4(R4)
+	SUBSP #1
+	LOAD R0, R2
+	FLOAT R2, R2
+	DIV R2, R3
+	BOV divisionErr
+	LOAD R3, R0
+	POP R2
+	POP R3
+	POP R4
+	RTS
+	BRA fin.code.A.factoriel
+	WSTR "rreur sortie sans retur"
+	WNL
+	ERROR
+fin.code.A.factoriel:
+code.Object.equals:
+pile_pleine:
+	WSTR "Error: Stack Overflow"
+	WNL
+	ERROR
+over_flow:
+	WSTR "Error: Overflow during arithmetic operation"
+	WNL
+	ERROR
+i0_error:
+	WSTR "Error: Input/Output error"
+	WNL
+	ERROR
+divisionErr:
+	WSTR "Error :Division par 0"
+	WNL
+	ERROR

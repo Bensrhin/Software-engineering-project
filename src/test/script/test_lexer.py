@@ -14,14 +14,15 @@ def valid_lexer():
     counter = 0
     tmp = 0
     test_lexer = "launchers/test_lex"
-    valid_lexer = "../deca/lexicographie/valid"
+    valid_lexer_SO = "../deca/lexicographie/valid/SansObjet"
+    
     # print("Details d'execution des tests valides [1/0] ?")
     # x = int(input())
     x=1
     print("======================================================")
-    for file in os.listdir(valid_lexer):
+    for file in os.listdir(valid_lexer_SO):
         tmp += 1
-        execute = test_lexer + " " + valid_lexer + "/" + str(file) + " " +"2> {}.log".format(str(file))
+        execute = test_lexer + " " + valid_lexer_SO + "/" + str(file) + " " +"2> {}.log".format(str(file))
         if x == 1:
             os.system(execute)
         if x == 0:
@@ -42,11 +43,11 @@ def invalid_lexer():
     counter = 0
     tmp = 0
     test_lexer = "launchers/test_lex"
-    invalid_lexer = "../deca/lexicographie/invalid"
+    invalid_lexer_SO = "../deca/lexicographie/invalid/SansObjet"
     print("~======================================================~")
-    for file in os.listdir(invalid_lexer):
+    for file in os.listdir(invalid_lexer_SO):
         tmp += 1
-        execute = test_lexer + " " + invalid_lexer + "/" + str(file) + " " +"2> {}.log".format(str(file))
+        execute = test_lexer + " " + invalid_lexer_SO + "/" + str(file) + " " +"2> {}.log".format(str(file))
         os.system(execute + "> lexer.txt")
         os.system("rm lexer.txt")
         if os.stat("{}.log".format(str(file))).st_size != 0:
@@ -54,7 +55,7 @@ def invalid_lexer():
             fichier = open("{}.log".format(str(file)), "r")
             read = fichier.readlines()[0]
             if read[0] == '.':
-                new_read = read[len(invalid_lexer) + 1:]
+                new_read = read[len(invalid_lexer_SO) + 1:]
             else:
                 new_read = read
             print(new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
@@ -65,9 +66,9 @@ def invalid_lexer():
     return counter, tmp
 
 
-# print("Tester les valides ? [1/0]")
-# val = int(input())
-val = 1
+print("Tester les valides ? [1/0]")
+val = int(input())
+#val = 1
 if val == 1:
     y = valid_lexer()
     if (y[0] == y[1]):
@@ -76,9 +77,9 @@ if val == 1:
     else:
         print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS VALID LEXER ERROR].-~-.-~-.-~".format(str(y[1] -y[0]))+color.ENDC)
         print("~========================================================================~")
-# print("Tester les invalides ? [1/0]")
-# inval = int(input())
-inval = 1
+print("Tester les invalides ? [1/0]")
+inval = int(input())
+#inval = 1
 if inval == 1:
     x = invalid_lexer()
     if (x[0] == x[1]):

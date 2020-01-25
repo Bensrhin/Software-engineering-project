@@ -15,7 +15,10 @@ public class Signature {
     public void add(Type t) {
         args.add(t);
     }
-
+    public List<Type> getArgs()
+    {
+      return args;
+    }
     public Type paramNumber(int n) {
         return args.get(n);
     }

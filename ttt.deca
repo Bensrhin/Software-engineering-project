@@ -1,0 +1,27 @@
+class A{
+float get1(){
+	return 1.0;
+}
+float get2(){
+	return 3.706;
+}
+int get3(){
+	return 40320;
+}
+float factoriel(int n){
+        float x =get1();
+	float y = get2();
+	float z = get3();
+	float a = x*y/z;
+	return this.get1()*this.get2()/this.get3();
+	//return a;
+    }
+}
+{
+float x = -2;
+int y = -3;
+A a = new A();
+float t = a.factoriel(10);
+println(t);
+}
+

@@ -1,0 +1,255 @@
+	TSTO #11
+	BOV pile_pleine
+	ADDSP #30
+; table des methodes
+; Main program
+; Beginning of main instructions:
+	LOAD #6, R2
+	STORE R2, 1(GB)
+	LOAD 1(GB), R5
+	LOAD #15, R6
+	SUB R6, R5
+	LOAD R5, R1
+	BGT OpCmp_if_in_a413
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a413
+OpCmp_if_in_a413:
+	LOAD #0, R1
+OpCmp_fin_in_a413:
+	LOAD R1, R4
+	LOAD R4, R1
+	BEQ And_else_in_a412
+	LOAD 1(GB), R8
+	LOAD #1, R9
+	SUB R9, R8
+	LOAD R8, R1
+	BLE OpCmp_if_in_a425
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a425
+OpCmp_if_in_a425:
+	LOAD #0, R1
+OpCmp_fin_in_a425:
+	LOAD R1, R7
+	LOAD R7, R1
+	BEQ And_else_in_a412
+	LOAD #1, R1
+	BRA And_fin_in_a412
+And_else_in_a412:
+	LOAD #0, R1
+And_fin_in_a412:
+	LOAD R1, R3
+	LOAD R3, R1
+	BEQ And_else_in_a421
+	LOAD 1(GB), R12
+	LOAD 1(GB), R13
+	MUL R13, R12
+	BOV over_flow
+	LOAD #36, R13
+	SUB R13, R12
+	LOAD R12, R1
+	BEQ OpCmp_if_in_a438
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a438
+OpCmp_if_in_a438:
+	LOAD #0, R1
+OpCmp_fin_in_a438:
+	LOAD R1, R11
+	LOAD R11, R1
+	BNE And_else_in_a437
+	LOAD 1(GB), R15
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD #0, R2
+	SUB R2, R15
+	LOAD R15, R1
+	BLT OpCmp_if_in_a453
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a453
+OpCmp_if_in_a453:
+	LOAD #0, R1
+OpCmp_fin_in_a453:
+	LOAD R1, R14
+	LOAD R14, R1
+	BNE And_else_in_a437
+	LOAD #0, R1
+	BRA And_fin_in_a437
+And_else_in_a437:
+	LOAD #1, R1
+And_fin_in_a437:
+	LOAD R1, R10
+	LOAD R10, R1
+	BEQ And_else_in_a421
+	LOAD #1, R1
+	BRA And_fin_in_a421
+And_else_in_a421:
+	LOAD #0, R1
+And_fin_in_a421:
+	LOAD R1, R2
+	STORE R2, 2(GB)
+	POP R2
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	LOAD 1(GB), R3
+	OPP R3, R3
+	STORE R3, 1(GB)
+	POP R3
+While_cond_a66:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	TSTO #1
+	BOV pile_pleine
+	PUSH R7
+	LOAD 1(GB), R7
+	TSTO #1
+	BOV pile_pleine
+	PUSH R8
+	LOAD #15, R8
+	SUB R8, R7
+	LOAD R7, R1
+	BGT OpCmp_if_in_a67
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a67
+OpCmp_if_in_a67:
+	LOAD #0, R1
+OpCmp_fin_in_a67:
+	LOAD R1, R6
+	LOAD R6, R1
+	BEQ And_else_in_a66
+	TSTO #1
+	BOV pile_pleine
+	PUSH R9
+	TSTO #1
+	BOV pile_pleine
+	PUSH R10
+	LOAD 1(GB), R10
+	TSTO #1
+	BOV pile_pleine
+	PUSH R11
+	LOAD #1, R11
+	SUB R11, R10
+	LOAD R10, R1
+	BLE OpCmp_if_in_a619
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a619
+OpCmp_if_in_a619:
+	LOAD #0, R1
+OpCmp_fin_in_a619:
+	LOAD R1, R9
+	LOAD R9, R1
+	BEQ And_else_in_a66
+	LOAD #1, R1
+	BRA And_fin_in_a66
+And_else_in_a66:
+	LOAD #0, R1
+And_fin_in_a66:
+	LOAD R1, R5
+	LOAD R5, R1
+	BEQ And_else_in_a615
+	TSTO #1
+	BOV pile_pleine
+	PUSH R12
+	TSTO #1
+	BOV pile_pleine
+	PUSH R13
+	TSTO #1
+	BOV pile_pleine
+	PUSH R14
+	LOAD 1(GB), R14
+	TSTO #1
+	BOV pile_pleine
+	PUSH R15
+	LOAD 1(GB), R15
+	MUL R15, R14
+	BOV over_flow
+	POP R15
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD #36, R2
+	SUB R2, R14
+	LOAD R14, R1
+	BEQ OpCmp_if_in_a632
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a632
+OpCmp_if_in_a632:
+	LOAD #0, R1
+OpCmp_fin_in_a632:
+	LOAD R1, R13
+	LOAD R13, R1
+	BNE And_else_in_a631
+	TSTO #1
+	BOV pile_pleine
+	PUSH R3
+	TSTO #1
+	BOV pile_pleine
+	PUSH R4
+	LOAD 1(GB), R4
+	TSTO #1
+	BOV pile_pleine
+	PUSH R5
+	LOAD #0, R5
+	SUB R5, R4
+	LOAD R4, R1
+	BLT OpCmp_if_in_a647
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a647
+OpCmp_if_in_a647:
+	LOAD #0, R1
+OpCmp_fin_in_a647:
+	LOAD R1, R3
+	LOAD R3, R1
+	BNE And_else_in_a631
+	LOAD #0, R1
+	BRA And_fin_in_a631
+And_else_in_a631:
+	LOAD #1, R1
+And_fin_in_a631:
+	LOAD R1, R12
+	LOAD R12, R1
+	BEQ And_else_in_a615
+	LOAD #1, R1
+	BRA And_fin_in_a615
+And_else_in_a615:
+	LOAD #0, R1
+And_fin_in_a615:
+	LOAD R1, R4
+	LOAD R4, R1
+	BNE While_fin_a66
+	WSTR "ok"
+	WNL
+	TSTO #1
+	BOV pile_pleine
+	PUSH R6
+	LOAD 1(GB), R6
+	OPP R6, R6
+	STORE R6, 1(GB)
+	POP R6
+	BRA While_cond_a66
+While_fin_a66:
+	HALT
+code.Object.equals:
+pile_pleine:
+	WSTR "Error: Stack Overflow"
+	WNL
+	ERROR
+over_flow:
+	WSTR "Error: Overflow during arithmetic operation"
+	WNL
+	ERROR
+i0_error:
+	WSTR "Error: Input/Output error"
+	WNL
+	ERROR
+divisionErr:
+	WSTR "Error :Division par 0"
+	WNL
+	ERROR

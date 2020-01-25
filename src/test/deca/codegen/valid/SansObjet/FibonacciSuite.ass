@@ -1,0 +1,83 @@
+	TSTO #11
+	BOV pile_pleine
+	ADDSP #30
+; table des methodes
+; Main program
+; Beginning of main instructions:
+	LOAD #7, R2
+	STORE R2, 1(GB)
+	LOAD #0, R2
+	STORE R2, 2(GB)
+	LOAD #0, R2
+	STORE R2, 3(GB)
+	LOAD #1, R2
+	STORE R2, 4(GB)
+	LOAD #0, R2
+	STORE R2, 5(GB)
+While_cond_a76:
+	LOAD 2(GB), R3
+	LOAD 1(GB), R4
+	SUB R4, R3
+	LOAD R3, R1
+	BLE OpCmp_if_in_a76
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a76
+OpCmp_if_in_a76:
+	LOAD #0, R1
+OpCmp_fin_in_a76:
+	LOAD R1, R2
+	LOAD R2, R1
+	BNE While_fin_a76
+	LOAD 2(GB), R6
+	LOAD #2, R7
+	SUB R7, R6
+	LOAD R6, R1
+	BLT OpCmp_if_in_a87
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a87
+OpCmp_if_in_a87:
+	LOAD #0, R1
+OpCmp_fin_in_a87:
+	LOAD R1, R5
+	LOAD R5, R1
+	BNE IfThenElse_else_a87
+	LOAD 2(GB), R8
+	STORE R8, 5(GB)
+	BRA IfThenElse_fin_a87
+IfThenElse_else_a87:
+	LOAD 3(GB), R8
+	LOAD 4(GB), R9
+	ADD R9, R8
+	STORE R8, 5(GB)
+	LOAD 4(GB), R8
+	STORE R8, 3(GB)
+	LOAD 5(GB), R8
+	STORE R8, 4(GB)
+IfThenElse_fin_a87:
+	LOAD 2(GB), R8
+	LOAD #1, R9
+	ADD R9, R8
+	STORE R8, 2(GB)
+	BRA While_cond_a76
+While_fin_a76:
+	LOAD 5(GB), R1
+	WINT
+	WNL
+	HALT
+code.Object.equals:
+pile_pleine:
+	WSTR "Error: Stack Overflow"
+	WNL
+	ERROR
+over_flow:
+	WSTR "Error: Overflow during arithmetic operation"
+	WNL
+	ERROR
+i0_error:
+	WSTR "Error: Input/Output error"
+	WNL
+	ERROR
+divisionErr:
+	WSTR "Error :Division par 0"
+	WNL
+	ERROR

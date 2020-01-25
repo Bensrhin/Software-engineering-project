@@ -49,8 +49,8 @@ public class Return extends AbstractInst {
             throw new ContextualError("Il s'agit d'une méthode de type \"void\", " +
                                       "le \"return\" pose un problème (règle 3.24)", this.getLocation());
         }
-        this.getRvalue().verifyRValue(compiler, localEnv, currentClass, returnType);
-
+        this.rvalue = this.getRvalue().verifyRValue(compiler, localEnv, currentClass, returnType);
+        
 
     }
 

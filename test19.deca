@@ -10,5 +10,5 @@ class B{
 {
 B b = new B();
 int x = b.a.x;
-println(x);
+println(b.a.x);
 }

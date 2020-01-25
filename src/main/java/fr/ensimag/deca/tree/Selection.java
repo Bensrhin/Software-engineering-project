@@ -66,6 +66,7 @@ public class Selection extends AbstractLValue{
             id.decompile() + "\" est déclaré : problème de visibilité (règle 3.66)",this.getLocation());
           }
         }
+        this.setType(field.getType());
         return field.getType();
     }
     @Override
