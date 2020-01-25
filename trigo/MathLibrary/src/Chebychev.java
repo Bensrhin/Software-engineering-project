@@ -146,7 +146,7 @@ public class Chebychev {
             x = coefX * (1 - m.power(2, -2 * i)) - coefY * d * m.power(2, 1 - i);
             y = coefY * (1 - m.power(2, -2 * i)) + coefX * d * m.power(2, 1 - i);
 
-            teta = teta +  2 * d * (float)Math.atan(Math.pow(2, -i));
+            teta = teta +  2 * d * arctan(m.power(2, -i));
 
             t = t + t * m.power(2, -2*i);
 

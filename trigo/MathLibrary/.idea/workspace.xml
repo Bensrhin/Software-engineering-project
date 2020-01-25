@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="206b755a-9ec6-4a00-9070-a2f41135cfca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/Chebychev.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/Chebychev.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/ChebychevValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/ChebychevValues.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/TestrangeReduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/TestrangeReduction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathLibrary/rangeReduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathLibrary/rangeReduction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Chebychev.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Chebychev.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChebychevValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChebychevValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestrangeReduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestrangeReduction.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +74,7 @@
       <updated>1579876199205</updated>
       <workItem from="1579876202604" duration="9313000" />
       <workItem from="1579896375908" duration="748000" />
-      <workItem from="1579901898490" duration="8567000" />
+      <workItem from="1579901898490" duration="8815000" />
     </task>
     <servers />
   </component>
