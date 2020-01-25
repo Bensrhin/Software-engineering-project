@@ -322,9 +322,12 @@ public class Identifier extends AbstractIdentifier {
             GPRegister reg = e.codeGenLoad(compiler);
             compiler.addInstruction(new STORE(reg, new RegisterOffset(-j, Register.SP)));
             j ++;
+            compiler.getRegisterManager().used.add(reg);
             compiler.getRegisterManager().freeReg(compiler, reg);
         }
         compiler.addInstruction(new LOAD(SP0, r));
+        compiler.addInstruction(new CMP(new ImmediateNull(), r));
+        compiler.addInstruction(new BEQ(new Label("pile_pleine")));
         compiler.addInstruction(new LOAD(new RegisterOffset(0, r), r));
         compiler.addInstruction(new BSR(new RegisterOffset(this.getMethodDefinition().getIndex(), r)));
     }

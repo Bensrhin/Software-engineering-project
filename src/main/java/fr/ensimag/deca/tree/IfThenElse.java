@@ -74,6 +74,8 @@ public class IfThenElse extends AbstractInst {
         compiler.addLabel(labelElse);
         elseBranch.codeGenListInst(compiler);
         compiler.addLabel(labelFin);
+         compiler.getRegisterManager().used.add(r1);
+        compiler.getRegisterManager().freeReg(compiler, r1);
     }
 
     @Override

@@ -29,6 +29,8 @@ public class Plus extends AbstractOpArith {
         GPRegister R1 = Register.R1;
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
+        compiler.getRegisterManager().used.add(r1);
+        compiler.getRegisterManager().used.add(r2);
         compiler.addInstruction(new ADD(r2, r1));
         compiler.getRegisterManager().freeReg(compiler, r2);
         compiler.addInstruction(new LOAD(r1, R1));
@@ -40,6 +42,7 @@ public class Plus extends AbstractOpArith {
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new ADD(r2, r1));
         compiler.getRegisterManager().freeReg(compiler, r2);
+         compiler.getRegisterManager().used.add(r2);
         return r1;
     }
 }

@@ -78,6 +78,7 @@ public class Initialization extends AbstractInitialization {
         if(r != null){
             compiler.addInstruction(new STORE(r,new RegisterOffset(i, Register.GB)));
             compiler.getRegisterManager().freeReg(compiler, r);
+             compiler.getRegisterManager().used.add(r);
         }
 
     }
