@@ -50,7 +50,7 @@ def valid_context():
         print("======================================================")
         os.system("rm *.log")
         
-    print(color.BOLD+color.OKBLUE+"  X+X+X+X+X[TEST SANS OBJET Context] *** "+color.ENDC)
+    print(color.BOLD+color.OKBLUE+"  X+X+X+X+X  [TEST SANS OBJET Context]  X+X+X+X+X "+color.ENDC)
     print("~======================================================~")
 
     for file in files(valid_context_O):
