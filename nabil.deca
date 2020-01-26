@@ -1,29 +1,12 @@
-class A
-{
-  int x(A a)
-  {
-    return 7;
-  }
-}
-class X
-{
-  int a ;
-  void m()
-  {
-    C c = new C();
-    B b = new B();
-    println(b.x());
-  }
-}
-class B extends A
-{
+//25
 
+
+class A {
+  int x = 10;
 }
 
-class C extends X
-{
-  int x()
-  {
-    return 4;
+ {
+    A myObj = new A();
+    myObj.x = 25;
+   println(myObj.x);
   }
-}

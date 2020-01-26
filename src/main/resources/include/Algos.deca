@@ -135,10 +135,9 @@ class Chebychev {
             }
             else{
                 c = b.BPOptVal(value);
-                BP = b.breakPoint(c.x, c.y);
+                BP = b.breakPoint(c.getX(), c.getY());
                 r = value - BP;
-
-                return values.ChebyValuesSin(c.x, c.y)*a.ChebychevCosinus(r) + values.ChebyValuesCos(c.x,c.y)*a.ChebychevSinus(r);
+                return (values.ChebyValuesSin(c.getX(), c.getY())*a.ChebychevCosinus(r)) + (values.ChebyValuesCos(c.getX(),c.getY())*a.ChebychevSinus(r));
             }
         }
 
@@ -175,9 +174,9 @@ class Chebychev {
             }
             else{
                 c = b.BPOptVal(value);
-                BP = b.breakPoint(c.x, c.y);
+                BP = b.breakPoint(c.getX(), c.getY());
                 r = value - BP;
-                return values.ChebyValuesCos(c.x, c.y)*a.ChebychevCosinus(r) - values.ChebyValuesSin(c.x, c.y)*a.ChebychevSinus(r);
+                return values.ChebyValuesCos(c.getX(), c.getY())*a.ChebychevCosinus(r) - values.ChebyValuesSin(c.getX(), c.getY())*a.ChebychevSinus(r);
             }
         }
 
@@ -235,7 +234,7 @@ class Chebychev {
         else {
             i = this.getIndexActan(value);
             x = values.otherActanVal(i - 1);
-            t = 1/x - (m.power(x, -2) + 1)/(m.power(x, -1) + value);
+            t = (1/x) - ((m.power(x, -2) + 1)/(m.power(x, -1) + value));
             return (2 * i - 2) * Pi32 + this.arctanCheb(t);
         }
     }
@@ -270,11 +269,11 @@ class Chebychev {
             coefX = x;
             coefY = y;
 
-            x = coefX * (1 - m.power(2, -2 * i)) - coefY * d * m.power(2, 1 - i);
-            y = coefY * (1 - m.power(2, -2 * i)) + coefX * d * m.power(2, 1 - i);
+            x = coefX * (1 - m.power(2.0, -2 * i)) - coefY * d * m.power(2.0, 1 - i);
+            y = coefY * (1 - m.power(2.0, -2 * i)) + coefX * d * m.power(2.0, 1 - i);
 
-            teta = teta +  2 * d * this.arctanCheb(m.power(2, -i));
-            t = t + t * m.power(2, -2 * i);
+            teta = teta + (2 * d * this.arctanCheb(m.power(2, -i)));
+            t = t + (t * m.power(2, -2 * i));
             i = i + 1;
         }
         return teta;

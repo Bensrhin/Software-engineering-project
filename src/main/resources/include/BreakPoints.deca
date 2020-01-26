@@ -16,8 +16,8 @@ class BreakPoints{
                 if(m.abs(BP - value) > m.abs(this.breakPoint(j, k) - value)){
                     temoin = 1;
                     BP = this.breakPoint(j, k);
-                    index.x = j;
-                    index.y = k;
+                    index.setX(j);
+                    index.setY(k);
                 }
                 k = k+1;
             }
@@ -25,9 +25,14 @@ class BreakPoints{
             j = j+1;
         }
         if (temoin == 0){
+<<<<<<< HEAD
             index.x = 1;
 println("1");
             index.y = 0;
+=======
+            index.setX(1);
+            index.setY(0);
+>>>>>>> 00bd91687a3cf2d387968bb40e047f0458cba1ac
         }
 
         return index;

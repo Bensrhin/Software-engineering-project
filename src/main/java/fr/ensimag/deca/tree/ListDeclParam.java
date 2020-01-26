@@ -29,7 +29,7 @@ public class ListDeclParam extends TreeList<AbstractDeclParam> {
       while (params.hasNext())
       {
           param = params.next();
-          s.print(",");
+          s.print(", ");
           param.decompile(s);
       }
 

@@ -75,7 +75,7 @@ public class TestTaylor {
     public void testAsin(int degre, int seuilUlp){
         Taylor method = new Taylor();
         int count = 0;
-        for (float i = 0; i < halfPi/2; i+= 0.00001) {
+        for (float i = 0; i < 1; i+= 0.01) {
 
             float asin = method.taylorArcsin(i, degre);
             float realasin = (float) Math.asin(i);
@@ -93,13 +93,13 @@ public class TestTaylor {
     public static void main(String[] args) {
         TestTaylor test = new TestTaylor();
 
-        test.testSinus(7,1);
+        //test.testSinus(7,1);
 
         //test.testCosinus(7,1);
 
         //test.testActan(7,2);
 
-        //test.testAsin(7, 1);
+        test.testAsin(7, 1);
 
     }
 }

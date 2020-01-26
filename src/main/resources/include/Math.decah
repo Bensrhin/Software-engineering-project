@@ -2,9 +2,11 @@
 // Library for class Math of Deca, coded in Deca
 
 #include "Taylor.deca"
+#include "Methods.deca"
 
 class Math {
     Taylor t = new Taylor();
+    Methods methode = new Methods();
 
     float sin(float f) {
         return t.taylorSinus(f,7);
@@ -20,7 +22,7 @@ class Math {
         return t.taylorArctan(f,7);
     }
     void ulp(float f) {
-        println("ulp(f) not yet implemented");
+        return m.ulp(f);
     }
 }
 
