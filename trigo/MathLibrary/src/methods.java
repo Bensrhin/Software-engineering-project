@@ -1,5 +1,19 @@
 public class methods {
 
+    static float racine(float x){
+        if (x == 0) {
+            return 0.0f;
+        }
+        float result = x;
+        int i = 0;
+
+        while (i < 100){
+            result = 0.5f*(result + x/result);
+            i = i + 1;
+        }
+
+        return result;
+    }
     static float power(float value1, float value2){
         float counter = 0.0F;
         float result = 1.0F;
