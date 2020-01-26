@@ -240,42 +240,10 @@ class Chebychev {
     }
 
     float arcsinCheb(float value){
-        float teta = 0;
-        float coefX = 0;
-        float coefY = 0;
-        float x = 1;
-        float y = 0;
-        float t = value;
-        int d = 1;
-        int i = 0;
+        float newVal = value / m.racine(1.0f - m.power(value, 2));
+        float result = this.arctanCheb(newVal);
 
-        while (i < 250){
-            if (y <= t) {
-                if (x >= 0){
-                    d = 1;
-                }
-                else {
-                    d = -1;
-                }
-            }
-            else {
-                if (x >= 0){
-                    d = -1;
-                }
-                else {
-                    d = 1;
-                }
-            }
-            coefX = x;
-            coefY = y;
-
-            x = coefX * (1 - m.power(2.0, -2 * i)) - coefY * d * m.power(2.0, 1 - i);
-            y = coefY * (1 - m.power(2.0, -2 * i)) + coefX * d * m.power(2.0, 1 - i);
-
-            teta = teta + (2 * d * this.arctanCheb(m.power(2, -i)));
-            t = t + (t * m.power(2, -2 * i));
-            i = i + 1;
-        }
-        return teta;
+        return result;
     }
+
 }

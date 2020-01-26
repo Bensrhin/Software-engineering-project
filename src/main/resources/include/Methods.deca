@@ -1,5 +1,23 @@
 class Methods {
 
+    float racine(float x){
+        float result = x;
+        int i = 0;
+
+        if (x == 0) {
+            return 0.0f;
+        }
+
+        else {
+            while (i < 100){
+                result = (result + x/result)/2;
+                i = i + 1;
+            }
+            return result;
+        }
+
+    }
+
     int factoriel(int n){
         if (n == 0){
             return 1;
