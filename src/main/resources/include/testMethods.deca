@@ -5,6 +5,7 @@
     float var = (float) (-1/32);
     float var2 = PI/6;
     float var1 = PI/2;
+    float var3 = PI/4;
 
 
     Taylor t = new Taylor();
@@ -22,15 +23,15 @@
     float chebySinReduit = c.ChebychevSinus(var);
     float chebyCosReduit = c.ChebychevCosinus(var);
 
-    float chebySin = ch.sinCheb(0.0312f);
-    float chebyCos = ch.cosCheb(0.0312f);
-    float chebyAtan = ch.arctanCheb(0.09849140335716425f);
-    //float chebyAsin = ch.arcsinCheb(var1);
+    float chebySin = ch.sinCheb(var3);
+    float chebyCos = ch.cosCheb(var3);
 
+    //float chebyAtan = ch.arctanCheb(PI);
+    float chebyAsin = ch.arcsinCheb(PI);
 
-    println("sinCheby(0.0312f) =",chebySin);
-    println("cosCheby(0.0312f) =",chebyCos);
-    println("chebyAtan(0.09849140335716425f) = ",chebyAtan);
+    println("sinCheby(PI/4) =",chebySin);
+    println("cosCheby(PI/4) =",chebyCos);
+    //println("chebyAtan(PI) = ",chebyAtan);
     //println(chebyAsin);
     
     

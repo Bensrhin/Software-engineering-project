@@ -135,10 +135,9 @@ class Chebychev {
             }
             else{
                 c = b.BPOptVal(value);
-                BP = b.breakPoint(c.x, c.y);
+                BP = b.breakPoint(c.getX(), c.getY());
                 r = value - BP;
-
-                return values.ChebyValuesSin(c.x, c.y)*a.ChebychevCosinus(r) + values.ChebyValuesCos(c.x,c.y)*a.ChebychevSinus(r);
+                return (values.ChebyValuesSin(c.getX(), c.getY())*a.ChebychevCosinus(r)) + (values.ChebyValuesCos(c.getX(),c.getY())*a.ChebychevSinus(r));
             }
         }
 
@@ -175,9 +174,9 @@ class Chebychev {
             }
             else{
                 c = b.BPOptVal(value);
-                BP = b.breakPoint(c.x, c.y);
+                BP = b.breakPoint(c.getX(), c.getY());
                 r = value - BP;
-                return values.ChebyValuesCos(c.x, c.y)*a.ChebychevCosinus(r) - values.ChebyValuesSin(c.x, c.y)*a.ChebychevSinus(r);
+                return values.ChebyValuesCos(c.getX(), c.getY())*a.ChebychevCosinus(r) - values.ChebyValuesSin(c.getX(), c.getY())*a.ChebychevSinus(r);
             }
         }
 
