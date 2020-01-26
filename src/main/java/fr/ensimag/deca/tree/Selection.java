@@ -72,7 +72,7 @@ public class Selection extends AbstractLValue{
         return field.getType();
     }
     @Override
-    public Definition getDefinition()
+    public ExpDefinition getExpDefinition()
     {
       return this.definition;
     }
@@ -82,7 +82,7 @@ public class Selection extends AbstractLValue{
         id.iterChildren(f);
 
     }
-    private Definition definition;
+    private ExpDefinition definition;
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
       expr.prettyPrint(s, prefix, true);

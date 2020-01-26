@@ -29,11 +29,11 @@ public class MethodCall extends AbstractLValue{
        this.args = args;
     }
     @Override
-    public Definition getDefinition()
+    public ExpDefinition getExpDefinition()
     {
       return this.definition;
     }
-    private Definition definition;
+    private ExpDefinition definition;
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
