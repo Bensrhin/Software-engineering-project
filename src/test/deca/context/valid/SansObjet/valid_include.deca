@@ -1,6 +1,0 @@
-#include "AutreInclude.decah"
-
-{
-    int x;
-    int y;
-}
