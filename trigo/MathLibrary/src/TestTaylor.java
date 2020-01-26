@@ -5,7 +5,7 @@ public class TestTaylor {
     public void testSinus(int degre, int seuilUlp){
         Taylor method = new Taylor();
         int count = 0;
-        for (float i = 0; i < Math.PI/64; i+= 0.001) {
+        for (float i = (float)-Math.PI/64; i < Math.PI/64; i+= 0.001) {
 
             float sin = method.taylorSinus(i, degre);
             float realsin = (float) Math.sin(i);
@@ -23,7 +23,7 @@ public class TestTaylor {
     public void testCosinus(int degre, int seuilUlp){
         Taylor method = new Taylor();
         int count = 0;
-        for (float i = (float)(10 * Math.PI / 25); i < halfPi + 0.1; i+= 0.001) {
+        for (float i = (float)(halfPi - 0.1); i < halfPi + 0.1; i+= 0.01) {
 
             float cos = method.taylorCosinus(i, degre);
             float realcos = (float) Math.cos(i);
@@ -44,11 +44,12 @@ public class TestTaylor {
         /**
          * Test for big / small numbers
          */
+
         int count = 0;
-        for (float i = 0; i < 127; i++) {
-            float j =(float)Math.pow(2,-i);
-            float actan = method.taylorArctan(j, degre);
-            float realactan = (float) Math.atan(j);
+        for (float i = -0.4f; i < 0.4; i+=0.01) {
+            //float j =(float)Math.pow(2,-i);
+            float actan = method.taylorArctan(i, degre);
+            float realactan = (float) Math.atan(i);
             float err = Math.abs(actan - realactan)/Math.ulp(realactan);
             System.out.println(" My actan : "+ actan + " ~~~~ Real actan : "+ realactan);
             System.out.println(" the error ulp is : " + err);
@@ -84,7 +85,8 @@ public class TestTaylor {
             System.out.println(" the error ulp is : " + err);
 
             if (err > seuilUlp){
-                count += 1;
+                System.out.println("we are here : " + i);
+
             }
         }
         System.out.println(count);
@@ -92,14 +94,15 @@ public class TestTaylor {
 
     public static void main(String[] args) {
         TestTaylor test = new TestTaylor();
-
+        Taylor t = new Taylor();
         //test.testSinus(7,1);
 
         //test.testCosinus(7,1);
+        //System.out.println(t.taylorCosinus(Pi/2, 7));
 
-        //test.testActan(7,2);
+        test.testActan(7,2);
 
-        test.testAsin(33, 1);
+        //test.testAsin(33, 1);
 
     }
 }

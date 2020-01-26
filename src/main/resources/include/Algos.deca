@@ -247,3 +247,49 @@ class Chebychev {
     }
 
 }
+
+
+class finalTrigo {
+    float Pi = 3.1415926f;
+    Chebychev cheb = new Chebychev();
+    Taylor tayl = new Taylor();
+
+    float sinf(float value){
+        float seuil = Pi/64;
+        if (value < seuil && value > -seuil){
+            return tayl.taylorSinus(value, 7);
+        }
+
+        else {
+            return cheb.sinCheb(value);
+        }
+    }
+
+    float cosf(float value){
+        float seuilU = 0.1f + Pi/2;
+        float seuilD = -0.1f + Pi/2;
+
+        if (value < seuilU  && value > seuilD){
+            return tayl.taylorCosinus(value, 7);
+        }
+
+        else {
+            return cheb.cosCheb(value);
+        }
+    }
+
+    float arctanf(float value){
+        if (value < 0.4f && value >-0.4f){
+            return tayl.taylorArctan(value, 7);
+        }
+
+        else {
+            return cheb.arctanCheb(value);
+        }
+    }
+
+    float arcsinf(float value){
+        return cheb.arctanCheb(value);
+    }
+
+}
