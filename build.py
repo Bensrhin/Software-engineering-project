@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import random
-recursive = 4
+recursive = 12
 bool = ["false", "true"]
 dec = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 deca = dec + ["0"]
@@ -16,7 +16,7 @@ notusedVar = {}
 tVar = {}
 for i in T:
     tVar[i] = []
-code = ""
+code = "{\n"
 
 def excepting(tab1, tab2):
     tab = []
@@ -103,7 +103,7 @@ def declVar():
     global tVar
     global usedVar
     t  = Type()
-    id = identifier(excepting(var,list(usedVar.keys())))
+    id = identifier(excepting(var,list(usedVar.keys()) + list(notusedVar.keys())))
     if (random.randint(0, 2)):
         init = initialiser(t)
         code += (t + " " + id + " = " + init + ";\n")
@@ -118,7 +118,8 @@ def listDeclVar():
         declVar()
 
 def assign():
-
+    if len(notusedVar.keys()) == 0:
+        return ""
     id = identifier(list(notusedVar.keys()))
     rvalue = initialiser(notusedVar[id])
     usedVar[id] = notusedVar[id]
@@ -137,6 +138,7 @@ def assigns():
 """
 def ifthen(isElse):
     cond = initialiser("boolean")
+
     listinst = listInst(True)
     if (isElse):
         return ("{\n" + listinst + "}\n")
@@ -147,28 +149,75 @@ def ifthen(isElse):
 """
 def ifthenelse():
     global recursive
+
+    if (recursive <= 0):
+        return ""
+    recursive -= 1
     s = "if" + ifthen(False)
     for _ in range(random.randint(0, 3)):
         s += "else if" + ifthen(False)
     s += "else\n" + ifthen(True)
-    recursive -= 1
+
+
     return s
 """
 /*****************************************************************/
 """
+def whileInst():
+    global recursive
 
+    if (recursive <= 0):
+        return ""
+    recursive -= 1
+    cond = initialiser("boolean")
+    listinst = listInst(True)
+    return ("while (" + cond + ")\n" + "{\n" + listinst + "}\n")
+
+"""
+/*****************************************************************/
+"""
+def printExpr():
+    if len(usedVar.keys()) == 0:
+        return random.choice(string)
+    id = identifier(list(usedVar.keys()))
+    expr = initialiser(usedVar[id])
+    if (random.randint(0, 2)):
+        expr = "\"" + random.choice(string) + "\""
+    return expr
+def printInst():
+    s = "print"
+    if (random.randint(0, 2)):
+        s += "x"
+    if (random.randint(0, 2)):
+        s += "ln"
+    s += "("
+    if (random.randint(0, 4) == 0):
+        return s + ");\n"
+    s += printExpr()
+    for _ in range(random.randint(0, 3)):
+        s += ", " + printExpr()
+    return s + ");\n"
+"""
+/*****************************************************************/
+"""
 def inst(identation):
     ident = ""
+    tab = []
     if identation: ident = "\t"
-    tab = [ident + "print(\"HELLO\")\n"]
-    s = assigns()
-    if s: tab.append(ident + s)
-    s = ifthenelse()
-    if (s!="") & (recursive!=0): tab.append(ident + s)
+    s = printInst()
+    if s: tab += [ident + s]
+    s = assign()
+    if s: tab += [ident + s]
+    if (random.randint(0, 2)):
+        s = whileInst()
+        if s: tab += [ident + s]
+    else:
+        s = ifthenelse()
+        if s: tab += [ident + s]
     return random.choice(tab)
 def listInst(identation):
     s = ""
-    for _ in range(random.randint(0, 4)):
+    for _ in range(random.randint(0, 5)):
         s += inst(identation)
     return s
 """
@@ -176,5 +225,6 @@ def listInst(identation):
 """
 
 listDeclVar()
-code += ifthenelse()
-print(code, tVar)
+code += listInst(False)
+code += "}"
+print(code)
