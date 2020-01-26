@@ -167,9 +167,9 @@ def invalid_synt():
     return counter, tmp
 
 
-print("Tester les valides ? [1/0]")
-val = int(input())
-#val = 1
+# print("Tester les valides ? [1/0]")
+# val = int(input())
+val = 1
 if val == 1:
     y = valid_synt()
     if (y[0] == y[1]):
@@ -178,9 +178,9 @@ if val == 1:
     else:
         print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS VALID SYNT ERROR].-~-.-~-.-~".format(str(y[1] -y[0]))+color.ENDC)
         print("~========================================================================~")
-print("Tester les invalides ? [1/0]")
-inval = int(input())
-#inval =1
+# print("Tester les invalides ? [1/0]")
+# inval = int(input())
+inval =1
 if inval == 1:
     x = invalid_synt()
     if (x[0] == x[1]):
@@ -189,3 +189,6 @@ if inval == 1:
     else:
         print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS INVALID SYNT ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
         print("~========================================================================~")
+        
+print(color.BOLD+ color.OKBLUE+"     X+X+X+X+X  [{} TOTAL TESTS IN SYNT]  X+X+X+X+X".format(str(x[1] + y[1]))+color.ENDC)
+print("~========================================================================~")
