@@ -18,6 +18,7 @@ import java.io.PrintStream;
  *
  * @author
  */
+
 public class MethodCall extends AbstractLValue{
     private AbstractExpr expr;
     private AbstractIdentifier id;
@@ -28,8 +29,18 @@ public class MethodCall extends AbstractLValue{
        this.args = args;
     }
     @Override
+    public ExpDefinition getExpDefinition()
+    {
+      return this.definition;
+    }
+    private ExpDefinition definition;
+    @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
+        // if (currentClass == null)
+        // {
+        //   throw new ContextualError("Le programme principale n'a aucune méthode (règle 3.71)", expr.getLocation());
+        // }
         Type class2 = this.expr.verifyExpr(compiler, localEnv, currentClass);
         if (class2 == null || !class2.isClass())
         {
@@ -76,6 +87,14 @@ public class MethodCall extends AbstractLValue{
                           method.getLocation() + " règle(3.74)", this.getLocation());
         }
         this.setType(method.getType());
+        if (expr.decompile().equals("") || expr.decompile().equals("this"))
+        {
+          this.definition = method;
+        }
+        else
+        {
+            this.definition = new VariableDefinition(method.getType(), method.getLocation());
+        }
         return method.getType();
     }
     @Override

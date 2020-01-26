@@ -48,6 +48,7 @@ public class ThisLiteral extends AbstractExpr{
       {
         s.print("this");
       }
+      s.print("");
     }
     @Override
     String prettyPrintNode() {

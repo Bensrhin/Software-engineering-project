@@ -99,7 +99,7 @@ public class TestTaylor {
 
         //test.testActan(7,2);
 
-        test.testAsin(7, 1);
+        test.testAsin(33, 1);
 
     }
 }

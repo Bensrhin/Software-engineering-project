@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import random
-
+recursive = 12
 bool = ["false", "true"]
 dec = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 deca = dec + ["0"]
@@ -11,11 +11,12 @@ string = ["Bonjour", "projetGL", "groupe 53", "test auto"]
 arith = [" + ", " / ", " * ", " - "]
 cmp = [" < ", " <= ", " > ", " >= ", " == ", " != "]
 bl = [" && ", " || "]
-usedVar = []
+usedVar = {}
+notusedVar = {}
 tVar = {}
 for i in T:
     tVar[i] = []
-code = ""
+code = "{\n"
 
 def excepting(tab1, tab2):
     tab = []
@@ -51,12 +52,14 @@ def opsCmp(Tab):
 """
 /*****************************************************************/
 """
-def opArith(a, b):
-    return ("(" + a + random.choice(arith) + b + ")")
-def opsAriths(Tab):
-    s = opArith(random.choice(Tab), random.choice(Tab))
+def opArith(a, b, bool):
+    add = []
+    if bool : add = [" % "]
+    return ("(" + a + random.choice(arith + add) + b + ")")
+def opsAriths(Tab, bool):
+    s = opArith(random.choice(Tab), random.choice(Tab), bool)
     for _ in range(random.randint(0, 4)):
-        s += random.choice(arith) + opArith(random.choice(Tab), random.choice(Tab))
+        s += random.choice(arith) + opArith(random.choice(Tab), random.choice(Tab), bool)
     return s
 """
 /*****************************************************************/
@@ -73,6 +76,8 @@ def opsBools(Tab):
                           [opBool(random.choice(Tab), random.choice(Tab)),
                           opCmp(random.choice(tab1), random.choice(tab1))] )
     return s
+
+
 """
 /*****************************************************************/
 """
@@ -88,9 +93,9 @@ def initialiser(t):
         return opsBools(bool + add)
 
     if (t == "int"):
-        return opsAriths(deca + ints + add)
+        return opsAriths(deca + ints + add, True)
     elif (t == "float"):
-        return opsAriths(deca + ints + doubles + add + tVar["int"])
+        return opsAriths(deca + ints + doubles + add + tVar["int"], False)
     # return opsAriths(deca + ints)
 
 def declVar():
@@ -98,16 +103,128 @@ def declVar():
     global tVar
     global usedVar
     t  = Type()
-    id = identifier(excepting(var,usedVar))
-    init = initialiser(t)
-    code += (t + " " + id + " = " + init + ";\n")
-    tVar[t] += [id]
-    usedVar += [id]
+    id = identifier(excepting(var,list(usedVar.keys()) + list(notusedVar.keys())))
+    if (random.randint(0, 2)):
+        init = initialiser(t)
+        code += (t + " " + id + " = " + init + ";\n")
+        tVar[t] += [id]
+        usedVar[id] = t
+    else:
+        code += (t + " " + id + ";\n")
+        tVar[t] += [id]
+        notusedVar[id] = t
 def listDeclVar():
-    for _ in range(random.randint(3, len(excepting(var,usedVar)))):
+    for _ in range(random.randint(3, len(excepting(var,list(usedVar.keys()))))):
         declVar()
 
+def assign():
+    if len(notusedVar.keys()) == 0:
+        return ""
+    id = identifier(list(notusedVar.keys()))
+    rvalue = initialiser(notusedVar[id])
+    usedVar[id] = notusedVar[id]
+    del notusedVar[id]
+    return (id + " = " + rvalue + ";\n")
 
-# print(opsAriths(deca))
+def assigns():
+
+    s = ""
+    for _ in range(random.randint(0, len(notusedVar.keys()))):
+        s +=  assign()
+    return s
+
+"""
+/*****************************************************************/
+"""
+def ifthen(isElse):
+    cond = initialiser("boolean")
+
+    listinst = listInst(True)
+    if (isElse):
+        return ("{\n" + listinst + "}\n")
+    return (" (" + cond + ")\n" + "{\n" + listinst + "}\n")
+
+"""
+/*****************************************************************/
+"""
+def ifthenelse():
+    global recursive
+
+    if (recursive <= 0):
+        return ""
+    recursive -= 1
+    s = "if" + ifthen(False)
+    for _ in range(random.randint(0, 3)):
+        s += "else if" + ifthen(False)
+    s += "else\n" + ifthen(True)
+
+
+    return s
+"""
+/*****************************************************************/
+"""
+def whileInst():
+    global recursive
+
+    if (recursive <= 0):
+        return ""
+    recursive -= 1
+    cond = initialiser("boolean")
+    listinst = listInst(True)
+    return ("while (" + cond + ")\n" + "{\n" + listinst + "}\n")
+
+"""
+/*****************************************************************/
+"""
+def printExpr():
+    if len(usedVar.keys()) == 0:
+        return random.choice(string)
+    id = identifier(list(usedVar.keys()))
+    expr = initialiser(usedVar[id])
+    if (random.randint(0, 2)):
+        expr = "\"" + random.choice(string) + "\""
+    return expr
+def printInst():
+    s = "print"
+    if (random.randint(0, 2)):
+        s += "x"
+    if (random.randint(0, 2)):
+        s += "ln"
+    s += "("
+    if (random.randint(0, 4) == 0):
+        return s + ");\n"
+    s += printExpr()
+    for _ in range(random.randint(0, 3)):
+        s += ", " + printExpr()
+    return s + ");\n"
+"""
+/*****************************************************************/
+"""
+def inst(identation):
+    ident = ""
+    tab = []
+    if identation: ident = "\t"
+    s = printInst()
+    if s: tab += [ident + s]
+    s = assign()
+    if s: tab += [ident + s]
+    if (random.randint(0, 2)):
+        s = whileInst()
+        if s: tab += [ident + s]
+    else:
+        s = ifthenelse()
+        if s: tab += [ident + s]
+    return random.choice(tab)
+def listInst(identation):
+    s = ""
+    for _ in range(random.randint(0, 5)):
+        s += inst(identation)
+    return s
+"""
+/*****************************************************************/
+"""
+
 listDeclVar()
-print(code, tVar)
+code += listInst(False)
+code += "}"
+print(code)

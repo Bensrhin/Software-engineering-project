@@ -26,7 +26,7 @@
     float chebySin = ch.sinCheb(var3);
     float chebyCos = ch.cosCheb(var3);
 
-    float chebyAtan = ch.arctanCheb(PI);
+    float chebyAtan = ch.arctanCheb(0.09849140335716425f);
     //float chebyAsin = ch.arcsinCheb(0.0);
 
     println("sinCheby(PI/4) =",chebySin);

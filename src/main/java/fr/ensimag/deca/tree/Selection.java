@@ -17,6 +17,7 @@ import java.io.PrintStream;
  *
  * @author
  */
+
 public class Selection extends AbstractLValue{
     private AbstractExpr expr;
     private AbstractIdentifier id;
@@ -67,7 +68,20 @@ public class Selection extends AbstractLValue{
           }
         }
         this.setType(field.getType());
+        if (expr.decompile().equals("") || expr.decompile().equals("this"))
+        {
+          this.definition = field;
+        }
+        else
+        {
+            this.definition = new VariableDefinition(field.getType(), field.getLocation());
+        }
         return field.getType();
+    }
+    @Override
+    public ExpDefinition getExpDefinition()
+    {
+      return this.definition;
     }
     @Override
     protected void iterChildren(TreeFunction f) {
@@ -75,7 +89,7 @@ public class Selection extends AbstractLValue{
         id.iterChildren(f);
 
     }
-
+    private ExpDefinition definition;
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
       expr.prettyPrint(s, prefix, true);
@@ -104,6 +118,6 @@ public class Selection extends AbstractLValue{
         compiler.addInstruction(new LOAD(r1, Register.R1));
         super.codeGenPrint(compiler, hex);
         compiler.getRegisterManager().freeReg(compiler, r1);
-        
+
     }
     }
