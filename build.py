@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import random
+from os import system
+
 recursive = 12
 bool = ["false", "true"]
 dec = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -179,17 +181,18 @@ def whileInst():
 def printExpr():
     if len(usedVar.keys()) == 0:
         return random.choice(string)
-    id = identifier(list(usedVar.keys()))
-    expr = initialiser(usedVar[id])
+    t = random.choice(["int", "float"])
+    expr = initialiser(t)
     if (random.randint(0, 2)):
         expr = "\"" + random.choice(string) + "\""
     return expr
 def printInst():
     s = "print"
     if (random.randint(0, 2)):
-        s += "x"
-    if (random.randint(0, 2)):
         s += "ln"
+    if (random.randint(0, 2)):
+        s += "x"
+
     s += "("
     if (random.randint(0, 4) == 0):
         return s + ");\n"
