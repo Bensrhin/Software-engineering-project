@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import random
-
+recursive = 4
 bool = ["false", "true"]
 dec = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 deca = dec + ["0"]
@@ -11,7 +11,8 @@ string = ["Bonjour", "projetGL", "groupe 53", "test auto"]
 arith = [" + ", " / ", " * ", " - "]
 cmp = [" < ", " <= ", " > ", " >= ", " == ", " != "]
 bl = [" && ", " || "]
-usedVar = []
+usedVar = {}
+notusedVar = {}
 tVar = {}
 for i in T:
     tVar[i] = []
@@ -51,12 +52,14 @@ def opsCmp(Tab):
 """
 /*****************************************************************/
 """
-def opArith(a, b):
-    return ("(" + a + random.choice(arith) + b + ")")
-def opsAriths(Tab):
-    s = opArith(random.choice(Tab), random.choice(Tab))
+def opArith(a, b, bool):
+    add = []
+    if bool : add = [" % "]
+    return ("(" + a + random.choice(arith + add) + b + ")")
+def opsAriths(Tab, bool):
+    s = opArith(random.choice(Tab), random.choice(Tab), bool)
     for _ in range(random.randint(0, 4)):
-        s += random.choice(arith) + opArith(random.choice(Tab), random.choice(Tab))
+        s += random.choice(arith) + opArith(random.choice(Tab), random.choice(Tab), bool)
     return s
 """
 /*****************************************************************/
@@ -73,6 +76,8 @@ def opsBools(Tab):
                           [opBool(random.choice(Tab), random.choice(Tab)),
                           opCmp(random.choice(tab1), random.choice(tab1))] )
     return s
+
+
 """
 /*****************************************************************/
 """
@@ -88,9 +93,9 @@ def initialiser(t):
         return opsBools(bool + add)
 
     if (t == "int"):
-        return opsAriths(deca + ints + add)
+        return opsAriths(deca + ints + add, True)
     elif (t == "float"):
-        return opsAriths(deca + ints + doubles + add + tVar["int"])
+        return opsAriths(deca + ints + doubles + add + tVar["int"], False)
     # return opsAriths(deca + ints)
 
 def declVar():
@@ -98,16 +103,78 @@ def declVar():
     global tVar
     global usedVar
     t  = Type()
-    id = identifier(excepting(var,usedVar))
-    init = initialiser(t)
-    code += (t + " " + id + " = " + init + ";\n")
-    tVar[t] += [id]
-    usedVar += [id]
+    id = identifier(excepting(var,list(usedVar.keys())))
+    if (random.randint(0, 2)):
+        init = initialiser(t)
+        code += (t + " " + id + " = " + init + ";\n")
+        tVar[t] += [id]
+        usedVar[id] = t
+    else:
+        code += (t + " " + id + ";\n")
+        tVar[t] += [id]
+        notusedVar[id] = t
 def listDeclVar():
-    for _ in range(random.randint(3, len(excepting(var,usedVar)))):
+    for _ in range(random.randint(3, len(excepting(var,list(usedVar.keys()))))):
         declVar()
 
+def assign():
 
-# print(opsAriths(deca))
+    id = identifier(list(notusedVar.keys()))
+    rvalue = initialiser(notusedVar[id])
+    usedVar[id] = notusedVar[id]
+    del notusedVar[id]
+    return (id + " = " + rvalue + ";\n")
+
+def assigns():
+
+    s = ""
+    for _ in range(random.randint(0, len(notusedVar.keys()))):
+        s +=  assign()
+    return s
+
+"""
+/*****************************************************************/
+"""
+def ifthen(isElse):
+    cond = initialiser("boolean")
+    listinst = listInst(True)
+    if (isElse):
+        return ("{\n" + listinst + "}\n")
+    return (" (" + cond + ")\n" + "{\n" + listinst + "}\n")
+
+"""
+/*****************************************************************/
+"""
+def ifthenelse():
+    global recursive
+    s = "if" + ifthen(False)
+    for _ in range(random.randint(0, 3)):
+        s += "else if" + ifthen(False)
+    s += "else\n" + ifthen(True)
+    recursive -= 1
+    return s
+"""
+/*****************************************************************/
+"""
+
+def inst(identation):
+    ident = ""
+    if identation: ident = "\t"
+    tab = [ident + "print(\"HELLO\")\n"]
+    s = assigns()
+    if s: tab.append(ident + s)
+    s = ifthenelse()
+    if (s!="") & (recursive!=0): tab.append(ident + s)
+    return random.choice(tab)
+def listInst(identation):
+    s = ""
+    for _ in range(random.randint(0, 4)):
+        s += inst(identation)
+    return s
+"""
+/*****************************************************************/
+"""
+
 listDeclVar()
+code += ifthenelse()
 print(code, tVar)
