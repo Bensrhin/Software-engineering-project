@@ -1,3 +1,4 @@
+//1.25000e-01
 class A{
 float power(float value1, int value2){
         int counter = 0;
@@ -17,10 +18,10 @@ float power(float value1, int value2){
     }
 }
 {
-int x = -1;
+int x = -3;
 float y = 2.0;
 A a = new A();
 float c = a.power(y, x);
-println(2*c);
+println(c);
 }
 
