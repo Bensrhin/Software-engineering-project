@@ -4,7 +4,9 @@ class Methods {
         if (n == 0){
             return 1;
         }
-        return n * this.factoriel(n - 1);
+        else{
+          return n * this.factoriel(n - 1);
+        }
     }
 
     float power(float value1, int value2){
@@ -28,7 +30,9 @@ class Methods {
         if (x > 0.0F){
             return x;
         }
-        return -x;
+        else{
+          return -x;
+        }
     }
     float ulp(float x){
         int e_min = -126;
@@ -64,6 +68,5 @@ class Methods {
             }
         }
     }
-
 
 }

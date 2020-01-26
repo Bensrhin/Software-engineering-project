@@ -1,13 +1,16 @@
 #include "Algos.deca"
 
-{   
+{
     float PI = 3.141593F;
     float var = (float) (-1/32);
     float var2 =  PI/4;
-    
+
 
     Taylor t = new Taylor();
     RangeReduction r = new RangeReduction();
+
+
+
     ChebyApproxi32 c = new ChebyApproxi32();
     Chebychev ch = new Chebychev();
 
@@ -15,36 +18,41 @@
     float chebyAtanReduit = c.ChebychevActan(var);
     float chebySinReduit = c.ChebychevSinus(var);
     float chebyCosReduit = c.ChebychevCosinus(var);
-    
+
     float chebySin = ch.sinCheb(var2);
-    float chebyCos = ch.cosCheb(var2);
+    /*float chebyCos = ch.cosCheb(var2);
     float chebyAtan = ch.arctanCheb(var2);
-    float chebyAsin = ch.arcsinCheb(var2);
+    float chebyAsin = ch.arcsinCheb(var2);*/
+
+
+
+
 
     float rangeCos = r.FirstReductionCos(100*PI);
     float rangeSin = r.FirstReductionSin(100*PI);
 
-    float cos = t.taylorCosinus(0.0f,7);
-    float sin = t.taylorSinus(PI/2,7);
+    float cos = t.taylorCosinus(PI/2,7);
+    float sin = t.taylorSinus(PI/2,6);
     float atan = t.taylorArctan(PI/4,7);
     float asin = t.taylorArcsin(PI/4,7);
 
 
-    print(cos);
-    print(sin);
-    print(atan);
-    print(asin);
+    println(cos);
+    println(sin);
+    println(atan);
+    println(asin);
 
-    print(rangeCos);
-    print(rangeSin);
+
+    println(rangeCos);
+    println(rangeSin);
 
     print(chebySin);
-    print(chebyCos);
+    /*print(chebyCos);
     print(chebyAtan);
-    print(chebyAsin);
-    
-    print(chebyAtanReduit);
-    print(chebySinReduit);
-    print(chebyCosReduit);
+    print(chebyAsin);*/
+
+    println(chebyAtanReduit);
+    println(chebySinReduit);
+    println(chebyCosReduit);
 
 }
