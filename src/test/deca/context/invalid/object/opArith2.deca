@@ -17,8 +17,7 @@ class B
   void getX()
   {
     while (x.a < a){
-      a = (x.a + a);
-      a = (X)(a + readFloat());
+      x.a = (x.a % a);
     }
   }
 }

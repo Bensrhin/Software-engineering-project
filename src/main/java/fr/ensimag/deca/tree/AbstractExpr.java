@@ -103,7 +103,6 @@ public abstract class AbstractExpr extends AbstractInst {
         {
           if (type2.isInt())
           {
-            System.out.println("dazz");
             ConvFloat expr = new ConvFloat(this);
             Type t = expr.verifyExpr(compiler, localEnv, currentClass);
             expr.setType(t);
@@ -136,8 +135,9 @@ public abstract class AbstractExpr extends AbstractInst {
               Type condType = this.verifyExpr(compiler, localEnv, currentClass);
               if (!condType.isBoolean())
               {
-                  throw new  ContextualError("Expression " + decompile() +
-                          " doit être un booléen (règle 3.29)",
+                  throw new  ContextualError("Expression \"" + decompile() +
+                          "\" est de type \"" + condType.getName().getName() + 
+                          "\". Le type doit être un booléen (règle 3.29)",
                                               this.getLocation());
               }
               this.setType(condType);
