@@ -1,0 +1,13 @@
+{
+float x1 = (25.7 / 367);
+boolean z = (false && false) && (65386 > 36501) || (true || false) && (true && false);
+int x = (13 % 8) / (8 % 7) / (36501 * 4);
+boolean x3;
+float x4 = (838.52 - 2);
+int b = (4 % x) + (9 / 367) * (2 / 9);
+float a = (77 / 17588) * (36501 * 9);
+float c;
+x3 = (13 >= 36501);
+println("test auto", "projetGL");
+printlnx((3 / 3) - (77 / 65386) / (77 - 13) - (42201 % 65386) - (8 - 42201), "projetGL", (b / 367) * (79094 * 3) / (17588 + 5) / (2 + 17588), "Bonjour");
+}

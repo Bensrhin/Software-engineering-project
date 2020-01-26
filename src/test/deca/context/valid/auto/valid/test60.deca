@@ -1,0 +1,10 @@
+{
+int b = (8 * 7) * (4 % 694);
+float x1;
+int d = (7 - 7) - (569 * 946) + (365 + 84) / (4 * 2) / (0 / 8);
+boolean c = (79283.3966 == x1) || (68.2 <= 569) && (true && true);
+println((b - 3) / (5 - 569) / (b / 365) * (21703 * 22));
+printlnx("Bonjour", "Bonjour", "groupe 53", "test auto");
+printlnx("Bonjour", "projetGL");
+println((22 * 8), "test auto", "projetGL");
+}

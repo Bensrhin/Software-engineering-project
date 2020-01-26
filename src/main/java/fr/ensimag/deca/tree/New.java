@@ -42,7 +42,7 @@ public class New extends AbstractExpr{
                   idExpr.decompile() + "\" doit être une classe (règle 3.42)",
                   idExpr.getLocation());
         }
-        this.getType(type);
+        this.setType(type);
         return type;
   }
 

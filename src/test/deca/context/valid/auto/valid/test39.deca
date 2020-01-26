@@ -1,0 +1,12 @@
+{
+int b = (83 / 370) / (6 * 99) / (7 / 7) / (370 + 8) + (647 + 4);
+boolean x3 = (b >= 1) || (true && false) && (15.7 < 41) || (true && false);
+float c = (4 / 7) / (2349.593 - 4);
+int y = (17 + 370) + (46 / 3) * (670 * 41) + (496 - 8);
+int z = (5 - 933) - (b - 6);
+printlnx();
+printlnx("test auto", (15.7 - 83));
+printlnx("projetGL", (0 + y) * (647 + 13.4));
+print("test auto", "test auto", "test auto", "Bonjour");
+printlnx("projetGL", (670 / 13.4) + (5 * 15.7), (670 % 4));
+}

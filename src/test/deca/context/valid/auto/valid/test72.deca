@@ -1,0 +1,10 @@
+{
+float z = (8 + 9674.414);
+float c = (9674.414 - 69.0) - (83688.4634 * 810.62) + (59 + 81) - (3 / 48954);
+int b = (3 * 6) * (5 % 8) + (48954 / 0);
+boolean x2 = (false || true);
+boolean y = (7 > 52.8);
+print("groupe 53", "test auto", "projetGL", "Bonjour");
+println("projetGL");
+printlnx();
+}

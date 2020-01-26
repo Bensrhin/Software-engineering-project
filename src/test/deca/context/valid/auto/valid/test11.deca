@@ -1,0 +1,11 @@
+{
+float b = (49088 * 4) * (3802 + 2) + (9964 + 3523.768) - (15012.6633 / 5);
+boolean c;
+int x2;
+int x5 = (3 * 2) + (9 / x2);
+boolean x4 = (true || c) || (false && c);
+boolean y;
+x2 = (53 * 802) * (53 * 7) + (8 / 36) / (548 + 3802) + (49088 * 4);
+printlnx("groupe 53", "groupe 53");
+printlnx("Bonjour");
+}

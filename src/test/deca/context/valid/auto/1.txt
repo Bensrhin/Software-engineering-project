@@ -1,7 +1,0 @@
-{
-float x3;
-float c = (0 * 8) - (x3 * 3379.675) + (76620 + 78626);
-int a = (3 + 6);
-printx("Bonjour", "Bonjour", (4 % 1), "projetGL");
-printlnx();
-}

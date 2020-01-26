@@ -2,7 +2,7 @@
 import random
 from os import system
 
-recursive = 30
+recursive = 12
 bool = ["false", "true"]
 dec = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 deca = dec + ["0"]
@@ -220,7 +220,7 @@ def inst(identation):
     return random.choice(tab)
 def listInst(identation):
     s = ""
-    for _ in range(random.randint(random.radint(0,2), 5)):
+    for _ in range(random.randint(0, 5)):
         s += inst(identation)
     return s
 """

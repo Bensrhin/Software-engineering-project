@@ -1,0 +1,8 @@
+{
+float y;
+boolean x2 = (5 > 7) || (3 != 5);
+boolean x5;
+int c;
+int x;
+float b = (5 - 9058.911) + (8 - 3956.985) - (484 + 1);
+}

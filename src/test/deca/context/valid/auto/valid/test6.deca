@@ -1,0 +1,55 @@
+{
+float c = (123 / 8) + (5040 - 3021.608);
+int a;
+boolean b = (false || false) || (false || false) || (6 < 8656);
+int d = (a + 5) * (193 % 8) + (79 + 123) + (1 % 0);
+int x = (26004 * 9);
+float x4 = (25 / 98) / (6444.944 + 123);
+boolean x3 = (b || b) || (b && false);
+while ((false && false) && (false && x3))
+{
+	if ((5040 == x) && (false && b) && (6 != 0))
+{
+	while ((26004 < 6444.944) || (x3 && false))
+{
+}
+	printx("Bonjour", (a % 8656), "groupe 53");
+	if ((8656 >= 3761))
+{
+	println("Bonjour", (34 * 3761) - (59371.3657 * x) / (6444.944 * 25) / (8656 + 8656), "groupe 53", (98 * d) / (5040 % 3) - (9 - 2));
+}
+else if ((b || x3))
+{
+	printlnx("Bonjour");
+}
+else if ((0 >= d))
+{
+}
+else if ((a > 36551.7521) && (b && x3) || (0 == 193) && (b && x3) || (true || true))
+{
+}
+else
+{
+	printx((193 - a) / (8656 + x) + (3 - d));
+	println((6 + 5) + (5 % 26004) - (123 / 0));
+	printx((34 + 1), "groupe 53");
+	printx("groupe 53", "test auto", (8 % 3761) + (8656 * 6) * (123 * 3761) - (7 % 7) * (193 % 3761));
+}
+	printlnx();
+}
+else if ((b && true) && (59371.3657 == 46.2) || (x3 && true) || (7 > 79) || (3761 == d))
+{
+}
+else if ((8656 == 5) && (false || b))
+{
+	print((34 / 3761) * (x / 701.90) - (x / 7) * (4413.015 + 81923.9057) + (10808.6740 + 98));
+	printx("groupe 53", "Bonjour", "test auto");
+	println();
+}
+else
+{
+	printlnx("test auto", "test auto", "groupe 53", "groupe 53");
+	printx("test auto");
+}
+}
+}

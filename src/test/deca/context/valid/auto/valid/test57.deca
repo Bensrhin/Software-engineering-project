@@ -1,0 +1,9 @@
+{
+int y = (660 - 1) + (7 / 4) - (660 % 7) - (414 * 35) * (7905 + 94672);
+float x4;
+boolean c = (true || false) || (955.55 != 5);
+boolean z = (true || true) && (true && false) && (c || true) && (false || true) || (c || c);
+float x1 = (6767 * 5) - (707.27 - 8598) * (8598 + 3487.633);
+x4 = (8598 * 5) * (9 / 5);
+printlnx("groupe 53");
+}

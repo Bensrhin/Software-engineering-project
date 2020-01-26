@@ -1,0 +1,5 @@
+{
+boolean x3 = (true || false) && (851.60 <= 95.2) && (true && true) || (8567 < 62) || (936.56 > 74541.1554);
+float x2 = (4 * 640);
+boolean x5 = (true || true) || (true && true) && (1070.252 <= 0);
+}

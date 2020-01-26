@@ -1,0 +1,36 @@
+{
+int x4;
+boolean x = (1 <= 7) || (4 <= 113) || (1 < 3) && (49.8 <= 66);
+float a;
+if ((113 > 1) && (false && false))
+{
+	while ((931.73 < 66) && (false && true) && (x || false) && (113 != 7))
+{
+	printx("groupe 53", (89.0 - 5) * (0 + 747), "groupe 53");
+	printlnx();
+}
+	printlnx();
+	printx("Bonjour", "Bonjour");
+	print("projetGL", (9880 / 5) / (x4 - 4) * (747 / 9880) + (9 * 747), "projetGL", (2 * 9880) - (17 % 76175));
+}
+else if ((931.73 < 5) && (39.3 > 49.8) || (true && true) || (x || false))
+{
+}
+else if ((9880 < 4))
+{
+}
+else if ((true && true))
+{
+	printlnx("projetGL", "groupe 53");
+	printlnx("projetGL", "Bonjour", (x4 - 1) * (906 + 66) - (x4 / 79.1), "test auto");
+}
+else
+{
+	printx("groupe 53");
+	printlnx((9 % 9) + (73506 / 9) * (9 - 9) + (747 - 8) / (7 + 66), "groupe 53", (8313.200 - 9));
+	printx();
+	printlnx((9 + 4) * (73506 - 747), "groupe 53", "groupe 53", "groupe 53");
+}
+printlnx();
+printx();
+}

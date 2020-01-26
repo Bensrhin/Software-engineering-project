@@ -1,0 +1,15 @@
+{
+boolean c = (true || false) || (false || false) && (false || false);
+int x5;
+float a = (4080.267 - 8);
+float x1 = (0 / 284);
+int x2 = (8 - 4) - (81 / 7) - (3 % 7);
+int b;
+boolean d = (true && false) && (true || c) || (false && false) || (c || false) && (93 <= 86);
+boolean x4;
+float y = (0 + 69351) * (713 - b) / (3 - 81) + (346.38 * 689.42);
+int x3 = (9 - 284) - (7 * 51) + (0 * 1) / (8 - b);
+printlnx();
+printx("Bonjour", "projetGL");
+printlnx("test auto", "projetGL", (1 * 69351) / (3 - 9) - (4080.267 / 689.42) * (9236.824 + 0) + (b + 9));
+}

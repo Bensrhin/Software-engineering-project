@@ -1,0 +1,14 @@
+{
+boolean y = (87098 <= 71119);
+boolean x5 = (959 == 87098) && (1 != 1);
+int x1 = (6 * 64974) * (0 + 98) - (87098 + 5);
+boolean d = (x5 || true);
+boolean c;
+boolean a = (98 >= 7) || (y || c) && (c && d);
+boolean x3;
+float x = (40697.6764 / 6) / (59.3 + 537.20) + (0 / 40697.6764) * (5 / 4) * (71119 / 96.2);
+float x2;
+boolean b = (1 == x2) && (580.67 < x);
+boolean x4 = (true || y);
+float z = (9 - 12727);
+}

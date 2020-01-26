@@ -1,0 +1,12 @@
+{
+boolean x2 = (41 == 22382) || (false || true) || (8 >= 43613) && (13916.7473 < 43613) || (false && false);
+int d = (880 - 25) + (7440 / 9) * (9 / 5);
+float x1;
+while ((22382 > 97) && (13916.7473 == 25) || (x2 && true) || (6764.259 <= 4494.510))
+{
+	println();
+	println("projetGL");
+	printx("test auto", "Bonjour", (97 % 41) * (61080 / 7) / (61080 * 7) / (4 + 3));
+}
+print("test auto", "projetGL");
+}

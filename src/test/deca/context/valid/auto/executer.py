@@ -5,6 +5,6 @@ def executer():
     generer
     """
     for i in range(100):
-        system("./build.py > {}.txt".format(i))
+        system("./build.py > valid/test{}.deca".format(i))
 
 executer()

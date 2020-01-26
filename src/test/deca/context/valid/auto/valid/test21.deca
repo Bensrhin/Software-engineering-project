@@ -1,0 +1,39 @@
+{
+float c;
+float x4;
+float x3 = (39.9 - 54) * (25145.7389 / 2) + (311 + 25.2) - (54 * 2252);
+float x1;
+if ((false && false) && (false || true) || (false || true))
+{
+	print();
+	printlnx((2014 - 4969.841) + (1427 + 4) / (57837.8252 / 9));
+	println("projetGL");
+	printlnx((2014 % 914) / (5 / 5));
+}
+else if ((false || false) || (false || false) && (false && true) || (7309 != 4))
+{
+	printlnx();
+	printlnx((0 * 6), "groupe 53", (8037.751 + 8) / (65126.9929 + x1) - (39.9 - 7) * (6 * 7667.230) * (3 / 7055));
+	println((1427 + 2), "test auto");
+	printx();
+	printlnx((7055 + 311) - (914 % 22) - (2252 * 7055) * (1427 / 4) - (4 - 5), (7055 + 25.2) + (8 - 6), (311 % 1) - (2252 / 9), (8 / 7309) * (2014 + 4) / (54 * 0) - (4 - 2252) - (8 - 3));
+}
+else if ((508 < 6) && (false && true))
+{
+}
+else if ((true || false) || (false && false) || (57837.8252 >= x1))
+{
+	println("projetGL");
+	println((2 + 25145.7389) - (311 * 9) + (7 - 25145.7389) - (4969.841 - 4));
+	println((914 / 311) - (7055 / 22) - (914 * 2) + (902.47 - 0), (7055 + 39.9) + (6 / 1427) / (39.9 * 7), "Bonjour");
+	println((1427 + 7309) - (6 * c) / (x3 / 39.9), "projetGL", "test auto");
+}
+else
+{
+	printx((1427 - 3) + (3 / 914), "Bonjour");
+	println("test auto", "Bonjour");
+	printx("test auto");
+}
+printlnx((8037.751 - c));
+printlnx("groupe 53", "Bonjour", (22 * 508) * (3 / 2252) + (311 * 7055), "Bonjour");
+}

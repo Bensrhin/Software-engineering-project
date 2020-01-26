@@ -1,0 +1,8 @@
+{
+boolean x2 = (4 > 84.6);
+float b;
+float x1;
+float y = (x1 - 9) / (21899 / 21899) + (45633 * 6) / (8 + 9663.687) * (1 - 84.6);
+print("groupe 53");
+printx("test auto", "Bonjour", "projetGL", "Bonjour");
+}

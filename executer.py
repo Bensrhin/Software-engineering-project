@@ -5,6 +5,6 @@ def executer():
     generer
     """
     for i in range(100):
-        system("./build.py > {}/{}.deca".format("valid", i))
-        system("mv {}.deca valid/{}.deca".format(i))
+        system("./build.py > {}.deca".format(i))
+        system("mv {}.deca valid".format(i))
 executer()

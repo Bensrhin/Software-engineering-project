@@ -1,0 +1,9 @@
+{
+int d = (2 % 24) - (936 / 8) - (49340 % 8) - (936 - 2) - (2714 + 41);
+boolean x = (false || false) || (false && true);
+boolean a;
+boolean y = (a && a);
+int b = (2 * 3) / (11001 * 63);
+boolean x2 = (a || y) && (657.32 == 805.54) && (false && a);
+float c = (31025.1350 - 24) - (49340 - 2);
+}

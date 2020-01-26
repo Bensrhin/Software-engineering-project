@@ -1,0 +1,15 @@
+{
+float x1 = (737 / 4729.842) + (4958 + 4958) - (89.3 * 3);
+int c = (65 * 4) + (8 * 5481) - (65 - 88) - (88 - 3827) + (88 - 4958);
+int y = (9 / 8) / (3 * 4) / (c / 2);
+if ((false && true) && (0 <= 5) && (false && true) && (93.6 > 88))
+{
+}
+else
+{
+	printlnx("Bonjour", "projetGL", "Bonjour", "projetGL");
+}
+println("projetGL", "groupe 53");
+printlnx((4 / 5481) - (3 / 737) / (8 % 3827) * (65 * 40111));
+print("Bonjour", "projetGL");
+}

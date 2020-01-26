@@ -1,9 +1,0 @@
-{
-boolean b;
-boolean z = (false || b);
-int x4 = (8417 + 637) + (5 - 1) - (3393 * 3) - (32922 / 4712);
-boolean c;
-int d = (2 * 32922) * (5 * 9) / (8 / 637);
-int x5 = (4 - 0);
-printx("Bonjour");
-}

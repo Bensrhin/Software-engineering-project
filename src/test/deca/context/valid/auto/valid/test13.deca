@@ -1,0 +1,11 @@
+{
+float y = (6429 / 8) + (45 + 5) * (17311 * 1) / (1 - 9) - (3742.853 - 16.8);
+int x3;
+int z = (9 % 6) * (6429 / 6429) * (6696 - 7);
+boolean x2 = (65.5 == 6429) && (24.0 == 8) || (17.0 != 17311) || (368 < 368) || (true || false);
+float d;
+d = (3742.853 / 6429);
+printx("projetGL", "test auto");
+printlnx("test auto");
+printx("Bonjour", "projetGL");
+}

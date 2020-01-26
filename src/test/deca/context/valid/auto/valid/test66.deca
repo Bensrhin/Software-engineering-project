@@ -1,0 +1,23 @@
+{
+float b = (4 / 9162) - (72 / 8) + (2042 - 27560.7777) * (299.67 - 7) + (26.9 + 2);
+float x4 = (75.4 - 511) + (7 - 2) * (9 - 36.9);
+int x = (26641 * 2042);
+boolean x1 = (8 <= 511);
+float y;
+float x5 = (299.67 - 27560.7777) * (454 - 35) / (4 + 75.4) - (40.6 / 0);
+int x2;
+int x3;
+float a;
+int d = (26641 / 35);
+boolean c;
+while ((72 <= x5) && (true && true))
+{
+	a = (26641 / 4) / (26.9 / 2042) + (4 - x4) + (75.4 - 26641);
+	printlnx("projetGL");
+	println((x3 % 6) + (4 % 454), "test auto");
+	printx("projetGL", (8137 % 72) - (1 % 83203), "test auto");
+}
+printlnx("test auto", "Bonjour");
+println();
+printx("Bonjour", "groupe 53", "groupe 53");
+}
