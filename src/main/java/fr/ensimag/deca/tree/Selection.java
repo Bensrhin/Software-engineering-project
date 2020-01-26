@@ -68,7 +68,14 @@ public class Selection extends AbstractLValue{
           }
         }
         this.setType(field.getType());
-        this.definition = field;
+        if (expr.decompile().equals("") || expr.decompile().equals("this"))
+        {
+          this.definition = field;
+        }
+        else
+        {
+            this.definition = new VariableDefinition(field.getType(), field.getLocation());
+        }
         return field.getType();
     }
     @Override
