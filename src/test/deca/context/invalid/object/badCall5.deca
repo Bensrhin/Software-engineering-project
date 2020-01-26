@@ -1,6 +1,6 @@
 class A
 {
-  int x(A a)
+  int x(int a)
   {
     return 7;
   }
@@ -12,7 +12,7 @@ class X
   {
     C c = new C();
     B b = new B();
-    println(b.x());
+    println(b.x(7.6));
   }
 }
 class B extends A

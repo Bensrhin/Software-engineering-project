@@ -1,9 +1,6 @@
 class A
 {
-  int x(A a)
-  {
-    return 7;
-  }
+  protected int x = 10;
 }
 class X
 {
@@ -12,7 +9,7 @@ class X
   {
     C c = new C();
     B b = new B();
-    println(b.x());
+    println( a.x());
   }
 }
 class B extends A
@@ -22,8 +19,5 @@ class B extends A
 
 class C extends X
 {
-  int x()
-  {
-    return 4;
-  }
+  int x = 7;
 }
