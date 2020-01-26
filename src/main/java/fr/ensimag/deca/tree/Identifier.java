@@ -258,6 +258,7 @@ public class Identifier extends AbstractIdentifier {
     public int codeGenIdent(DecacCompiler compiler){
         RegisterOffset r = compiler.getRegisterManager().getRegOff();
         ExpDefinition def = this.getExpDefinition();
+        compiler.incSp();compiler.incTs();
         def.setOperand(r);
         return r.getOffset();
     }
@@ -287,7 +288,7 @@ public class Identifier extends AbstractIdentifier {
         if(this.getExpDefinition().isField()){
             compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
             compiler.addInstruction(new LOAD(new RegisterOffset(this.getFieldDefinition().getIndex(), Register.R1), r1));
-            return r1;
+            
         }
         else{
             compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));
@@ -308,9 +309,11 @@ public class Identifier extends AbstractIdentifier {
         compiler.addInstruction(new LOAD(new ImmediateNull(), Register.R0));
         RegisterOffset gb1 = compiler.getRegisterManager().getRegOff();
         RegisterOffset gb2 = compiler.getRegisterManager().getRegOff();
+        compiler.incSp();compiler.incTs();
         compiler.addInstruction(new STORE(Register.R0, gb1));
         compiler.addInstruction(new LOAD(obj, Register.R0));
         compiler.addInstruction(new STORE(Register.R0, gb2));
+        compiler.incSp();compiler.incTs();
         this.getClassDefinition().setOperand(this.getClassDefinition().getType(),gb1);
     }
     @Override

@@ -14,7 +14,7 @@ def valid_lexer():
     counter = 0
     tmp = 0
     test_lexer = "launchers/test_lex"
-    valid_lexer_SO = "../deca/lexicographie/valid/SansObjet"
+    valid_lexer_SO = "../deca/lexicographie/valid/sansObjet"
     
     # print("Details d'execution des tests valides [1/0] ?")
     # x = int(input())
@@ -43,7 +43,8 @@ def invalid_lexer():
     counter = 0
     tmp = 0
     test_lexer = "launchers/test_lex"
-    invalid_lexer_SO = "../deca/lexicographie/invalid/SansObjet"
+    invalid_lexer_SO = "../deca/lexicographie/invalid/sansObjet"
+    invalid_lexer_O = "../deca/lexicographie/invalid/objet"
     print("~======================================================~")
     for file in os.listdir(invalid_lexer_SO):
         tmp += 1
@@ -56,6 +57,27 @@ def invalid_lexer():
             read = fichier.readlines()[0]
             if read[0] == '.':
                 new_read = read[len(invalid_lexer_SO) + 1:]
+            else:
+                new_read = read
+            print(new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)
+        else:
+            print(file+color.BOLD+color.WARNING+"  *** [TEST PASSED UNEXPECTED] ***"+color.ENDC)
+        os.system("rm *.log")
+        print("~======================================================~")
+        
+    print("~======================================================~")
+    
+    for file in os.listdir(invalid_lexer_O):
+        tmp += 1
+        execute = test_lexer + " " + invalid_lexer_O + "/" + str(file) + " " +"2> {}.log".format(str(file))
+        os.system(execute + "> lexer.txt")
+        os.system("rm lexer.txt")
+        if os.stat("{}.log".format(str(file))).st_size != 0:
+            counter += 1
+            fichier = open("{}.log".format(str(file)), "r")
+            read = fichier.readlines()[0]
+            if read[0] == '.':
+                new_read = read[len(invalid_lexer_O) + 1:]
             else:
                 new_read = read
             print(new_read+color.BOLD+color.HEADER +"  *** [Test FAILED EXPECTED] ***"+color.ENDC)

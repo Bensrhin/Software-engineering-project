@@ -145,25 +145,22 @@ public class DeclMethod extends AbstractDeclMethod
     @Override
     protected void codeGenMethod(DecacCompiler compiler){
        compiler.addLabel(new Label(getNameMethod().getMethodDefinition().getLabel().toString() ));
-        
        params.codeGenListParam(compiler);
-       //compiler.getRegisterManager().reset();
        IMAProgram p = new IMAProgram();
        IMAProgram org = compiler.getProg();
        compiler.setProgram(p);
        methodBody.codeGenMethodBody(compiler);
-      /* for(int i = 2; i<16; i++){
-            compiler.addInstruction(new POP(Register.getR(15-i + 2)));
-        }**/
         HashSet<GPRegister> list = compiler.getRegisterManager().used;
         for(GPRegister reg: list){
             if(reg.getNumber() != 0){
+                compiler.incTs();
                 p.addFirst(new Line(new PUSH(reg)));
                 compiler.addInstruction(new POP(reg));
             }
         }
         org.append(p);
         compiler.setProgram(org);
+        compiler.getRegisterManager().used = new HashSet<GPRegister>();
         compiler.addInstruction(new RTS());
     }
 

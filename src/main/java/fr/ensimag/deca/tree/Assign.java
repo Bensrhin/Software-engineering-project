@@ -1,5 +1,5 @@
 package fr.ensimag.deca.tree;
-
+import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
@@ -48,7 +48,12 @@ public class Assign extends AbstractBinaryExpr {
         this.setType(type2);
         return getType();
     }
-
+    @Override
+    public void decompile(IndentPrintStream s) {
+        getLeftOperand().decompile(s);
+        s.print(" " + getOperatorName() + " ");
+        getRightOperand().decompile(s);
+    }
 
     @Override
     protected String getOperatorName() {
@@ -62,7 +67,6 @@ public class Assign extends AbstractBinaryExpr {
             compiler.addInstruction(new STORE(r1, this.getLeftOperand().getExpDefinition().getOperand()));
         }
         else{
-            FieldDefinition fld = (FieldDefinition)(def);
             RegisterOffset r2 = this.getLeftOperand().codeGenField(compiler);
             compiler.addInstruction(new STORE(r1, r2));
         }

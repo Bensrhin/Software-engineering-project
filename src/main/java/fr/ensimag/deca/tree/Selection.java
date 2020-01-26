@@ -66,6 +66,7 @@ public class Selection extends AbstractLValue{
             id.decompile() + "\" est déclaré : problème de visibilité (règle 3.66)",this.getLocation());
           }
         }
+        this.setType(field.getType());
         return field.getType();
     }
     @Override
@@ -91,11 +92,18 @@ public class Selection extends AbstractLValue{
         GPRegister r = expr.codeGenLoad(compiler);
         FieldDefinition fld = ((Identifier)(id)).getFieldDefinition();
         compiler.addInstruction(new LOAD(new RegisterOffset(fld.getIndex(), r), r));
-        compiler.getRegisterManager().freeReg(compiler, r);
+       compiler.getRegisterManager().freeReg(compiler, r);
         return r;
     }
     protected RegisterOffset codeGenField(DecacCompiler compiler){
         return id.codeGenField(compiler);
     }
-
+    @Override
+     protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
+        GPRegister r1 = this.codeGenLoad(compiler);
+        compiler.addInstruction(new LOAD(r1, Register.R1));
+        super.codeGenPrint(compiler, hex);
+        compiler.getRegisterManager().freeReg(compiler, r1);
+        
+    }
     }

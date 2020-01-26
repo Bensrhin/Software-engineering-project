@@ -33,7 +33,7 @@ import org.apache.log4j.Logger;
 
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.instructions.ERROR;
-import fr.ensimag.ima.pseudocode.instructions.WSTR;
+import fr.ensimag.ima.pseudocode.instructions.*;
 import fr.ensimag.ima.pseudocode.instructions.WNL;
 import fr.ensimag.ima.pseudocode.Label;
 
@@ -61,6 +61,14 @@ public class DecacCompiler {
      */
     private static final String nl = System.getProperty("line.separator", "\n");
     private Set<LabelOperand> labels = new HashSet<LabelOperand>();
+    private int cptSp = 0;
+    private int cptTs = 0;
+    public void incSp(){
+        cptSp ++;
+    }
+    public void incTs(){
+        cptTs ++;
+    }
     /************************ Partie B  ***************************/
     private EnvironmentExp env_exp;
     private EnvironmentType env_types;
@@ -299,11 +307,14 @@ public class DecacCompiler {
         }
 
         //addComment("start main program");
-        prog.getMain().codeGenEntete(this, 13);
+        //prog.getMain().codeGenEntete(this, 13);
         prog.codeGenProgram(this);
         //addComment("end main program");
         this.addLabel(new Label("code.Object.equals"));
         this.codeGenErr();
+        program.addFirst(new Line (new ADDSP(cptSp)));
+        program.addFirst(new Line(new BOV(new Label("pile_pleine"))));
+        program.addFirst(new Line(new TSTO(cptTs)));
 
         LOG.debug("Generated assembly code:" + nl + program.display());
         LOG.info("Output file assembly file is: " + destName);

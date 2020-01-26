@@ -20,17 +20,62 @@ def valid_gencode():
     counter = 0
     tmp = 0
     test_gencode = "../../main/bin/decac"
-    valid_gencode = "../deca/codegen/valid"
-    print("======================================================")
-    for file in files(valid_gencode):
+    valid_gencode_SO = "../deca/codegen/valid/sansObjet"
+    valid_gencode_O = "../deca/codegen/valid/objet"
+    valid_gencode_provided = "../deca/codegen/valid/provided"
+    
+    print("~======================================================~")
+    # print(color.BOLD+color.OKBLUE+"  X+X+X+X+X  [TEST Provided GENCODE]  X+X+X+X+X "+color.ENDC)
+    # print("~======================================================~")
+    # for file in files(valid_gencode_provided):
+    #     if (str(file))[len(str(file))-5:] == ".deca":
+    #         tmp += 1
+    #         execute = test_gencode + " " + valid_gencode_provided + "/" + str(file)
+    #         os.system(execute)
+    #         if os.path.isfile(str(file)[:-4]+"ass"):
+    #             print("Fichier {}ass non généré".format(str(file)[:-4]))
+    #             exit()
+    #         resultat = os.system("ima {}".format(valid_gencode_provided + "/"+str(file)[:-4])+"ass" + "> resultatProvided.log")
+    #         fichier = open("resultatProvided.log", "r")
+    #         resultat = fichier.readlines()[0]
+    #         resultat = resultat[:len(resultat)-1]
+    #         os.system("rm resultatProvided.log")
+    #         if str(file) == "cond0.deca":
+    #             attendu= "ok"
+                
+    #         elif str(file) == "ecrit0.deca":
+    #             attendu = "ok"
+    #         elif str(file) == "entier1.deca":
+    #             attendu = "1"
+    #         elif str(file) == "exdoc.deca":
+    #             attendu= "a.getX() =  1"
+    #         else:
+    #             print("fichier pas encore traité")
+
+    #         if resultat==attendu:
+    #             print(str(file)+color.BOLD+color.HEADER+"  *** [TEST PASSED] *** "+color.ENDC)
+    #             counter+=1
+    #             #print("Tout va bien pour " + str(file))
+    #         else:
+    #             print(str(file)+color.BOLD+color.WARNING+"  *** [Test FAILED] *** "+color.ENDC)
+    #             #print("Tout ne pas va bien pour " + str(file))
+    #             print("Le résultat obtenu :", resultat)
+    #             print("Le résultat attendu :", attendu)
+    #     os.system("rm " +  "../deca/codegen/valid/provided" + "/"+ "*.ass")
+    #     print("======================================================")
+    
+    print(color.BOLD+color.OKBLUE+"      X+X+X+X+X [TEST SANS OBJET GENCODE] X+X+X+X+X "+color.ENDC)
+    print("~======================================================~")
+    
+    for file in files(valid_gencode_SO):
         if (str(file))[len(str(file))-5:] == ".deca":
             tmp += 1
-            execute = test_gencode + " " + valid_gencode + "/" + str(file)
+            execute = test_gencode + " " + valid_gencode_SO + "/" + str(file)
             os.system(execute)
             if os.path.isfile(str(file)[:-4]+"ass"):
                 print("Fichier {}ass non généré".format(str(file)[:-4]))
                 exit()
-            resultat = os.system("ima {}".format(valid_gencode + "/"+str(file)[:-4])+"ass" + "> resultat.log")
+            resultat = os.system("ima {}".format(valid_gencode_SO + "/"+str(file)[:-4])+"ass" + "> resultat.log")
             fichier = open("resultat.log", "r")
             resultat = fichier.readlines()[0]
             resultat = resultat[:len(resultat)-1]
@@ -95,6 +140,62 @@ def valid_gencode():
                 print("fichier pas encore traité")
                 exit()
 
+            if resultat==attendu:
+                print(str(file)+color.BOLD+color.HEADER+"  *** [TEST PASSED] *** "+color.ENDC)
+                counter+=1
+                #print("Tout va bien pour " + str(file))
+            else:
+                print(str(file)+color.BOLD+color.WARNING+"  *** [Test FAILED] *** "+color.ENDC)
+                #print("Tout ne pas va bien pour " + str(file))
+                print("Le résultat obtenu :", resultat)
+                print("Le résultat attendu :", attendu)
+        os.system("rm " +  "../deca/codegen/valid/sansObjet" + "/"+ "*.ass")
+        print("======================================================")
+    
+    print(color.BOLD+color.OKBLUE+"  X+X+X+X+X  [TEST OBJET GENCODE]  X+X+X+X+X "+color.ENDC)
+    print("~======================================================~")
+    
+    for file in files(valid_gencode_O):
+        if (str(file))[len(str(file))-5:] == ".deca":
+            tmp += 1
+            execute = test_gencode + " " + valid_gencode_O + "/" + str(file)
+            os.system(execute)
+            if os.path.isfile(str(file)[:-4]+"ass"):
+                print("Fichier {}ass non généré".format(str(file)[:-4]))
+                exit()
+            resultat = os.system("ima {}".format(valid_gencode_O + "/"+str(file)[:-4])+"ass" + "> resultatObjet.log")
+            fichier = open("resultatObjet.log", "r")
+            resultat = fichier.readlines()[0]
+            resultat = resultat[:len(resultat)-1]
+            os.system("rm resultatObjet.log")
+            if str(file) == "abs.deca":
+                attendu= "5.20000e+00 2.00000e+00"
+                
+            elif str(file) == "classPoint.deca":
+                attendu = "3 4 4 16"
+            elif str(file) == "ClassWithExtends.deca":
+                attendu = "10"
+            elif str(file) == "factAndFibo.deca":
+                attendu= "720 8"
+            elif str(file) == "gettersAndSetters.deca":
+                attendu = "3.50000e+00"
+            elif str(file) == "pgcd2.deca":
+                attendu = "12"
+            elif str(file) == "point.deca":
+                attendu= "4 6"
+            elif str(file) == "power.deca":
+                attendu= "1.00000e+00"
+            elif str(file) == "ppcm.deca":
+                attendu = "36"
+            elif str(file) == "testPoly.deca":
+                attendu = "a.getX() 1"
+            elif str(file) == "triangle.deca":
+                attendu = "0"
+            elif str(file) == "TwoClasses.deca":
+                attendu = "1"
+            else:
+                print("fichier pas encore traité")
+                exit()
 
             if resultat==attendu:
                 print(str(file)+color.BOLD+color.HEADER+"  *** [TEST PASSED] *** "+color.ENDC)
@@ -105,10 +206,12 @@ def valid_gencode():
                 #print("Tout ne pas va bien pour " + str(file))
                 print("Le résultat obtenu :", resultat)
                 print("Le résultat attendu :", attendu)
+        os.system("rm " +  "../deca/codegen/valid/objet" + "/"+ "*.ass")
         print("======================================================")
+        
+    
     return counter,tmp
 
-#os.system("rm " +  "../deca/codegen/valid" + "/"+ "*.ass")
 x = valid_gencode()
 if (x[0] == x[1]):
     print(color.BOLD+ color.OKGREEN+"     .-~-.-~-.-~[{} TESTS GENCODE SUCCESS].-~-.-~-.-~".format(str(x[1]))+color.ENDC)
@@ -116,4 +219,4 @@ if (x[0] == x[1]):
 else:
     print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS GENCODE ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
     print("~========================================================================~")
-os.system("rm " +  "../deca/codegen/valid" + "/"+ "*.ass")
+# os.system("rm " +  "../deca/codegen/valid/sansObjet" + "/"+ "*.ass")
