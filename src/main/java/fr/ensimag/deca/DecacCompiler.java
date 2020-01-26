@@ -312,7 +312,7 @@ public class DecacCompiler {
         //addComment("end main program");
         this.addLabel(new Label("code.Object.equals"));
         this.codeGenErr();
-        program.addFirst(new Line (new ADDSP(1000)));
+        program.addFirst(new Line (new ADDSP(cptSp)));
         program.addFirst(new Line(new BOV(new Label("pile_pleine"))));
         program.addFirst(new Line(new TSTO(cptTs)));
 
