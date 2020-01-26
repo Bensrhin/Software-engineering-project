@@ -1,15 +1,17 @@
 {
-boolean c = (true || false) || (false || false) && (false || false);
-int x5;
-float a = (4080.267 - 8);
-float x1 = (0 / 284);
-int x2 = (8 - 4) - (81 / 7) - (3 % 7);
-int b;
-boolean d = (true && false) && (true || c) || (false && false) || (c || false) && (93 <= 86);
-boolean x4;
-float y = (0 + 69351) * (713 - b) / (3 - 81) + (346.38 * 689.42);
-int x3 = (9 - 284) - (7 * 51) + (0 * 1) / (8 - b);
-printlnx();
-printx("Bonjour", "projetGL");
-printlnx("test auto", "projetGL", (1 * 69351) / (3 - 9) - (4080.267 / 689.42) * (9236.824 + 0) + (b + 9));
+float a = (36.6 / 80.1) + (85.7 * 5198.753) - (5746.309 * 5) - (3 + 889.63) + (3 + 6);
+float x5 = (6 + 37) + (98216.8289 * 66) + (85.7 / 33433) * (5198.753 * 66) / (2980 - 5);
+float x;
+boolean x3 = (true && true) && (true && true) || (6 > 80.1) && (false || true) || (38600.6267 < 37);
+float d = (4 * 36.6) + (36.6 / 54.5);
+boolean c = (x3 || true) && (true || x3) && (92 <= 1);
+int z;
+boolean y;
+int x4 = (77 / 1) - (2980 % 7);
+boolean b = (a < 98216.8289) && (24 > 64350) || (8 >= 54.5) && (false && false);
+float x2;
+int x1 = (74 - 4) / (37 / 9) + (74 + 65) + (64350 + z);
+println((64350 * 8), (33433 - 77) / (65 / 4) + (7 + 6) - (33433 - 33433), "groupe 53");
+println("groupe 53", "Bonjour", (1 % 66) / (64350 + 6) - (6 - 65));
+print("test auto", "groupe 53", "projetGL", "groupe 53");
 }

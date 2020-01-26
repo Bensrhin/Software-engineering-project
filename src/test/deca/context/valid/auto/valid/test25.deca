@@ -1,20 +1,9 @@
 {
-float x4 = (4 / 46) - (0 / 4605);
-boolean a;
-float y;
-boolean x = (a || false) || (false || true);
-boolean x2;
-boolean x3 = (true || x2) && (true && true) || (x && x) && (x2 && false) && (x2 && x2);
-int c;
-float x1;
-boolean d = (x2 || x2) && (false || true) || (9 < 64.5);
-int z = (752 * 46) + (2 % 3);
-int b;
-while ((x2 || false) && (5141.449 < 7920.243) && (3515 < 89150.2267))
-{
-	printx();
-	printlnx("groupe 53");
-}
-println("test auto", "groupe 53", "test auto", (7556 * 46));
-println((5 % 6) + (b % 46) * (5 / 3) - (1504 + 7), (7920.243 * 107) - (752 - 903.43) + (3515 + 46) * (4605 - 8937) + (46 / 3), "groupe 53");
+boolean x2 = (true || false) && (true && false) && (14780.6642 != 8) && (true && false) && (true || false);
+boolean y;
+boolean b = (97734.9534 <= 6);
+int c = (203 % 81) / (0 % 3) + (8 + 9) / (8 % 6) - (2 / 0);
+y = (2103.543 != 9136.449) || (18 <= 340.07) && (y && b) || (9928 < 0);
+println((15 - 97734.9534) + (203 - 178) * (340.07 - 2103.543), (203 - 4547) + (1 * 0) + (4 - 794) / (5 * 15));
+printlnx((2142 * 1) * (47211 % 81) / (794 * 1) + (178 - 203) - (15 + c), "Bonjour");
 }

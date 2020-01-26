@@ -197,7 +197,7 @@ def printInst():
     if (random.randint(0, 4) == 0):
         return s + ");\n"
     s += printExpr()
-    for _ in range(random.randint(0, 3)):
+    for _ in range(random.randint(1, 3)):
         s += ", " + printExpr()
     return s + ");\n"
 """
@@ -220,7 +220,7 @@ def inst(identation):
     return random.choice(tab)
 def listInst(identation):
     s = ""
-    for _ in range(random.randint(random.radint(0,2), 5)):
+    for _ in range(random.randint(random.randint(0,2), 5)):
         s += inst(identation)
     return s
 """

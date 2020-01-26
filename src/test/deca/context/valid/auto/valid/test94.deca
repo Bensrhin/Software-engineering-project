@@ -1,10 +1,15 @@
 {
-boolean y = (41475.8635 > 3);
-int x = (9 * 8);
-int x1 = (781 - 5726) / (781 + 4);
-boolean z = (6992 == 4) && (true && false);
-float x2;
-int b = (804 % 5) / (84 % 804) + (1 * 5726) * (7 - 6992) / (84 * 1);
-x2 = (28802.9436 / 308.03) / (85962 - x2) + (x2 * 7) / (27372.2507 * 6);
+boolean z;
+float x5 = (8465.994 / 3) + (6633.173 - 79.9);
+boolean c = (79.9 == 79.9) || (false || false) && (true && false);
+boolean d;
+boolean x4;
+boolean b = (d || z);
+boolean x = (7257 == 2514) || (7257 != 5);
+boolean x3;
+int y = (66 % 8) - (252 - 6);
+boolean a;
+d = (true || d) || (true || z) && (c || c) || (2514 == 6) || (x3 || a);
+printx((72987.2514 - 7) * (252 / 74776) + (8 - 366.55) + (58.2 + 252), (8 - 90875), "test auto");
 printlnx();
 }

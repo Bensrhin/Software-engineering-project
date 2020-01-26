@@ -1,46 +1,13 @@
 {
-int c = (36536 / 25461) - (4785 % 36536) + (25461 - 9) / (5 / 74) / (51963 - 0);
-float y = (c + 1) / (186.09 + 5);
-int x2 = (c + 5) * (3 % 6);
-float x5 = (36701 * 2) + (10672 + 0) * (6 - 6) / (25461 / 32988);
-float d;
-boolean b;
-float x1 = (998.10 + c);
-boolean a;
-if ((998.10 <= 3) || (2 != y) || (false || false))
-{
-	a = (true || a);
-}
-else if ((186.09 == y) && (b && false) || (true || false))
-{
-	if ((1 < y))
-{
-	printx((2699.959 / 1), "projetGL");
-	printlnx((9 - 0) * (x2 - 36536), (7 / 4), "projetGL");
-	printlnx();
-	printlnx("projetGL", "Bonjour", "test auto");
-	printlnx();
-}
-else
-{
-	println((1 - 25461) - (51963 / 51963) + (4785 + c), (x2 + x1) - (7 / 0) + (5 - 2) * (1 / 361.23), "groupe 53");
-	printlnx("groupe 53", "test auto", (6916 / 36701) / (32988 * 8) + (36536 * 32988));
-	printx();
-}
-	printlnx((y + d) - (228.02 * 474.19), "groupe 53");
-}
-else if ((36701 >= x2) || (0 != x1))
-{
-}
-else
-{
-	printlnx("projetGL");
-	println((51963 / 6916) - (9 + 4) * (51963 + 36701) + (c - 36536), "groupe 53", "groupe 53");
-	println("test auto", "Bonjour");
-	println((4785 - x2) / (25461 % 9) + (3 % 74) / (32988 - 8));
-}
-printlnx((2 / 4785) + (4 - 6), "test auto", "groupe 53");
-printx("test auto", "Bonjour", "Bonjour");
-printlnx((36701 - 32988) / (74 - 2));
-printlnx();
+boolean b = (8828.154 != 9) && (false && false) && (true && true) && (false && true);
+int x1 = (1423 - 3) + (6 - 7) * (46 * 7) + (8 / 7367);
+float x2;
+boolean z = (b && false) || (false && true);
+boolean d = (z || false) && (true && z) && (46 <= 69.0);
+boolean y = (d || z) && (z && b) && (z || d) || (958.96 > 631.67) && (d || false);
+float x;
+int x3 = (5972 - 7367) / (1423 % 31870) * (5 * 9) + (x1 / 991) - (9 - x1);
+float c = (x * 9) / (8828.154 - 31870) * (36286.8571 - 9) * (958.96 + 1520.908) + (x - 31870);
+int x5 = (5972 * x3) * (31870 - 103) + (1423 + 2) - (0 * 7367) + (4 % 31870);
+int x4;
 }

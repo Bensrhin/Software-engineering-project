@@ -1,8 +1,16 @@
 {
-boolean b = (false || true) || (true && false) || (true || false) || (true || true);
-float x4;
-float x2;
-int z = (50302 * 6) / (38364 / 66) * (6 * 66) - (50302 * 86) / (50302 % 66);
-float a = (20592.1904 - 50302);
-printx("test auto", "Bonjour");
+int d;
+float z;
+boolean b = (3 < 8289.971) && (true || true) || (true || false) && (false && false) || (true && false);
+float x3;
+boolean x = (1 > 8694) && (false || false) && (3 < 395) || (b || false) || (true && b);
+boolean a;
+boolean x5;
+int y;
+int x2 = (687 * 1) - (9 - 6) / (0 - d);
+printlnx("Bonjour", "groupe 53", (9 / 2402) + (7 + y));
+printlnx("groupe 53", "projetGL", (6 + 2) / (98 / 6) + (0 % 460) - (8 * x2) / (395 + x2));
+printlnx("projetGL", (98 - 0) - (8694 - d) * (1915 + 460) / (8 - 3) * (5 / y), (856.98 - 189.10) + (92 / y) - (397.37 * 9) * (27 - 395) / (856.98 - 687), "groupe 53");
+printlnx();
+printlnx();
 }

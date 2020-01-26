@@ -1,18 +1,23 @@
 {
-boolean z = (44617.5854 <= 571) || (true || true) || (true || true) && (false || true) || (true && true);
-int x1 = (195 * 0) + (4131 - 814) + (4 * 1) / (54 * 4) * (4412 + 3);
-float x2 = (81680 + 8) / (7 - 35536.8632) / (1 - 3);
-int x5 = (9546 + 4) / (3 * 0) * (7 + 8);
+boolean x5;
 boolean x3;
-boolean c;
-int x = (2 / 8) + (6 + x1) + (4131 % 9546) * (54 * 4) * (1 * 195);
-while ((z || c) && (true && c) && (7 >= 166.53))
+float d = (8 - 6);
+boolean x2;
+float z = (45.2 - 87177.9249) + (0 - 31.5) - (8638 * 31.5);
+boolean y;
+int x = (346 + 346);
+int a = (1 + 7) + (x - 9) + (8 / 248) + (5 + x) + (8 % 615);
+int c;
+boolean b;
+boolean x1;
+while ((false || x5) && (5767 >= 32788) && (b || y) || (true || false))
 {
-	x3 = (z && false) || (35536.8632 == 195) && (46047.3353 >= 645.34);
-	println("groupe 53", (72 * x5) * (0 + 72) / (81680 + 1) / (9 - x1), "Bonjour", "Bonjour");
-	printlnx("projetGL", "groupe 53", "groupe 53", (10173 % 195) - (4131 - 10173) * (0 % 4) / (81680 + x5));
+	x3 = (9 < 87177.9249) || (false && x5) && (9274.530 <= 9640);
+	printx((45.2 - 5767) + (1 + 31.5), "Bonjour", (7 * 248) * (14 % 9640) - (630 % x), "projetGL");
+	printlnx((28.3 - 5) / (7 / 8) / (8638 / 9274.530) + (a - 615) / (9274.530 / 28.3), (3 - a) + (3603.551 - x) + (7 - 8638), "groupe 53");
 }
-printx("groupe 53", "test auto");
-println((17431.7151 + 814) * (54 / x2), (10173 / x) - (8 - 166.53) - (4412 / 814), "test auto");
-printlnx();
+print();
+print();
+println("projetGL", "groupe 53", "groupe 53", "projetGL");
+printx("projetGL", "projetGL", (6 % 6) + (4 + 346) / (c % 7), (4 / 4) * (630 / 9));
 }

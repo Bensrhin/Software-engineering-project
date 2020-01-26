@@ -1,14 +1,10 @@
 {
-float x2 = (16884 + 52.5) * (5105 / 9) * (1 * 2) + (11.0 / 29);
-int x5 = (9 % 972) + (3 * 86) + (86 + 86) + (558 % 972);
-int x4;
-boolean a = (true || false) && (false || true) && (1165.064 > 7) || (true || true);
-float x3 = (481 * x2);
+int x2;
+float x;
+int y = (6770 - 276);
 int d;
-int x = (x4 + 4) + (558 - 29) - (3 % 8);
-boolean y = (false || true);
-boolean c = (86 != 52.5) || (a || a) || (y || true) || (52.5 > 575);
-int b = (52 % 7) - (x5 / 575) - (558 - 6) / (0 % d);
-boolean z;
-print();
+boolean x5 = (32283 > x2) || (false && true);
+x2 = (0 + 9080) + (6770 + 1) / (799 + 32283) + (5 % x2) + (4 + y);
+printx((3 / 9080), (1 - 4) + (9 % 3) / (4 % 3) / (x2 % 6770));
+printlnx("Bonjour", "test auto", "projetGL");
 }

@@ -1,26 +1,8 @@
 {
-int d = (34795 - 6408) * (360 % 7);
-float z;
-boolean x1 = (983 > 707) && (86166.1466 == 97.9) || (false || false) && (2 >= 0) && (983 >= 935);
-int x5;
-boolean a = (false || x1) && (x5 != 86166.1466) && (737.22 > 6);
-if ((707 > 0) && (80907.9454 == 8122))
-{
-	printx();
-	println();
-	print("groupe 53", "projetGL", (2 - 2) / (8 / 8122) / (6 - 0) - (3 % 57) * (983 - 57));
-	printlnx("projetGL", (360 - x5) / (4 % 6408) / (34795 / 983) / (1 * 360) + (8122 % 360), "test auto", "projetGL");
-}
-else if ((4 == 80907.9454))
-{
-	print("projetGL", (57 / 57) + (x5 % 1) - (983 / 9) * (x5 + 8) / (8122 / 707), "groupe 53");
-}
-else if ((8 < 80907.9454) || (false && x1) || (true && false) || (false || true) || (5238 < 6408))
-{
-	printx((36142.7494 / 6) * (9 * 8) + (84.2 - 9) / (707 * 52.3), "Bonjour", "test auto", "groupe 53");
-}
-else
-{
-}
-println("test auto", "test auto");
+float d = (99279.4187 + 74865.7004) / (1 / 6) + (10044 / 3302.998) * (7780.927 / 3302.998);
+float x2;
+int x4;
+x2 = (16.6 + 61929) * (x4 / x4) * (9 + 7780.927) * (17 / 5);
+printlnx("groupe 53", "groupe 53", "Bonjour");
+printx((56162 - 138.31), "Bonjour", "test auto");
 }

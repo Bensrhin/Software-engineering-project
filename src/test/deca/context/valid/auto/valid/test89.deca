@@ -1,10 +1,30 @@
 {
-float x5;
-int b;
-float x3;
-boolean x2;
-int d = (54623 - 7) - (48559 * 49) * (860 * 54623) * (49 * 5790);
-x5 = (4 + d) / (1 + x3) - (9 / 49) - (35502 / 3);
-printx();
-printlnx("Bonjour", "groupe 53", (1 + b) * (35502 % 35502) + (99993 - 5790) + (6 % 5790), "projetGL");
+int c;
+boolean a;
+float x3 = (2119 / 6147) - (1 + 906) - (25 * 6) * (1483.495 + c) / (8134.667 / 793);
+if ((a && a))
+{
+	while ((2119 <= 8134.667) || (c <= 3701.489) && (false || a) && (2119 == 30.2))
+{
+	while ((false || a) || (3701.489 != c) || (1483.495 == 756.28))
+{
+}
+	printx((1483.495 / x3) - (8134.667 - 793) * (56773 / 5), (0 - 25), "projetGL");
+	printx((8 % 2) - (6147 + 6), "test auto");
+	printlnx("test auto", "Bonjour", "projetGL");
+}
+	printlnx("test auto", "groupe 53");
+	print("test auto", (1483.495 * 386.74), "test auto", "test auto");
+}
+else if ((a || true) || (a && a) || (true && false) && (1 == 692) && (a || true))
+{
+	printx();
+	printx("groupe 53", "Bonjour", "projetGL");
+}
+else
+{
+	printlnx((692 - 6147), "test auto");
+	printlnx();
+}
+printlnx("test auto", (9 - 8777.731) + (3 - 1234) - (5 + 7) * (30.2 - 9));
 }

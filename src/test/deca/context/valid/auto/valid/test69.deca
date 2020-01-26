@@ -1,16 +1,13 @@
 {
-int a = (0 - 9);
-int x4;
-float d = (0 * 870) + (5620.403 - 870) * (7 / 476) / (476 - 916.41) * (491 - 72228.4985);
-int z;
-int x2;
-boolean x5 = (true || true) && (386.62 == 4135.927);
-float y;
-float x3 = (7 * 916.41) - (442 * x2) + (410.98 - a);
-int b = (15544 % 3) + (232 - 2) / (7863 - 9);
-boolean x1 = (false && x5) || (476 < 7863) && (232 >= 491) || (6584.260 <= 0) || (x5 && x5);
-y = (870 / 6584.260) - (916.41 - 476) + (6 / 4);
-printlnx("projetGL", "groupe 53", (9 - 9) / (232 + 870), "groupe 53");
-print("projetGL");
-printlnx("test auto");
+boolean x3 = (false || false);
+float a;
+float d;
+float x = (259 + 7);
+boolean x2 = (3 >= 9);
+float x1 = (96547 * 42.1);
+int b = (1 * 0) / (96547 % 73);
+float y = (d - 9) + (6742 * 91) / (5 - 42.1);
+boolean c = (x3 || x2) || (651 != 809.46) && (6 >= 86843) && (8 > 76019.0385) || (false || x3);
+float x4 = (b + 24.9) / (a / 9);
+a = (y / 259);
 }

@@ -1,11 +1,15 @@
 {
-int y = (7296 % 299) - (59 - 8) + (91 - 9) - (9 * 1);
-float x = (2903.122 / 91) - (59 / 7296) * (2 + 1) / (90 * 51.8) - (4 / 51311.7639);
-float c = (51311.7639 / 6738.526) + (51.8 + 59) + (162.62 * y) + (6738.526 - 91) - (3 - 9);
-boolean d;
-boolean x1 = (false && true) && (d || false) && (true || d);
-int z = (7296 + 9366);
-d = (x1 || true) || (15 > 427.11);
-printx("Bonjour", "test auto");
-println("projetGL", "Bonjour");
+float x1 = (59 / 27307.0002);
+float z = (0 + 5132) - (4 / 6) * (5 * 5678) / (1 - 4);
+int y = (6 - 9) * (5 + 5678) + (8 + 4);
+int x;
+boolean a;
+float b = (4 - 79413.7372) + (8913.447 * x1) + (2 - 52161);
+int x3;
+float x5 = (2 * 6912) + (71864.9350 / x3);
+boolean x4 = (0 > 52161) || (b < 17.9) || (true || a) && (true && true);
+a = (6912 == 803.96);
+printx("projetGL", "test auto", "projetGL", "projetGL");
+println((x1 / 9) + (x1 / 71864.9350) - (405.74 / z), "projetGL");
+println("test auto", "test auto", "test auto", (6 / 52161) + (x * y) * (7 / x) * (y * 5) * (7 % 637));
 }

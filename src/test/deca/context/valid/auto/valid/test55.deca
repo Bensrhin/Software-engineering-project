@@ -1,56 +1,15 @@
 {
-boolean c = (true || true) && (83 > 2) || (false || true) || (157.35 >= 22);
-float x5;
-int d = (3 + 2) / (9 / 3) + (923 % 2) + (22 + 4);
-float x4;
-int z = (52027 - 9) - (9 * 21);
-float b = (x5 * 8) * (8 * 3850);
-while ((c || c))
+int x2 = (24259 / 1) + (8 + 24259);
+int c = (13 + 7) * (x2 / 8) / (x2 % 7) - (9578 + 7);
+boolean d = (24259 != 6) || (1816 == 1) || (false && true) || (false || false);
+float a = (13 * 13) / (c - 32443.9371) + (0 - 8) * (9578 - 8);
+while ((90 >= 96.6) || (96.6 != 197.59) || (8 < 13))
 {
-	if ((2260.895 >= x4) || (19.8 > 83))
-{
-	while ((102 > 7) || (true || true) && (89888.5220 < 9786.940) || (true && true) && (c && c))
-{
-	while ((c && c) && (c && false))
-{
-}
-	while ((true && true) || (21 <= 4) || (c || c) || (true && true))
-{
-	if ((true || true) || (c && c) || (3 >= 41.4) || (b != 8278.623))
-{
-	printlnx("Bonjour", (923 / 52027) - (x5 - 52027));
-}
-else if ((c || false))
-{
-	print((89888.5220 * 8), "test auto", "Bonjour");
-	printx("test auto", "groupe 53", (535 - 1504));
-	printx("test auto", "groupe 53", "groupe 53", "groupe 53");
-}
-else
-{
+	print("groupe 53", "Bonjour", "groupe 53");
+	printlnx("Bonjour", "test auto");
+	print("groupe 53", (190 / 2));
 	printlnx();
-	println();
 }
-	printlnx("Bonjour", "Bonjour", (22 * 9716), "Bonjour");
-	printx("projetGL", "Bonjour", "test auto", "projetGL");
-}
-}
-	printlnx((21 * 83) * (z + 3850) + (1 % 535) + (1 / 2));
-	print((1 + 9716) / (3850 - 4) - (z + 21) + (1 - 21), (83 - 1) * (22 + 9));
-}
-else if ((c || c) || (c || false) && (true || false) || (89888.5220 >= 3183.274) && (c || c))
-{
-	printlnx("groupe 53", "test auto", (21 - 5) + (2 / 7) / (102 - 3850) / (102 * 5), "groupe 53");
-}
-else
-{
-	printlnx("test auto", "groupe 53", "projetGL", (9786.940 / 157.35) + (9716 / 8) * (z * 8278.623) * (2260.895 / 9786.940));
-	printlnx((102 - 102) + (507.25 - 923) * (2260.895 + d) * (52027 - d), (8 + 923));
-	printlnx((3850 + 9716));
-	printlnx("projetGL", (923 * z));
-}
-	printx("groupe 53");
-}
-println((923 * 923), "groupe 53");
-printlnx("groupe 53", (8278.623 / 1504) + (z - 4) - (5 + 22) / (512.54 + 89888.5220), "groupe 53", (102 + 3850) + (3 * 83) / (d + 923));
+println((190 / 2), "projetGL", "Bonjour");
+printlnx();
 }

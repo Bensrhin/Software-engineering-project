@@ -1,16 +1,13 @@
 {
-float a = (7 / 295) * (54033 + 92237) - (434.81 + 53368.2451) * (5 * 5) - (6 - 1);
-float b = (37.4 / 5) * (37.4 - 940) - (37.4 * 61701);
-boolean x3;
-boolean x = (65412 == 54033) || (x3 || true);
-float c = (53368.2451 / 67.2) / (16.1 + 828.97) - (295 / a) - (54033 / b);
-float x4 = (80767.5561 + 525.64) * (65412 * 67.2);
-float z;
-float x2 = (434.81 * 7) - (3 * 9);
-boolean y = (x3 || true) && (2247 != 67.2) || (false || true) && (false && false);
-int d = (9 - 92237) * (9104 * 7) / (7 % 940) / (199 / 940);
-boolean x1 = (0 >= 5);
-float x5 = (295 * 9) - (z / 199) - (7 / d) - (199 - 67.2);
-printx("test auto", "test auto");
-printlnx();
+boolean x2;
+boolean z;
+boolean c = (6 < 5) || (false || x2) && (2 < 1) && (700 != 910);
+boolean y;
+boolean x5;
+float a = (468.72 + 12761) + (584 - 74) - (4935.823 / 9) - (0 - 113.99) / (113.99 / 468.72);
+boolean d = (false && c) && (x5 || false);
+float x = (9 + 12761) / (3 + 3708.736) / (2059.106 / 132);
+println();
+printx((363 + 12761) / (910 * 8) / (8 + 132) / (9 / 700), "groupe 53", (584 / 4), (551 * 7));
+println("groupe 53", "projetGL", "test auto");
 }

@@ -1,11 +1,12 @@
 {
-float y = (6429 / 8) + (45 + 5) * (17311 * 1) / (1 - 9) - (3742.853 - 16.8);
+float x1 = (2 + 26) * (26.4 * 7) - (41.7 * 45.7);
+int d = (4 / 5) + (1 + 6);
+int x4 = (4 % 4) / (913 % 3) / (1 / 913) / (238 * 26);
 int x3;
-int z = (9 % 6) * (6429 / 6429) * (6696 - 7);
-boolean x2 = (65.5 == 6429) && (24.0 == 8) || (17.0 != 17311) || (368 < 368) || (true || false);
-float d;
-d = (3742.853 / 6429);
-printx("projetGL", "test auto");
-printlnx("test auto");
-printx("Bonjour", "projetGL");
+int a = (4 + 22) - (1 % 1);
+float c = (7 / 103.36) - (5 - 81125.2823);
+boolean z = (false && true);
+int x = (910 - 8) + (a + 9) / (913 % 913);
+printlnx((22 % x), "test auto", (22 + 238) * (26 + 3960) / (3960 - 3), "groupe 53");
+printlnx();
 }

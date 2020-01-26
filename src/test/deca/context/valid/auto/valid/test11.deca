@@ -1,11 +1,16 @@
 {
-float b = (49088 * 4) * (3802 + 2) + (9964 + 3523.768) - (15012.6633 / 5);
-boolean c;
-int x2;
-int x5 = (3 * 2) + (9 / x2);
-boolean x4 = (true || c) || (false && c);
-boolean y;
-x2 = (53 * 802) * (53 * 7) + (8 / 36) / (548 + 3802) + (49088 * 4);
-printlnx("groupe 53", "groupe 53");
-printlnx("Bonjour");
+float x1 = (468 + 1) / (468 + 637) + (56 / 860.49) / (4024.226 + 637) * (61 * 61);
+float z;
+boolean x;
+float y;
+boolean a = (61 != 7051) || (637 == z) && (x || true);
+boolean x5 = (a || true) && (a && false) && (false && false) || (807.77 != 7739.310) && (false && false);
+boolean x2 = (a && a) || (x5 && x) || (a && true) || (468 >= y) && (98155.5863 >= 0);
+boolean x3 = (true || x2);
+float c;
+boolean d;
+z = (46 + 56) / (468 / 2) * (8414.765 + 7739.310) + (637 / 61) - (6899 * 4024.226);
+println("projetGL", "groupe 53");
+println("groupe 53", "groupe 53", "groupe 53", "Bonjour");
+printx();
 }

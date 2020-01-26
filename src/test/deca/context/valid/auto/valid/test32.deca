@@ -1,5 +1,17 @@
 {
-float z;
-int x2;
-float x = (144.55 + 8);
+int d = (8 * 7) / (3 * 547) * (1446 - 82) - (9 - 2);
+float x1;
+float x5 = (823.50 * 6) - (d * d) * (34.7 * 863) * (75.2 * 0);
+while ((6 <= 507.27) && (true && false) || (false || true))
+{
+	printlnx((d + 1446) - (82 % 4) - (917 - 35), (9 % 6) + (2 - 35) + (9 - 5), "groupe 53", "test auto");
+	printx("projetGL", (7361 % 9) / (3 % d) / (7361 * 7) * (863 * 9) * (39919 - 6), (507.27 / x1) / (2 * 841.05) - (5 / 7361), (863 * 8));
+	printx("Bonjour", "projetGL", "Bonjour");
+	printx("Bonjour", (917 - 823.50) - (34.7 / x5) * (x5 * 3060.580) + (823.50 * 2) + (64 + x5), "test auto", "test auto");
+	printlnx((5 - 34.7) + (75.2 - 64) * (34.7 + 75.2) + (7 + 82) + (9 + 4), "Bonjour", "test auto", "Bonjour");
+}
+printlnx("groupe 53", (39919 + 863) - (4 / 863));
+printlnx("Bonjour", (x5 / 34.7), "groupe 53", (7361 * 6) / (7361 % 863) / (9 - 39919));
+printx("groupe 53", "groupe 53", "test auto", "projetGL");
+printlnx("projetGL", "projetGL", "projetGL", "Bonjour");
 }

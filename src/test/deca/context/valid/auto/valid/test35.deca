@@ -1,25 +1,10 @@
 {
-int x3 = (1 % 4) - (3 / 1) * (3 / 9112) * (167 + 1);
-float z = (3 * 418);
-int x1 = (70776 * 5);
-float a = (5943 + 306.44) + (34081 + 66.7) + (70776 * 34081);
-printlnx("projetGL", (245 / 0));
-if ((306.44 != 93.0) || (6 != 57333) || (57333 > 0) || (false || true))
-{
-	print("groupe 53", "test auto");
-}
-else if ((false && false) && (false && true) && (false && true) || (true || false) || (9112 >= 245))
-{
-	printlnx("groupe 53", (1 * 34081) * (4 * 5943), "projetGL");
-}
-else if ((x3 < 93.0) || (92.4 == 9065.162))
-{
-	println((x1 * 1) - (0 / x3) * (167 + 418) + (2 / 167) / (5943 + 418));
-	printx();
-	println("Bonjour");
-	printx("groupe 53", "test auto", "projetGL", "groupe 53");
-}
-else
-{
-}
+float x1 = (0 + 92) / (32.4 * 9) * (7 / 19);
+float z = (98868 * 19);
+float x2;
+float a = (2766.921 * 114.28) * (4 - 4) + (8 + 1990.075) - (9800 + 0);
+int x3 = (2747 + 0) * (9 - 3);
+int x;
+float x4;
+float d;
 }

@@ -1,8 +1,11 @@
 {
-boolean x2 = (4 > 84.6);
-float b;
-float x1;
-float y = (x1 - 9) / (21899 / 21899) + (45633 * 6) / (8 + 9663.687) * (1 - 84.6);
-print("groupe 53");
-printx("test auto", "Bonjour", "projetGL", "Bonjour");
+float x2;
+boolean c;
+float b = (76.2 - 1746.612) / (1746.612 / 1743.240) / (1743.240 / 3);
+int x3 = (27 - 2) * (0 + 41707) - (479 % 4) - (27 / 35043) + (26 % 479);
+float a = (6 / 2);
+print("Bonjour", "groupe 53");
+println("test auto", "Bonjour", "projetGL", (36.7 / 28746.3386) - (1 * 1743.240) - (479 - 27));
+printlnx("Bonjour", (4 + 0), "Bonjour");
+println("groupe 53", "test auto", "groupe 53");
 }

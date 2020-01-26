@@ -1,14 +1,8 @@
 {
-float y = (876.14 - 8193) * (7 + 21.3) - (3 + 50.6) + (50.6 - 40);
-boolean x2 = (false || true) || (false || true) || (false && false) && (true || true) && (false && true);
-int b;
-boolean x5;
-float x3 = (0 - 9871.301) + (114 - 263.92) / (b + 9871.301);
-boolean x1 = (933 != 2) && (false || false) && (x2 && true);
+boolean x1 = (2 != 5) || (true && false) || (305 < 421) || (false || true) || (false && false);
+float x4;
+int c;
+float x2 = (c * 2) * (5 / 851.35);
 boolean a;
-printx();
-printlnx("projetGL", "projetGL");
-printx("groupe 53");
-printx("Bonjour", (114 % 4) - (35 / 35) * (114 * 3) + (32 + 1), (4 * 45.9) * (5 + 52.4), (40 * 2694));
-printlnx((40 - 4) * (32 - 2), (2694 / 6) - (3 + 8193) + (7 * 0) + (7 - 40) - (32 - 2694));
+printx("test auto", (9 + 89.1) * (45.7 - 4) * (89.1 - 421) - (681 * 1) - (9 / 620.97), "groupe 53", "test auto");
 }

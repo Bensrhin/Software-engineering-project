@@ -1,13 +1,39 @@
 {
-float b = (2179 * 17480.3202) - (4 + 93.5);
-int x1;
-float x5;
-boolean y = (false || true) || (0 <= 41484.6999) && (8131 > 4) && (true && false);
-float c = (2179 + 8131) / (2179 * 3) + (58967.6648 * 41484.6999) - (193 + 58967.6648);
-int a;
-boolean x3 = (false || true) || (75104.7254 == 1) || (false || y);
-int z = (8 + 5) - (7 - 2179);
-float x = (193 + x1) / (93.5 / 4) / (1 + 4);
-float d = (9 + 2) + (17480.3202 + 5) + (75104.7254 - 6826.972) - (26.6 - 18.0);
-boolean x4 = (true && false);
+boolean x1 = (6 == 9954) || (true || true);
+boolean y = (18 >= 865.33) && (x1 && x1) && (393.56 == 5671.195);
+int x3 = (3 - 1) * (6 - 4) + (867 / 7120);
+boolean x;
+float c;
+if ((true || y))
+{
+	x = (527 >= 97.5) && (4283.322 != 14096);
+	printlnx();
+}
+else if ((x || y) || (true && false))
+{
+	printlnx((867 / 9954) + (393.56 + 9) / (97.5 * 787.39) * (2 - 624.52) - (393.56 * c), (9 - 0), "Bonjour");
+	print();
+	println("groupe 53", "groupe 53");
+	printlnx("test auto", (0 * 7) / (2 / x3) * (0 * 6) * (7120 + 7) - (14096 - 7), "Bonjour", (9954 % 7120) / (14096 / x3) / (527 % 57) / (1 - 14096) + (5 % 9954));
+}
+else if ((x && y) && (11145 > 393.56) || (y && x) || (x1 && true) && (5 <= 393.56))
+{
+	printlnx("projetGL", "projetGL");
+}
+else if ((7120 > 5671.195))
+{
+	printlnx("groupe 53", (5671.195 * 4283.322) + (11145 * 7) * (18 * 527) * (11145 - 7120), (5 - 3) / (7120 / 7120) + (438.29 * 9) - (4283.322 / 438.29), "test auto");
+	printlnx();
+	printlnx("projetGL", "Bonjour", "test auto", (4 / 527) - (7 - 14096) / (9954 / 63612) * (1 / 527));
+	printx("Bonjour", (63612 - 8), (3 * x3), (5671.195 * 7));
+}
+else
+{
+	printx("Bonjour", "Bonjour");
+	println();
+}
+println("groupe 53", "projetGL", (83580 * 11145));
+printlnx("Bonjour", "test auto");
+println("test auto", "test auto", (9954 % 6) * (14096 / x3) + (9 + 867) / (2 / 1) * (18 + 8));
+println("groupe 53", (x3 + 9954) - (14096 * 438.29) / (2 + 83580) * (7120 * 867) + (6 + 6), "Bonjour");
 }

@@ -1,9 +1,13 @@
 {
-float b;
-int x;
-float x2 = (5 * 73.6);
+float x3 = (3715 + 1);
 boolean x5;
-x = (2226 % 3) * (55861 % 9987);
-printlnx((1 - 2226) / (9 / 7) + (3 % 2) - (2149 + 3) * (2149 * 8), (2226 / 0) / (7 % 3) * (x + 6) - (3 - 2226));
-print("groupe 53");
+float x = (2 - 73.8) * (1836 / 93);
+boolean y;
+float x1;
+boolean x4 = (801.56 <= x1);
+float a;
+int x2;
+int c = (8 % 7878) - (0 + 93424) + (3 - x2) + (5 % 62);
+int d;
+println((1836 - a), "Bonjour");
 }

@@ -1,12 +1,15 @@
 {
-float x2;
-boolean a;
-float z = (91447.8058 * 8);
-boolean x3 = (true || true);
-float x4 = (133 + 37382.7726) / (91447.8058 / 81.6) + (z + 6) - (99267 / 87889) - (0 * 369.47);
-int b = (0 - 97973);
-float c;
-float x1 = (87889 / 6) + (5658.338 / 369.47) + (5 + 4138.223);
-boolean d = (true || x3);
-float x5 = (87889 * 99267);
+boolean x2;
+boolean x5 = (false || false) && (x2 && x2);
+boolean x4 = (x2 && false);
+float b;
+int z;
+int y = (1 * 0) / (1 % 4);
+int a;
+boolean c = (5 >= 352);
+int d = (1937 % 3) - (6 - 4) + (352 * 3) * (2 + 8);
+float x1;
+float x = (5 - 6);
+x1 = (8 / 8861.052);
+printlnx();
 }

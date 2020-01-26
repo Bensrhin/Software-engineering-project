@@ -1,12 +1,17 @@
 {
-int b = (83 / 370) / (6 * 99) / (7 / 7) / (370 + 8) + (647 + 4);
-boolean x3 = (b >= 1) || (true && false) && (15.7 < 41) || (true && false);
-float c = (4 / 7) / (2349.593 - 4);
-int y = (17 + 370) + (46 / 3) * (670 * 41) + (496 - 8);
-int z = (5 - 933) - (b - 6);
-printlnx();
-printlnx("test auto", (15.7 - 83));
-printlnx("projetGL", (0 + y) * (647 + 13.4));
-print("test auto", "test auto", "test auto", "Bonjour");
-printlnx("projetGL", (670 / 13.4) + (5 * 15.7), (670 % 4));
+boolean a = (3561.442 < 820) || (true || false) || (false && true) || (false || true);
+int x2 = (43394 % 820) / (51 % 2) + (820 / 165) * (3 * 933) / (151 % 151);
+float c;
+boolean x4 = (true && a) && (true && false);
+int d = (3 - 0) * (9 + 0);
+boolean x3 = (c != 5);
+boolean y = (a && x4) || (151 == 379.89) && (x4 && false);
+float b = (6479.787 + x2) / (5273 - 8) / (x2 + 9149.865);
+float x1 = (9593 * 8) + (90150 / 9149.865) + (7 / 933);
+int x5 = (43394 % 89619) / (9593 / 151) * (9 % 151);
+int z = (x5 * 9) * (90150 - 0) / (90150 * 5);
+boolean x = (false && x4) || (false || false) && (151 != 429.78);
+c = (820 - x2) * (151 / 4) - (9 * 5) + (d * 35272.1078) + (429.78 - c);
+printlnx((x5 * d) - (9 % 151) / (3 / x5) + (x2 / z) - (6 / 151), "projetGL", (x2 + 820) * (151 * 165), "projetGL");
+printlnx("test auto", (0 / b) / (z + 379.89));
 }

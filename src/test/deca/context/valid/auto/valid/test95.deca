@@ -1,40 +1,11 @@
 {
-int z = (50 % 8347);
-float x1 = (87057.5929 * 7) - (50 + 5) - (1 - 14031) * (12367.6393 / 5);
-float x = (8347 * 9) * (50 - 87057.5929) / (87057.5929 / 9) / (5 - 8);
-float x3;
-float a = (20.8 + 2) * (33.9 * 33.9) / (9 + 688);
-boolean x2 = (87057.5929 < 4);
-int x4;
-int b;
-boolean x5;
-int d;
-float c = (87057.5929 * 5);
-float y;
-if ((true && x5))
-{
-	println((0 / 7) / (8 / 50) / (d * x) - (y / 87057.5929), "Bonjour");
-	printx("test auto", "groupe 53", "test auto");
-	printlnx((d % 753) / (d - 0) - (72568 * 4956) - (b % 3) * (63926 % 4956), "groupe 53", (33.9 + 12367.6393) / (2 / y) / (9 * 33.9) * (x1 + 1), (2 * 0) + (0 * 9) - (72568 + 45502) * (688 * 6));
-}
-else if ((x2 || x5) || (x4 == 3700.620) && (x2 || false))
-{
-	printlnx("test auto", "test auto");
-	printlnx("projetGL", (0 / 7) - (801 + x4) / (b % x4) - (4 % 50) - (50 / 45502));
-	print((d - 14031), (d * z) + (z / 0) / (8 - 63926) - (688 / 72568), "Bonjour", "test auto");
-	print((3 + 0) - (4 * 6), "test auto", "projetGL", "groupe 53");
-	println("test auto", "Bonjour", "Bonjour");
-}
-else if ((8347 != 4) || (8347 >= 688))
-{
-	println();
-}
-else
-{
-	printlnx("test auto", "test auto", "test auto");
-}
-printlnx("groupe 53", "groupe 53", "Bonjour");
-println((c - 4) + (6 - x3) - (4956 * 6) + (20.8 - x4) - (801 - 8347), (72568 % 14031) / (7 - 8347) * (z / 45502), "groupe 53", "test auto");
-printlnx((87057.5929 + 25607.9441) / (63926 + 14031), "test auto", (5 * 0) / (1 - 5) - (8347 + y) - (1 - x4) + (14031 * x4));
-printx("projetGL");
+float y = (1 + 71) - (6251 + 7) - (1751 - 477.28) / (3 / 0);
+int x5 = (93 * 720) - (1621 + 2) * (1621 + 7) - (8 / 8) / (85961 * 1751);
+float x1 = (477.28 / 71) + (180.03 * 5);
+boolean b = (true && false) && (8 == 9) || (false || false) && (799.99 <= 1);
+printlnx("groupe 53", (x5 * 130.67) / (180.03 / 97771.1877) * (4 * 0), (93 + 0), "projetGL");
+println();
+printlnx();
+printlnx("test auto", "Bonjour", (71 + 85961) + (1621 - 85961), "Bonjour");
+println("test auto", "test auto", (1751 % 720) / (4 * 9) - (x5 / 3) * (1 % 0) * (7 + 8294), "test auto");
 }
