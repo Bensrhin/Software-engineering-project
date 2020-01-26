@@ -23,7 +23,7 @@ def valid_gencode():
     valid_gencode_SO = "../deca/codegen/valid/sansObjet"
     valid_gencode_O = "../deca/codegen/valid/objet"
     valid_gencode_provided = "../deca/codegen/valid/provided"
-    
+
     print("~======================================================~")
     # print(color.BOLD+color.OKBLUE+"  X+X+X+X+X  [TEST Provided GENCODE]  X+X+X+X+X "+color.ENDC)
     # print("~======================================================~")
@@ -42,7 +42,7 @@ def valid_gencode():
     #         os.system("rm resultatProvided.log")
     #         if str(file) == "cond0.deca":
     #             attendu= "ok"
-                
+
     #         elif str(file) == "ecrit0.deca":
     #             attendu = "ok"
     #         elif str(file) == "entier1.deca":
@@ -63,10 +63,10 @@ def valid_gencode():
     #             print("Le résultat attendu :", attendu)
     #     os.system("rm " +  "../deca/codegen/valid/provided" + "/"+ "*.ass")
     #     print("======================================================")
-    
+
     print(color.BOLD+color.OKBLUE+"      X+X+X+X+X [TEST SANS OBJET GENCODE] X+X+X+X+X "+color.ENDC)
     print("~======================================================~")
-    
+
     for file in files(valid_gencode_SO):
         if (str(file))[len(str(file))-5:] == ".deca":
             tmp += 1
@@ -151,10 +151,10 @@ def valid_gencode():
                 print("Le résultat attendu :", attendu)
         os.system("rm " +  "../deca/codegen/valid/sansObjet" + "/"+ "*.ass")
         print("======================================================")
-    
+
     print(color.BOLD+color.OKBLUE+"  X+X+X+X+X  [TEST OBJET GENCODE]  X+X+X+X+X "+color.ENDC)
     print("~======================================================~")
-    
+
     for file in files(valid_gencode_O):
         if (str(file))[len(str(file))-5:] == ".deca":
             tmp += 1
@@ -170,7 +170,7 @@ def valid_gencode():
             os.system("rm resultatObjet.log")
             if str(file) == "abs.deca":
                 attendu= "5.20000e+00 2.00000e+00"
-                
+
             elif str(file) == "classPoint.deca":
                 attendu = "3 4 4 16"
             elif str(file) == "ClassWithExtends.deca":
@@ -179,12 +179,12 @@ def valid_gencode():
                 attendu= "720 8"
             elif str(file) == "gettersAndSetters.deca":
                 attendu = "3.50000e+00"
-            elif str(file) == "pgcd2.deca":
+            elif str(file) == "pgcd.deca":
                 attendu = "12"
             elif str(file) == "point.deca":
-                attendu= "4 6"
+                attendu= "2 4 5 3"
             elif str(file) == "power.deca":
-                attendu= "1.00000e+00"
+                attendu= "1.25000e-01"
             elif str(file) == "ppcm.deca":
                 attendu = "36"
             elif str(file) == "testPoly.deca":
@@ -193,6 +193,14 @@ def valid_gencode():
                 attendu = "0"
             elif str(file) == "TwoClasses.deca":
                 attendu = "1"
+            elif str(file) == "multExtends.deca":
+                attendu = "1 0.00000e+00 3 4.00000e+00"
+            elif str(file) == "coeffBino.deca":
+                attendu = "924"
+            elif str(file) == "overrideAttribute.deca":
+                attendu = "25"
+            elif str(file) == "prinInMethod.deca":
+                attendu = "banner"
             else:
                 print("fichier pas encore traité")
                 exit()
@@ -208,8 +216,8 @@ def valid_gencode():
                 print("Le résultat attendu :", attendu)
         os.system("rm " +  "../deca/codegen/valid/objet" + "/"+ "*.ass")
         print("======================================================")
-        
-    
+
+
     return counter,tmp
 
 x = valid_gencode()

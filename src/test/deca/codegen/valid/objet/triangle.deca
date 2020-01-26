@@ -1,3 +1,4 @@
+//4
 class point{
     int x;
     int y;

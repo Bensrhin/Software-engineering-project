@@ -1,3 +1,4 @@
+//36
 class Ppcm{
     int pgcd(int a, int b){
         int c = 0;
