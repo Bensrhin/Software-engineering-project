@@ -49,7 +49,5 @@ public class EmptyMain extends AbstractMain {
     public  ListDeclVar getDeclVariables(){
         return new ListDeclVar();
     }
-    @Override
-    public void codeGenEntete(DecacCompiler compiler, int n){
-    }
+    
 }

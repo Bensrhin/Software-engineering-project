@@ -51,7 +51,7 @@ x = p.getX();
 y = p.getY();
 z = p3.op();
 p4.setZ(z);
-w = p4.getZ();
+w = p4.op();
 println(x, y, z, w);
 }
 

@@ -12,7 +12,9 @@ class RangeReduction {
         if (k % 2 == 0){
             return result;
         }
-        return -result;
+        else{
+            return -result;
+        }
     }
 
     float FirstReductionCos(float x){

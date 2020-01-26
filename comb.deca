@@ -1,0 +1,16 @@
+class A{
+    int c(int n, int p){
+        if( (p == 0) || (p == n)){
+            return 1;
+        }
+        else{
+            return c(n-1, p) + c(n-1, p-1);
+        }
+    }
+}
+{
+A a = new A();
+int n = readInt();
+int p = readInt();
+println(a.c(n, p));
+}

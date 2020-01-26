@@ -167,6 +167,8 @@ public class DeclClass extends AbstractDeclClass {
             RegisterOffset gb = compiler.getRegisterManager().getRegOff();
             compiler.addInstruction(new LEA(addr, Register.R0));
             compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(gb.getOffset() + offset, Register.GB)));
+            compiler.incSp();
+            compiler.incTs();
             current.setOperand(current.getType(), gb);
             offset = gb.getOffset();
         }
@@ -185,6 +187,8 @@ public class DeclClass extends AbstractDeclClass {
                 compiler.addLab(label);
                 compiler.addInstruction(new LOAD(label, Register.R0));
                 compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex() + offset, Register.GB)));
+                compiler.incSp();
+                compiler.incTs();
 
             }
         }
