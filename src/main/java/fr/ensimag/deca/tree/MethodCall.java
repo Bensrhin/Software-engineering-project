@@ -85,13 +85,7 @@ public class MethodCall extends AbstractLValue{
         }
         this.setType(method.getType());
         if (expr.decompile().equals("") || expr.decompile().equals("this"))
-        {
-          this.definition = method;
-        }
-        else
-        {
-            this.definition = new VariableDefinition(method.getType(), method.getLocation());
-        }
+        this.definition = method;
         return method.getType();
     }
     @Override
