@@ -1,0 +1,9 @@
+{
+int b = (4 % 93) * (46 * 8) + (694 + 83) + (8 / 4);
+int a = (48895 / 2) * (1 - 694);
+float x = (4 * 9739);
+float c;
+int x1 = (3 % a) + (9709 * 9709) - (13763 - 694) + (5 - 6);
+boolean x2 = (13763 < 83) && (false && true) || (9 <= 93) || (false || true) && (2456.198 != 9709);
+boolean x5 = (true || false) && (false && true) || (false && true);
+}

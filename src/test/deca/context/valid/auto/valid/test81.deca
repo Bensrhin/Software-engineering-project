@@ -1,0 +1,10 @@
+{
+float c;
+int x3 = (39 + 6944) * (878 / 878) / (2 % 878) + (30 + 1);
+boolean y;
+c = (7 * 0);
+y = (false && false) && (9 >= 99635) || (true && y) || (1161.646 != 878) || (y && false);
+println();
+print((1 - 64));
+printx("test auto", (64 / 5) + (39 * 878));
+}

@@ -1,0 +1,8 @@
+{
+boolean b = (false || true) || (true && false) || (true || false) || (true || true);
+float x4;
+float x2;
+int z = (50302 * 6) / (38364 / 66) * (6 * 66) - (50302 * 86) / (50302 % 66);
+float a = (20592.1904 - 50302);
+printx("test auto", "Bonjour");
+}

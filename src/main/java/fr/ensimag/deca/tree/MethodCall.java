@@ -37,6 +37,7 @@ public class MethodCall extends AbstractLValue{
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
+
         Type class2 = this.expr.verifyExpr(compiler, localEnv, currentClass);
         if (class2 == null || !class2.isClass())
         {
@@ -83,6 +84,7 @@ public class MethodCall extends AbstractLValue{
                           method.getLocation() + " règle(3.74)", this.getLocation());
         }
         this.setType(method.getType());
+        if (expr.decompile().equals("") || expr.decompile().equals("this"))
         this.definition = method;
         return method.getType();
     }

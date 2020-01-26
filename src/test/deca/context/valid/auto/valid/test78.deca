@@ -1,0 +1,9 @@
+{
+boolean y;
+boolean x2;
+boolean b = (18644 <= 9507) && (550 > 6740.041) || (false || x2) || (2 == 4);
+boolean x3 = (y && x2);
+float z = (2 * 6) * (2 - 18644) / (12309 * 7) * (921.55 * 2870.416);
+int a;
+printlnx("Bonjour", "projetGL", (0 % 550) * (5 + 53087) + (1 + 4) - (4 + 2353) * (8 * a), "projetGL");
+}

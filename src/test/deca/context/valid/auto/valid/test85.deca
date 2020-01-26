@@ -1,0 +1,9 @@
+{
+int x;
+int d;
+int x3;
+boolean x4;
+x4 = (x4 && true) && (x4 || true);
+print("groupe 53", (12 * 848) * (7127.650 - 7127.650) / (83328 / 2), "groupe 53", "projetGL");
+printx((9 + 2) / (d + 22.6) * (65414.5291 / 54) - (20594.4750 / 74.6) + (2 + 446), "projetGL", "Bonjour");
+}

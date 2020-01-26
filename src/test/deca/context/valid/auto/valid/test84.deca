@@ -1,0 +1,8 @@
+{
+boolean x4 = (7 != 23221);
+boolean z;
+int c = (6252 / 11351) * (6 % 6252) - (43 / 373) * (373 * 43);
+boolean d = (x4 && x4) || (7 > 95.9) && (true && true);
+z = (3 < 69.9) && (373 == 8) || (d || true);
+println("groupe 53", "projetGL");
+}

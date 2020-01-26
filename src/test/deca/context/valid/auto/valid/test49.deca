@@ -1,0 +1,14 @@
+{
+float x2 = (16884 + 52.5) * (5105 / 9) * (1 * 2) + (11.0 / 29);
+int x5 = (9 % 972) + (3 * 86) + (86 + 86) + (558 % 972);
+int x4;
+boolean a = (true || false) && (false || true) && (1165.064 > 7) || (true || true);
+float x3 = (481 * x2);
+int d;
+int x = (x4 + 4) + (558 - 29) - (3 % 8);
+boolean y = (false || true);
+boolean c = (86 != 52.5) || (a || a) || (y || true) || (52.5 > 575);
+int b = (52 % 7) - (x5 / 575) - (558 - 6) / (0 % d);
+boolean z;
+print();
+}

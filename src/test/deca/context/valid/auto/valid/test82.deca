@@ -1,0 +1,15 @@
+{
+float x5 = (29769 * 23420) / (801.35 - 3) + (6034 + 23420);
+int a;
+float z;
+int x3;
+boolean x2 = (false && false) || (7 >= 1) && (true || true) && (true || false) && (false && true);
+int d = (3 - 45) * (0 - 6034) * (6034 + 7) * (6607 + 8);
+boolean y = (false || x2) && (x2 || false);
+boolean x1 = (x2 || true) && (45 <= 0);
+boolean b = (x1 || x2) || (4 > 5) || (x5 >= 6) || (true || y) || (23420 <= 2);
+boolean x4 = (3572 >= 712.79) && (true || true) && (y || x1) && (false || x1) || (0 == x3);
+float x = (801.35 * 6034) / (z - 3) - (712.79 * 3572) + (801.35 / x3);
+a = (6 * 7);
+printlnx();
+}

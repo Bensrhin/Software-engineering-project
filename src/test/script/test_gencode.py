@@ -201,6 +201,16 @@ def valid_gencode():
                 attendu = "25"
             elif str(file) == "prinInMethod.deca":
                 attendu = "banner"
+            elif str(file) == "callMethod.deca":
+                attendu  = "3.00000e+00"
+            elif str(file) == "initFloat.deca":
+                attendu = "0.00000e+00"
+            elif str(file) == "initInt.deca":
+                attendu = "0"
+            elif str(file) == "ClassWithExtends2.deca":
+                attendu = "5 2 3 3"
+            elif str(file) == "returnFloat.deca":
+                attendu = "3.33333e-01"
             else:
                 print("fichier pas encore traité")
                 exit()

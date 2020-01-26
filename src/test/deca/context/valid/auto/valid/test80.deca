@@ -1,0 +1,20 @@
+{
+float c = (56184.5649 / 17.2) / (261 - 1641.450) / (7 * 786.17) + (24288 / 7) + (6 - 45);
+boolean x3 = (true || false) || (1641.450 < 17.2) || (false && true) || (64 != 3246.452);
+float b = (55199.0450 + 905.39) / (8 - 7) - (786.17 * 56184.5649) + (261 + 1258);
+float a;
+int x2;
+float x1 = (1258 + 3848) - (b * 9) * (b - 24288) + (1641.450 / 1641.450);
+int z;
+int x = (6 + 45) / (9 - 67596) * (1258 % 0) * (z - 19) + (1687 - 6);
+float x5 = (55199.0450 + 3848) * (7 * c) * (x1 - 1258);
+float y;
+while ((x3 || false) || (false && x3) && (c != 56184.5649) && (true || true) || (x3 || true))
+{
+	print();
+	println("test auto", "groupe 53", "projetGL", "groupe 53");
+}
+printx();
+printlnx("groupe 53");
+printx("groupe 53");
+}

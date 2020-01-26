@@ -1,0 +1,13 @@
+{
+boolean x1 = (499.45 != 7);
+float d;
+float x2;
+float x3;
+int x4;
+boolean y = (true && true);
+float a = (65 * 2) + (2 - 58894.1822) + (14071.2344 + x2) / (6 - 49) - (8 - 34);
+float x5 = (x3 / 25.1) - (3 + 7193) - (x2 / 65) + (791 * x4) * (x2 + 8);
+printlnx((7 * 0) - (8 * 335) * (0 / 56601) * (791 - 65) - (5198 % 1), (335 + 65), (x4 - 56601));
+print("groupe 53", "groupe 53", "Bonjour", "Bonjour");
+print("Bonjour", "Bonjour", "projetGL");
+}

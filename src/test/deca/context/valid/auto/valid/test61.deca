@@ -1,0 +1,18 @@
+{
+float x2 = (53 + 521) - (2 * 2) - (4 * 72) - (669 * 30016) * (4938.825 + 11.2);
+boolean x4 = (false || true) || (true && false) && (false || false) && (false || false);
+boolean x1 = (36227.8322 <= 5) || (true && false);
+int x = (72 / 1) + (669 - 72) + (669 + 6506) / (669 - 7);
+int x5;
+float x3 = (9 / 73.1);
+int z = (183 + 52) * (669 + 72) - (72 - 5) + (4 % 6) + (1 / 3);
+int c = (7 - 42012) - (52 + x) / (8 / 8);
+int d = (53 * x5) + (3 - 30016);
+boolean a = (false && x1);
+boolean y = (x1 && false) || (x != x2);
+float b = (941.66 / 73.1);
+println("Bonjour", (53 + 30016) - (x * x) / (1 - 20) * (42012 - 2));
+print();
+printlnx();
+printlnx((4 + x2) - (38.1 * b) + (8 * 53));
+}

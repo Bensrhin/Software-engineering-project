@@ -1,0 +1,8 @@
+{
+int b;
+boolean x = (92662.8946 <= 205.79) || (true && false) || (true || true) || (false && true) && (false || true);
+int x4 = (1 + b);
+float x3 = (437.51 / 2) + (66 + 46002) / (92662.8946 + 46002);
+boolean x1 = (396 != 86781.9881);
+b = (2 * 3) * (66 - 588);
+}

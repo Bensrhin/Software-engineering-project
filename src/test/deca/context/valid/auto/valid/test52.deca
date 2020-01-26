@@ -1,0 +1,14 @@
+{
+float z = (8 - 3) / (5974.806 / 0) - (2 * 4) / (3571 + 88);
+boolean y;
+float x2 = (2 / 6) - (7 - 482) - (446.80 / 5974.806) * (482 - z) - (1 - 8);
+boolean b;
+boolean x1 = (5 >= 6) && (262.52 <= 5974.806) || (8 <= 8);
+int x3;
+boolean d;
+float x = (3 / 271) - (2836.922 + 8) * (5974.806 - x2) - (6 * 88) * (3 / 924);
+printlnx((9 * 47) + (8 + 9035.789), "groupe 53", "projetGL");
+println("groupe 53");
+println("Bonjour", "test auto", "Bonjour");
+printlnx((271 % 924) * (9 % 271), "Bonjour", "test auto");
+}

@@ -1,0 +1,9 @@
+{
+boolean y = (false && true) || (4 < 7) && (38345.6081 == 1181.194);
+boolean x1 = (819.74 > 1) || (5 == 227) || (8832 > 227) || (true || y);
+int x5 = (0 * 598) + (8832 / 598);
+print();
+print("groupe 53");
+printx("test auto");
+printx("groupe 53", (6 / 3) / (6 + 91424), (7 - 7) * (8570 % 72));
+}

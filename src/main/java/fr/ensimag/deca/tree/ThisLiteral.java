@@ -35,6 +35,11 @@ public class ThisLiteral extends AbstractExpr{
     {
           if (currentClass == null)
           {
+            if (!visibility)
+            {
+              throw new ContextualError("Le programme principal n'a aucune méthode",
+                      this.getLocation());
+            }
             throw new ContextualError("\"this\" ne doit pas apparaître " +
                   "dans le programme principale (règle 3.43)",
                     this.getLocation());
@@ -48,6 +53,7 @@ public class ThisLiteral extends AbstractExpr{
       {
         s.print("this");
       }
+      s.print("");
     }
     @Override
     String prettyPrintNode() {

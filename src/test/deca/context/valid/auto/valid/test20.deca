@@ -1,0 +1,11 @@
+{
+int y = (7296 % 299) - (59 - 8) + (91 - 9) - (9 * 1);
+float x = (2903.122 / 91) - (59 / 7296) * (2 + 1) / (90 * 51.8) - (4 / 51311.7639);
+float c = (51311.7639 / 6738.526) + (51.8 + 59) + (162.62 * y) + (6738.526 - 91) - (3 - 9);
+boolean d;
+boolean x1 = (false && true) && (d || false) && (true || d);
+int z = (7296 + 9366);
+d = (x1 || true) || (15 > 427.11);
+printx("Bonjour", "test auto");
+println("projetGL", "Bonjour");
+}
