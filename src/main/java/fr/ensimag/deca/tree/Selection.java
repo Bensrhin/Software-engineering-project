@@ -96,18 +96,22 @@ public class Selection extends AbstractLValue{
 
     }
      public GPRegister codeGenLoad(DecacCompiler compiler){
-        System.out.println("hey");
         GPRegister r = expr.codeGenLoad(compiler);
         FieldDefinition fld = ((Identifier)(id)).getFieldDefinition();
         compiler.addInstruction(new LOAD(new RegisterOffset(fld.getIndex(), r), r));
-       compiler.getRegisterManager().freeReg(compiler, r);
+       //compiler.getRegisterManager().freeReg(compiler, r);
         return r;
     }
     protected RegisterOffset codeGenField(DecacCompiler compiler){
-         GPRegister r = compiler.getRegisterManager().allocReg(compiler);
-        System.out.println(id.getType());
-        compiler.addInstruction(new LOAD(((Identifier)(expr)).getExpDefinition().getOperand(), r));
-        return new RegisterOffset(((Identifier)(id)).getFieldDefinition().getIndex(), r);
+        if(expr instanceof Identifier){
+            GPRegister r = compiler.getRegisterManager().allocReg(compiler);
+            System.out.println(id.getType());
+            compiler.addInstruction(new LOAD(((Identifier)(expr)).getExpDefinition().getOperand(), r));
+            return new RegisterOffset(((Identifier)(id)).getFieldDefinition().getIndex(), r);
+        }
+        else{
+            return id.codeGenField(compiler);
+        }
     }
     @Override
      protected void codeGenPrint(DecacCompiler compiler, boolean hex) {

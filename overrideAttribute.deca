@@ -9,7 +9,7 @@ class A {
 }
 
  {
-    (new A()).get();
+ println((new A()).x);
    
   }
 

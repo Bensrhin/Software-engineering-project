@@ -69,9 +69,9 @@
 	LOAD R2, R1
 	WINT
 	WNL
-; appel de methode3
+; appel de methode2
 	ADDSP #1
-	LOAD 13(GB), R2
+	LOAD 14(GB), R2
 	STORE R2, 0(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -90,7 +90,12 @@ init.A:
 	LOAD -2(LB), R1
 	STORE R0, 1(R1)
 	RTS
-
+code.A.get:
+	PUSH R2
+	LOAD #1, R2
+	LOAD R2, R0
+	POP R2
+	RTS
 init.B:
 	LOAD #0, R0
 	LOAD -2(LB), R1
@@ -103,6 +108,12 @@ init.B:
 	LOAD R2, R0
 	LOAD -2(LB), R1
 	STORE R0, 2(R1)
+	RTS
+code.B.get:
+	PUSH R2
+	LOAD #2, R2
+	LOAD R2, R0
+	POP R2
 	RTS
 init.C:
 	LOAD #0, R0
@@ -117,19 +128,6 @@ init.C:
 	LOAD -2(LB), R1
 	STORE R0, 3(R1)
 	RTS
-code.A.get:
-	PUSH R2
-	LOAD #1, R2
-	LOAD R2, R0
-	POP R2
-	RTS
-code.B.get:
-	PUSH R2
-	LOAD #2, R2
-	LOAD R2, R0
-	POP R2
-	RTS
-
 code.C.get:
 	PUSH R2
 	LOAD #3, R2
