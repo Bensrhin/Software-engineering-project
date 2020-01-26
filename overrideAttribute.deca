@@ -3,12 +3,14 @@
 
 class A {
   int x = 10;
+  void get(){
+    println(5);
+}
 }
 
  {
-    A myObj = new A();
-    myObj.x = 5;
-   println(myObj.x);
+    (new A()).get();
+   
   }
 
 

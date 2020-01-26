@@ -65,8 +65,7 @@ public class Assign extends AbstractBinaryExpr {
         GPRegister r1 = this.getRightOperand().codeGenLoad(compiler);
         System.out.println(def);
         if(def != null && !def.isField()){
-            RegisterOffset r = this.getLeftOperand().codeGenAddr(compiler);
-            compiler.addInstruction(new STORE(r1,r));
+            compiler.addInstruction(new STORE(r1,this.getLeftOperand().getExpDefinition().getOperand()));
         }
         else{
             RegisterOffset r2 = this.getLeftOperand().codeGenField(compiler);

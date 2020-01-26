@@ -1,4 +1,4 @@
-	TSTO #5
+	TSTO #6
 	BOV pile_pleine
 	ADDSP #5
 ; table des methodes
@@ -10,10 +10,14 @@
 ; construction de la table des methodes de A
 	LEA 1(GB), R0
 	STORE R0, 3(GB)
+	LOAD code.A.get, R0
+	STORE R0, 5(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 4(GB)
 ; Main program
 ; Beginning of main instructions:
+; appel de methode2
+	ADDSP #1
 ; instruction new
 	NEW #2, R2
 	LEA 3(GB), R0
@@ -21,21 +25,27 @@
 	PUSH R2
 	BSR init.A
 	POP R2
-	STORE R2, 5(GB)
-	LOAD #5, R2
-	LOAD 5(GB), R3
-	STORE R2, 1(R3)
-	LOAD 5(GB), R2
-	LOAD 1(R2), R2
-	LOAD R2, R1
-	WINT
-	WNL
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ pile_pleine
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #1
+	LOAD R0, R3
 	HALT
 init.A:
 	LOAD #10, R2
 	LOAD R2, R0
 	LOAD -2(LB), R1
 	STORE R0, 1(R1)
+	RTS
+code.A.get:
+	PUSH R2
+	LOAD #5, R1
+	WINT
+	WNL
+	POP R2
 	RTS
 code.Object.equals:
 pile_pleine:

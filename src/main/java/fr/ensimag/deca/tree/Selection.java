@@ -107,7 +107,7 @@ public class Selection extends AbstractLValue{
          GPRegister r = compiler.getRegisterManager().allocReg(compiler);
         System.out.println(id.getType());
         compiler.addInstruction(new LOAD(((Identifier)(expr)).getExpDefinition().getOperand(), r));
-        return new RegisterOffset(1, r);
+        return new RegisterOffset(((Identifier)(id)).getFieldDefinition().getIndex(), r);
     }
     @Override
      protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
