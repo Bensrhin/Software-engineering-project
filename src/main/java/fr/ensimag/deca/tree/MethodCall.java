@@ -61,12 +61,12 @@ public class MethodCall extends AbstractLValue{
                 sig.add(t);
                 i ++;
             }
-        if (sig.size() == 0 && sigExpected.size() != 0)
+        if (args.size() != sigExpected.size())
         {
-          throw new ContextualError("Veuillez inserer les " +
-                          "paramètres pour la méthode \""
+          throw new ContextualError("Veuillez respecter le nombre" +
+                          " de paramètres pour la méthode \""
                           + expr.decompile() + "\" définie à " +
-                          method.getLocation() + " règle(3.73)", this.getLocation());
+                          method.getLocation() + " règle(3.74)", this.getLocation());
         }
         if (!sig.equals(sigExpected))
         {
@@ -97,7 +97,7 @@ public class MethodCall extends AbstractLValue{
         expr.decompile(s);
 
     }
-    
+
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler){
         compiler.addComment("appel de methode" + ((Identifier)(id)).getMethodDefinition().getIndex());
@@ -121,7 +121,7 @@ public class MethodCall extends AbstractLValue{
         compiler.addInstruction(new LOAD(r1, Register.R1));
         super.codeGenPrint(compiler, hex);
         compiler.getRegisterManager().freeReg(compiler, r1);
-        
+
     }
 
     }
