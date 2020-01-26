@@ -29,6 +29,7 @@ public class Minus extends AbstractOpArith {
         GPRegister R1 = Register.R1;
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
+        System.out.println(r1 +""+ r2);
         compiler.getRegisterManager().used.add(r1);
         compiler.getRegisterManager().used.add(r2); 
         compiler.addInstruction(new SUB(r2, r1));

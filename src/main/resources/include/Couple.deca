@@ -1,4 +1,5 @@
 class Couple {
     int x;
     int y;
+	
 }

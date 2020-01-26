@@ -20,7 +20,7 @@ def valid_gencode():
     counter = 0
     tmp = 0
     test_gencode = "../../main/bin/decac"
-    valid_gencode = "../deca/codegen/valid"
+    valid_gencode = "../deca/codegen/valid/SansObjet"
     print("======================================================")
     for file in files(valid_gencode):
         if (str(file))[len(str(file))-5:] == ".deca":
@@ -116,4 +116,4 @@ if (x[0] == x[1]):
 else:
     print(color.BOLD+ color.FAIL+"     .-~-.-~-.-~[{} TESTS GENCODE ERROR].-~-.-~-.-~".format(str(x[1] - x[0]))+color.ENDC)
     print("~========================================================================~")
-os.system("rm " +  "../deca/codegen/valid" + "/"+ "*.ass")
+os.system("rm " +  "../deca/codegen/valid/SansObjet" + "/"+ "*.ass")

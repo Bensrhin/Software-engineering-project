@@ -145,7 +145,6 @@ public class DeclMethod extends AbstractDeclMethod
     @Override
     protected void codeGenMethod(DecacCompiler compiler){
        compiler.addLabel(new Label(getNameMethod().getMethodDefinition().getLabel().toString() ));
-        
        params.codeGenListParam(compiler);
        IMAProgram p = new IMAProgram();
        IMAProgram org = compiler.getProg();
@@ -161,6 +160,7 @@ public class DeclMethod extends AbstractDeclMethod
         }
         org.append(p);
         compiler.setProgram(org);
+        compiler.getRegisterManager().used = new HashSet<GPRegister>();
         compiler.addInstruction(new RTS());
     }
 

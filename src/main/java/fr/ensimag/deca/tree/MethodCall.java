@@ -101,14 +101,12 @@ public class MethodCall extends AbstractLValue{
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler){
         compiler.addComment("appel de methode" + ((Identifier)(id)).getMethodDefinition().getIndex());
-        compiler.addInstruction(new ADDSP(100));
+        compiler.addInstruction(new ADDSP(args.size() + 1));
         GPRegister r = expr.codeGenLoad(compiler);
         id.codeGenAppMethode(compiler, r, args);
-        compiler.addInstruction(new SUBSP(100));
-        //return r;
+        compiler.addInstruction(new SUBSP(args.size() + 1));
         GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         compiler.addInstruction(new LOAD(Register.R0, r1));
-       // compiler.getRegisterManager().used.add(r1);
         compiler.getRegisterManager().freeReg(compiler, r);
         return r1;
     }
