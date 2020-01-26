@@ -1,58 +1,56 @@
 #include "Algos.deca"
 
 {
-    float PI = 3.141593F;
+    float PI = 3.1415926F;
     float var = (float) (-1/32);
-    float var2 =  PI/4;
+    float var2 = PI/6;
+    float var1 = PI/2;
 
 
     Taylor t = new Taylor();
     RangeReduction r = new RangeReduction();
-
-
-
     ChebyApproxi32 c = new ChebyApproxi32();
     Chebychev ch = new Chebychev();
 
+
+    float cos = t.taylorCosinus(var2,7);
+    float sin = t.taylorSinus(var2,6);
+    float atan = t.taylorArctan(var2,7);
+    float asin = t.taylorArcsin(var2,7);
 
     float chebyAtanReduit = c.ChebychevActan(var);
     float chebySinReduit = c.ChebychevSinus(var);
     float chebyCosReduit = c.ChebychevCosinus(var);
 
-    float chebySin = ch.sinCheb(var2);
-    /*float chebyCos = ch.cosCheb(var2);
-    float chebyAtan = ch.arctanCheb(var2);
-    float chebyAsin = ch.arcsinCheb(var2);*/
+    float chebySin = ch.sinCheb(0.0312f);
+    float chebyCos = ch.cosCheb(0.0312f);
+    float chebyAtan = ch.arctanCheb(0.09849140335716425f);
+    //float chebyAsin = ch.arcsinCheb(var1);
 
 
+    println("sinCheby(0.0312f) =",chebySin);
+    println("cosCheby(0.0312f) =",chebyCos);
+    println("chebyAtan(0.09849140335716425f) = ",chebyAtan);
+    //println(chebyAsin);
+    
+    
+    //float rangeCos = r.FirstReductionCos(100*PI);
+    //float rangeSin = r.FirstReductionSin(100*PI);
 
 
-
-    float rangeCos = r.FirstReductionCos(100*PI);
-    float rangeSin = r.FirstReductionSin(100*PI);
-
-    float cos = t.taylorCosinus(PI/5,7);
-    float sin = t.taylorSinus(PI/2,6);
-    float atan = t.taylorArctan(PI/4,7);
-    float asin = t.taylorArcsin(PI/4,7);
+    //println("cosTaylor = ",cos);
+    //println("sinTaylor = ",sin);
+    //println("atanTaylor = ",atan);
+    //println("asinTaylor = ",asin);
 
 
-    println(cos);
-    println(sin);
-    println(atan);
-    println(asin);
+    //println(rangeCos);
+    //println(rangeSin);
 
+   
 
-    println(rangeCos);
-    println(rangeSin);
-
-    print(chebySin);
-    /*print(chebyCos);
-    print(chebyAtan);
-    print(chebyAsin);*/
-
-    println(chebyAtanReduit);
-    println(chebySinReduit);
-    println(chebyCosReduit);
+    //println(chebyAtanReduit);
+    //println(chebySinReduit);
+    //println(chebyCosReduit);
 
 }
