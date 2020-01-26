@@ -1,0 +1,22 @@
+{
+boolean c;
+boolean x4;
+boolean y;
+int z;
+float b;
+boolean a = (7 == 122.40) && (true || c) && (83 <= 76);
+boolean x3;
+int x1 = (85 - 6);
+float d = (z - 72543) * (7707 / 1);
+int x;
+while ((7707 >= 0) || (true || y))
+{
+	printlnx((9 / 1) * (z * b) + (6083.784 - 3368) * (85 - 83) - (z + z), "groupe 53");
+	printlnx("groupe 53", "Bonjour");
+	printlnx("test auto", "groupe 53", (76 * 3368) / (122.40 + 32.3) - (122.40 - 33443.5069) / (326.02 * 5) - (2 / 76));
+}
+println((x - 9) - (3 % 85) + (3368 - 72543));
+println((6083.784 * 2) * (7 - 6083.784) * (2703.079 / 83) - (2703.079 * d), "groupe 53", "groupe 53", "Bonjour");
+printlnx("projetGL", (2 + 72.6) - (z - 2703.079) - (76 - 9));
+print("Bonjour", "Bonjour", "groupe 53", (91442 + 4064.544) + (85 + 2703.079) + (0 - 91442) * (122.40 - 27944) * (326.02 + 5));
+}

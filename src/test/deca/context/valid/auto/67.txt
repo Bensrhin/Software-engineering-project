@@ -1,0 +1,10 @@
+{
+float x3;
+int b = (4 / 5) / (6 - 36);
+float x2 = (1 - 8) / (250 - 97.9) / (x3 - 6) * (97.9 / 3) * (9613 + x3);
+boolean x = (false && false) || (true && true) && (true || false);
+float z = (6061 / 158) - (x2 * 5) * (79.1 / 1) + (2 + 1);
+while ((false || false) && (true || false) && (false || x) && (false && x) || (6 > 6))
+{
+}
+}

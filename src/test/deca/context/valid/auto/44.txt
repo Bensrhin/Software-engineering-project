@@ -1,0 +1,49 @@
+{
+boolean d = (false && true);
+float x4;
+int x2;
+boolean c = (false || true) || (d || false) || (89418.7127 != 77055);
+float b = (6 + 6092.837) + (4512.220 + x2);
+while ((7 < 637))
+{
+	if ((d && d) || (c && true))
+{
+	while ((b != 637))
+{
+}
+	while ((false || true) && (32038.4232 <= 4448) || (912.56 <= 4777.125) && (true && true))
+{
+}
+	while ((true || true) || (82813 >= b) && (false || d) || (77055 < 94708.7228) && (false && d))
+{
+	printlnx();
+}
+	println("Bonjour", "projetGL", (82813 - 4777.125) + (x2 - 0) + (x4 - 82813) + (8 + x2), (32038.4232 / 2) * (9 + 6) / (b - 77055) / (32038.4232 * 637));
+	println("Bonjour");
+}
+else if ((x2 <= 77055) || (false || true) || (false && c) || (82813 > 38475) && (d || c))
+{
+	print("test auto", "Bonjour", (7 / x2) * (59273 * 4767) - (1 - 9) * (657 / 4554) + (4767 + x2));
+}
+else if ((true || false) || (false || c) || (4448 > 0))
+{
+	printlnx("groupe 53", "Bonjour");
+	printx();
+	printlnx((4 * 207.70) + (7 * x4), (6092.837 / 1), "projetGL");
+	printlnx();
+	println("test auto", "groupe 53", "test auto");
+}
+else
+{
+	printx("Bonjour", (4767 * 4554));
+	println((6 % 82813) + (77055 + 38475) + (5497 + 77055), (207.70 - 4512.220) * (b / 81213.5720) + (4512.220 * 912.56), "groupe 53", "Bonjour");
+}
+	printlnx("projetGL");
+	println("Bonjour", (38475 / 82813) / (94708.7228 / 9) * (4767 * 32038.4232) * (59273 * 4554));
+	printx("projetGL", "groupe 53", "Bonjour");
+}
+printx("test auto", "Bonjour", (81213.5720 + 89418.7127) + (1 * 60.4) + (59273 + 0) - (b * 637) * (207.70 + 4554), "groupe 53");
+println((0 + 8), "test auto", (6 * 8) / (7 - 94708.7228) + (657 * 60.4) - (912.56 * 89418.7127) / (5 - 89418.7127), "test auto");
+println("projetGL", "test auto", (38475 * 4767) + (4 - 38475) + (59273 - 7) - (x2 / 5497));
+printlnx("test auto", (59273 + 2) + (7 - 4767) - (4 / 4554) * (637 % 4767) - (4448 * 8), (4448 - 2) - (82813 + 2) * (82813 / 4554));
+}

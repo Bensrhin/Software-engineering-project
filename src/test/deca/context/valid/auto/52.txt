@@ -1,0 +1,12 @@
+{
+boolean c = (true || false);
+boolean x4 = (6 != 9719.166) && (5516.643 > 97663.6107) || (c && false);
+boolean x3 = (false || true);
+boolean d;
+boolean x5 = (9 > 67893) && (x4 || d) || (4 == 5516.643) || (true && d) || (x3 && x4);
+boolean b;
+float y = (816 * 1) + (692 - 86673.4665) / (4 * 7);
+int x = (889 - 9);
+boolean a = (b && x5) || (x5 || d) || (c || x4) && (8 < 87999) && (6572 != x);
+float x2 = (5516.643 * 87999) + (87999 + 23.3);
+}

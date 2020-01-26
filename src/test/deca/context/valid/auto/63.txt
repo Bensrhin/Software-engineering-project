@@ -1,0 +1,30 @@
+{
+float x;
+boolean x5 = (true && true) || (false || true) || (471.31 >= 609) || (true || false) || (7 < 1);
+int d;
+float b = (5 - 54) * (1605 - 6999) - (9684.726 / 4);
+boolean c = (83254 != 6999);
+boolean x4 = (54882 == 54882) && (true || true) && (false || true);
+boolean a = (54 <= 7) && (true || true) || (80 != b) && (c || x4) && (c || c);
+if ((false || true) || (471.31 <= 471.31) && (3 >= 8347) || (true && x5))
+{
+	x = (5 / 1605) - (3382 - x);
+	print();
+}
+else if ((a || c) || (0 >= 5523.246) || (9684.726 < 0))
+{
+	print("projetGL", "projetGL", "test auto", "Bonjour");
+}
+else if ((83254 <= 471.31) || (5659.234 <= 5523.246) && (c && x4) || (83254 <= 8347) || (45.5 < 3))
+{
+	printlnx((54882 * 5), "groupe 53", (8347 + 609) / (0 - b) * (6 * 4) + (4 * d) + (2 - 8347));
+	printlnx("Bonjour", (83254 + 83254), "Bonjour");
+}
+else
+{
+	printlnx("Bonjour");
+	print("groupe 53", "groupe 53", "test auto");
+	printlnx("projetGL", "test auto", (8347 * 5) - (5 * 80));
+}
+printlnx((80 + d) + (8 - 6999) - (83254 % 6999) - (8347 - 0), "projetGL");
+}

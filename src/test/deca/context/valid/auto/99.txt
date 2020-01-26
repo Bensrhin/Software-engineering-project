@@ -1,0 +1,14 @@
+{
+int a;
+int z;
+boolean b;
+boolean x5 = (482 == 8488.565);
+float x = (101.26 * 1) - (30.7 / 5);
+int y;
+int x4 = (9 * 482) - (57 + 680) - (6679 + 5) + (4 - 9) + (z % 6);
+int c = (5 % 290) / (0 + 57);
+float x3;
+boolean x2;
+boolean d = (b || true) && (3 != 101.26) || (x5 && false) && (false && x2);
+boolean x1 = (x5 && x5) && (x <= 80.3) || (z < x) || (2 < 44.1) && (d && x2);
+}

@@ -1,0 +1,13 @@
+{
+boolean z = (true && true) && (true || false) || (true && false) && (false && false) || (true && true);
+float c;
+boolean y = (65518 <= 41317) && (3618.447 != 0) && (9 == 14597.2304);
+float a = (71955.2675 * 40) + (5 - 65518) * (8 - 1) / (4 * 2850.589);
+float d = (9 - 93413);
+float x2;
+printlnx();
+printlnx("test auto", "test auto", "Bonjour", "groupe 53");
+println();
+printlnx();
+print((a * 0) * (9205.976 + 1), (93413 + 75954) * (a / 54), (5 - 9766) / (8 - 65518), "test auto");
+}

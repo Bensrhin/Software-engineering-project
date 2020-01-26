@@ -1,0 +1,15 @@
+{
+boolean z = (false && true) && (true && false) || (225 == 22) || (true && false) || (8 < 4);
+float x;
+int x2;
+int c;
+float d;
+boolean x5 = (x >= 5) || (99625 < 94.1) && (true && true) && (38 >= 6352);
+float x1 = (x2 * 6) + (22 / 38);
+boolean b = (x5 && false) && (x5 && x5);
+int y;
+boolean a;
+boolean x4 = (6647 <= 2) && (true && b);
+printx("groupe 53");
+println();
+}

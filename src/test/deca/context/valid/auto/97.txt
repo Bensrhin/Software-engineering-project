@@ -1,0 +1,14 @@
+{
+int z;
+float y;
+float x2 = (15 / 16.0) + (y - 2425.416) + (7 * 16.0) / (983.55 - 0) - (2785 - 6);
+boolean x5 = (true && true) && (false || false) || (9 > 8);
+boolean x3;
+boolean x1 = (x3 && x5) || (x5 && x5);
+int d = (4 - 1) * (4 - 3) / (6 + 2) / (14367 + 2785) / (6 % 14367);
+while ((true || false))
+{
+	z = (3 % 2);
+}
+printlnx("test auto", "projetGL", "projetGL", "Bonjour");
+}

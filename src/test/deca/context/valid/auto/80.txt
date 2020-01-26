@@ -1,0 +1,14 @@
+{
+float c;
+int b;
+int x5;
+float x4;
+int x3 = (b - 8) / (881 % 49448);
+boolean x;
+int x2 = (94 % 66) - (x5 + 5) / (94 + 55) / (0 % x5) * (94 - 4);
+int d = (3 + 3) + (0 + x5) + (55 + 94);
+int x1;
+float z;
+x5 = (5 * 7) * (d % 7) * (467 - 0) + (x2 - 4) + (881 / 45620);
+printx("projetGL", "test auto");
+}

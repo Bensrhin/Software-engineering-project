@@ -1,0 +1,41 @@
+{
+boolean b;
+boolean x4;
+int a = (65 % 1) * (64 * 0) / (21 - 8) / (424 + 21) + (7 % 64);
+boolean x5;
+int x;
+boolean x1;
+int y = (64 * 53088) * (7 + 9);
+if ((x1 || x1) || (true && x5) && (true || false))
+{
+	printlnx((3 - 424) / (a * 807.73));
+	printlnx();
+}
+else if ((12.9 <= 63.8) || (x4 || x4) && (2 <= 2) && (x1 && x4) && (b && x1))
+{
+	printlnx("groupe 53", (0 + 2) + (65 % x));
+}
+else if ((21 == 3) && (1 < 65) || (1588.526 >= 3444) && (x1 || x5))
+{
+	printlnx("groupe 53", "groupe 53");
+	println();
+	printlnx((y / a) / (8 % 6801) * (45 + 53088) / (y - x), (64 - 5) * (y * 53088), (3 - 2) * (424 / x), "groupe 53");
+}
+else if ((x1 && true))
+{
+	println("Bonjour", "projetGL", (9 * 65) * (9 + 9) * (3444 - 21));
+	print((4 / 424) - (21 * a) * (8 / 9), "Bonjour", "projetGL");
+	printlnx("Bonjour", "groupe 53", "projetGL", (x % 0));
+	printx("groupe 53", (9 + a) / (6 - 64) / (6 - 7) + (1 % a), "Bonjour", "test auto");
+}
+else
+{
+	print((8 + 3897) / (6801 % 21), (7 / 6) / (64 - 53088), "test auto", "projetGL");
+	printx();
+	printx();
+	print("test auto", (4 * 5) / (424 / 200.38) + (x * 21), (358.23 * 3444));
+}
+printx("test auto");
+printlnx("test auto", "groupe 53", (3444 - 6) / (88868.2355 - 424));
+println();
+}

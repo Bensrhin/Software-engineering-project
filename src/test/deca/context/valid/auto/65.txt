@@ -1,0 +1,9 @@
+{
+boolean a = (true || true);
+float x4 = (646.65 + 7) + (91957 - 162) / (460.06 + 5686.105) / (45 * 5686.105) + (91957 - 99.8);
+int c;
+c = (56 - 4) + (50 + 45) / (299 * 838) * (1 * 4) * (2 * 1198);
+println((5 * 299) / (460.06 / 2) * (867 * 460.06), "projetGL", "groupe 53", "groupe 53");
+printlnx("projetGL", (56 + 299) / (0 / 9) * (7 / 62.2) * (0 + 56) * (60541 + 162), "groupe 53");
+printlnx("projetGL", "projetGL", "groupe 53", "Bonjour");
+}

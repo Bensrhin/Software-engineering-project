@@ -1,0 +1,16 @@
+{
+int y;
+float x4;
+int a = (9087 - 95007) * (851 - 4) / (8 - 6) / (17 * y);
+boolean x3 = (2 > 4);
+int x1 = (387 % 851);
+boolean c = (true || true) && (true || true) && (775.13 > 20566) || (x3 || x3);
+float z = (7 / 9);
+boolean x = (c || true);
+int d;
+float b;
+float x5;
+boolean x2;
+printlnx("projetGL", "test auto", (17 - 1) / (17 + y) + (20566 + 3));
+println((5561 - 5561) - (x1 * 851) / (0 * a) * (5 % 851), (7973.143 + 0) - (7973.143 + 387) / (95007 + 0) / (17 / y) + (62.0 + 4), "Bonjour");
+}

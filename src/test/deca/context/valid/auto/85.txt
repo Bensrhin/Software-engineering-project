@@ -1,0 +1,19 @@
+{
+boolean x = (true && false) || (false && false) || (204.91 >= 83930) && (true && true);
+int z;
+float y;
+int x4;
+float x3 = (y / 90003) * (8 * 26721);
+float x1;
+while ((3762.911 == 50251))
+{
+	println("projetGL", "test auto");
+	printx("groupe 53", "test auto", "test auto", (x3 * z) * (6 + 35893.9561) * (70.2 * 0) / (2832.309 + z) * (9 * 8087));
+	printlnx((83930 + 8898) * (2832.309 * 50251), "groupe 53", "test auto");
+	println("Bonjour", (26721 - x3));
+}
+printlnx((370.63 * 3762.911) / (2 + y));
+printlnx((x1 + 6) / (8087 / 8087) + (9 + 4) * (204.91 - 52.6) / (x3 + 5), (7 - 0), "projetGL", (7 - 1));
+print("Bonjour", (91260 * 4) - (90003 % 83930) - (5 * 4) + (5 + 4), (y / 8087) / (508 - 8898) + (50251 * 819.01) + (8 + 819.01) + (6 + 5360), "groupe 53");
+println("groupe 53", "projetGL");
+}

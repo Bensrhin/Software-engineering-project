@@ -1,0 +1,10 @@
+{
+float z = (3280 - 71920) - (7 + 0) + (13.9 - 8) / (71920 * 8783) - (8783 + 7);
+float x2 = (2699.560 / 565.02);
+float a;
+boolean y = (z > 565.02) && (true || false) && (false && false) && (false && true);
+int x4;
+boolean b;
+printx();
+printx((79.9 / 30), "Bonjour", (8783 * 1) - (29349 * 4602) + (3280 / 8), (2699.560 + 25447));
+}

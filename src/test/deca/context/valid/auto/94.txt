@@ -1,0 +1,7 @@
+{
+boolean b;
+int x5;
+int c = (7 - 9) + (8 + 6) * (1671 / 7);
+boolean a = (b || true) || (71.8 != 787) && (true && false) || (true && b) && (b || false);
+float x1 = (7116 * 66.0);
+}

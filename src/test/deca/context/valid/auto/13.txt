@@ -1,0 +1,10 @@
+{
+boolean c = (1 >= 2) && (true || true) && (false || false) || (6269 != 405);
+float x5 = (876.42 + 3);
+boolean b = (true || false) || (95443.3166 <= 4) && (8174 >= 8174);
+while ((c || false) || (2 != 9) || (c || c) || (false || b))
+{
+}
+printx("projetGL");
+printx();
+}

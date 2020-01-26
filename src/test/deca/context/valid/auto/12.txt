@@ -1,0 +1,34 @@
+{
+float d = (9320 - 20043) * (9 - 9);
+float x3 = (6695 + 79) * (82.3 * 11109);
+boolean c = (true || false);
+int x2 = (20043 - 14063) / (11109 - 79);
+int x4 = (8 % 4) - (8 / 2) + (8704 + 20043) * (8 + 3) + (4 - 4);
+if ((65.7 > x3) && (true || true) && (false && c) || (5 < 4) && (447.00 > 0))
+{
+	printlnx((9320 * x4), "Bonjour", "projetGL", (3 / 5) * (x4 * x2) * (0 % 9320));
+	printx("Bonjour", "projetGL", "projetGL", (9320 / 7) * (0 / 20043) - (9320 - 31252));
+	printlnx((9 / 45.3) - (x3 - 45.3) / (45.3 + 1) + (8704 / 45.3) - (x2 - d), "Bonjour", "groupe 53");
+	printlnx((6695 + 2) * (8704 + 613.64) * (2 - 3) / (82.3 * d) / (8 - 79), "test auto");
+}
+else if ((6695 >= 0))
+{
+	println("groupe 53", "projetGL");
+	print((2 - 82.3), "groupe 53", (1 - x4), "test auto");
+	printlnx("Bonjour", "test auto");
+	printlnx((6695 - 82.3) * (6 + 31252), "projetGL", (2 / 1) + (x3 / 62037.3649));
+	print((926.69 / 926.69) * (x2 / 82.3) - (8 * 34.2) / (11109 + 613.64));
+}
+else if ((c || false))
+{
+	println();
+}
+else if ((false || false) || (c && false))
+{
+	printlnx("test auto");
+	printlnx();
+}
+else
+{
+}
+}

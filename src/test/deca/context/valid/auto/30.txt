@@ -1,0 +1,12 @@
+{
+int a = (5 % 3);
+boolean d = (true || true) && (a == 11525.4949) && (11525.4949 > 0) && (false && false) && (false && true);
+float x;
+int b = (2 * 4) * (3410 - 7) + (282 + 5) * (a / 2404);
+int x2 = (6 * 282) + (7294 - 7294) + (a / 2404);
+int y = (20208 % 2) * (9 + 6) - (2404 / 7294) - (20208 % 3737);
+printx("test auto", "test auto", (x2 % 9) - (2 - 91), "Bonjour");
+printlnx("Bonjour", "groupe 53", "groupe 53", "projetGL");
+printx("projetGL", "projetGL", (b - 7294), (7294 + a) * (35663 * a) * (2404 + 5));
+printlnx("Bonjour");
+}

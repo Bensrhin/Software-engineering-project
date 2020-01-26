@@ -1,0 +1,16 @@
+{
+boolean b = (true || false) && (true && true) || (false || true) || (8 >= 99);
+float d = (37378.5122 + 7);
+float z = (1 - 158.52) - (9 * 27260.3655) - (0 - 92625.7031) - (8 * 7) * (1003 - 283);
+boolean a = (1 > 2) || (true || b) || (929 <= 9939) && (b && b);
+float x1 = (27260.3655 / 99) - (3 - 39862);
+float c;
+float x = (653.55 - 11.5) / (37378.5122 / 37378.5122) - (3 * 5498) * (52 + 58.1) / (37378.5122 + 9);
+int y = (1 / 99) * (52 * 9939) + (283 + 4);
+boolean x3;
+float x2 = (0 + 158.52);
+println((1003 - 2) - (8658 % 929) - (0 * 3), "groupe 53", "test auto");
+println((112 - 58.1), "projetGL", "projetGL", (1 + 3) * (112 * 3) / (5 + 7));
+printlnx("test auto", "Bonjour", "test auto", (y * 3) + (5 - 39862) - (39862 / 5498));
+printlnx((39862 + 5498) + (6 * 1) + (0 + 2), "projetGL", "projetGL");
+}

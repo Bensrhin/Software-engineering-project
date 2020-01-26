@@ -1,0 +1,14 @@
+{
+boolean x3 = (6218 > 494) || (1 <= 74263.5309) || (653.69 != 85892) || (true && false);
+int d = (60 - 5);
+boolean x1 = (true || false) || (8 != 6) || (1 <= 964.79);
+int x5 = (5 - 36);
+int y;
+float x;
+boolean a = (true || false) && (false || true) && (x1 && x3);
+printlnx("test auto", (5 / 80786) - (d - 85892) - (60 % 479) / (6 + 3) + (1 * y), (76.9 + 2364.921) / (86835.5181 - 653.69) * (2898.436 * 964.79) / (479 / 2898.436) + (653.69 / 8), "Bonjour");
+println();
+printlnx("test auto", "test auto", "test auto", "Bonjour");
+printx((74263.5309 - 92) - (86835.5181 / 6218) * (86835.5181 + 7));
+println();
+}

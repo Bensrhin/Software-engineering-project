@@ -1,0 +1,12 @@
+{
+float x5;
+boolean a = (2 > 979.06) || (true && false) && (false || true);
+int y;
+boolean x1 = (4516.998 != 44781.1053) && (true || a) || (9992.427 != 9680.588) || (false && true);
+boolean z;
+int x = (2 % 6) - (124 / 89);
+int x3 = (2888 + 5) * (2 % 2) + (2888 * 6) * (69 % y) * (4 % 72);
+boolean d;
+boolean x4 = (19 <= y);
+println("groupe 53");
+}

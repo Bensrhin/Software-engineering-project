@@ -1,0 +1,48 @@
+{
+float x5;
+int a = (127 - 9) + (9 * 0) / (1329 - 5) - (5 - 6992) * (2 % 95963);
+boolean b = (false && false) && (95963 > 46634);
+if ((82.8 >= 95963) && (5 <= 2) || (b && b))
+{
+	if ((false || false))
+{
+	println("Bonjour", "groupe 53", "projetGL");
+	printlnx();
+	println((78287.8129 + 640) + (1329 - 6992) + (119.82 / 5) + (279.01 + 95963));
+}
+else if ((2 != 8) || (true || b) || (1329 >= 6) && (b && b))
+{
+	printx((1 + 6));
+	println("projetGL", (186.45 / 99.6) * (640 * 3));
+}
+else if ((x5 == 640) && (b || false) || (78287.8129 >= 25072) || (78287.8129 < a) && (false && b))
+{
+}
+else
+{
+	printlnx((4 % 25072) / (2 % 46634) * (5 - 188) / (132 / 640) * (0 + 640), "Bonjour");
+	printx((2 * 1329) * (4 * 4) + (132 + 46634), "projetGL", "Bonjour", "Bonjour");
+	printlnx("test auto", "groupe 53");
+}
+	printlnx();
+	printlnx("groupe 53");
+	println();
+	println("test auto", (224.09 * 176.56) / (25072 / 279.01) + (46634 - 2) / (9 - 16) * (25072 - 6992));
+}
+else if ((x5 < 99.6))
+{
+	printlnx("Bonjour", "Bonjour", "groupe 53", "groupe 53");
+	printx((25072 / 7), "groupe 53", "Bonjour", (9 / a) * (5 + 9));
+	println("Bonjour", "Bonjour");
+	printx("test auto", "test auto");
+}
+else
+{
+	println("groupe 53", "groupe 53", "test auto");
+	printx("projetGL", "Bonjour", "groupe 53", "test auto");
+	printlnx("test auto", (176.56 - 46634), "test auto", (53.3 - 1329) - (78287.8129 - 186.45));
+}
+printx("test auto", "groupe 53", (78287.8129 * 132) / (25072 - 176.56) * (9 / 5) / (5 + 46634));
+printlnx("Bonjour", "Bonjour");
+printx();
+}

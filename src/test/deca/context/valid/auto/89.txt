@@ -1,0 +1,21 @@
+{
+float x2;
+int x1 = (3 - 84);
+int c;
+boolean d = (true || false) && (true || false) || (false || false) || (3 != 590.87);
+float y = (84 * 5822.227) * (3 + 6);
+boolean x5 = (6 >= 5822.227) && (true && false) && (4706 < 83984.2069) || (false || true) && (true && true);
+int z = (2 % 77683) + (77683 - 77683) * (3 % 9);
+float x = (1 + z) * (5 / 40) - (28931 + y);
+int x4 = (2 * 28931) + (8 * 7) * (6 % 2);
+float a = (x4 + 0) + (603.28 / 457) - (4 / 2) - (457 / 9);
+boolean x3;
+while ((x5 && d) || (d && false) || (x5 && x5) || (x5 && x3))
+{
+	println("Bonjour", "projetGL", "groupe 53");
+	println("test auto", (40 * c) - (c + 608.85) - (201 + 881.37) + (5822.227 / x1) / (4706 / 71569), "projetGL");
+	printlnx("test auto", (y / 934) / (0 * 7) * (8650.964 + 934) - (x4 / 881.37) * (x2 - 3), "Bonjour");
+	printlnx("Bonjour", "test auto", "projetGL", (9 % 0) + (1 - 6) / (457 * 8) + (6 * 6));
+}
+printlnx();
+}

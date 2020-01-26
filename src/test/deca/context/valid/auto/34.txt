@@ -1,0 +1,7 @@
+{
+boolean x3 = (66.5 <= 903.52) && (false && true) || (2 != 8) && (65.5 <= 2585);
+int b = (2 - 2) - (5 + 5);
+int c;
+println();
+printlnx();
+}

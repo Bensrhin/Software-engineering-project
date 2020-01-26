@@ -1,0 +1,9 @@
+{
+boolean z = (false || true) || (true || true) && (97488 > 35.2) && (true && true);
+boolean x3;
+int b = (3 % 4) - (6763 / 2139) / (54125 * 54125) * (5 - 2139) + (908 * 7);
+x3 = (z || z);
+printlnx("groupe 53", (b % 5) + (5 / 8406) + (2139 / 5), "projetGL");
+print("test auto");
+println();
+}

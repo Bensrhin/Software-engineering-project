@@ -1,0 +1,14 @@
+{
+float x = (8542.763 - 645) / (9991 - 994.96);
+int d;
+float x2 = (8 + 8) / (31 * 8);
+float x1;
+float x4 = (47.5 + 222.72) * (6 / 2) - (994.96 / 9991);
+int z = (9 % 61675);
+float y = (3 * 3) / (5 + 475);
+d = (9991 + 55) + (z + 475) * (9 / 645);
+println("groupe 53", "projetGL", (6 + 88028) * (475 * 55) - (31 * 728) / (3 + 9072) / (2 % 9991), "Bonjour");
+print("groupe 53");
+printlnx("groupe 53", "groupe 53");
+println("Bonjour");
+}

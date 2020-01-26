@@ -1,0 +1,29 @@
+{
+int b = (71810 * 555) / (9 + 3);
+float z;
+int x1;
+float x4;
+int y = (x1 / 95) + (7 - b) + (35 / 558);
+while ((96.4 <= 51))
+{
+	if ((true && true) && (555 < 3))
+{
+	x1 = (98088 % 751) * (4 % 61);
+	println((555 / x1) - (35 + 51) * (8 % 35) / (44759 - y) / (y / 2), "test auto", (7 * 8968.397) / (555 / 95) / (555 + 94559.9122) + (z - z), "projetGL");
+	printx((22141.4144 * 35) * (2244.097 - 8), (x4 - 6) * (b + 3));
+}
+else
+{
+	printx();
+	printlnx((0 - 2), "groupe 53", (751 % 5) / (44759 % 98088) / (6 / 3) + (555 - x1) * (558 * b));
+	print((8968.397 * 22141.4144), "Bonjour", "projetGL");
+	printlnx("projetGL", (6 / 51));
+}
+	println("projetGL", "test auto", (44759 / x1) + (61 * 3) * (3 - 51) + (x1 / 6) * (7 + 98088));
+	printlnx("test auto", "test auto");
+	printlnx("groupe 53", (35 + 61));
+}
+print();
+printx("test auto", "projetGL", (6 + 95) - (94559.9122 / 3), "groupe 53");
+printx((8 % 751) + (3 % y) - (95 - 3) + (4 * 3) * (51 / x1));
+}

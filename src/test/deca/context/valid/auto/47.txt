@@ -1,0 +1,14 @@
+{
+float x;
+boolean b;
+float a = (80413 + 128.87) / (60.1 + 50467.9992) + (128.87 * x) * (1 * 128.87);
+boolean x1;
+boolean x5 = (false || true) || (false || false) || (6 != 2) && (b && b);
+boolean x2 = (219.74 == 0) || (2 == 1) || (x5 || x1) && (false || b) && (69894 == 89);
+float c;
+float d = (89 - 16.0) + (712 / 5) * (85 - 219.74) - (60.1 * 7) / (a / 60.1);
+float z;
+boolean y;
+float x4 = (128.87 / 654.92);
+int x3;
+}

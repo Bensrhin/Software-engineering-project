@@ -1,0 +1,13 @@
+{
+int x;
+boolean x1 = (361 == 61) && (x != 9) && (false || true) && (6562.102 < 6) || (6562.102 == 855.50);
+boolean x2 = (x1 || x1) && (51 < 6) || (x1 && true) && (x1 || true);
+boolean b = (x1 || true);
+float x5 = (2 / 7) / (855.50 * 0);
+boolean a;
+boolean x4;
+int y = (3 / 2834) - (7668 + 26475);
+printx("Bonjour", "test auto", "groupe 53", "Bonjour");
+printx((6 % 488) - (488 * 9) + (3 * 3) + (5 - 7668) / (y + 65385));
+println();
+}

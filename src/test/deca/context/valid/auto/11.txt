@@ -1,0 +1,14 @@
+{
+int c;
+int x1;
+boolean x5 = (false && true) || (40 != x1) && (true && false) && (false && true) || (true || true);
+float a = (74 / 958.25) * (823 * 40);
+boolean z = (41935 > 8);
+float x2 = (74 - 823);
+boolean y = (z || true) || (1 != 758) && (5 > 76) || (74 <= a);
+float b = (758 + 74) * (2735 - 2) + (758 * x1) - (5 / 0);
+printx("Bonjour");
+printlnx();
+println((1468 % x1) * (41935 / 76));
+printlnx((x2 / 5591.910) + (181.39 * 5591.910), "test auto", "groupe 53", (76 + 74) - (41935 + 6) + (76 % 5));
+}
