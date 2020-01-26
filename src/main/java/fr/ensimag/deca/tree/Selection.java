@@ -92,7 +92,6 @@ public class Selection extends AbstractLValue{
         GPRegister r = expr.codeGenLoad(compiler);
         FieldDefinition fld = ((Identifier)(id)).getFieldDefinition();
         compiler.addInstruction(new LOAD(new RegisterOffset(fld.getIndex(), r), r));
-        compiler.getRegisterManager().freeReg(compiler, r);
         return r;
     }
     protected RegisterOffset codeGenField(DecacCompiler compiler){

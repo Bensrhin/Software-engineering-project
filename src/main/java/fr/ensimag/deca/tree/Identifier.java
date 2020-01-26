@@ -286,9 +286,9 @@ public class Identifier extends AbstractIdentifier {
         GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
         
         if(this.getExpDefinition().isField()){
-            compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
-            compiler.addInstruction(new LOAD(new RegisterOffset(this.getFieldDefinition().getIndex(), Register.R1), r1));
-            return r1;
+            compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), r1));
+            compiler.addInstruction(new LOAD(new RegisterOffset(this.getFieldDefinition().getIndex(), r1), r1));
+            
         }
         else{
             compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));

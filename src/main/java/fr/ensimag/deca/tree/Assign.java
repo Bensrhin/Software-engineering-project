@@ -62,7 +62,6 @@ public class Assign extends AbstractBinaryExpr {
             compiler.addInstruction(new STORE(r1, this.getLeftOperand().getExpDefinition().getOperand()));
         }
         else{
-            FieldDefinition fld = (FieldDefinition)(def);
             RegisterOffset r2 = this.getLeftOperand().codeGenField(compiler);
             compiler.addInstruction(new STORE(r1, r2));
         }
