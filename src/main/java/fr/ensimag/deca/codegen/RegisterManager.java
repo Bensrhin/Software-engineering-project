@@ -15,6 +15,7 @@ import java.util.*;
 public class RegisterManager{
     private static InitManager initR;
     private static int cptOffset = 1;
+    private static int cptOffsetM = 1;
     public HashSet<GPRegister> used = new HashSet<GPRegister>();
     public RegisterManager(DecacCompiler compiler){
         initR = new InitManager(compiler.getCompilerOptions().getRegisters()-1);
@@ -60,5 +61,10 @@ public class RegisterManager{
     }  
     public Stack<GPRegister> getNonDispo(){
         return initR.regDispo;
+    }
+    public RegisterOffset getRegOffM(){
+        RegisterOffset reg = new RegisterOffset(cptOffsetM, Register.LB);
+        cptOffsetM ++;
+        return reg;
     }
 }

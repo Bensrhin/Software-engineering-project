@@ -160,8 +160,10 @@ public class DeclClass extends AbstractDeclClass {
     }
     private Set<Symbol> vu = new HashSet<Symbol>();
     
-    protected void codeGenClass(DecacCompiler compiler, ClassDefinition current, int offset){
-       if(current.getType().getName() == this.name.getName()){
+    protected void codeGenClass(DecacCompiler compiler, ClassDefinition current, int offset)
+    {
+       if(current == null) return;
+       if (current.getType().getName() == this.name.getName()) {
             compiler.addComment("construction de la table des methodes de " + current.getType());
             RegisterOffset addr = current.getOperand(current.getSuperClass().getType());
             RegisterOffset gb = compiler.getRegisterManager().getRegOff();
@@ -189,13 +191,9 @@ public class DeclClass extends AbstractDeclClass {
                 compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(methode.getIndex() + offset, Register.GB)));
                 compiler.incSp();
                 compiler.incTs();
-
             }
         }
-
-        if(current.getSuperClass() != null){
-            codeGenClass(compiler, current.getSuperClass(), offset);
-        }
+        codeGenClass(compiler, current.getSuperClass(), offset);
     }
    
     protected void codeGenField(DecacCompiler compiler, ClassDefinition current){

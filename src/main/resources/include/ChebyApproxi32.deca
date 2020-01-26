@@ -17,8 +17,7 @@ class ChebyApproxi32{
         float q4 = 135.9227450335766811043244001f;
         float q5 = 22.23061618444266557469256796f;
 
-        return (c1 * x + c2 * m.power(x, 3) + c3 * m.power(x, 5) + c4 * m.power(x, 7) + c5 * m.power(x, 9) + c6 * m.power(x, 11))
-                /(q1 + q2 * m.power(x, 2) + q3 * m.power(x, 4) + q4 * m.power(x, 6) + q5 * m.power(x, 8));
+        return (c1 * x + c2 * m.power(x, 3) + c3 * m.power(x, 5) + c4 * m.power(x, 7) + c5 * m.power(x, 9) + c6 * m.power(x, 11))/(q1 + q2 * m.power(x, 2) + q3 * m.power(x, 4) + q4 * m.power(x, 6) + q5 * m.power(x, 8));
     }
 
     float ChebychevSinus(float r ){

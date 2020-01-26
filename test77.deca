@@ -1,0 +1,10 @@
+class A{
+    int m(){
+        int x = 1;
+        return x;
+    }
+}
+{
+A a = new A();
+println(a.m());
+}

@@ -1,0 +1,28 @@
+class A{
+float power(float value1, int value2){
+        if(value2 >= 0){
+            if(value2 == 0){
+                return 1;
+            }
+            else{
+                return value1 * power(value1, value2-1);
+            }
+        }
+        else{
+            if (value2 == 0){
+                return 1;
+            }
+            else{
+                return (1/value1)*power(value1, value2 + 1);
+            }
+        }
+    }
+}
+{
+int x = 3;
+float y = 5;
+A a = new A();
+float c = a.power(y, x);
+println(c);
+}
+

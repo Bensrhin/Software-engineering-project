@@ -26,6 +26,7 @@ class BreakPoints{
         }
         if (temoin == 0){
             index.x = 1;
+println("1");
             index.y = 0;
         }
 

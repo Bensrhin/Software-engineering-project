@@ -81,6 +81,12 @@ public class DeclVar extends AbstractDeclVar {
         initialization.codeGenInt(compiler, j);
 
     }
+    @Override
+    protected void codeGenVarM(DecacCompiler compiler){
+        int j = varName.codeGenIdentM(compiler);
+        initialization.codeGenIntM(compiler, j);
+
+    }
 
     @Override
     public void decompile(IndentPrintStream s) {

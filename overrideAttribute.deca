@@ -1,0 +1,15 @@
+//25
+
+
+class A {
+  int x = 10;
+}
+
+ {
+    A myObj = new A();
+    myObj.x = 5;
+   println(myObj.x);
+  }
+
+
+
