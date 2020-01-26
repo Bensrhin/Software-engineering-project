@@ -18,6 +18,7 @@ import java.io.PrintStream;
  *
  * @author
  */
+
 public class MethodCall extends AbstractLValue{
     private AbstractExpr expr;
     private AbstractIdentifier id;
@@ -27,6 +28,12 @@ public class MethodCall extends AbstractLValue{
        this.expr = expr;
        this.args = args;
     }
+    @Override
+    public ExpDefinition getExpDefinition()
+    {
+      return this.definition;
+    }
+    private ExpDefinition definition;
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
@@ -76,6 +83,7 @@ public class MethodCall extends AbstractLValue{
                           method.getLocation() + " règle(3.74)", this.getLocation());
         }
         this.setType(method.getType());
+        this.definition = method;
         return method.getType();
     }
     @Override
