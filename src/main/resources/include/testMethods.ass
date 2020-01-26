@@ -310,7 +310,7 @@
 	ADDSP #2
 	LOAD 59(GB), R3
 	STORE R3, 0(SP)
-	LOAD 51(GB), R2
+	LOAD #0x1.936bb8p-4, R2
 	STORE R2, -1(SP)
 	LOAD 0(SP), R3
 	CMP #null, R3
