@@ -17,18 +17,40 @@ def files(path):
 
 
 def valid_context():
-    
+
     counter = 0
     tmp = 0
     test_context = "launchers/test_context"
     valid_context_SO = "../deca/context/valid/sansObjet"
+    valid_context_auto = "../deca/context/valid/auto/valid"
     valid_context_O = "../deca/context/valid/objet"
     valid_context_provided = "../deca/context/valid/provided"
-    
+
     # print("Details d'execution [1/0] ?")
     # x = int(input())
     x = 0
-         
+
+    print("~======================================================~")
+    print(color.BOLD+color.OKBLUE+"      X+X+X+X+X [TEST SANS OBJET AUTO] X+X+X+X+X "+color.ENDC)
+    print("~======================================================~")
+
+    for file in files(valid_context_auto):
+        tmp += 1
+        execute = test_context + " " + valid_context_auto + "/" + str(file) + " " +"2> {}.log".format(str(file))
+        if x == 1:
+            os.system(execute)
+        if x == 0:
+            os.system(execute + "> synt.txt")
+            os.system("rm synt.txt")
+        if os.stat("{}.log".format(str(file))).st_size != 0:
+            print(file+color.BOLD+color.WARNING+"  *** [Test FAILED UNEXPECTED] *** "+color.ENDC)
+
+        else:
+            print(file+color.BOLD+color.HEADER+"  *** [TEST PASSED EXPECTED] *** "+color.ENDC)
+            counter+=1
+        print("======================================================")
+        os.system("rm *.log")
+
     print("~======================================================~")
     print(color.BOLD+color.OKBLUE+"      X+X+X+X+X [TEST SANS OBJET Context] X+X+X+X+X "+color.ENDC)
     print("~======================================================~")
@@ -49,7 +71,7 @@ def valid_context():
             counter+=1
         print("======================================================")
         os.system("rm *.log")
-        
+
     print(color.BOLD+color.OKBLUE+"  X+X+X+X+X  [TEST SANS OBJET Context]  X+X+X+X+X "+color.ENDC)
     print("~======================================================~")
 
@@ -69,7 +91,7 @@ def valid_context():
             counter+=1
         print("======================================================")
         os.system("rm *.log")
-    
+
 
     return counter, tmp
 
@@ -81,12 +103,12 @@ def invalid_context():
     invalid_context_O = "../deca/context/invalid/object"
     invalid_context_SO = "../deca/context/invalid/sansObjet"
     invalid_context_provided = "../deca/context/invalid/provided"
-    
-     
+
+
     print("~======================================================~")
     print(color.BOLD+color.OKBLUE+"  X+X+X+X+X [TESTS PROVIDED  INVALID Context] X+X+X+X+X "+color.ENDC)
     print("~======================================================~")
-    
+
     for file in files(invalid_context_provided):
         tmp += 1
         execute = test_context + " " + invalid_context_O + "/" + str(file) + " " +"2> {}.log".format(str(file))
@@ -107,11 +129,11 @@ def invalid_context():
 
         os.system("rm *.log")
         print("~======================================================~")
-    
+
     print(color.BOLD+color.OKBLUE+"  X+X+X+X+X [TESTS OBJET INVALID Context] X+X+X+X+X "+color.ENDC)
     print("~======================================================~")
 
-    
+
     for file in files(invalid_context_O):
         tmp += 1
         execute = test_context + " " + invalid_context_O + "/" + str(file) + " " +"2> {}.log".format(str(file))
@@ -132,7 +154,7 @@ def invalid_context():
 
         os.system("rm *.log")
         print("~======================================================~")
-    
+
     print(color.BOLD+color.OKBLUE+"  X+X+X+X+X [TESTS SANS OBJET INVALID Context] X+X+X+X+X "+color.ENDC)
     print("~======================================================~")
     for file in files(invalid_context_SO):
