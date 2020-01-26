@@ -31,7 +31,7 @@
     float rangeCos = r.FirstReductionCos(100*PI);
     float rangeSin = r.FirstReductionSin(100*PI);
 
-    float cos = t.taylorCosinus(PI/2,7);
+    float cos = t.taylorCosinus(PI/5,7);
     float sin = t.taylorSinus(PI/2,6);
     float atan = t.taylorArctan(PI/4,7);
     float asin = t.taylorArcsin(PI/4,7);
