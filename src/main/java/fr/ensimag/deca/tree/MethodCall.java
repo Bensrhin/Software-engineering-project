@@ -94,7 +94,15 @@ public class MethodCall extends AbstractLValue{
 
     }
     @Override public void decompile(IndentPrintStream s){
-        expr.decompile(s);
+        if(!expr.decompile().equals(""))
+        {
+          expr.decompile(s);
+          s.print(".");
+        }
+        id.decompile(s);
+        s.print("(");
+        args.decompile(s);
+        s.print(")");
 
     }
 

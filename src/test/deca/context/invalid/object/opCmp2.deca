@@ -20,7 +20,7 @@ class B extends A
   void getX()
   {
     if (x && y){
-      a = 0;
+      a = -7;
     }
   }
 }

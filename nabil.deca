@@ -1,29 +1,31 @@
-class A
-{
-  int x(A a)
-  {
-    return 7;
-  }
-}
-class X
-{
-  int a ;
-  void m()
-  {
-    C c = new C();
-    B b = new B();
-    println(b.x());
-  }
-}
-class B extends A
-{
+class fct{
 
+    int fact(int n){
+        if(n == 0){
+            return 1;
+        }
+        else{
+            return n*this.fact(n-1);
+        }
+    }
+    int fibo (int n){
+        int x;
+        int y;
+        if(n == 0){
+            return 0;
+        }
+        else if(n == 1){
+            return 1;
+        }
+        else{
+            return fibo(n-1) + fibo(n-2);
+        }
 }
-
-class C extends X
+}
 {
-  int x()
-  {
-    return 4;
-  }
+fct f = new fct();
+int n = 6;
+int x = f.fact(n);
+int y = f.fibo(n);
+println(x, y);
 }

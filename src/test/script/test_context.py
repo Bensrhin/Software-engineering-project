@@ -20,7 +20,7 @@ def valid_context():
     counter = 0
     tmp = 0
     test_context = "launchers/test_context"
-    valid_context = "../deca/context/valid"
+    valid_context = "../deca/context/valid/Objet"
     # print("Details d'execution [1/0] ?")
     # x = int(input())
     x = 0
@@ -48,7 +48,7 @@ def invalid_context():
     counter = 0
     tmp = 0
     test_context = "launchers/test_context"
-    invalid_context = "../deca/context/invalid"
+    invalid_context = "../deca/context/invalid/object"
     print("~======================================================~")
     for file in files(invalid_context):
         tmp += 1

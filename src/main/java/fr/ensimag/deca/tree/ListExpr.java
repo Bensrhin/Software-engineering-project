@@ -55,8 +55,8 @@ public class ListExpr extends TreeList<AbstractExpr> {
       while (exprs.hasNext())
       {
           expr = exprs.next();
-          s.print(",");
-          s.println();
+          s.print(", ");
+          // s.println();
           expr.decompile(s);
       }
 
