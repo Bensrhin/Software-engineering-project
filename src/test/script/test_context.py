@@ -30,26 +30,6 @@ def valid_context():
     x = 0
          
     print("~======================================================~")
-    print(color.BOLD+color.OKBLUE+"  X+X+X+X+X [TESTS PROVIDED  VALID Context] X+X+X+X+X "+color.ENDC)
-    print("~======================================================~")
-    
-    for file in files(valid_context_provided):
-        tmp += 1
-        execute = test_context + " " + valid_context_provided + "/" + str(file) + " " +"2> {}.log".format(str(file))
-        if x == 1:
-            os.system(execute)
-        if x == 0:
-            os.system(execute + "> synt.txt")
-            os.system("rm synt.txt")
-        if os.stat("{}.log".format(str(file))).st_size != 0:
-            print(file+color.BOLD+color.WARNING+"  *** [Test FAILED UNEXPECTED] *** "+color.ENDC)
-
-        else:
-            print(file+color.BOLD+color.HEADER+"  *** [TEST PASSED EXPECTED] *** "+color.ENDC)
-            counter+=1
-        print("======================================================")
-        os.system("rm *.log")
-        
     print(color.BOLD+color.OKBLUE+"      X+X+X+X+X [TEST SANS OBJET Context] X+X+X+X+X "+color.ENDC)
     print("~======================================================~")
 
