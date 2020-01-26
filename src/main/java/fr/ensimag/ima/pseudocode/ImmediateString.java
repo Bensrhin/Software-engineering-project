@@ -11,8 +11,20 @@ public class ImmediateString extends Operand {
 
     public ImmediateString(String value) {
         super();
-        //this.value = value;
-        this.value = value.substring(1, value.length()-1);//enlever les ""
+        String tmp = value.substring(1, value.length()-1);//enlever les ""
+        this.value = "";
+        for (int i = 0; i<tmp.length(); i++){
+            if (String.valueOf(tmp.charAt(i)).equals("\\")){
+                switch(String.valueOf(tmp.charAt(i+1))){
+                    case "\"":break;
+                    default: this.value += String.valueOf(tmp.charAt(i));
+                }
+            }
+            else{
+                this.value += String.valueOf(tmp.charAt(i));
+            }
+        }
+        
     }
 
     @Override

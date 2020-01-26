@@ -1,0 +1,13 @@
+{
+float c;
+float z = (4 + 2) - (7 / 149.29) - (27755 + 8006) + (2 + 149.29) * (47068 * 98.0);
+float b = (5021.931 * 8006) / (119 / 6) + (6 / 1);
+boolean x3 = (false && true) || (8143 <= 1751) && (true || false) && (true || false);
+boolean x2;
+float d = (c / 820.49);
+float x4 = (3 / 47068) / (5 / 11.3);
+int x;
+x2 = (x3 || x2) || (false && false) && (5 <= 9);
+printx("groupe 53", "projetGL");
+printlnx();
+}

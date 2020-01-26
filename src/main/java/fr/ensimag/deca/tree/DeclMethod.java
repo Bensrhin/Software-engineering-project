@@ -101,14 +101,18 @@ public class DeclMethod extends AbstractDeclMethod
               throw new ContextualError(erreur, method.getLocation());
 
             }
+
             ClassDefinition classDef = classIdentifier.getClassDefinition();
+            Symbol symbol = this.getNameMethod().getName();
             int index = classDef.getNumberOfMethods();
-            index ++;
+            if (override == null)
+            {
+              index ++;
+            }
             classDef.setNumberOfMethods(index);
             MethodDefinition def = new MethodDefinition(type,
                     this.getLocation(), sig, index);
             def.setLabel(new Label("code." + classIdentifier.getName().getName() + "." + this.getNameMethod().getName().getName()));
-            Symbol symbol = this.getNameMethod().getName();
             try
             {
                 classDef.getMembers().declare(symbol, def);
@@ -172,7 +176,7 @@ public class DeclMethod extends AbstractDeclMethod
       s.print("(");
       this.params.decompile(s);
       s.println(")");
-      
+
       if (getBody() != null)
       {
         getBody().decompile(s);

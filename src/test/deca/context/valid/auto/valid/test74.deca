@@ -1,0 +1,14 @@
+{
+float x2 = (69 - 5) - (3006 - 3006);
+int z = (1 * 5) + (67730 + 9) - (32 - 3);
+int b = (3006 * 6232);
+float d = (2 / 46.7) / (447 / 1) * (95757 * 6232);
+float x4;
+boolean y = (6232 < 93280.3562) && (false || true);
+float x3;
+print();
+printx();
+printlnx("projetGL", "groupe 53");
+printx("test auto", "projetGL", "groupe 53", (b / 18455) * (7243.002 / 2));
+printlnx((z + b) / (3006 - 1) * (8 - 18455) + (3 / 32) + (1 * 2), (z - 447) + (8 * 2266) + (3006 - 95757) / (1 % 95757), "Bonjour");
+}

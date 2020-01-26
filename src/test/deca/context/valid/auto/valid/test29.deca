@@ -1,0 +1,18 @@
+{
+float b;
+float c = (53 - 405.01) * (405.01 + 924.35) * (81 - 3) / (1 + 405.01);
+boolean x5 = (12 == 9);
+int x4 = (81 % 3) * (5699 * 5699) / (53 - 2) + (81 * 7) * (8 / 53);
+int x1;
+int d = (6 - 4) / (5 * 197) / (9 % 603) * (2 - x1) - (1 + 68);
+float y = (763 * 68.6) + (43582.2167 * 5699) / (2 - 5699) / (2 * 763);
+boolean x3 = (true && x5) || (9 != b);
+float a = (b / 53) / (405.01 + c) + (0 + 2) - (1 * d);
+float x;
+int x2 = (d - 0) / (6 / 4) * (2 % 5);
+x = (43582.2167 + 89.0);
+printlnx("test auto", "test auto", "Bonjour", "groupe 53");
+println();
+printx("test auto", "groupe 53", "projetGL");
+printlnx((y / 2) / (4 * 298.12) - (b / 946.59) / (y - 603) * (763 / a), "projetGL");
+}

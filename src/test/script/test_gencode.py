@@ -136,6 +136,8 @@ def valid_gencode():
                 attendu = "45"
             elif str(file) == "max.deca":
                 attendu = "4.58000e+01"
+            elif str(file) == "guillemets.deca":
+                attendu = "Hello\"World"
             else:
                 print("fichier pas encore traité")
                 exit()

@@ -1,0 +1,11 @@
+{
+float y = (1 + 71) - (6251 + 7) - (1751 - 477.28) / (3 / 0);
+int x5 = (93 * 720) - (1621 + 2) * (1621 + 7) - (8 / 8) / (85961 * 1751);
+float x1 = (477.28 / 71) + (180.03 * 5);
+boolean b = (true && false) && (8 == 9) || (false || false) && (799.99 <= 1);
+printlnx("groupe 53", (x5 * 130.67) / (180.03 / 97771.1877) * (4 * 0), (93 + 0), "projetGL");
+println();
+printlnx();
+printlnx("test auto", "Bonjour", (71 + 85961) + (1621 - 85961), "Bonjour");
+println("test auto", "test auto", (1751 % 720) / (4 * 9) - (x5 / 3) * (1 % 0) * (7 + 8294), "test auto");
+}

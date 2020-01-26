@@ -1,0 +1,23 @@
+{
+boolean x5;
+boolean x3;
+float d = (8 - 6);
+boolean x2;
+float z = (45.2 - 87177.9249) + (0 - 31.5) - (8638 * 31.5);
+boolean y;
+int x = (346 + 346);
+int a = (1 + 7) + (x - 9) + (8 / 248) + (5 + x) + (8 % 615);
+int c;
+boolean b;
+boolean x1;
+while ((false || x5) && (5767 >= 32788) && (b || y) || (true || false))
+{
+	x3 = (9 < 87177.9249) || (false && x5) && (9274.530 <= 9640);
+	printx((45.2 - 5767) + (1 + 31.5), "Bonjour", (7 * 248) * (14 % 9640) - (630 % x), "projetGL");
+	printlnx((28.3 - 5) / (7 / 8) / (8638 / 9274.530) + (a - 615) / (9274.530 / 28.3), (3 - a) + (3603.551 - x) + (7 - 8638), "groupe 53");
+}
+print();
+print();
+println("projetGL", "groupe 53", "groupe 53", "projetGL");
+printx("projetGL", "projetGL", (6 % 6) + (4 + 346) / (c % 7), (4 / 4) * (630 / 9));
+}

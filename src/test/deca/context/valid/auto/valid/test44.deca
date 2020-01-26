@@ -1,0 +1,78 @@
+{
+boolean c;
+boolean d = (4 != 35.7);
+boolean y = (d || d) || (d && d) && (74 < 3) && (5 >= 6108);
+boolean a;
+boolean x1 = (0 != 7) && (292 > 7);
+boolean x = (a && true);
+float x5 = (1 - 292);
+int z = (2 + 6108) + (646 - 9) + (7881 * 2) - (646 % 545) + (9 / 2);
+boolean x4 = (false || c) && (8 < 77406.0421);
+if ((x4 || true))
+{
+}
+else if ((true || c) && (355 < 33488))
+{
+	if ((5 <= 292))
+{
+	while ((x1 || d) || (9 <= 33488))
+{
+	if ((x1 && a) && (355 != 646) && (799.57 > 403.85) || (true && false))
+{
+	printx("Bonjour", (9 * 28), (28 / 33488) / (5 % 4) - (7 - 292) - (74 * 74), (6 / 799.57) * (2 - 8) * (6108 - 646) * (403.85 + 26.1) * (4 + 0));
+	printlnx("Bonjour", "Bonjour", "projetGL", "projetGL");
+	print("groupe 53", (28 / 7) - (28 / 355) - (33488 % 7) / (6108 - 0));
+	println("groupe 53", "test auto", (3 + 7881), (355 - 8) * (5 + 9));
+	printx();
+}
+else if ((5 == 35.7))
+{
+	print("test auto", (9 * 4));
+	printlnx("groupe 53", "groupe 53", "projetGL");
+	printx("groupe 53", "Bonjour", (65 - 292) * (646 + 545) * (28 + 9), "Bonjour");
+}
+else if ((26.1 <= 5) || (77406.0421 != 1) && (a && d) && (z < 65))
+{
+	print();
+}
+else
+{
+	print();
+	printlnx("Bonjour", "projetGL");
+}
+	printx((6 * 9) / (0 * 545) * (7 * 355) * (4 + 7), "projetGL", "groupe 53", "test auto");
+	printx("projetGL", "test auto", (65 * 7) + (2 % 7881) * (1 % 1));
+}
+	printlnx("groupe 53", (0 - 646) + (2 / 292) - (33488 + 4), "Bonjour", "groupe 53");
+	printx("Bonjour", (9 + 5) * (28 * 7) * (74 + 8), (8 * 355) + (6 - 26.1) / (1 - 0) * (799.57 - 292));
+	printlnx("Bonjour", "groupe 53", "projetGL", (3 - 4) - (7 + 6108) - (33488 * z) - (65 - 1) / (355 / 646));
+}
+else if ((x4 && true) && (403.85 == 33488) || (65 <= 3403.636) && (true || false))
+{
+	println("groupe 53", (7881 + 85.8) * (9501.849 * 292) + (0 - 77406.0421) - (68921.7266 + 0), "Bonjour", "test auto");
+	printlnx("groupe 53", "projetGL", "groupe 53", (9 / 7881) + (0 * 68921.7266) * (9501.849 + 4) * (77406.0421 + 74) + (8 + 1));
+	print("test auto", "groupe 53", (5 + 2) / (9 % 28) + (65 * 28) - (z - 292) - (8 - 545), (33488 - 545));
+	println();
+}
+else if ((403.85 != 33488) && (x5 >= 0) && (c || a) && (6108 >= 2) || (d && d))
+{
+	printlnx("projetGL", (403.85 * 292));
+	println((3 * 77406.0421) + (545 - 292), (0 + 9) + (545 - 2) / (0 * 6108) + (0 - 7881));
+}
+else
+{
+	println((3403.636 - 9501.849) + (33488 * 9) / (3403.636 - 7), (4 * 33488) / (7 - 33488) + (28 * 74) * (799.57 * 65));
+}
+	printx("test auto", (5 + 5) / (8 * 545) - (2 - 74) - (292 - 7881));
+	printx();
+}
+else
+{
+	printlnx();
+	println("Bonjour", (355 * 6), (77406.0421 + 77406.0421) / (355 * 3));
+	printx("groupe 53", "projetGL");
+	printlnx("Bonjour", "Bonjour", "Bonjour", "test auto");
+}
+println((26.1 - 9), (z / 9));
+print();
+}

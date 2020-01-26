@@ -1,0 +1,15 @@
+{
+boolean z;
+float x5 = (8465.994 / 3) + (6633.173 - 79.9);
+boolean c = (79.9 == 79.9) || (false || false) && (true && false);
+boolean d;
+boolean x4;
+boolean b = (d || z);
+boolean x = (7257 == 2514) || (7257 != 5);
+boolean x3;
+int y = (66 % 8) - (252 - 6);
+boolean a;
+d = (true || d) || (true || z) && (c || c) || (2514 == 6) || (x3 || a);
+printx((72987.2514 - 7) * (252 / 74776) + (8 - 366.55) + (58.2 + 252), (8 - 90875), "test auto");
+printlnx();
+}

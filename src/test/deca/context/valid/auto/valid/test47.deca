@@ -1,0 +1,13 @@
+{
+boolean a = (true || false);
+boolean d = (a || true) && (a && true) || (7 <= 34147.2665) || (a || true);
+int x5 = (28455 % 243) + (243 * 254) + (0 % 7687);
+boolean c;
+int b = (1 * 9) * (7687 / 610) / (3 * 9) * (6 + 2);
+float z;
+c = (5 > 8) && (d && c) && (a || c) && (c && false) || (3 <= z);
+printlnx();
+printlnx();
+printx("projetGL", "projetGL");
+printlnx("Bonjour", (8 - 7) - (9712 * 9712) * (b * 4) - (28455 % 23) + (23 - 254), "projetGL", "test auto");
+}

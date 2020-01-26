@@ -1,0 +1,13 @@
+{
+boolean x3 = (false || false);
+float a;
+float d;
+float x = (259 + 7);
+boolean x2 = (3 >= 9);
+float x1 = (96547 * 42.1);
+int b = (1 * 0) / (96547 % 73);
+float y = (d - 9) + (6742 * 91) / (5 - 42.1);
+boolean c = (x3 || x2) || (651 != 809.46) && (6 >= 86843) && (8 > 76019.0385) || (false || x3);
+float x4 = (b + 24.9) / (a / 9);
+a = (y / 259);
+}

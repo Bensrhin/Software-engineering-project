@@ -1,0 +1,16 @@
+{
+boolean x1;
+float c;
+int x5 = (3 * 6364) - (9 - 49) * (49 / 6);
+boolean x3;
+boolean y = (x3 || x1) && (2 > 7582) && (true && x1);
+int z;
+boolean d;
+float b = (8366.449 - 6) / (93 * 3) / (47222.7035 / 1);
+float a = (48 / 587) * (6 - 12) * (3093.979 - 39196.9557) + (873.19 + z) / (48 / 5);
+boolean x4;
+x3 = (5 == 5) && (x3 && x4) || (d || x3);
+printlnx("Bonjour", "test auto", (c * 594.36) * (9 + 936.58));
+printx();
+printx();
+}

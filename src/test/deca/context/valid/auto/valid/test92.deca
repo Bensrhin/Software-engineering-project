@@ -1,0 +1,16 @@
+{
+float b;
+boolean x = (true && true) || (23759 > 93538) && (false || false) && (false && true) && (false && true);
+boolean x1 = (25238.7412 > 1) && (6142.533 < 40380) && (x && x) && (5714.431 >= 6142.533) && (x || true);
+int z = (5 * 7) + (40380 * 8);
+float c;
+int d = (23759 * 619) + (23759 % 619);
+float x4;
+while ((25238.7412 >= x4))
+{
+	printx((7774 % 2) / (5 - 0) + (6 / 1) + (4 - 93538) * (3 + d), "test auto", "groupe 53", (23759 * 0) + (987 + 8) / (1 - 2) / (30028 + 6) - (8 * 4));
+	printx((0 - 987), "projetGL", (7483 * 3));
+}
+println();
+print("Bonjour", "Bonjour");
+}

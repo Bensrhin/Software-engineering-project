@@ -1,0 +1,33 @@
+{
+boolean d = (true && false) && (false || true) && (false || true) || (true && false) && (7 < 18.2);
+boolean a = (d && d) || (true || true) || (62352.4495 != 1);
+float x = (0 / 7533.414) - (0 * 99807.6446) + (5 + 79);
+float z = (79 - 3033) + (201 - 3033) - (16 / 16);
+boolean b;
+boolean x3;
+float y = (82090 - 0) - (73784.9527 / 9687) * (7044.249 * 15) + (z / 1) * (62352.4495 / 0);
+float x2 = (9687 - 99807.6446);
+int x4 = (9 / 8222) * (79 + 8) - (201 % 201) / (652 * 82090) + (3033 + 16);
+float x1 = (y / 652) + (99807.6446 * 201) - (1 + 3) / (627.12 + 5) + (18.2 / 3033);
+int c = (3033 * 15) + (9 + 9687) * (5 * 79) * (4 + 2) + (x4 * 5);
+if ((d || d) || (false && b) && (3 >= 79))
+{
+	b = (z >= 201);
+	printx("projetGL", (4 - 97.4) + (6 * 5) - (x / x4), "test auto", "Bonjour");
+	print("test auto", "Bonjour", "Bonjour");
+}
+else if ((true && d) && (8 >= 16) && (82090 >= 82090) && (0 >= 2))
+{
+	printlnx("groupe 53", "groupe 53", "Bonjour", "Bonjour");
+}
+else
+{
+	printlnx("groupe 53", "groupe 53");
+	printlnx();
+	printx((5 - 1) + (82090 % 15) / (8222 + 5), "test auto", (16 * 8) - (3033 % 16) - (9687 - 9687), "projetGL");
+}
+println();
+println();
+printlnx();
+println();
+}

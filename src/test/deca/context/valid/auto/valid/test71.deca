@@ -1,0 +1,8 @@
+{
+boolean x1 = (2 != 5) || (true && false) || (305 < 421) || (false || true) || (false && false);
+float x4;
+int c;
+float x2 = (c * 2) * (5 / 851.35);
+boolean a;
+printx("test auto", (9 + 89.1) * (45.7 - 4) * (89.1 - 421) - (681 * 1) - (9 / 620.97), "groupe 53", "test auto");
+}

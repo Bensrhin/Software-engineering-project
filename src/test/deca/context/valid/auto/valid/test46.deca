@@ -1,0 +1,25 @@
+{
+float x3 = (6 * 3178) + (5 * 8824);
+int x2 = (3 / 4);
+boolean a = (3 < 14256.2376);
+int x1 = (7 * 1) / (8824 + 3) / (36248 * 4) + (1 % 36248);
+float b = (9 / 36248);
+boolean z;
+while ((x3 == 8824) || (8768 >= 838) || (a || a) || (x1 > 6))
+{
+	while ((true || true) && (838 > 8768) || (249.51 != 747.86) || (a && a) || (a && true))
+{
+	while ((a || a) && (6 >= 4) || (2 > 2) || (z && z))
+{
+	print((431.56 + 838) * (249.51 * 41795.5749) + (431.56 * 850), "projetGL", "groupe 53", "groupe 53");
+	printlnx();
+	printlnx((8768 + 0) + (838 / 4) - (29856 % x2), "test auto", "groupe 53");
+	printlnx("test auto", (2 / 63) * (2 % x2) * (8 % 850) + (1 - 6) + (5 + 4));
+}
+	print();
+	println();
+}
+}
+printlnx("projetGL", "projetGL", "projetGL", "projetGL");
+printx((838 * 5), "groupe 53");
+}

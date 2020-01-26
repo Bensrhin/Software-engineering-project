@@ -1,0 +1,14 @@
+{
+int x = (79560 * 48) + (744 - 42312);
+int z = (0 - 2) + (2 + 2) - (79560 + 9) * (6 - x);
+boolean c;
+boolean a = (false || c);
+float x2;
+int d;
+int x4 = (2 + x) + (7 % 67698) * (67698 * 6) / (520 * d) / (79560 % 5);
+boolean x5 = (6 != x4);
+boolean x1;
+int b = (67698 / 434);
+boolean x3 = (x5 || false) || (x5 && x1);
+boolean y = (8471.849 <= x4);
+}

@@ -1,0 +1,7 @@
+{
+int a;
+int x3 = (60519 / 1306) * (23 % 3840) + (899 * 9) * (6 - 6);
+boolean x2 = (true && true);
+printx("Bonjour", "groupe 53");
+printlnx();
+}

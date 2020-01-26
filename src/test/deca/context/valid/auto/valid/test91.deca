@@ -1,0 +1,14 @@
+{
+float x5 = (1 - 808.85) + (9 + 269);
+int x = (5 * 4) - (41172 + 646);
+boolean x2 = (32 >= 317) && (false && false);
+int x4;
+boolean c = (x2 || true) || (true && false) || (8 > 7) || (x2 || x2);
+int y = (x - 9);
+boolean z = (3 <= 6) && (24479.6003 <= 8) && (2 > 6) || (false || true);
+printlnx("test auto", "test auto", "Bonjour", "test auto");
+println("projetGL", "test auto", "projetGL", (38.4 / 456.26));
+printx((8 * 41172) / (6 / 7944), "test auto", "groupe 53", (0 / 269) * (x4 % 6) / (x * 3) / (4 * 9));
+printx("Bonjour", "test auto");
+printx((32 / 32) - (x4 + 4) * (4 % 7) * (7 + 9), "Bonjour", "test auto", "groupe 53");
+}

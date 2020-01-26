@@ -1,0 +1,9 @@
+{
+float x3 = (3843 - 4);
+int x4;
+boolean a = (true || false) || (7 == 6);
+float c;
+println("groupe 53", "Bonjour");
+print("projetGL", (91 + 4157) / (9 / 3) + (x4 * 91) / (8 + 6));
+printlnx((5263 + 7) / (84 / 8) + (0 + 84) * (77582 + 6), "Bonjour", "test auto", (4157 / x4) + (3 - 3843));
+}

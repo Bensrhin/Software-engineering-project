@@ -1,0 +1,10 @@
+{
+int x2;
+float x;
+int y = (6770 - 276);
+int d;
+boolean x5 = (32283 > x2) || (false && true);
+x2 = (0 + 9080) + (6770 + 1) / (799 + 32283) + (5 % x2) + (4 + y);
+printx((3 / 9080), (1 - 4) + (9 % 3) / (4 % 3) / (x2 % 6770));
+printlnx("Bonjour", "test auto", "projetGL");
+}

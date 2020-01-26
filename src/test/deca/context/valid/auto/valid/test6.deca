@@ -1,0 +1,48 @@
+{
+float z;
+float x2;
+float x;
+int x1 = (6 * 582);
+boolean x4;
+float y = (x + 3) + (9180 + 2) - (7622.366 + x1);
+boolean d;
+int c;
+boolean x5 = (true || true) && (7993 > 463.06) && (x4 && true) || (true && d) && (d || d);
+boolean a = (2 != 89326) || (false && false) || (true && true) || (x1 == 0);
+float b;
+int x3 = (9180 % 2);
+while ((a && d) || (41.5 == 3) || (false && a) || (7993 < y) || (89326 >= 7993))
+{
+	if ((x5 && x5) && (x1 >= 7622.366) && (z >= 2) || (false || false))
+{
+	while ((582 > 560.40) || (x5 && d))
+{
+	c = (35 - 35628) + (5 + 5) * (c + 9180) * (9180 / 869);
+	printlnx((c % 2) * (89326 - 50) * (0 * 50), (35 + z), (8 * 35628) * (89326 - 1) / (3 - 869) - (9 % 4) - (7993 + 35628), (41.5 + 8) - (89326 - 89326) / (2 + 50) - (9 * 7622.366));
+	printlnx();
+}
+	printlnx((4 + 8) + (50 + 9) + (35 % 35628) / (x3 % 7), "Bonjour", (6 / 0) + (869 / 50), "projetGL");
+	printlnx((582 + 7622.366) + (b / 4928.547) * (z * 35628) - (1 / 9) * (35628 + b), "test auto", "projetGL", "test auto");
+}
+else if ((false || x5) && (z != 463.06) || (z > 4) && (d && a))
+{
+	printx((179.45 * 5) + (x1 + 224), "test auto", "Bonjour");
+	printlnx((3 / 22.7) * (2 - 8) / (4928.547 * x3) - (y - 41.5) - (5 + 7622.366), (7993 + 9180) * (7993 - 35) / (1 / 4), (6 % 35) / (1 * 89326) / (2 / 7993) / (9 + 1), "test auto");
+	printlnx();
+}
+else
+{
+	printlnx("projetGL", "projetGL", (92718 * 50) / (2 / 8) * (9 / 35628) * (9180 / 0) + (1 * 869), (x1 + x2) - (44.8 + 463.06) * (463.06 * 6) / (9 - 22.7) - (2 / 4928.547));
+	printx((8 + c) - (560.40 * z) - (179.45 + 179.45), "Bonjour");
+	println("test auto", "projetGL", "projetGL", (5 * x3) / (9 + 5) - (582 + 89326) - (5 * 7622.366));
+	printlnx("Bonjour", (x - 92718) + (50 - 5) - (0 - 92718) + (7622.366 * 7622.366) / (4 * z), "groupe 53");
+	println();
+}
+	printlnx("test auto", (x2 / z) * (7993 + 463.06), "test auto");
+	printlnx("Bonjour", "projetGL", "Bonjour");
+	printlnx();
+	printlnx((6 * 59.4) * (2 * 463.06), "Bonjour", (5 + 9180) / (3 + 869) + (7993 - 89326) * (92718 + x2));
+}
+printlnx();
+printlnx((c * 6), (92718 + 869));
+}

@@ -1,0 +1,43 @@
+{
+int x2 = (528 / 21390) * (9 / 6) / (8 % 3145) / (83407 - 43495) / (21390 * 7);
+int x5 = (43495 - 6) * (2 % 7) - (7493 / 83407);
+boolean x3 = (15317.4762 < 15.5) && (true || true);
+float y = (9 + 7) / (21390 * 5) - (1 * 9) * (1 - 8) / (679.86 / 807);
+boolean a = (528 >= 4) || (x5 > x2);
+int z = (3 + 40684) / (3145 + 40684) + (45 + 2) / (4 * 6) + (4 - x2);
+boolean b = (false || false) || (1 <= 45) || (x3 && x3) || (x3 && false) || (x3 || true);
+float x4 = (40684 + z) - (x5 + 703) / (z + 334.64);
+while ((703 >= 7))
+{
+	if ((false || b) && (4 < 1))
+{
+	while ((43495 == x5) || (b || false) && (b && true))
+{
+}
+	printlnx((1 - 334.64) * (3145 * 4) * (z * 73180.1116), "test auto", "test auto", "Bonjour");
+	println("projetGL", "test auto", "projetGL", "test auto");
+	printx((5 % x2) + (4 / 4) * (3145 % 6), "projetGL", "projetGL", "groupe 53");
+}
+else if ((0 != 8) || (true || true) && (15317.4762 != 43495) || (a || a))
+{
+	printlnx("Bonjour", "groupe 53", "groupe 53");
+	print("projetGL", (40684 / 15.5), "Bonjour");
+}
+else if ((a && false) || (594.70 == 5) || (1 > 334.64))
+{
+	printlnx("projetGL", "test auto");
+	printx("groupe 53", (45 % 3));
+	println("test auto", "Bonjour", "groupe 53", "projetGL");
+}
+else
+{
+	printlnx("Bonjour", (4 + x5), (7493 / 3) / (0 + 7493) * (6 / 7) + (84725.3981 / 4) * (y * 1), "Bonjour");
+	printlnx();
+	print((6 / 1) / (73180.1116 + 4), "Bonjour");
+	printlnx("test auto", "Bonjour");
+}
+	print("test auto", "Bonjour", "projetGL");
+	print("projetGL", "test auto", "test auto", (15317.4762 - 7) + (334.64 + y) * (334.64 * y));
+	printlnx("groupe 53", (5 + 5), "projetGL");
+}
+}
