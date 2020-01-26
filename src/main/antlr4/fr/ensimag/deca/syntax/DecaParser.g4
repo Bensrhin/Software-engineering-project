@@ -236,6 +236,7 @@ assign_expr returns[AbstractExpr tree]
       | /* epsilon */ {
             assert($e.tree != null);
             $tree = $e.tree;
+            setLocation($tree, $e.start);
         }
       )
     ;
@@ -426,9 +427,12 @@ primary_expr returns[AbstractExpr tree]
     | m=ident OPARENT args=list_expr CPARENT {
             assert($args.tree != null);
             assert($m.tree != null);
+
             ThisLiteral thisI = new ThisLiteral(false);
+            setLocation(thisI, $m.start);
             $tree = new MethodCall(thisI, $m.tree, $args.tree);
             setLocation($tree, $m.start);
+
 
         }
     | OPARENT expr CPARENT {
