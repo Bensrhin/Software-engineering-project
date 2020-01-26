@@ -118,11 +118,11 @@ public class Chebychev {
         return i;
 
     }
-    static float arctan(float value){
+    static float arctanCheb(float value){
         float tanCoef = 0.09849140335716425f;
         float Pi32 = 0.09817477042468103f;
         if(value < 0){
-            return -arctan(-value);
+            return -arctanCheb(-value);
         }
         else if (value >= 0 && value <= tanCoef){
             return ChebychevActan(value);
@@ -131,17 +131,17 @@ public class Chebychev {
             int i = getIndexActan(value);
             float x = values.otherActanVal(i - 1);
             float t = 1/x - (m.power(x, -2) + 1)/(m.power(x, -1) + value);
-            return (2 * i - 2) * Pi32 + arctan(t);
+            return (2 * i - 2) * Pi32 + arctanCheb(t);
         }
     }
 
-    public static float arcsin(float value){
+    public static float arcsinCheb(float value){
         float newVal = value / m.racine(1 - m.power(value, 2));
-        float result = arctan(newVal);
+        float result = arctanCheb(newVal);
         return result;
     }
 
-    static float sin(float value){
+    static float sinCheb(float value){
         if (value <= Pi/4 && value >= 0){
 
             if(m.abs(value) <= 0.03125f){
@@ -155,27 +155,27 @@ public class Chebychev {
         }
 
         else if (value < 0){
-            return -sin(-value);
+            return -sinCheb(-value);
         }
 
         else {
             if (value > Pi){
                 float newValue = range.FirstReductionSin(value);
-                return sin(newValue);
+                return sinCheb(newValue);
             }
 
             else if (value > Pi/2){
-                return cos(Pi/2 - value);
+                return cosCheb(Pi/2 - value);
             }
 
             else {
-                return 2 * sin(value/2) * cos(value/2);
+                return 2 * sinCheb(value/2) * cosCheb(value/2);
             }
         }
 
     }
 
-    static float cos(float value){
+    static float cosCheb(float value){
 
         if (value <= Pi/4 && value >= 0){
             if(m.abs(value) <= 0.03125f){
@@ -189,24 +189,24 @@ public class Chebychev {
         }
 
         else if (value < 0){
-            return cos(-value);
+            return cosCheb(-value);
         }
 
         else {
             if (value > 2* Pi){
                 float newValue = range.FirstReductionCos(value);
-                return cos(newValue);
+                return cosCheb(newValue);
             }
             else if (value > Pi && value < 2*Pi){
-                return -cos(value - Pi);
+                return -cosCheb(value - Pi);
             }
 
             else if (value > Pi/2){
-                return sin(Pi/2 - value);
+                return sinCheb(Pi/2 - value);
             }
 
             else {
-                return 1 - 2 * m.power(sin(value/2), 2);
+                return 1 - 2 * m.power(sinCheb(value/2), 2);
             }
 
         }
@@ -214,11 +214,11 @@ public class Chebychev {
     }
 
     public static void main(String[] args) {
-        /*int count = 0;
-        for (float i = 0; i < 127; i++) {
-            float j = (float) m.power(2, i);
-            float actan = arctan(j);
-            float realactan = (float)Math.atan(j);
+        int count = 0;
+        for (float i = 0.4f; i < 1000; i+= 1) {
+            //float j = (float) m.power(2, -i);
+            float actan = arctanCheb(i);
+            float realactan = (float)Math.atan(i);
             float err = Math.abs(actan - realactan)/Math.ulp(realactan);
             System.out.println(" my arctan is : " + actan + " ~~~~ Java arctan is : " + realactan);
             if (err > 1){
@@ -226,11 +226,11 @@ public class Chebychev {
             }
             System.out.println(err);
         }
-        System.out.println(count);*/
+        System.out.println(count);
 
-        int count = 0;
-        for (float i = -1.0f; i < 1.0f; i+= 0.01) {
-            float asin = arcsin(i);
+        //int count = 0;
+        /*for (float i = -1.0f; i < 1.0f; i+= 0.01) {
+            float asin = arcsinCheb(i);
             float realasin = (float)Math.asin(i);
             float err = Math.abs(asin - realasin)/Math.ulp(realasin);
             System.out.println(" my arctan is : " + asin + " ~~~~ Java arctan is : " + realasin);
@@ -239,7 +239,7 @@ public class Chebychev {
             }
             System.out.println(err);
         }
-        System.out.println(count);
+        System.out.println(count);*/
 
         /*for (float i = 0; i < 1.0/32.0; i+= 0.001) {
             float asin = ChebychevAsin(i);
@@ -262,8 +262,8 @@ public class Chebychev {
         }
         System.out.println(count);*/
 
-        /*for (float i = 0; i < 10 * Pi / 25; i+=0.01) {
-            float mine = cos(i);
+        /*for (float i = Pi/2; i < Pi/2 + 0.1; i+=0.001) {
+            float mine = cosCheb(i);
             float real = (float) Math.cos(i);
             float err = Math.abs(real - mine)/Math.ulp(real);
             System.out.println(" my cosinus is : " + mine + " their cosinus is : " + real);

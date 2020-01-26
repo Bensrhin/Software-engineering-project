@@ -6,6 +6,10 @@
 
 class Math {
     Taylor t = new Taylor();
+
+    //finalTrigo f = new finalTrigo();
+
+
     Methods methode = new Methods();
 
     float sin(float f) {
@@ -21,9 +25,31 @@ class Math {
     float atan(float f) {
         return t.taylorArctan(f,7);
     }
+
+    // fonction finale
+    
+    /*
+    float sin(float f) {
+        return f.sinf(f);
+    }
+
+    float cos(float f) {
+        return f.cosf(f);
+    }
+    float asin(float f) {
+        return f.arcsinf(f);
+    }
+    float atan(float f) {
+        return f.arctanf(f);
+    }
+    */
+
+
     void ulp(float f) {
         return m.ulp(f);
     }
+
+
 }
 
 
