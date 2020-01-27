@@ -1,53 +1,55 @@
 // Grenoble INP - Ensimag projet GL -*- mode: java -*-
 // Library for class Math of Deca, coded in Deca
 
-#include "Taylor.deca"
-#include "Methods.deca"
+#include "Algos.deca"
 
 class Math {
-    Taylor t = new Taylor();
+    float Pi = 3.1415926f;
+    Chebychev cheb = new Chebychev();
+    Taylor tayl = new Taylor();
+    Methods m = new Methods();
 
-    //finalTrigo f = new finalTrigo();
-
-
-    Methods methode = new Methods();
-
-    float sin(float f) {
-        return t.taylorSinus(f,7);
+    float sin(float value){
+        float seuil = Pi/64;
+        if (value < seuil && value > -seuil){
+            return tayl.taylorSinus(value, 7);
+        }
+        else {
+            return cheb.sinCheb(value);
+        }
     }
 
-    float cos(float f) {
-        return t.taylorCosinus(f,7);
-    }
-    float asin(float f) {
-        return t.taylorArcsin(f,7);
-    }
-    float atan(float f) {
-        return t.taylorArctan(f,7);
+    float cos(float value){
+        float seuilU = 0.1f + Pi/2;
+        float seuilD = -0.1f + Pi/2;
+
+        if (value < seuilU  && value > seuilD){
+            return tayl.taylorCosinus(value, 7);
+        }
+
+        else {
+            return cheb.cosCheb(value);
+        }
     }
 
-    // fonction finale
-    
-    /*
-    float sin(float f) {
-        return f.sinf(f);
+    float arctan(float value){
+        if (value < 0.4f && value >-0.4f){
+            return tayl.taylorArctan(value, 7);
+        }
+
+        else {
+            return cheb.arctanCheb(value);
+        }
     }
 
-    float cos(float f) {
-        return f.cosf(f);
+    float arcsin(float value){
+        return cheb.arcsinCheb(value);
     }
-    float asin(float f) {
-        return f.arcsinf(f);
-    }
-    float atan(float f) {
-        return f.arctanf(f);
-    }
-    */
 
-
-    void ulp(float f) {
-        return m.ulp(f);
+    float ulp(float value){
+        return m.ulp(value);
     }
+
 
 
 }

@@ -1,16 +1,16 @@
 {
-boolean x1;
-float c;
-int x5 = (3 * 6364) - (9 - 49) * (49 / 6);
-boolean x3;
-boolean y = (x3 || x1) && (2 > 7582) && (true && x1);
-int z;
-boolean d;
-float b = (8366.449 - 6) / (93 * 3) / (47222.7035 / 1);
-float a = (48 / 587) * (6 - 12) * (3093.979 - 39196.9557) + (873.19 + z) / (48 / 5);
-boolean x4;
-x3 = (5 == 5) && (x3 && x4) || (d || x3);
-printlnx("Bonjour", "test auto", (c * 594.36) * (9 + 936.58));
-printx();
-printx();
+int c = (-4) * (3 % 32005) / (2 % 0) / (4 * 3);
+float x;
+float z = (4853 * 3);
+float b;
+float x3 = (-5);
+boolean x4 = (true || true) || (1 > 6480) || (99 >= 158) && (!false);
+float a = (3093.367 * x) * (158 + 9) + (9494.321 + 5225) / (341.54 * b);
+float x5 = (-z) / (4 - 24);
+int x1 = (639 * 5);
+int x2 = (9 - 8);
+int y = (6480 + 0) - (6 * 2);
+int d;
+x = (-x5) / (5 / 38347.1812) - (-2) * (x1 - 52539.8019) + (4853 + z);
+println("Naruto", "One Piece", "Sasuki");
 }

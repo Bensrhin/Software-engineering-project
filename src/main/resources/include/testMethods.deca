@@ -1,6 +1,8 @@
-#include "Algos.deca"
+#include "Math.decah"
 
 {
+
+    Math m = new Math();
     float PI = 3.1415926F;
     float var = (float) (-1/32);
     float var2 = PI/6;
@@ -8,50 +10,18 @@
     float var3 = PI/4;
 
 
-    Taylor t = new Taylor();
-    /*RangeReduction r = new RangeReduction();
-    ChebyApproxi32 c = new ChebyApproxi32();
-    Chebychev ch = new Chebychev();**/
+
+    //float cos = m.cos(0.0);
+    //float sin = m.sin(0.0);
+    float atan = m.arctan(0.0);
+    float asin = m.arcsin(0.0);
+    float ulp = m.ulp(0.0);
 
 
-    float cos = t.taylorCosinus(var2,7);
-    float sin = t.taylorSinus(var2,6);
-    float atan = t.taylorArctan(var2,7);
-    float asin = t.taylorArcsin(var2,7);
-
-    //float chebyAtanReduit = c.ChebychevActan(var);
-    /*float chebySinReduit = c.ChebychevSinus(var);
-    float chebyCosReduit = c.ChebychevCosinus(var);
-
-    float chebySin = ch.sinCheb(var3);
-    float chebyCos = ch.cosCheb(var3);
-
-    float chebyAtan = ch.arctanCheb(0.09849140335716425f);**/
-    //float chebyAsin = ch.arcsinCheb(0.0);
-
-    /*println("sinCheby(PI/4) =",chebySin);
-    println("cosCheby(PI/4) =",chebyCos);
-    println("chebyAtan(0.09849140335716425f) = ",chebyAtan);**/
-    //println(chebyAsin);
-    
-    
-    //float rangeCos = r.FirstReductionCos(100*PI);
-    //float rangeSin = r.FirstReductionSin(100*PI);
-
-
-    println("cosTaylor = ",cos);
-    println("sinTaylor = ",sin);
-    println("atanTaylor = ",atan);
-    println("asinTaylor = ",asin);
-
-
-    //println(rangeCos);
-    //println(rangeSin);
-
-   
-
-    //println(chebyAtanReduit);
-    //println(chebySinReduit);
-    //println(chebyCosReduit);
+    //println(cos);
+    //println(sin);
+    println(atan);
+    println(asin);
+    println(ulp);
 
 }

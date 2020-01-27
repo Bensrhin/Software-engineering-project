@@ -1,15 +1,11 @@
 {
-int x2 = (24259 / 1) + (8 + 24259);
-int c = (13 + 7) * (x2 / 8) / (x2 % 7) - (9578 + 7);
-boolean d = (24259 != 6) || (1816 == 1) || (false && true) || (false || false);
-float a = (13 * 13) / (c - 32443.9371) + (0 - 8) * (9578 - 8);
-while ((90 >= 96.6) || (96.6 != 197.59) || (8 < 13))
-{
-	print("groupe 53", "Bonjour", "groupe 53");
-	printlnx("Bonjour", "test auto");
-	print("groupe 53", (190 / 2));
-	printlnx();
-}
-println((190 / 2), "projetGL", "Bonjour");
-printlnx();
+int x2 = (6 * 9) / (427 % 427) / (4 % 3);
+int x3;
+int x5;
+boolean y;
+boolean b = (!false) || (427 < 82) || (7 < x5) && (x2 != 2) && (false || true);
+int z = (-6);
+int a = (-91878) / (738 * 5245) * (-5) * (-2);
+y = (y && b) && (427 == 86417.2248) || (true || y) || (!y);
+print("One Piece", "Bonjour", (82 / 2) * (-80.4) - (z / a) * (3 / 9), (5245 / a));
 }

@@ -1,10 +1,5 @@
 {
-boolean x4 = (5 >= 3705.396) || (6748.700 >= 6) && (true || false) || (43635 != 6748.700) && (true || false);
-int z;
-boolean x5 = (true || true) || (false && x4) || (85858.8164 != 10330) || (x4 || x4) && (true && true);
-boolean y = (true || true) && (x5 && x5) && (5 > 55644.8343);
-z = (64905 + 1) / (67 + 80) - (10330 * 430);
-printlnx();
-print("projetGL", (739.26 * 739.26), "groupe 53");
-printx("groupe 53", (4 % 9) + (10330 + 4) / (z % 5), "projetGL");
+boolean x;
+int d;
+float x2 = (1315 + 2) * (-4879.101) - (30560 - 3) * (-893);
 }
