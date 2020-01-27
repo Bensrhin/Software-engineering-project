@@ -1,17 +1,11 @@
 {
-float x1 = (7 / 176) + (780.31 + 99.1) * (1 * 1043.017);
-int a = (3 % 21) * (5 * 162);
-float x3;
-boolean z;
-int x2;
-int c = (21 / 9) / (9 + x2);
-float b = (3179.088 * 2796) - (99591 * 162);
-int x4;
-boolean x = (99.1 >= 86996) && (x3 == 1) && (60322.6483 <= 99.1) || (0 < a);
-boolean y = (true && false) && (a != 60322.6483) && (z || z) || (176 > c) && (b == 0);
-print();
-printlnx("projetGL", (86996 * 9) * (4 / 9) / (21 - x4) - (176 * 9), "groupe 53", "test auto");
-printlnx("test auto", "groupe 53", "test auto");
-printlnx((0 * 9) * (95 + 86996), "test auto", (2 + 1043.017) - (99.1 / 8) * (c + 5), "Bonjour");
-print((4 - a), "groupe 53", (780.31 + b) - (9 / 86996) * (3179.088 - 9) + (c * 2796));
+boolean x3;
+boolean x2;
+float x5 = (6 + 82.1) - (61.8 - 51) + (51 - 3) / (7 / 194);
+boolean b = (80843 != 61.8) && (4 != 3247) || (!x3) || (true || false) && (true && false);
+boolean x4 = (9 <= 8);
+boolean y = (990.17 > 1) && (7776.619 > 3);
+float d = (-3968.448) * (-3968.448);
+x2 = (y || x4) && (57 != 3) && (x2 || x2) && (9 == 9469) && (!y);
+print("BestOf", "Hinata");
 }

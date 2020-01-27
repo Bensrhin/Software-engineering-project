@@ -6,10 +6,11 @@ recursive = 30
 bool = ["false", "true"]
 dec = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 deca = dec + ["0"]
-flaot = ["0.6", "1.4", "2.5", "33.4", "40.1", "5.7", "6.9", "7.1", "8.1", "9.0"]
+#flaot = ["0.6", "1.4", "2.5", "33.4", "40.1", "5.7", "6.9", "7.1", "8.1", "9.0"]
 var = ["a", "b", "c", "d", "x", "y", "z", "x1", "x2", "x3", "x4", "x5"]
 T = ["int",  "float", "boolean"]
-string = ["Bonjour", "projetGL", "groupe 53", "test auto"]
+string = ["Bonjour", "projetGL", "groupe 53", "test auto", "BestOf", "Naruto",
+          "Sasuki", "Hinata", "Kakachi", "One Piece", "نبيل بنصغير", "أيمن", "عمر", "رضوان"]
 arith = [" + ", " / ", " * ", " - "]
 cmp = [" < ", " <= ", " > ", " >= ", " == ", " != "]
 bl = [" && ", " || "]
@@ -57,7 +58,9 @@ def opsCmp(Tab):
 def opArith(a, b, bool):
     add = []
     if bool : add = [" % "]
-    return ("(" + a + random.choice(arith + add) + b + ")")
+    if (random.randint(0, 2)):
+        return ("(" + a + random.choice(arith + add) + b + ")")
+    return ("(-" + a +  ")")
 def opsAriths(Tab, bool):
     s = opArith(random.choice(Tab), random.choice(Tab), bool)
     for _ in range(random.randint(0, 4)):
@@ -67,7 +70,9 @@ def opsAriths(Tab, bool):
 /*****************************************************************/
 """
 def opBool(a, b):
-    return ("(" + a + random.choice(bl) + b + ")")
+    if (random.randint(0, 2)):
+        return ("(" + a + random.choice(bl) + b + ")")
+    return ("(!" + a + ")")
 def opsBools(Tab):
     tab1 = deca + ints + doubles + tVar["int"] + tVar["float"]
     s = random.choice(
@@ -183,14 +188,14 @@ def printExpr():
         return random.choice(string)
     t = random.choice(["int", "float"])
     expr = initialiser(t)
-    if (random.randint(0, 2)):
+    if (random.randint(0, 1)):
         expr = "\"" + random.choice(string) + "\""
     return expr
 def printInst():
     s = "print"
-    if (random.randint(0, 2)):
+    if (random.randint(0, 1)):
         s += "ln"
-    if (random.randint(0, 2)):
+    if (random.randint(0, 1)):
         s += "x"
 
     s += "("
@@ -211,7 +216,7 @@ def inst(identation):
     if s: tab += [ident + s]
     s = assign()
     if s: tab += [ident + s]
-    if (random.randint(0, 2)):
+    if (random.randint(0, 1)):
         s = whileInst()
         if s: tab += [ident + s]
     else:

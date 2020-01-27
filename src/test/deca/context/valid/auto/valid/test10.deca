@@ -1,20 +1,11 @@
 {
+int x5;
+float y;
 int d;
-int a = (8 - 1) / (73268 + 9) - (95143 / 5) + (44210 * 9) + (1190 - 614);
-boolean x2 = (true || true) || (false && true) && (false || true) && (true || false) && (true && false);
-boolean c = (false && x2) || (x2 && false);
-int x3;
-boolean b;
-int z = (614 % 46276) / (9097 + 2) - (6 - 46276);
-int x4 = (x3 * 9) + (8 - 5) - (z + 95143) * (5 * x3) - (628 * 7);
-float x1 = (z + 44210);
-int x;
-x = (z + 44210) / (75409 / 9);
-while ((b && c) && (797.11 < a) || (c && c) || (44210 >= x4) && (true && x2))
-{
-	printlnx("projetGL", "Bonjour", "Bonjour", "projetGL");
-	printlnx("Bonjour", (a + 0), "groupe 53");
-}
-println();
-printlnx();
+boolean x2 = (!true);
+float c;
+int x3 = (7 - 3) - (8 - 26) + (-4) * (1 / 38235) - (-6);
+float z;
+x5 = (4 - x5);
+println("groupe 53", "test auto", (x3 / 4) - (-0));
 }

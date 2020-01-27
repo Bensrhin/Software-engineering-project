@@ -1,13 +1,10 @@
 {
-float x3 = (3715 + 1);
-boolean x5;
-float x = (2 - 73.8) * (1836 / 93);
-boolean y;
-float x1;
-boolean x4 = (801.56 <= x1);
-float a;
 int x2;
-int c = (8 % 7878) - (0 + 93424) + (3 - x2) + (5 % 62);
-int d;
-println((1836 - a), "Bonjour");
+int x1;
+boolean a;
+boolean b = (6068.708 >= 2) || (true && a) && (!true);
+x2 = (39 * 7) / (-5) + (-9);
+print();
+println((-3092) + (-11), "One Piece", (-1) / (x2 + 31) + (x2 / 0), "Naruto");
+printlnx((1 / 77300.2068) / (-9) + (-98860.0994), "BestOf");
 }

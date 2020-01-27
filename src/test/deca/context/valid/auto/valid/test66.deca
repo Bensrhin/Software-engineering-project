@@ -1,9 +1,16 @@
 {
-int a = (1153 % 4) * (8 + 24458) * (73 / 7900);
-int x4 = (1 / 0) * (2 - 8) * (45 - 6) * (304 + 2548) / (39919 * 94208);
-boolean z = (false || false);
-float c = (6284.890 / 12) * (0 - 45475.2204);
-boolean x3 = (45475.2204 > 6) && (z || true) || (a <= 7) || (4 >= 702.38);
-float y = (702.38 - 7);
-println("test auto", "projetGL");
+int x5 = (24 % 4);
+boolean b;
+float a = (3 * 62901.6644) / (-6) + (26 / 4) + (-x5) - (-7);
+float x4 = (-349.43);
+float x3 = (a + 4105);
+int d;
+float x1 = (-a) / (x3 / 6) + (2 * 2792.191) * (2792.191 - 2499.626);
+float y;
+float x2 = (952 - 952) / (y / 4884.846) * (586 + 340.33);
+boolean x = (74 < 7) || (true && false) || (false || false);
+int c = (5329 / 4105);
+boolean z = (62901.6644 == 8) || (74 != 586);
+println("One Piece", "عمر", "Naruto");
+b = (b && true) && (!true) && (y != x5) && (x && z);
 }
