@@ -38,7 +38,7 @@ public class finalTrigo {
     }
 
     static float arcsin(float value){
-        return cheb.arctanCheb(value);
+        return cheb.arcsinCheb(value);
     }
 
 

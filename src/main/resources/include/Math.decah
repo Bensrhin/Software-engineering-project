@@ -43,7 +43,7 @@ class Math {
     }
 
     float arcsin(float value){
-        return cheb.arctanCheb(value);
+        return cheb.arcsinCheb(value);
     }
 
     float ulp(float value){
