@@ -106,7 +106,7 @@ public class DecacCompiler {
         /*********************************************/
         Signature sig = new Signature();
         sig.add(objectType);
-        Symbol equal = this.symbols.create("equals");
+        Symbol equal = (new SymbolTable()).create("equals");
         MethodDefinition def = new MethodDefinition(boolS.getType(),
                 Location.BUILTIN, sig, 1);
         def.setLabel(new Label("code.Object.equals"));
