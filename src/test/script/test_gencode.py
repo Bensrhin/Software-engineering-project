@@ -142,6 +142,8 @@ def valid_gencode():
                 attendu = "4.58000e+01"
             elif str(file) == "guillemets.deca":
                 attendu = "Hello\"World"
+            elif str(file) == "bigDeca.deca":
+                attendu = resultat #on teste pas celui la
             else:
                 print("fichier pas encore traité")
                 exit()
