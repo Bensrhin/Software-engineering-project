@@ -35,17 +35,17 @@ public class Program extends AbstractProgram {
 
     @Override
     public void verifyProgram(DecacCompiler compiler) throws ContextualError {
-        //LOG.debug("verify program: start");
+        /** passe 1 */
         this.classes.verifyListClass(compiler);
+        /** passe 2 */
         this.classes.verifyListClassMembers(compiler);
+        /** passe 3 */
         this.classes.verifyListClassBody(compiler);
         main.verifyMain(compiler);
-        // LOG.debug("verify program: end");
     }
 
     @Override
     public void codeGenProgram(DecacCompiler compiler) {
-        // A FAIRE: compléter ce squelette très rudimentaire de code
         compiler.addComment("table des methodes");
         classes.codeGenListClasse(compiler);
         //compiler.addComment("pass2");
@@ -53,8 +53,8 @@ public class Program extends AbstractProgram {
         main.codeGenMain(compiler);
         compiler.addInstruction(new HALT());
         classes.codeGenListClassPass2(compiler);
-        
-        
+
+
     }
 
     @Override
