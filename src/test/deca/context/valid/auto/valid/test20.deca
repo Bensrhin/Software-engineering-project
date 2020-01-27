@@ -1,15 +1,10 @@
 {
-float x1 = (59 / 27307.0002);
-float z = (0 + 5132) - (4 / 6) * (5 * 5678) / (1 - 4);
-int y = (6 - 9) * (5 + 5678) + (8 + 4);
-int x;
-boolean a;
-float b = (4 - 79413.7372) + (8913.447 * x1) + (2 - 52161);
-int x3;
-float x5 = (2 * 6912) + (71864.9350 / x3);
-boolean x4 = (0 > 52161) || (b < 17.9) || (true || a) && (true && true);
-a = (6912 == 803.96);
-printx("projetGL", "test auto", "projetGL", "projetGL");
-println((x1 / 9) + (x1 / 71864.9350) - (405.74 / z), "projetGL");
-println("test auto", "test auto", "test auto", (6 / 52161) + (x * y) * (7 / x) * (y * 5) * (7 % 637));
+float x = (-791) - (-94475) + (25536.8269 / 1) + (9211.837 / 95.8) * (25536.8269 / 3820);
+boolean d = (25536.8269 < 7) && (95.8 > 18) && (!false);
+float x2 = (-72.5) * (-1) - (5 + x) + (78.7 * 96043) * (-78);
+int a = (-328) + (2072 - 8) + (-1);
+printlnx((3 % 2072), (77 + 328) - (x * x) + (7 / 4) - (-2072), "groupe 53", (-9) - (2 / 4) + (3 / 8));
+print("رضوان", "Bonjour");
+printx("Bonjour", "Sasuki", "Bonjour");
+printx();
 }

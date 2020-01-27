@@ -1,43 +1,55 @@
 {
-int x2 = (528 / 21390) * (9 / 6) / (8 % 3145) / (83407 - 43495) / (21390 * 7);
-int x5 = (43495 - 6) * (2 % 7) - (7493 / 83407);
-boolean x3 = (15317.4762 < 15.5) && (true || true);
-float y = (9 + 7) / (21390 * 5) - (1 * 9) * (1 - 8) / (679.86 / 807);
-boolean a = (528 >= 4) || (x5 > x2);
-int z = (3 + 40684) / (3145 + 40684) + (45 + 2) / (4 * 6) + (4 - x2);
-boolean b = (false || false) || (1 <= 45) || (x3 && x3) || (x3 && false) || (x3 || true);
-float x4 = (40684 + z) - (x5 + 703) / (z + 334.64);
-while ((703 >= 7))
+int x4;
+int d = (30663 / x4) * (-781);
+int z;
+float x5 = (7842.860 - 1726) + (1 - 6);
+if ((78444.8015 > 8) || (55.4 <= 7) && (30663 <= 8))
 {
-	if ((false || b) && (4 < 1))
+	while ((!false) && (false || false) || (z == 5))
 {
-	while ((43495 == x5) || (b || false) && (b && true))
+	printx((781 - d) * (-19177) * (45106 / 99) + (37286 / 4697), (37286 / d), (-1726) - (2 % 5), "Hinata");
+	if ((7 >= 89.9))
 {
+	while ((false || true) || (false && true))
+{
+	printx("One Piece", (-19177) / (781 + d) * (-37286) - (x4 - 1) - (99 - 99), "رضوان");
+	println((37286 + 3), "عمر", (78444.8015 * 78.6) / (9 + 8) / (2459.900 * 89));
+	print((89 + 0) / (3 * 781) - (3 - 36) + (37286 + 45106), "أيمن", "نبيل بنصغير", (74975.8983 - 4697) + (99 + 5));
 }
-	printlnx((1 - 334.64) * (3145 * 4) * (z * 73180.1116), "test auto", "test auto", "Bonjour");
-	println("projetGL", "test auto", "projetGL", "test auto");
-	printx((5 % x2) + (4 / 4) * (3145 % 6), "projetGL", "projetGL", "groupe 53");
+	printx();
+	print("Kakachi", "Kakachi", "Kakachi", (z % 8) + (1 - z) + (9 % 4));
+	print((19177 + 6) - (-74975.8983) + (89.9 + 89), "نبيل بنصغير", (2459.900 * 74975.8983) / (4697 * 5306.074), "BestOf");
+	printlnx((74975.8983 * 1), (45106 - 45106) * (1726 - z) * (-3) - (x4 + 99), "projetGL", (-5) / (45106 / 3));
 }
-else if ((0 != 8) || (true || true) && (15317.4762 != 43495) || (a || a))
+else if ((30663 >= 55.4) && (!true))
 {
-	printlnx("Bonjour", "groupe 53", "groupe 53");
-	print("projetGL", (40684 / 15.5), "Bonjour");
+	printx("Kakachi", "Sasuki", "أيمن", (-45106) * (-55.4) + (-37286));
+	print();
+	printlnx();
 }
-else if ((a && false) || (594.70 == 5) || (1 > 334.64))
+else if ((false || true) && (false || false) || (false || true) && (true || true))
 {
-	printlnx("projetGL", "test auto");
-	printx("groupe 53", (45 % 3));
-	println("test auto", "Bonjour", "groupe 53", "projetGL");
+	print((-19177), "One Piece", (-89) * (3 * 0) / (-z) - (45106 % z));
+	printlnx();
+	print();
+	printlnx();
+	printlnx("عمر", "عمر", "أيمن");
 }
 else
 {
-	printlnx("Bonjour", (4 + x5), (7493 / 3) / (0 + 7493) * (6 / 7) + (84725.3981 / 4) * (y * 1), "Bonjour");
+	println();
+	printlnx((7 - 8) * (-2), "groupe 53", "groupe 53");
+}
+}
+	printx();
+	println();
+	println("أيمن", "Bonjour", (3 - 8) * (36 + x4), (6 / z) - (5 / 4) / (7 % 4697) - (-30663) + (-45106));
+}
+else
+{
+	println((3 + 45106) + (-2) + (55.4 + 45106) - (55.4 / 3) + (5 - 3), (-36) * (-99) - (d / 99) - (5 * 89), (2 / 89) / (-19177));
 	printlnx();
-	print((6 / 1) / (73180.1116 + 4), "Bonjour");
-	printlnx("test auto", "Bonjour");
+	printlnx("Bonjour", "BestOf");
 }
-	print("test auto", "Bonjour", "projetGL");
-	print("projetGL", "test auto", "test auto", (15317.4762 - 7) + (334.64 + y) * (334.64 * y));
-	printlnx("groupe 53", (5 + 5), "projetGL");
-}
+print((0 * 36) * (89.9 * d) - (65.6 / 30663), (-3) + (-2) * (4697 / 37286), "أيمن");
 }

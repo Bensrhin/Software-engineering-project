@@ -1,36 +1,18 @@
 {
-int x2 = (8 / 39) / (9 / 7);
-int z = (x2 * 679) - (34555 / 7) + (8 * 34555) + (679 / x2) + (6 - x2);
-boolean d = (195 == 7539.042) || (1 <= 34555) || (0 <= 39) || (515.25 > 4) || (false && true);
-boolean x5 = (9 == 7435.690) || (false || true);
-float c = (2 * 7147.720) * (584.32 / 717) + (x2 * 7);
-boolean y = (d || x5) && (270.15 >= 679);
-boolean a = (96312.5578 < 9458) && (true && true) && (false || x5);
-int b;
-boolean x1 = (a && false);
-float x4;
-boolean x3 = (4 < c) && (584.32 != 9458) && (false || a) || (d && y);
-int x;
-if ((a || true) && (x1 && x1) && (true || d) && (true && x1))
-{
-}
-else if ((x3 || true) && (true || x1) && (9 != 2) || (true && true))
-{
-	x4 = (96312.5578 / 195);
-	println((0 + 7), "projetGL");
-	println("test auto", "groupe 53", "test auto", (195 % 5) + (5234 % 9) * (z % 2) + (3 / 34555));
-}
-else if ((34555 >= 717) || (195 >= x) || (x1 || x5) && (x1 || x1) && (39 == x2))
-{
-	printlnx("test auto", (195 * z));
-	println("groupe 53", "projetGL");
-	println();
-}
-else
-{
-}
-printlnx("Bonjour", (c / 31.8), (b % 8) + (z - x2) - (3 / x2) - (5234 * 6));
-printlnx();
-printx("Bonjour", "Bonjour", (2 / 703.92) / (515.25 - 79263), "test auto");
-println();
+float x5 = (3 + 9000.541) + (-22) / (-4);
+int x = (7 + 1) - (-26);
+boolean b = (60.3 > 40581);
+int x4 = (-3) / (40581 % 5) + (9299 % 6);
+boolean y;
+boolean d = (4258.045 < x) && (!y);
+int x2 = (-7) / (-40581) - (4 - 9) - (0 / x);
+int a = (9299 / x);
+int x1 = (2 / x) - (0 + 6195);
+int c;
+float z = (22 - 78.8) + (c + 5) * (812.56 + 812.56) / (7 * 4);
+y = (b || false) || (!b) && (false || b) && (x >= 6195);
+printx();
+print("BestOf", (-x5) - (2 * 9299) - (-9000.541) / (0 - z) * (24706.0621 * x1), "Sasuki");
+print();
+print();
 }
