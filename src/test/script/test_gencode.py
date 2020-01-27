@@ -187,6 +187,8 @@ def valid_gencode():
                 attendu = "3.50000e+00"
             elif str(file) == "pgcd.deca":
                 attendu = "12"
+            elif str(file) == "equals.deca":
+                attendu = "ok"
             elif str(file) == "point.deca":
                 attendu= "2 4 5 3"
             elif str(file) == "power.deca":

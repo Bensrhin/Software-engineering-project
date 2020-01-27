@@ -391,13 +391,15 @@ public class DecacCompiler {
          GPRegister r2 = this.getRegisterManager().allocReg(this);
          this.addInstruction( new PUSH(r1));
          this.addInstruction(new PUSH(r2));
-        this.addInstruction(new LOAD(new RegisterOffset(-3, Register.LB), r1));
-        this.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), r2));
+        this.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), r1));
+        this.addInstruction(new LOAD(new RegisterOffset(-3, Register.LB), r2));
         this.addInstruction(new CMP(r1, r2));
-        this.addInstruction(new SEQ(Register.R0));
+        this.addInstruction(new SNE(Register.R0));
         this.cptTs ++; this.cptTs ++;
         this.addInstruction(new POP(r2));
         this.addInstruction(new POP(r1));
+        this.getRegisterManager().freeReg(this, r1);
+        this.getRegisterManager().freeReg(this, r1);
         this.addInstruction(new RTS());
     }
 }
