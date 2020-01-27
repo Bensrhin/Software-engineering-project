@@ -88,6 +88,10 @@ def valid_gencode():
                 attendu= "1.51250e+03"
             elif str(file) == "ExempleDiapo.deca":
                 attendu= "-4"
+            elif str(file) == "testOr.deca":
+                attendu= "5<n<8"
+            elif str(file) == "opModulo32.deca":
+                attendu= "120"
             elif str(file) == "Factoriel.deca":
                 attendu = "3628800"
             elif str(file) == "FibonacciSuite.deca":

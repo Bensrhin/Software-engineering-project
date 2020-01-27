@@ -1,0 +1,35 @@
+	TSTO #0
+	BOV pile_pleine
+	ADDSP #0
+; table des methodes
+; Main program
+; Beginning of main instructions:
+	LOAD #65536, R2
+	LOAD #256, R3
+	MUL R3, R2
+	LOAD #256, R3
+	MUL R3, R2
+	LOAD #12, R3
+	LOAD #10, R4
+	MUL R4, R3
+	ADD R3, R2
+	LOAD R2, R1
+	WINT
+	WNL
+	HALT
+pile_pleine:
+	WSTR "Error: Stack Overflow"
+	WNL
+	ERROR
+over_flow:
+	WSTR "Error: Overflow during arithmetic operation"
+	WNL
+	ERROR
+i0_error:
+	WSTR "Error: Input/Output error"
+	WNL
+	ERROR
+divisionErr:
+	WSTR "Error :Division par 0"
+	WNL
+	ERROR

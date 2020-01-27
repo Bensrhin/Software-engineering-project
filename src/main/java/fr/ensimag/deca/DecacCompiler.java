@@ -63,6 +63,7 @@ public class DecacCompiler {
     private Set<LabelOperand> labels = new HashSet<LabelOperand>();
     private int cptSp = 0;
     private int cptTs = 0;
+    public boolean flag = false;
     public void incSp(){
         cptSp ++;
     }
@@ -310,7 +311,10 @@ public class DecacCompiler {
         //prog.getMain().codeGenEntete(this, 13);
         prog.codeGenProgram(this);
         //addComment("end main program");
-        this.addLabel(new Label("code.Object.equals"));
+        if(flag){
+            this.addLabel(new Label("code.Object.equals"));
+            codeGenEquals();
+        }
         this.codeGenErr();
         program.addFirst(new Line (new ADDSP(cptSp)));
         program.addFirst(new Line(new BOV(new Label("pile_pleine"))));
@@ -381,5 +385,19 @@ public class DecacCompiler {
         this.addInstruction(new WSTR(("EError :Division par 0 ")));
         this.addInstruction(new WNL());
         this.addInstruction(new ERROR());
+    }
+    protected void codeGenEquals(){
+         GPRegister r1 = this.getRegisterManager().allocReg(this);
+         GPRegister r2 = this.getRegisterManager().allocReg(this);
+         this.addInstruction( new PUSH(r1));
+         this.addInstruction(new PUSH(r2));
+        this.addInstruction(new LOAD(new RegisterOffset(-3, Register.LB), r1));
+        this.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), r2));
+        this.addInstruction(new CMP(r1, r2));
+        this.addInstruction(new SEQ(Register.R0));
+        this.cptTs ++; this.cptTs ++;
+        this.addInstruction(new POP(r2));
+        this.addInstruction(new POP(r1));
+        this.addInstruction(new RTS());
     }
 }

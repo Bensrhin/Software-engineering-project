@@ -149,6 +149,7 @@ public class DeclClass extends AbstractDeclClass {
     }
     @Override
     protected void codeGenClass(DecacCompiler compiler){
+        compiler.flag = true;
         if(superName.getType().toString().equals("Object") && flag){
             superName.codeGenObj(compiler);
             flag = false;
