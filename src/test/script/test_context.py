@@ -111,7 +111,7 @@ def invalid_context():
 
     for file in files(invalid_context_provided):
         tmp += 1
-        execute = test_context + " " + invalid_context_O + "/" + str(file) + " " +"2> {}.log".format(str(file))
+        execute = test_context + " " + invalid_context_provided + "/" + str(file) + " " +"2> {}.log".format(str(file))
         os.system(execute)
         if os.stat("{}.log".format(str(file))).st_size != 0:
             counter += 1

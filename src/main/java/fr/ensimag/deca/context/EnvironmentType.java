@@ -77,7 +77,6 @@ public class EnvironmentType {
     /** Relation de sous-typage */
     public boolean subType(Type t1, Type t2)
     {
-        System.out.println(t1.toString() +  t2.toString());
         if (!t2.isClass() && t1.sameType(t2))
         {
             return true;
