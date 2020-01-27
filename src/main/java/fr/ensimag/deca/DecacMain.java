@@ -42,8 +42,8 @@ public class DecacMain {
             System.out.println("Compilateur DECA. Equipe GL53."); System.exit(0);
         }
         if (options.getSourceFiles().isEmpty() && !options.getPrintBanner()) {
-            System.err.println("Error during option parsing.\n"
-                    + " Standard usage of our compiler DECA :\n"
+            System.out.println(
+                     " Standard usage of our compiler DECA :\n"
                     + " decac [[-p | -v] [-n] [-r X] [-d]* [-P] [-w]"
                     + " <fichier deca>...] | [-b]\n"
                     + " -b       (banner)       : affiche une bannière"
@@ -67,13 +67,9 @@ public class DecacMain {
                     + " -P       (parallel)     : s’il y a plusieurs"
                     + " fichiers sources,lance la compilation des fichiers"
                     + " en parallèle (pour accélérer la compilation)");
-            //throw new UnsupportedOperationException("decac without argument not yet implemented");
+            System.exit(0);
         }
         if (options.getParallel()) {
-            // A FAIRE : instancier DecacCompiler pour chaque fichier à
-            // compiler, et lancer l'exécution des méthodes compile() de chaque
-            // instance en parallèle. Il est conseillé d'utiliser
-            // java.util.concurrent de la bibliothèque standard Java.
             ExecutorService e = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
             ArrayList<Future<Boolean>> l = new ArrayList<Future<Boolean>>();
             for (File source : options.getSourceFiles()) {

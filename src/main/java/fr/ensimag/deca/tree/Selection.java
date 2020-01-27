@@ -105,7 +105,6 @@ public class Selection extends AbstractLValue{
     protected RegisterOffset codeGenField(DecacCompiler compiler){
         if(expr instanceof Identifier){
             GPRegister r = compiler.getRegisterManager().allocReg(compiler);
-            System.out.println(id.getType());
             compiler.addInstruction(new LOAD(((Identifier)(expr)).getExpDefinition().getOperand(), r));
             return new RegisterOffset(((Identifier)(id)).getFieldDefinition().getIndex(), r);
         }

@@ -8,7 +8,8 @@
 //    cree le 01/01/2020
 
 {
-   float b = 4;
+   // declaration variable
+   boolean b;
    int a = 0;
    // Doit etre refuse.
    a = b;
