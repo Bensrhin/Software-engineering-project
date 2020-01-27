@@ -3,7 +3,7 @@ L'Equipe gl53,
 le 20/01/2020, vous présente son travail pour le rendu intérmédiaire
 
 
-### Lancer le tests
+### Lancer les tests
 Veuillez suivre ces instructions pour lancer notre test automatisé
 
 On lance la compilation en executant ce script
@@ -28,7 +28,7 @@ On lance le générateur :
 ```
 ./executer.py
 ```
-Ce code génère 100 tests valides d'une manière aléatoire. 
+Ce code génère 100 tests contextuellement valides d'une manière aléatoire.
 ## Equipe Dev
 * **Tout le groupe** - *Dev partie A* -
 * **Nabil Bensrhier** - *Dev Partie B* -
