@@ -70,7 +70,7 @@ class Taylor {
 }
 
 class ChebyApproxi32{
-    Methods m = new Methods();
+    Methods methods = new Methods();
 
     float ChebychevActan(float x){
         float c1 = 137.772398556992967072803545f;
@@ -85,8 +85,8 @@ class ChebyApproxi32{
         float q4 = 135.9227450335766811043244001f;
         float q5 = 22.23061618444266557469256796f;
 
-        return (c1 * x + c2 * m.power(x, 3) + c3 * m.power(x, 5) + c4 * m.power(x, 7) + c5 * m.power(x, 9) + c6 * m.power(x, 11))
-                /(q1 + q2 * m.power(x, 2) + q3 * m.power(x, 4) + q4 * m.power(x, 6) + q5 * m.power(x, 8));
+        return (c1 * x + c2 * methods.power(x, 3) + c3 * methods.power(x, 5) + c4 * methods.power(x, 7) + c5 * methods.power(x, 9) + c6 * methods.power(x, 11))
+                /(q1 + q2 * methods.power(x, 2) + q3 * methods.power(x, 4) + q4 * methods.power(x, 6) + q5 * methods.power(x, 8));
     }
 
     float ChebychevSinus(float r ){
@@ -96,18 +96,18 @@ class ChebyApproxi32{
         float a3 = -0.0001984126983563939f;
         float a4 = 0.00000275566861f;
 
-        return (r + a1*m.power(r, 3) + a2*m.power(r, 5) + a3*m.power(r, 7)+ a4*m.power(r, 9));
+        return (r + a1*methods.power(r, 3) + a2*methods.power(r, 5) + a3*methods.power(r, 7)+ a4*methods.power(r, 9));
     }
 
     float ChebychevCosinus(float r ){
-
-        float a1 = -0.49999999999999999999999995425696f;
-        float a2 = 0.0416666666666666666660027496f;
-        float a3 = -0.001388888888885759632f;
-        float a4 = 0.0000248015872951505636f;
-        float a5 = -0.000000275567182072f;
-
-        return (1 + a1*m.power(r, 2) + a2*m.power(r, 4) + a3*m.power(r, 6) + a4*m.power(r, 8) + a5*m.power(r, 10));
+        float result=0.0f;
+        float a1 = -0.49999999999999999999999995425696F;
+        float a2 = 0.0416666666666666666660027496F;
+        float a3 = -0.001388888888885759632F;
+        float a4 = 0.0000248015872951505636F;
+        float a5 = -0.000000275567182072F;
+        result = (1.0F + a1*methods.power(r, 2) + a2*methods.power(r, 4) + a3*methods.power(r, 6) + a4*methods.power(r, 8) + a5*methods.power(r, 10));
+        return result;
     }
 
 }
@@ -176,7 +176,7 @@ class Chebychev {
                 c = b.BPOptVal(value);
                 BP = b.breakPoint(c.getX(), c.getY());
                 r = value - BP;
-                return values.ChebyValuesCos(c.getX(), c.getY())*a.ChebychevCosinus(r) - values.ChebyValuesSin(c.getX(), c.getY())*a.ChebychevSinus(r);
+                return ((values.ChebyValuesCos(c.getX(), c.getY())*a.ChebychevCosinus(r)) - (values.ChebyValuesSin(c.getX(), c.getY())*a.ChebychevSinus(r)));
             }
         }
 
@@ -244,52 +244,6 @@ class Chebychev {
         float result = this.arctanCheb(newVal);
 
         return result;
-    }
-
-}
-
-
-class finalTrigo {
-    float Pi = 3.1415926f;
-    Chebychev cheb = new Chebychev();
-    Taylor tayl = new Taylor();
-
-    float sinf(float value){
-        float seuil = Pi/64;
-        if (value < seuil && value > -seuil){
-            return tayl.taylorSinus(value, 7);
-        }
-
-        else {
-            return cheb.sinCheb(value);
-        }
-    }
-
-    float cosf(float value){
-        float seuilU = 0.1f + Pi/2;
-        float seuilD = -0.1f + Pi/2;
-
-        if (value < seuilU  && value > seuilD){
-            return tayl.taylorCosinus(value, 7);
-        }
-
-        else {
-            return cheb.cosCheb(value);
-        }
-    }
-
-    float arctanf(float value){
-        if (value < 0.4f && value >-0.4f){
-            return tayl.taylorArctan(value, 7);
-        }
-
-        else {
-            return cheb.arctanCheb(value);
-        }
-    }
-
-    float arcsinf(float value){
-        return cheb.arctanCheb(value);
     }
 
 }
