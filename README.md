@@ -1,6 +1,6 @@
 # Projet Génie Logiciel, Ensimag.
 L'Equipe gl53,
-le 20/01/2020, vous présente son travail pour le rendu intérmédiaire
+le 27/01/2020, vous présente son travail FINAL
 
 
 ### Lancer le tests
@@ -18,6 +18,11 @@ On lance le testeur
 ```
 ./tester.py
 ```
+Si on veut tester les options (-p -P ,-v,..) 
+```
+./test_decac.sh
+```
+
 
 ### Génération automatique de tests: (Sans Objet):
 On entre dans le dossier auto:
@@ -29,6 +34,7 @@ On lance le générateur :
 ./executer.py
 ```
 Ce code génère 100 tests valides d'une manière aléatoire. 
+
 ## Equipe Dev
 * **Tout le groupe** - *Dev partie A* -
 * **Nabil Bensrhier** - *Dev Partie B* -
