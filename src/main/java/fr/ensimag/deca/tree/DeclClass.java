@@ -92,7 +92,6 @@ public class DeclClass extends AbstractDeclClass {
                     + superName.decompile() + "\" n'est pas une classe (règle 1.3)",
                     superName.getLocation());
         }
-        /** déf */
         this.getSuperName().setDefinition((ClassDefinition) def);
         this.getSuperName().setType((ClassType) def.getType());
 
@@ -160,7 +159,7 @@ public class DeclClass extends AbstractDeclClass {
 
     }
     private Set<Symbol> vu = new HashSet<Symbol>();
-    
+
     protected void codeGenClass(DecacCompiler compiler, ClassDefinition current, int offset)
     {
        if(current == null) return;
@@ -196,7 +195,7 @@ public class DeclClass extends AbstractDeclClass {
         }
         codeGenClass(compiler, current.getSuperClass(), offset);
     }
-   
+
     protected void codeGenField(DecacCompiler compiler, ClassDefinition current){
          compiler.addLabel(new Label("init." + current.getType().getName()));
          if(current.getSuperClass() != null && !current.getSuperClass().getType().getName().toString().equals("Object")){
