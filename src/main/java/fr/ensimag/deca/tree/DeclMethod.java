@@ -153,7 +153,12 @@ public class DeclMethod extends AbstractDeclMethod
        IMAProgram p = new IMAProgram();
        IMAProgram org = compiler.getProg();
        compiler.setProgram(p);
-       methodBody.codeGenMethodBody(compiler);
+       if(methodBody != null){
+            methodBody.codeGenMethodBody(compiler);
+       }
+       else{
+            code.codeGenBody(compiler);
+        }
         HashSet<GPRegister> list = compiler.getRegisterManager().used;
         for(GPRegister reg: list){
             if(reg.getNumber() != 0){

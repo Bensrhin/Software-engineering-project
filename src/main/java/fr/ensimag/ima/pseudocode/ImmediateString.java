@@ -26,6 +26,9 @@ public class ImmediateString extends Operand {
         }
         
     }
+    public String getValue(){
+        return this.value;
+    }
 
     @Override
     public String toString() {
