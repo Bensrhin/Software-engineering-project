@@ -1,78 +1,14 @@
+class A
 {
-float y;
-float x2 = (1 - 1) * (4 - 2) * (702.27 - 92) * (698.73 - 69.2) - (3 + 4);
-float x1;
-int x3 = (489 / 5) + (994 + 2) / (0 % 489);
-boolean z = (true && true) && (true || true) || (69.2 > 7) || (5 <= 3) || (true || true);
-int x = (4 * 3) * (9 + 625) + (5656 * 925);
-float d = (76.9 + 718.29) / (9 / 994);
-int x4 = (5 % 9) * (4 + 3) - (x3 % 2);
-int c;
-int b;
-boolean x5 = (702.27 >= x3);
-int a = (8 * 7) + (994 - 625);
-printlnx((69.2 * 925) + (5656 / x3), "Bonjour", "Bonjour", "projetGL");
-if ((702.27 <= 76.9) || (702.27 < 6))
-{
+	boolean a(Object a)
+	{
+		return true;
+	}
 }
-else
+class B extends A
 {
-	while ((false && x5) && (true || z) || (false && false) && (76.9 >= 489) || (69.2 == 6))
-{
-}
-	if ((false && true) || (871 > 871))
-{
-	while ((false || z) || (9 < 6) && (true && false))
-{
-	while ((92 < 12.4) || (625 >= 30.6) && (30.6 >= 46754.3258))
-{
-	if ((x5 && z))
-{
-	printlnx();
-	printx();
-	printlnx("Bonjour");
-	printlnx();
-	printx("groupe 53");
-}
-else
-{
-	printlnx();
-	println("test auto", (b + 1) * (1 % 9), "groupe 53");
-	printx("test auto", "groupe 53");
-	printlnx("projetGL", (30295 * 2517) / (76.9 * 6), (c + 994) - (625 - 76.9) - (871 / 2), "Bonjour");
-}
-}
-	println((d + 6) + (6 + 698.73) * (625 - y) + (46754.3258 * 702.27) - (69.2 / 871));
-	printlnx((0 * x4) + (b + 12.4) / (46754.3258 - 4) + (994 * 925) * (30295 + 871), (7 - 5656) * (5656 + 4), (9 - 994) - (8 % 9) / (a - 994) * (x / 5656));
-	print("groupe 53", (b - 69.2) / (29564.2407 + 871) - (30295 - 9) - (718.29 * 489) - (b / x2), "groupe 53", "groupe 53");
-	printlnx((7 * 4), (a / 46754.3258), "projetGL", "projetGL");
-}
-	print("projetGL", (1 - 698.73) - (925 * 7) - (d * 698.73));
-	printx();
-	printlnx();
-	printx("Bonjour", "Bonjour", "test auto", "groupe 53");
-}
-else if ((7 != 0) && (false && z) && (false || z) || (994 > 1) || (x > 5656))
-{
-	println("projetGL", (698.73 + 871), "projetGL");
-	printx("groupe 53", "test auto", (4 / 625) * (6 - 8) / (9 - 625), "Bonjour");
-	printlnx("Bonjour");
-	printlnx("test auto", (30.6 / 0) / (12.4 * 6) / (69.2 + 30.6), (5 + x), "groupe 53");
-}
-else if ((3 >= 4) || (true || x5) && (x <= 994) || (true || z) || (true && z))
-{
-	printlnx("test auto");
-	printlnx("Bonjour", "test auto", (2 * 625) * (9 / 29564.2407) * (3 / 4) - (6 * 12.4) - (925 + x), "Bonjour");
-}
-else if ((d >= 3) || (false && false) || (false || true))
-{
-	printx();
-}
-else
-{
-}
-	print("test auto", "projetGL", "test auto", "test auto");
-	printlnx("test auto", (2 + b) + (y / 2) - (x4 * 871) - (625 - 710.06) + (29564.2407 / x3), "projetGL");
-}
-printlnx("projetGL");
+	boolean a(A a)
+	{
+		return true;
+	}
 }

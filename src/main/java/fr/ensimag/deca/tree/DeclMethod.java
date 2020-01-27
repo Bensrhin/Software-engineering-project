@@ -79,22 +79,22 @@ public class DeclMethod extends AbstractDeclMethod
             Definition override = superIdentifier.getClassDefinition().getMembers().get(getNameMethod().getName());
             String erreur = new String("La méthode \""
                       + this.method.decompile() + "\" est déja définie "
-                      + "dans la super classe \"");
+                      + "dans une super classe ");
             if (override != null && !(override instanceof MethodDefinition))
             {
-              erreur += override.getType().toString() + "\" en tant que \"" + override.getNature() + "\" à "+
+              erreur += "en tant que \"" + override.getNature() + "\" à "+
                       override.getLocation() + " (règle 2.7)";
               throw new ContextualError(erreur, method.getLocation());
             }
             else if (override != null && !((MethodDefinition) override).getSignature().equals(sig))
             {
-              erreur +=  override.getType().toString() + "\" à " + override.getLocation() +
+              erreur +=  "à " + override.getLocation() +
                         " avec une autre signature (règle 2.7)";
               throw new ContextualError(erreur, method.getLocation());
             }
             else if (override != null && !compiler.get_env_types().subType(type, override.getType()))
             {
-              erreur +=  override.getType().toString() + "\" à " + override.getLocation() +
+              erreur +=  "à " + override.getLocation() +
                       ". Le type de retour \"" + type.toString() +
                       "\" n'est pas un sous type de \"" +
                       override.getType().toString() + "\" (règle 2.7)";

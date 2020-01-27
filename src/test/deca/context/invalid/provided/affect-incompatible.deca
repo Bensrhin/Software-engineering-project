@@ -8,8 +8,7 @@
 //    cree le 01/01/2020
 
 {
-   String c;
-   String s = "HALOO";
+   float b = 4;
    int a = 0;
    // Doit etre refuse.
    a = b;
