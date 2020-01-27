@@ -11,10 +11,10 @@ import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
-import fr.ensimag.ima.pseudocode.instructions.TSTO;
+import fr.ensimag.ima.pseudocode.instructions.*;
 import fr.ensimag.ima.pseudocode.instructions.ADDSP;
 import fr.ensimag.ima.pseudocode.instructions.BOV;
-import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.*;
 
 /**
  * @author gl53
@@ -37,7 +37,9 @@ public class MethodAsmBody extends Tree {
       }
 
     protected void codeGenBody(DecacCompiler compiler) {
-        //
+        String s = ((StringLiteral)(code)).getValue();
+        ImmediateString imm = new ImmediateString(s);
+        compiler.add(new InlinePortion(imm.getValue()));
     }
 
     @Override

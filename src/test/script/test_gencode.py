@@ -205,6 +205,8 @@ def valid_gencode():
                 attendu = "1"
             elif str(file) == "multExtends.deca":
                 attendu = "1 0.00000e+00 3 4.00000e+00"
+            elif str(file) == "testasm.deca":
+                attendu = "test asm"
             elif str(file) == "coeffBino.deca":
                 attendu = "924"
             elif str(file) == "overrideAttribute.deca":
