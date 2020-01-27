@@ -192,7 +192,7 @@ def valid_gencode():
             elif str(file) == "testPoly.deca":
                 attendu = "a.getX() 1"
             elif str(file) == "triangle.deca":
-                attendu = "0"
+                attendu = "4"
             elif str(file) == "TwoClasses.deca":
                 attendu = "1"
             elif str(file) == "multExtends.deca":
@@ -201,7 +201,7 @@ def valid_gencode():
                 attendu = "924"
             elif str(file) == "overrideAttribute.deca":
                 attendu = "25"
-            elif str(file) == "prinInMethod.deca":
+            elif str(file) == "printInMethod.deca":
                 attendu = "banner"
             elif str(file) == "callMethod.deca":
                 attendu  = "3.00000e+00"
@@ -215,6 +215,7 @@ def valid_gencode():
                 attendu = "3.33333e-01"
             else:
                 print("fichier pas encore traité")
+                print(str(file));
                 exit()
 
             if resultat==attendu:

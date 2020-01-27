@@ -83,6 +83,16 @@ public class Initialization extends AbstractInitialization {
 
     }
     @Override
+    protected void codeGenIntM(DecacCompiler compiler, int i){
+        GPRegister r = this.expression.codeGenLoad(compiler);
+        if(r != null){
+            compiler.addInstruction(new STORE(r,new RegisterOffset(i, Register.LB)));
+            compiler.getRegisterManager().freeReg(compiler, r);
+            compiler.getRegisterManager().used.add(r);
+        }
+
+    }
+    @Override
     public void decompile(IndentPrintStream s) {
       s.print(" = ");
       this.getExpression().decompile(s);

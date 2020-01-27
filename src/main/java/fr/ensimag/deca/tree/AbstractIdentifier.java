@@ -96,6 +96,7 @@ public abstract class AbstractIdentifier extends AbstractLValue {
     // public abstract ExpDefinition verifydef(EnvironmentExp localEnv) throws ContextualError;
     public abstract Type verifyType(DecacCompiler compiler) throws ContextualError;
     public abstract int codeGenIdent(DecacCompiler compiler);
+    public abstract int codeGenIdentM(DecacCompiler compiler);
     protected abstract void codeGenObj(DecacCompiler compiler);
     protected void codeGenClass(DecacCompiler compiler, ListDeclMethod methods){
     }

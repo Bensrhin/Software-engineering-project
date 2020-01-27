@@ -1,0 +1,153 @@
+	TSTO #17
+	BOV pile_pleine
+	ADDSP #14
+; table des methodes
+; construction de la table des methodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; construction de la table des methodes de A
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.A.get, R0
+	STORE R0, 5(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+; construction de la table des methodes de B
+	LEA 3(GB), R0
+	STORE R0, 6(GB)
+	LOAD code.B.get, R0
+	STORE R0, 8(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 7(GB)
+; construction de la table des methodes de C
+	LEA 6(GB), R0
+	STORE R0, 9(GB)
+	LOAD code.C.get, R0
+	STORE R0, 11(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 10(GB)
+; Main program
+; Beginning of main instructions:
+; instruction new
+	NEW #2, R2
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 12(GB)
+; instruction new
+	NEW #3, R2
+	LEA 6(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.B
+	POP R2
+	STORE R2, 13(GB)
+; instruction new
+	NEW #4, R2
+	LEA 9(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.C
+	POP R2
+	STORE R2, 14(GB)
+	LOAD 14(GB), R2
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 14(GB), R2
+	LOAD 2(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 14(GB), R2
+	LOAD 3(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+; appel de methode2
+	ADDSP #1
+	LOAD 14(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ pile_pleine
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #1
+	LOAD R0, R2
+	LOAD R2, R1
+	WINT
+	WNL
+	HALT
+init.A:
+	LOAD #5, R2
+	LOAD R2, R0
+	LOAD -2(LB), R1
+	STORE R0, 1(R1)
+	RTS
+code.A.get:
+	PUSH R2
+	LOAD #1, R2
+	LOAD R2, R0
+	POP R2
+	RTS
+init.B:
+	LOAD #0, R0
+	LOAD -2(LB), R1
+	STORE R0, 2(R1)
+	PUSH R1
+	BSR init.A
+	SUBSP #1
+	POP R1
+	LOAD #2, R2
+	LOAD R2, R0
+	LOAD -2(LB), R1
+	STORE R0, 2(R1)
+	RTS
+code.B.get:
+	PUSH R2
+	LOAD #2, R2
+	LOAD R2, R0
+	POP R2
+	RTS
+init.C:
+	LOAD #0, R0
+	LOAD -2(LB), R1
+	STORE R0, 3(R1)
+	PUSH R1
+	BSR init.B
+	SUBSP #1
+	POP R1
+	LOAD #3, R2
+	LOAD R2, R0
+	LOAD -2(LB), R1
+	STORE R0, 3(R1)
+	RTS
+code.C.get:
+	PUSH R2
+	LOAD #3, R2
+	LOAD R2, R0
+	POP R2
+	RTS
+code.Object.equals:
+pile_pleine:
+	WSTR "Error: Stack Overflow"
+	WNL
+	ERROR
+over_flow:
+	WSTR "Error: Overflow during arithmetic operation"
+	WNL
+	ERROR
+i0_error:
+	WSTR "Error: Input/Output error"
+	WNL
+	ERROR
+divisionErr:
+	WSTR "Error :Division par 0"
+	WNL
+	ERROR

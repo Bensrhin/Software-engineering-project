@@ -1,0 +1,17 @@
+//25
+
+
+class A {
+  int x = 10;
+  void get(){
+    println(5);
+}
+}
+
+ {
+ println((new A()).x);
+   
+  }
+
+
+

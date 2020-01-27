@@ -28,19 +28,21 @@ class Methods {
     }
 
     float power(float value1, int value2){
-        int counter = 0;
-        float result = 1.0F;
-
-        if (value2 < 0){
-            return this.power(1/value1, -value2);
-
-        }
-        else {
-            while (value2 > counter){
-                result = result * value1;
-                counter= counter+1;
+        if(value2 >= 0){
+            if(value2 == 0){
+                return 1;
             }
-            return result;
+            else{
+                return value1 * power(value1, value2-1);
+            }
+        }
+        else{
+            if (value2 == 0){
+                return 1;
+            }
+            else{
+                return (1/value1)*power(value1, value2 + 1);
+            }
         }
     }
 

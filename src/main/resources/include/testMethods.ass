@@ -1,6 +1,6 @@
-	TSTO #304
+	TSTO #295
 	BOV pile_pleine
-	ADDSP #144
+	ADDSP #67
 ; table des methodes
 ; construction de la table des methodes de Object
 	LOAD #null, R0
@@ -163,6 +163,7 @@
 	BSR init.Taylor
 	POP R2
 	STORE R2, 63(GB)
+<<<<<<< HEAD
 ; instruction new
 	NEW #2, R2
 	LEA 22(GB), R0
@@ -187,6 +188,8 @@
 	BSR init.Chebychev
 	POP R2
 	STORE R2, 66(GB)
+=======
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode5
 	ADDSP #3
 	LOAD 63(GB), R2
@@ -202,7 +205,11 @@
 	BSR 5(R2)
 	SUBSP #3
 	LOAD R0, R3
+<<<<<<< HEAD
 	STORE R3, 67(GB)
+=======
+	STORE R3, 64(GB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode3
 	ADDSP #3
 	LOAD 63(GB), R3
@@ -218,7 +225,11 @@
 	BSR 3(R3)
 	SUBSP #3
 	LOAD R0, R2
+<<<<<<< HEAD
 	STORE R2, 68(GB)
+=======
+	STORE R2, 65(GB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode7
 	ADDSP #3
 	LOAD 63(GB), R2
@@ -234,7 +245,11 @@
 	BSR 7(R2)
 	SUBSP #3
 	LOAD R0, R3
+<<<<<<< HEAD
 	STORE R3, 69(GB)
+=======
+	STORE R3, 66(GB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode9
 	ADDSP #3
 	LOAD 63(GB), R3
@@ -250,6 +265,7 @@
 	BSR 9(R3)
 	SUBSP #3
 	LOAD R0, R2
+<<<<<<< HEAD
 	STORE R2, 70(GB)
 ; appel de methode2
 	ADDSP #2
@@ -338,16 +354,35 @@
 	WSTR "sinCheby(PI/4) ="
 	WSTR " "
 	LOAD 74(GB), R1
+=======
+	STORE R2, 67(GB)
+	WSTR "cosTaylor = "
+	WSTR " "
+	LOAD 64(GB), R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	WFLOAT
 	WNL
-	WSTR "cosCheby(PI/4) ="
+	WSTR "sinTaylor = "
 	WSTR " "
+<<<<<<< HEAD
 	LOAD 75(GB), R1
+=======
+	LOAD 65(GB), R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	WFLOAT
 	WNL
-	WSTR "chebyAtan(0.09849140335716425f) = "
+	WSTR "atanTaylor = "
 	WSTR " "
+<<<<<<< HEAD
 	LOAD 76(GB), R1
+=======
+	LOAD 66(GB), R1
+	WFLOAT
+	WNL
+	WSTR "asinTaylor = "
+	WSTR " "
+	LOAD 67(GB), R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	WFLOAT
 	WNL
 	HALT
@@ -360,9 +395,15 @@ code.Methods.racine:
 	PUSH R3
 	PUSH R2
 	LOAD -3(LB), R2
+<<<<<<< HEAD
 	STORE R2, 77(GB)
 	LOAD #0, R2
 	STORE R2, 78(GB)
+=======
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R3
 	LOAD #0, R4
 	FLOAT R4, R4
@@ -382,7 +423,11 @@ OpCmp_fin_in_a712:
 	BRA IfThenElse_fin_a712
 IfThenElse_else_a712:
 While_cond_a1219:
+<<<<<<< HEAD
 	LOAD 78(GB), R3
+=======
+	LOAD 2(LB), R3
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD #100, R5
 	SUB R5, R3
 	LOAD R3, R1
@@ -395,9 +440,15 @@ OpCmp_fin_in_a1219:
 	LOAD R1, R4
 	LOAD R4, R1
 	BNE While_fin_a1219
+<<<<<<< HEAD
 	LOAD 77(GB), R5
 	LOAD -3(LB), R3
 	LOAD 77(GB), R6
+=======
+	LOAD 1(LB), R5
+	LOAD -3(LB), R3
+	LOAD 1(LB), R6
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	DIV R6, R3
 	BOV divisionErr
 	ADD R3, R5
@@ -405,6 +456,7 @@ OpCmp_fin_in_a1219:
 	FLOAT R3, R3
 	DIV R3, R5
 	BOV divisionErr
+<<<<<<< HEAD
 	STORE R5, 77(GB)
 	LOAD 78(GB), R5
 	LOAD #1, R3
@@ -464,17 +516,31 @@ IfThenElse_else_a2212:
 	BOV over_flow
 	LOAD R5, R0
 IfThenElse_fin_a2212:
+=======
+	STORE R5, 1(LB)
+	LOAD 2(LB), R5
+	LOAD #1, R3
+	ADD R3, R5
+	STORE R5, 2(LB)
+	BRA While_cond_a1219
+While_fin_a1219:
+	LOAD 1(LB), R4
+	LOAD R4, R0
+IfThenElse_fin_a712:
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R2
 	POP R3
 	POP R4
 	POP R5
 	POP R6
 	RTS
-code.Methods.power:
+code.Methods.factoriel:
+	PUSH R6
 	PUSH R5
 	PUSH R4
 	PUSH R3
 	PUSH R2
+<<<<<<< HEAD
 	LOAD #0, R2
 	STORE R2, 79(GB)
 	LOAD #0x1.0p0, R2
@@ -543,12 +609,167 @@ While_fin_a3919:
 	LOAD 80(GB), R5
 	LOAD R5, R0
 IfThenElse_fin_a3412:
+=======
+	LOAD -3(LB), R4
+	LOAD #0, R5
+	SUB R5, R4
+	LOAD R4, R1
+	BEQ OpCmp_if_in_a2212
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a2212
+OpCmp_if_in_a2212:
+	LOAD #0, R1
+OpCmp_fin_in_a2212:
+	LOAD R1, R2
+	LOAD R2, R1
+	BNE IfThenElse_else_a2212
+	LOAD #1, R5
+	LOAD R5, R0
+	BRA IfThenElse_fin_a2212
+IfThenElse_else_a2212:
+	LOAD -3(LB), R5
+; appel de methode3
+	ADDSP #2
+	LOAD -2(LB), R4
+	STORE R4, 0(SP)
+	LOAD -3(LB), R3
+	LOAD #1, R6
+	SUB R6, R3
+	STORE R3, -1(SP)
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ pile_pleine
+	LOAD 0(R4), R4
+	BSR 3(R4)
+	SUBSP #2
+	LOAD R0, R3
+	MUL R3, R5
+	BOV over_flow
+	LOAD R5, R0
+IfThenElse_fin_a2212:
 	POP R2
 	POP R3
 	POP R4
 	POP R5
+	POP R6
+	RTS
+code.Methods.power:
+	PUSH R7
+	PUSH R6
+	PUSH R5
+	PUSH R4
+	PUSH R3
+	PUSH R2
+	LOAD -4(LB), R5
+	LOAD #0, R3
+	SUB R3, R5
+	LOAD R5, R1
+	BGE OpCmp_if_in_a3111
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a3111
+OpCmp_if_in_a3111:
+	LOAD #0, R1
+OpCmp_fin_in_a3111:
+	LOAD R1, R2
+	LOAD R2, R1
+	BNE IfThenElse_else_a3111
+	LOAD -4(LB), R5
+	LOAD #0, R4
+	SUB R4, R5
+	LOAD R5, R1
+	BEQ OpCmp_if_in_a3215
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a3215
+OpCmp_if_in_a3215:
+	LOAD #0, R1
+OpCmp_fin_in_a3215:
+	LOAD R1, R3
+	LOAD R3, R1
+	BNE IfThenElse_else_a3215
+	LOAD #1, R4
+	FLOAT R4, R4
+	LOAD R4, R0
+	BRA IfThenElse_fin_a3215
+IfThenElse_else_a3215:
+	LOAD -3(LB), R4
+; appel de methode4
+	ADDSP #3
+	LOAD -2(LB), R5
+	STORE R5, 0(SP)
+	LOAD -3(LB), R6
+	STORE R6, -1(SP)
+	LOAD -4(LB), R6
+	LOAD #1, R7
+	SUB R7, R6
+	STORE R6, -2(SP)
+	LOAD 0(SP), R5
+	CMP #null, R5
+	BEQ pile_pleine
+	LOAD 0(R5), R5
+	BSR 4(R5)
+	SUBSP #3
+	LOAD R0, R6
+	MUL R6, R4
+	BOV over_flow
+	LOAD R4, R0
+IfThenElse_fin_a3215:
+	BRA IfThenElse_fin_a3111
+IfThenElse_else_a3111:
+	LOAD -4(LB), R4
+	LOAD #0, R6
+	SUB R6, R4
+	LOAD R4, R1
+	BEQ OpCmp_if_in_a4016
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a4016
+OpCmp_if_in_a4016:
+	LOAD #0, R1
+OpCmp_fin_in_a4016:
+	LOAD R1, R3
+	LOAD R3, R1
+	BNE IfThenElse_else_a4016
+	LOAD #1, R6
+	FLOAT R6, R6
+	LOAD R6, R0
+	BRA IfThenElse_fin_a4016
+IfThenElse_else_a4016:
+	LOAD #1, R6
+	FLOAT R6, R6
+	LOAD -3(LB), R4
+	DIV R4, R6
+	BOV divisionErr
+; appel de methode4
+	ADDSP #3
+	LOAD -2(LB), R4
+	STORE R4, 0(SP)
+	LOAD -3(LB), R5
+	STORE R5, -1(SP)
+	LOAD -4(LB), R5
+	LOAD #1, R7
+	ADD R7, R5
+	STORE R5, -2(SP)
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ pile_pleine
+	LOAD 0(R4), R4
+	BSR 4(R4)
+	SUBSP #3
+	LOAD R0, R5
+	MUL R5, R6
+	BOV over_flow
+	LOAD R6, R0
+IfThenElse_fin_a4016:
+IfThenElse_fin_a3111:
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
+	POP R2
+	POP R3
+	POP R4
+	POP R5
+	POP R6
+	POP R7
 	RTS
 code.Methods.abs:
+<<<<<<< HEAD
 	PUSH R5
 	PUSH R4
 	PUSH R2
@@ -576,6 +797,35 @@ IfThenElse_fin_a4812:
 	POP R2
 	POP R4
 	POP R5
+=======
+	PUSH R6
+	PUSH R3
+	PUSH R2
+	LOAD -3(LB), R3
+	LOAD #0x0.0p0, R6
+	SUB R6, R3
+	LOAD R3, R1
+	BGT OpCmp_if_in_a5012
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a5012
+OpCmp_if_in_a5012:
+	LOAD #0, R1
+OpCmp_fin_in_a5012:
+	LOAD R1, R2
+	LOAD R2, R1
+	BNE IfThenElse_else_a5012
+	LOAD -3(LB), R6
+	LOAD R6, R0
+	BRA IfThenElse_fin_a5012
+IfThenElse_else_a5012:
+	LOAD -3(LB), R6
+	OPP R6, R6
+	LOAD R6, R0
+IfThenElse_fin_a5012:
+	POP R2
+	POP R3
+	POP R6
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	RTS
 code.Methods.ulp:
 	PUSH R7
@@ -586,6 +836,7 @@ code.Methods.ulp:
 	PUSH R2
 	LOAD #126, R2
 	OPP R2, R2
+<<<<<<< HEAD
 	STORE R2, 81(GB)
 	LOAD #127, R2
 	STORE R2, 82(GB)
@@ -669,10 +920,96 @@ IfThenElse_else_a6112:
 	ADDSP #3
 	LOAD -2(LB), R5
 	STORE R5, 0(SP)
+=======
+	STORE R2, 3(LB)
+	LOAD #127, R2
+	STORE R2, 4(LB)
+	LOAD #0, R2
+	STORE R2, 5(LB)
+	LOAD #0x0.0p0, R2
+	STORE R2, 6(LB)
+; appel de methode5
+	ADDSP #2
+	LOAD -2(LB), R6
+	STORE R6, 0(SP)
+	LOAD -3(LB), R3
+	STORE R3, -1(SP)
+	LOAD 0(SP), R6
+	CMP #null, R6
+	BEQ pile_pleine
+	LOAD 0(R6), R6
+	BSR 5(R6)
+	SUBSP #2
+	LOAD R0, R3
+; appel de methode4
+	ADDSP #3
+	LOAD -2(LB), R6
+	STORE R6, 0(SP)
+	LOAD #0x1.0p1, R5
+	STORE R5, -1(SP)
+	LOAD 4(LB), R5
+	OPP R5, R5
+	STORE R5, -2(SP)
+	LOAD 0(SP), R6
+	CMP #null, R6
+	BEQ pile_pleine
+	LOAD 0(R6), R6
+	BSR 4(R6)
+	SUBSP #3
+	LOAD R0, R5
+	SUB R5, R3
+	LOAD R3, R1
+	BLE OpCmp_if_in_a6312
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a6312
+OpCmp_if_in_a6312:
+	LOAD #0, R1
+OpCmp_fin_in_a6312:
+	LOAD R1, R2
+	LOAD R2, R1
+	BNE IfThenElse_else_a6312
+	LOAD #0x0.000002p-126, R5
+	LOAD R5, R0
+	BRA IfThenElse_fin_a6312
+IfThenElse_else_a6312:
+; appel de methode5
+	ADDSP #2
+	LOAD -2(LB), R3
+	STORE R3, 0(SP)
+	LOAD -3(LB), R6
+	STORE R6, -1(SP)
+	LOAD 0(SP), R3
+	CMP #null, R3
+	BEQ pile_pleine
+	LOAD 0(R3), R3
+	BSR 5(R3)
+	SUBSP #2
+	LOAD R0, R6
+; appel de methode4
+	ADDSP #3
+	LOAD -2(LB), R3
+	STORE R3, 0(SP)
+	LOAD #0x1.0p1, R4
+	STORE R4, -1(SP)
+	LOAD 4(LB), R4
+	STORE R4, -2(SP)
+	LOAD 0(SP), R3
+	CMP #null, R3
+	BEQ pile_pleine
+	LOAD 0(R3), R3
+	BSR 4(R3)
+	SUBSP #3
+	LOAD R0, R4
+; appel de methode4
+	ADDSP #3
+	LOAD -2(LB), R3
+	STORE R3, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD #0x1.0p1, R7
 	STORE R7, -1(SP)
 	LOAD #104, R7
 	STORE R7, -2(SP)
+<<<<<<< HEAD
 	LOAD 0(SP), R5
 	CMP #null, R5
 	BEQ pile_pleine
@@ -731,34 +1068,112 @@ OpCmp_fin_in_a7018:
 	QUO R6, R7
 	BOV divisionErr
 	STORE R7, 83(GB)
+=======
+	LOAD 0(SP), R3
+	CMP #null, R3
+	BEQ pile_pleine
+	LOAD 0(R3), R3
+	BSR 4(R3)
+	SUBSP #3
+	LOAD R0, R7
+	SUB R7, R4
+	SUB R4, R6
+	LOAD R6, R1
+	BGT OpCmp_if_in_a6717
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a6717
+OpCmp_if_in_a6717:
+	LOAD #0, R1
+OpCmp_fin_in_a6717:
+	LOAD R1, R5
+	LOAD R5, R1
+	BNE IfThenElse_else_a6717
+; appel de methode5
+	ADDSP #2
+	LOAD -2(LB), R4
+	STORE R4, 0(SP)
+	LOAD -3(LB), R6
+	STORE R6, -1(SP)
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ pile_pleine
+	LOAD 0(R4), R4
+	BSR 5(R4)
+	SUBSP #2
+	LOAD R0, R6
+	LOAD R6, R0
+	BRA IfThenElse_fin_a6717
+IfThenElse_else_a6717:
+While_cond_a7218:
+	LOAD 4(LB), R4
+	LOAD 3(LB), R7
+	SUB R7, R4
+	LOAD #1, R7
+	SUB R7, R4
+	LOAD R4, R1
+	BGT OpCmp_if_in_a7218
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a7218
+OpCmp_if_in_a7218:
+	LOAD #0, R1
+OpCmp_fin_in_a7218:
+	LOAD R1, R6
+	LOAD R6, R1
+	BNE While_fin_a7218
+	LOAD 4(LB), R7
+	LOAD 3(LB), R4
+	ADD R4, R7
+	LOAD #2, R4
+	QUO R4, R7
+	BOV divisionErr
+	STORE R7, 5(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
 	LOAD -2(LB), R7
 	STORE R7, 0(SP)
+<<<<<<< HEAD
 	LOAD #0x1.0p1, R6
 	STORE R6, -1(SP)
 	LOAD 83(GB), R6
 	STORE R6, -2(SP)
+=======
+	LOAD #0x1.0p1, R4
+	STORE R4, -1(SP)
+	LOAD 5(LB), R4
+	STORE R4, -2(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R7
 	CMP #null, R7
 	BEQ pile_pleine
 	LOAD 0(R7), R7
 	BSR 4(R7)
 	SUBSP #3
+<<<<<<< HEAD
 	LOAD R0, R6
 	STORE R6, 84(GB)
+=======
+	LOAD R0, R4
+	STORE R4, 6(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode5
 	ADDSP #2
 	LOAD -2(LB), R7
 	STORE R7, 0(SP)
+<<<<<<< HEAD
 	LOAD -3(LB), R5
 	STORE R5, -1(SP)
+=======
+	LOAD -3(LB), R3
+	STORE R3, -1(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R7
 	CMP #null, R7
 	BEQ pile_pleine
 	LOAD 0(R7), R7
 	BSR 5(R7)
 	SUBSP #2
+<<<<<<< HEAD
 	LOAD R0, R5
 	LOAD 84(GB), R7
 	SUB R7, R5
@@ -781,21 +1196,51 @@ IfThenElse_else_a7320:
 IfThenElse_fin_a7320:
 	BRA While_cond_a7018
 While_fin_a7018:
+=======
+	LOAD R0, R3
+	LOAD 6(LB), R7
+	SUB R7, R3
+	LOAD R3, R1
+	BGT OpCmp_if_in_a7520
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a7520
+OpCmp_if_in_a7520:
+	LOAD #0, R1
+OpCmp_fin_in_a7520:
+	LOAD R1, R4
+	LOAD R4, R1
+	BNE IfThenElse_else_a7520
+	LOAD 5(LB), R7
+	STORE R7, 3(LB)
+	BRA IfThenElse_fin_a7520
+IfThenElse_else_a7520:
+	LOAD 5(LB), R7
+	STORE R7, 4(LB)
+IfThenElse_fin_a7520:
+	BRA While_cond_a7218
+While_fin_a7218:
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode5
 	ADDSP #2
-	LOAD -2(LB), R6
-	STORE R6, 0(SP)
+	LOAD -2(LB), R4
+	STORE R4, 0(SP)
 	LOAD -3(LB), R7
 	STORE R7, -1(SP)
-	LOAD 0(SP), R6
-	CMP #null, R6
+	LOAD 0(SP), R4
+	CMP #null, R4
 	BEQ pile_pleine
+<<<<<<< HEAD
 	LOAD 0(R6), R6
 	BSR 5(R6)
+=======
+	LOAD 0(R4), R4
+	BSR 5(R4)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #2
 	LOAD R0, R7
 ; appel de methode4
 	ADDSP #3
+<<<<<<< HEAD
 	LOAD -2(LB), R6
 	STORE R6, 0(SP)
 	LOAD #0x1.0p1, R5
@@ -840,27 +1285,90 @@ OpCmp_fin_in_a8116:
 	LOAD R7, R0
 	BRA IfThenElse_fin_a8116
 IfThenElse_else_a8116:
+=======
+	LOAD -2(LB), R4
+	STORE R4, 0(SP)
+	LOAD #0x1.0p1, R3
+	STORE R3, -1(SP)
+	LOAD 4(LB), R3
+	STORE R3, -2(SP)
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ pile_pleine
+	LOAD 0(R4), R4
+	BSR 4(R4)
+	SUBSP #3
+	LOAD R0, R3
+	SUB R3, R7
+	LOAD R7, R1
+	BEQ OpCmp_if_in_a8316
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a8316
+OpCmp_if_in_a8316:
+	LOAD #0, R1
+OpCmp_fin_in_a8316:
+	LOAD R1, R6
+	LOAD R6, R1
+	BNE IfThenElse_else_a8316
+; appel de methode4
+	ADDSP #3
+	LOAD -2(LB), R3
+	STORE R3, 0(SP)
+	LOAD #0x1.0p1, R7
+	STORE R7, -1(SP)
+	LOAD 4(LB), R7
+	LOAD #23, R4
+	SUB R4, R7
+	STORE R7, -2(SP)
+	LOAD 0(SP), R3
+	CMP #null, R3
+	BEQ pile_pleine
+	LOAD 0(R3), R3
+	BSR 4(R3)
+	SUBSP #3
+	LOAD R0, R7
+	LOAD R7, R0
+	BRA IfThenElse_fin_a8316
+IfThenElse_else_a8316:
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
 	LOAD -2(LB), R7
 	STORE R7, 0(SP)
+<<<<<<< HEAD
 	LOAD #0x1.0p1, R5
 	STORE R5, -1(SP)
 	LOAD 82(GB), R5
 	LOAD #24, R6
 	SUB R6, R5
 	STORE R5, -2(SP)
+=======
+	LOAD #0x1.0p1, R3
+	STORE R3, -1(SP)
+	LOAD 4(LB), R3
+	LOAD #24, R4
+	SUB R4, R3
+	STORE R3, -2(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R7
 	CMP #null, R7
 	BEQ pile_pleine
 	LOAD 0(R7), R7
 	BSR 4(R7)
 	SUBSP #3
+<<<<<<< HEAD
 	LOAD R0, R5
 	LOAD R5, R0
 IfThenElse_fin_a8116:
 IfThenElse_fin_a6517:
 IfThenElse_fin_a6112:
+=======
+	LOAD R0, R3
+	LOAD R3, R0
+IfThenElse_fin_a8316:
+IfThenElse_fin_a6717:
+IfThenElse_fin_a6312:
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R2
 	POP R3
 	POP R4
@@ -872,14 +1380,21 @@ init.ChebychevValues:
 	RTS
 code.ChebychevValues.ChebyValuesCos:
 	PUSH R7
+	PUSH R6
 	PUSH R5
-	PUSH R4
 	PUSH R3
 	PUSH R2
+<<<<<<< HEAD
 	LOAD -3(LB), R3
 	LOAD #1, R4
 	SUB R4, R3
 	LOAD R3, R1
+=======
+	LOAD -3(LB), R5
+	LOAD #1, R6
+	SUB R6, R5
+	LOAD R5, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a312
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a312
@@ -889,6 +1404,7 @@ OpCmp_fin_in_a312:
 	LOAD R1, R2
 	LOAD R2, R1
 	BNE IfThenElse_else_a312
+<<<<<<< HEAD
 	LOAD #0x1.c1528p-1, R4
 	LOAD R4, R0
 	BRA IfThenElse_fin_a312
@@ -897,17 +1413,35 @@ IfThenElse_else_a312:
 	LOAD #2, R5
 	SUB R5, R3
 	LOAD R3, R1
+=======
+	LOAD #0x1.c1528p-1, R6
+	LOAD R6, R0
+	BRA IfThenElse_fin_a312
+IfThenElse_else_a312:
+	LOAD -3(LB), R5
+	LOAD #2, R3
+	SUB R3, R5
+	LOAD R5, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a617
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a617
 OpCmp_if_in_a617:
 	LOAD #0, R1
 OpCmp_fin_in_a617:
+<<<<<<< HEAD
 	LOAD R1, R4
 	LOAD R4, R1
 	BNE IfThenElse_else_a617
 	LOAD #0x1.f0154ap-1, R5
 	LOAD R5, R0
+=======
+	LOAD R1, R6
+	LOAD R6, R1
+	BNE IfThenElse_else_a617
+	LOAD #0x1.f0154ap-1, R3
+	LOAD R3, R0
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BRA IfThenElse_fin_a617
 IfThenElse_else_a617:
 	LOAD -3(LB), R3
@@ -920,8 +1454,13 @@ IfThenElse_else_a617:
 OpCmp_if_in_a917:
 	LOAD #0, R1
 OpCmp_fin_in_a917:
+<<<<<<< HEAD
 	LOAD R1, R5
 	LOAD R5, R1
+=======
+	LOAD R1, R3
+	LOAD R3, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BNE IfThenElse_else_a917
 	LOAD #0x1.fc0156p-1, R7
 	LOAD R7, R0
@@ -934,20 +1473,27 @@ IfThenElse_fin_a617:
 IfThenElse_fin_a312:
 	POP R2
 	POP R3
-	POP R4
 	POP R5
+	POP R6
 	POP R7
 	RTS
 code.ChebychevValues.ChebyValuesSin:
 	PUSH R7
+	PUSH R6
 	PUSH R5
-	PUSH R4
 	PUSH R3
 	PUSH R2
+<<<<<<< HEAD
 	LOAD -3(LB), R4
 	LOAD #1, R5
 	SUB R5, R4
 	LOAD R4, R1
+=======
+	LOAD -3(LB), R6
+	LOAD #1, R3
+	SUB R3, R6
+	LOAD R6, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a1812
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a1812
@@ -957,6 +1503,7 @@ OpCmp_fin_in_a1812:
 	LOAD R1, R2
 	LOAD R2, R1
 	BNE IfThenElse_else_a1812
+<<<<<<< HEAD
 	LOAD #0x1.eaee88p-2, R5
 	LOAD R5, R0
 	BRA IfThenElse_fin_a1812
@@ -965,23 +1512,45 @@ IfThenElse_else_a1812:
 	LOAD #2, R7
 	SUB R7, R4
 	LOAD R4, R1
+=======
+	LOAD #0x1.eaee88p-2, R3
+	LOAD R3, R0
+	BRA IfThenElse_fin_a1812
+IfThenElse_else_a1812:
+	LOAD -3(LB), R6
+	LOAD #2, R7
+	SUB R7, R6
+	LOAD R6, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a2117
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a2117
 OpCmp_if_in_a2117:
 	LOAD #0, R1
 OpCmp_fin_in_a2117:
+<<<<<<< HEAD
 	LOAD R1, R5
 	LOAD R5, R1
+=======
+	LOAD R1, R3
+	LOAD R3, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BNE IfThenElse_else_a2117
 	LOAD #0x1.faaeeep-3, R7
 	LOAD R7, R0
 	BRA IfThenElse_fin_a2117
 IfThenElse_else_a2117:
+<<<<<<< HEAD
 	LOAD -3(LB), R4
 	LOAD #3, R3
 	SUB R3, R4
 	LOAD R4, R1
+=======
+	LOAD -3(LB), R6
+	LOAD #3, R5
+	SUB R5, R6
+	LOAD R6, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a2417
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a2417
@@ -1002,8 +1571,8 @@ IfThenElse_fin_a2117:
 IfThenElse_fin_a1812:
 	POP R2
 	POP R3
-	POP R4
 	POP R5
+	POP R6
 	POP R7
 	RTS
 code.ChebychevValues.ChebyValuesActan:
@@ -1018,10 +1587,17 @@ code.ChebychevValues.ChebyValuesActan:
 	PUSH R4
 	PUSH R3
 	PUSH R2
+<<<<<<< HEAD
 	LOAD -3(LB), R5
 	LOAD #0, R7
 	SUB R7, R5
 	LOAD R5, R1
+=======
+	LOAD -3(LB), R3
+	LOAD #0, R7
+	SUB R7, R3
+	LOAD R3, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a3312
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a3312
@@ -1036,10 +1612,17 @@ OpCmp_fin_in_a3312:
 	LOAD R7, R0
 	BRA IfThenElse_fin_a3312
 IfThenElse_else_a3312:
+<<<<<<< HEAD
 	LOAD -3(LB), R5
 	LOAD #1, R3
 	SUB R3, R5
 	LOAD R5, R1
+=======
+	LOAD -3(LB), R3
+	LOAD #1, R5
+	SUB R5, R3
+	LOAD R3, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a3617
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a3617
@@ -1054,10 +1637,17 @@ OpCmp_fin_in_a3617:
 	LOAD R3, R0
 	BRA IfThenElse_fin_a3617
 IfThenElse_else_a3617:
+<<<<<<< HEAD
 	LOAD -3(LB), R5
 	LOAD #2, R4
 	SUB R4, R5
 	LOAD R5, R1
+=======
+	LOAD -3(LB), R3
+	LOAD #2, R6
+	SUB R6, R3
+	LOAD R3, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a3917
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a3917
@@ -1067,6 +1657,7 @@ OpCmp_fin_in_a3917:
 	LOAD R1, R3
 	LOAD R3, R1
 	BNE IfThenElse_else_a3917
+<<<<<<< HEAD
 	LOAD #0x1.e6db9ap-1, R4
 	LOAD R4, R0
 	BRA IfThenElse_fin_a3917
@@ -1075,42 +1666,71 @@ IfThenElse_else_a3917:
 	LOAD #3, R6
 	SUB R6, R5
 	LOAD R5, R1
+=======
+	LOAD #0x1.e6db9ap-1, R6
+	LOAD R6, R0
+	BRA IfThenElse_fin_a3917
+IfThenElse_else_a3917:
+	LOAD -3(LB), R3
+	LOAD #3, R4
+	SUB R4, R3
+	LOAD R3, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a4217
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a4217
 OpCmp_if_in_a4217:
 	LOAD #0, R1
 OpCmp_fin_in_a4217:
+<<<<<<< HEAD
 	LOAD R1, R4
 	LOAD R4, R1
+=======
+	LOAD R1, R6
+	LOAD R6, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BNE IfThenElse_else_a4217
-	LOAD #0x1.9a9d3ap-2, R6
-	OPP R6, R6
-	LOAD R6, R0
+	LOAD #0x1.9a9d3ap-2, R4
+	OPP R4, R4
+	LOAD R4, R0
 	BRA IfThenElse_fin_a4217
 IfThenElse_else_a4217:
+<<<<<<< HEAD
 	LOAD -3(LB), R5
 	LOAD #4, R8
 	SUB R8, R5
 	LOAD R5, R1
+=======
+	LOAD -3(LB), R3
+	LOAD #4, R8
+	SUB R8, R3
+	LOAD R3, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a4517
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a4517
 OpCmp_if_in_a4517:
 	LOAD #0, R1
 OpCmp_fin_in_a4517:
-	LOAD R1, R6
-	LOAD R6, R1
+	LOAD R1, R4
+	LOAD R4, R1
 	BNE IfThenElse_else_a4517
 	LOAD #0x1.4e2a9cp4, R8
 	OPP R8, R8
 	LOAD R8, R0
 	BRA IfThenElse_fin_a4517
 IfThenElse_else_a4517:
+<<<<<<< HEAD
 	LOAD -3(LB), R5
 	LOAD #5, R9
 	SUB R9, R5
 	LOAD R5, R1
+=======
+	LOAD -3(LB), R3
+	LOAD #5, R9
+	SUB R9, R3
+	LOAD R3, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a4817
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a4817
@@ -1124,10 +1744,17 @@ OpCmp_fin_in_a4817:
 	LOAD R9, R0
 	BRA IfThenElse_fin_a4817
 IfThenElse_else_a4817:
+<<<<<<< HEAD
 	LOAD -3(LB), R5
 	LOAD #6, R10
 	SUB R10, R5
 	LOAD R5, R1
+=======
+	LOAD -3(LB), R3
+	LOAD #6, R10
+	SUB R10, R3
+	LOAD R3, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a5117
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a5117
@@ -1142,10 +1769,17 @@ OpCmp_fin_in_a5117:
 	LOAD R10, R0
 	BRA IfThenElse_fin_a5117
 IfThenElse_else_a5117:
+<<<<<<< HEAD
 	LOAD -3(LB), R5
 	LOAD #7, R11
 	SUB R11, R5
 	LOAD R5, R1
+=======
+	LOAD -3(LB), R3
+	LOAD #7, R11
+	SUB R11, R3
+	LOAD R3, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a5417
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a5417
@@ -1159,10 +1793,17 @@ OpCmp_fin_in_a5417:
 	LOAD R11, R0
 	BRA IfThenElse_fin_a5417
 IfThenElse_else_a5417:
+<<<<<<< HEAD
 	LOAD -3(LB), R5
 	LOAD #8, R12
 	SUB R12, R5
 	LOAD R5, R1
+=======
+	LOAD -3(LB), R3
+	LOAD #8, R12
+	SUB R12, R3
+	LOAD R3, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ OpCmp_if_in_a5717
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a5717
@@ -1229,8 +1870,13 @@ OpCmp_fin_in_a6612:
 	BRA IfThenElse_fin_a6612
 IfThenElse_else_a6612:
 	LOAD -3(LB), R7
+<<<<<<< HEAD
 	LOAD #1, R4
 	SUB R4, R7
+=======
+	LOAD #1, R6
+	SUB R6, R7
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R7, R1
 	BEQ OpCmp_if_in_a6917
 	LOAD #1, R1
@@ -1241,13 +1887,18 @@ OpCmp_fin_in_a6917:
 	LOAD R1, R3
 	LOAD R3, R1
 	BNE IfThenElse_else_a6917
+<<<<<<< HEAD
 	LOAD #0x1.975f5ep-3, R4
 	LOAD R4, R0
+=======
+	LOAD #0x1.975f5ep-3, R6
+	LOAD R6, R0
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BRA IfThenElse_fin_a6917
 IfThenElse_else_a6917:
 	LOAD -3(LB), R7
-	LOAD #2, R6
-	SUB R6, R7
+	LOAD #2, R4
+	SUB R4, R7
 	LOAD R7, R1
 	BEQ OpCmp_if_in_a7217
 	LOAD #1, R1
@@ -1255,11 +1906,16 @@ IfThenElse_else_a6917:
 OpCmp_if_in_a7217:
 	LOAD #0, R1
 OpCmp_fin_in_a7217:
+<<<<<<< HEAD
 	LOAD R1, R4
 	LOAD R4, R1
+=======
+	LOAD R1, R6
+	LOAD R6, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BNE IfThenElse_else_a7217
-	LOAD #0x1.a8279ap-2, R6
-	LOAD R6, R0
+	LOAD #0x1.a8279ap-2, R4
+	LOAD R4, R0
 	BRA IfThenElse_fin_a7217
 IfThenElse_else_a7217:
 	LOAD -3(LB), R7
@@ -1272,8 +1928,8 @@ IfThenElse_else_a7217:
 OpCmp_if_in_a7517:
 	LOAD #0, R1
 OpCmp_fin_in_a7517:
-	LOAD R1, R6
-	LOAD R6, R1
+	LOAD R1, R4
+	LOAD R4, R1
 	BNE IfThenElse_else_a7517
 	LOAD #0x1.561b82p-1, R8
 	LOAD R8, R0
@@ -1348,8 +2004,13 @@ OpCmp_fin_in_a8717:
 	BRA IfThenElse_fin_a8717
 IfThenElse_else_a8717:
 	LOAD -3(LB), R7
+<<<<<<< HEAD
 	LOAD #8, R5
 	SUB R5, R7
+=======
+	LOAD #8, R3
+	SUB R3, R7
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R7, R1
 	BEQ OpCmp_if_in_a9017
 	LOAD #1, R1
@@ -1360,12 +2021,21 @@ OpCmp_fin_in_a9017:
 	LOAD R1, R12
 	LOAD R12, R1
 	BNE IfThenElse_else_a9017
+<<<<<<< HEAD
 	LOAD #0x1.d02968p53, R5
 	LOAD R5, R0
 	BRA IfThenElse_fin_a9017
 IfThenElse_else_a9017:
 	LOAD #0x0.0p0, R5
 	LOAD R5, R0
+=======
+	LOAD #0x1.d02968p53, R3
+	LOAD R3, R0
+	BRA IfThenElse_fin_a9017
+IfThenElse_else_a9017:
+	LOAD #0x0.0p0, R3
+	LOAD R3, R0
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 IfThenElse_fin_a9017:
 IfThenElse_fin_a8717:
 IfThenElse_fin_a8417:
@@ -1432,15 +2102,22 @@ init.RangeReduction:
 code.RangeReduction.FirstReductionSin:
 	PUSH R2
 	LOAD #0x1.92p1, R2
+<<<<<<< HEAD
 	STORE R2, 85(GB)
 	LOAD #0x1.fb5444p-11, R2
 	STORE R2, 86(GB)
+=======
+	STORE R2, 7(LB)
+	LOAD #0x1.fb5444p-11, R2
+	STORE R2, 8(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R2
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	DIV R2, R2
 	BOV divisionErr
 	INT R2, R2
+<<<<<<< HEAD
 	STORE R2, 87(GB)
 	LOAD -3(LB), R2
 	LOAD 87(GB), R2
@@ -1459,6 +2136,26 @@ code.RangeReduction.FirstReductionSin:
 	SUB R2, R2
 	STORE R2, 88(GB)
 	LOAD 87(GB), R2
+=======
+	STORE R2, 9(LB)
+	LOAD -3(LB), R2
+	LOAD 9(LB), R2
+	FLOAT R2, R2
+	LOAD 7(LB), R2
+	MUL R2, R2
+	BOV over_flow
+	SUB R2, R2
+	STORE R2, 10(LB)
+	LOAD 10(LB), R2
+	LOAD 9(LB), R2
+	FLOAT R2, R2
+	LOAD 8(LB), R2
+	MUL R2, R2
+	BOV over_flow
+	SUB R2, R2
+	STORE R2, 10(LB)
+	LOAD 9(LB), R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD #2, R2
 	REM R2, R2
 	BOV divisionErr
@@ -1474,11 +2171,19 @@ OpCmp_fin_in_a1212:
 	LOAD R1, R2
 	LOAD R2, R1
 	BNE IfThenElse_else_a1212
+<<<<<<< HEAD
 	LOAD 88(GB), R2
 	LOAD R2, R0
 	BRA IfThenElse_fin_a1212
 IfThenElse_else_a1212:
 	LOAD 88(GB), R2
+=======
+	LOAD 10(LB), R2
+	LOAD R2, R0
+	BRA IfThenElse_fin_a1212
+IfThenElse_else_a1212:
+	LOAD 10(LB), R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	OPP R2, R2
 	LOAD R2, R0
 IfThenElse_fin_a1212:
@@ -1487,15 +2192,22 @@ IfThenElse_fin_a1212:
 code.RangeReduction.FirstReductionCos:
 	PUSH R2
 	LOAD #0x1.92p1, R2
+<<<<<<< HEAD
 	STORE R2, 89(GB)
 	LOAD #0x1.fb5444p-11, R2
 	STORE R2, 90(GB)
+=======
+	STORE R2, 11(LB)
+	LOAD #0x1.fb5444p-11, R2
+	STORE R2, 12(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R2
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	DIV R2, R2
 	BOV divisionErr
 	INT R2, R2
+<<<<<<< HEAD
 	STORE R2, 91(GB)
 	LOAD -3(LB), R2
 	LOAD 91(GB), R2
@@ -1514,6 +2226,26 @@ code.RangeReduction.FirstReductionCos:
 	SUB R2, R2
 	STORE R2, 92(GB)
 	LOAD 92(GB), R2
+=======
+	STORE R2, 13(LB)
+	LOAD -3(LB), R2
+	LOAD 13(LB), R2
+	FLOAT R2, R2
+	LOAD 11(LB), R2
+	MUL R2, R2
+	BOV over_flow
+	SUB R2, R2
+	STORE R2, 14(LB)
+	LOAD 14(LB), R2
+	LOAD 13(LB), R2
+	FLOAT R2, R2
+	LOAD 12(LB), R2
+	MUL R2, R2
+	BOV over_flow
+	SUB R2, R2
+	STORE R2, 14(LB)
+	LOAD 14(LB), R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R2, R0
 	POP R2
 	RTS
@@ -1534,8 +2266,8 @@ code.BreakPoints.breakPoint:
 	PUSH R2
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 	LOAD #0x1.0p1, R2
 	STORE R2, -1(SP)
@@ -1565,8 +2297,13 @@ code.BreakPoints.breakPoint:
 code.BreakPoints.BPOptVal:
 	PUSH R8
 	PUSH R6
+<<<<<<< HEAD
 	PUSH R4
 	PUSH R3
+=======
+	PUSH R5
+	PUSH R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	PUSH R2
 ; instruction new
 	NEW #3, R2
@@ -1575,7 +2312,11 @@ code.BreakPoints.BPOptVal:
 	PUSH R2
 	BSR init.Couple
 	POP R2
+<<<<<<< HEAD
 	STORE R2, 93(GB)
+=======
+	STORE R2, 15(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode2
 	ADDSP #3
 	LOAD -2(LB), R2
@@ -1591,6 +2332,7 @@ code.BreakPoints.BPOptVal:
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
+<<<<<<< HEAD
 	STORE R2, 94(GB)
 	LOAD #0, R2
 	STORE R2, 95(GB)
@@ -1600,6 +2342,17 @@ code.BreakPoints.BPOptVal:
 	STORE R2, 97(GB)
 While_cond_a1415:
 	LOAD 96(GB), R2
+=======
+	STORE R2, 16(LB)
+	LOAD #0, R2
+	STORE R2, 17(LB)
+	LOAD #1, R2
+	STORE R2, 18(LB)
+	LOAD #0, R2
+	STORE R2, 19(LB)
+While_cond_a1415:
+	LOAD 18(LB), R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD #5, R2
 	SUB R2, R2
 	LOAD R2, R1
@@ -1613,9 +2366,15 @@ OpCmp_fin_in_a1415:
 	LOAD R2, R1
 	BNE While_fin_a1415
 While_cond_a1519:
+<<<<<<< HEAD
 	LOAD 97(GB), R2
 	LOAD #8, R3
 	SUB R3, R2
+=======
+	LOAD 19(LB), R2
+	LOAD #8, R5
+	SUB R5, R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R2, R1
 	BLT OpCmp_if_in_a1519
 	LOAD #1, R1
@@ -1628,42 +2387,61 @@ OpCmp_fin_in_a1519:
 	BNE While_fin_a1519
 ; appel de methode5
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
+<<<<<<< HEAD
 	LOAD 94(GB), R4
 	LOAD -3(LB), R6
 	SUB R6, R4
 	STORE R4, -1(SP)
+=======
+	LOAD 16(LB), R6
+	LOAD -3(LB), R4
+	SUB R4, R6
+	STORE R6, -1(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R2
 	CMP #null, R2
 	BEQ pile_pleine
 	LOAD 0(R2), R2
 	BSR 5(R2)
 	SUBSP #2
+<<<<<<< HEAD
 	LOAD R0, R4
+=======
+	LOAD R0, R6
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode5
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 ; appel de methode2
 	ADDSP #3
+<<<<<<< HEAD
 	LOAD -2(LB), R6
 	STORE R6, 0(SP)
 	LOAD 96(GB), R8
 	STORE R8, -1(SP)
 	LOAD 97(GB), R8
+=======
+	LOAD -2(LB), R4
+	STORE R4, 0(SP)
+	LOAD 18(LB), R8
+	STORE R8, -1(SP)
+	LOAD 19(LB), R8
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R8, -2(SP)
-	LOAD 0(SP), R6
-	CMP #null, R6
+	LOAD 0(SP), R4
+	CMP #null, R4
 	BEQ pile_pleine
-	LOAD 0(R6), R6
-	BSR 2(R6)
+	LOAD 0(R4), R4
+	BSR 2(R4)
 	SUBSP #3
 	LOAD R0, R8
-	LOAD -3(LB), R6
-	SUB R6, R8
+	LOAD -3(LB), R4
+	SUB R4, R8
 	STORE R8, -1(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -1672,8 +2450,13 @@ OpCmp_fin_in_a1519:
 	BSR 5(R2)
 	SUBSP #2
 	LOAD R0, R8
+<<<<<<< HEAD
 	SUB R8, R4
 	LOAD R4, R1
+=======
+	SUB R8, R6
+	LOAD R6, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BGT OpCmp_if_in_a1619
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a1619
@@ -1684,21 +2467,33 @@ OpCmp_fin_in_a1619:
 	LOAD R3, R1
 	BNE IfThenElse_else_a1619
 	LOAD #1, R8
+<<<<<<< HEAD
 	STORE R8, 95(GB)
+=======
+	STORE R8, 17(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode2
 	ADDSP #3
 	LOAD -2(LB), R8
 	STORE R8, 0(SP)
+<<<<<<< HEAD
 	LOAD 96(GB), R4
 	STORE R4, -1(SP)
 	LOAD 97(GB), R4
 	STORE R4, -2(SP)
+=======
+	LOAD 18(LB), R6
+	STORE R6, -1(SP)
+	LOAD 19(LB), R6
+	STORE R6, -2(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R8
 	CMP #null, R8
 	BEQ pile_pleine
 	LOAD 0(R8), R8
 	BSR 2(R8)
 	SUBSP #3
+<<<<<<< HEAD
 	LOAD R0, R4
 	STORE R4, 94(GB)
 ; appel de methode4
@@ -1712,10 +2507,26 @@ OpCmp_fin_in_a1619:
 	BEQ pile_pleine
 	LOAD 0(R4), R4
 	BSR 4(R4)
+=======
+	LOAD R0, R6
+	STORE R6, 16(LB)
+; appel de methode4
+	ADDSP #2
+	LOAD 15(LB), R6
+	STORE R6, 0(SP)
+	LOAD 18(LB), R8
+	STORE R8, -1(SP)
+	LOAD 0(SP), R6
+	CMP #null, R6
+	BEQ pile_pleine
+	LOAD 0(R6), R6
+	BSR 4(R6)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #2
 	LOAD R0, R8
 ; appel de methode5
 	ADDSP #2
+<<<<<<< HEAD
 	LOAD 93(GB), R4
 	STORE R4, 0(SP)
 	LOAD 97(GB), R2
@@ -1725,11 +2536,23 @@ OpCmp_fin_in_a1619:
 	BEQ pile_pleine
 	LOAD 0(R4), R4
 	BSR 5(R4)
+=======
+	LOAD 15(LB), R6
+	STORE R6, 0(SP)
+	LOAD 19(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R6
+	CMP #null, R6
+	BEQ pile_pleine
+	LOAD 0(R6), R6
+	BSR 5(R6)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #2
 	LOAD R0, R2
 	BRA IfThenElse_fin_a1619
 IfThenElse_else_a1619:
 IfThenElse_fin_a1619:
+<<<<<<< HEAD
 	LOAD 97(GB), R3
 	LOAD #1, R4
 	ADD R4, R3
@@ -1747,6 +2570,25 @@ While_fin_a1415:
 	LOAD 95(GB), R2
 	LOAD #0, R3
 	SUB R3, R2
+=======
+	LOAD 19(LB), R5
+	LOAD #1, R6
+	ADD R6, R5
+	STORE R5, 19(LB)
+	BRA While_cond_a1519
+While_fin_a1519:
+	LOAD #0, R2
+	STORE R2, 19(LB)
+	LOAD 18(LB), R2
+	LOAD #1, R5
+	ADD R5, R2
+	STORE R2, 18(LB)
+	BRA While_cond_a1415
+While_fin_a1415:
+	LOAD 17(LB), R2
+	LOAD #0, R5
+	SUB R5, R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R2, R1
 	BEQ OpCmp_if_in_a2712
 	LOAD #1, R1
@@ -1757,6 +2599,7 @@ OpCmp_fin_in_a2712:
 	LOAD R1, R2
 	LOAD R2, R1
 	BNE IfThenElse_else_a2712
+<<<<<<< HEAD
 ; appel de methode4
 	ADDSP #2
 	LOAD 93(GB), R3
@@ -1791,6 +2634,22 @@ IfThenElse_fin_a2712:
 	POP R2
 	POP R3
 	POP R4
+=======
+	LOAD #1, R5
+	LOAD 15(LB), R2
+	STORE R5, 1(R2)
+	LOAD #0, R5
+	LOAD 15(LB), R6
+	STORE R5, 2(R6)
+	BRA IfThenElse_fin_a2712
+IfThenElse_else_a2712:
+IfThenElse_fin_a2712:
+	LOAD 15(LB), R2
+	LOAD R2, R0
+	POP R2
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R6
 	POP R8
 	RTS
@@ -1808,13 +2667,18 @@ init.Taylor:
 	RTS
 code.Taylor.coefTaylorSinus:
 	PUSH R9
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
+=======
+	PUSH R5
+	PUSH R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	PUSH R2
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 	LOAD #0x1.0p0, R3
 	OPP R3, R3
@@ -1827,35 +2691,44 @@ code.Taylor.coefTaylorSinus:
 	LOAD 0(R2), R2
 	BSR 4(R2)
 	SUBSP #3
+<<<<<<< HEAD
 	LOAD R0, R3
+=======
+	LOAD R0, R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
-	LOAD -4(LB), R6
-	STORE R6, -1(SP)
-	LOAD #2, R6
+	LOAD -4(LB), R4
+	STORE R4, -1(SP)
+	LOAD #2, R4
 	LOAD -3(LB), R9
-	MUL R9, R6
+	MUL R9, R4
 	BOV over_flow
 	LOAD #1, R9
-	ADD R9, R6
-	STORE R6, -2(SP)
+	ADD R9, R4
+	STORE R4, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
 	BEQ pile_pleine
 	LOAD 0(R2), R2
 	BSR 4(R2)
 	SUBSP #3
+<<<<<<< HEAD
 	LOAD R0, R6
 	MUL R6, R3
+=======
+	LOAD R0, R4
+	MUL R4, R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BOV over_flow
 ; appel de methode3
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 1(R1), R6
-	STORE R6, 0(SP)
+	LOAD -2(LB), R0
+	LOAD 1(R0), R4
+	STORE R4, 0(SP)
 	LOAD #2, R2
 	LOAD -3(LB), R9
 	MUL R9, R2
@@ -1863,11 +2736,16 @@ code.Taylor.coefTaylorSinus:
 	LOAD #1, R9
 	ADD R9, R2
 	STORE R2, -1(SP)
-	LOAD 0(SP), R6
-	CMP #null, R6
+	LOAD 0(SP), R4
+	CMP #null, R4
 	BEQ pile_pleine
+<<<<<<< HEAD
 	LOAD 0(R6), R6
 	BSR 3(R6)
+=======
+	LOAD 0(R4), R4
+	BSR 3(R4)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #2
 	LOAD R0, R2
 	FLOAT R2, R2
@@ -1875,12 +2753,18 @@ code.Taylor.coefTaylorSinus:
 	BOV divisionErr
 	LOAD R3, R0
 	POP R2
+<<<<<<< HEAD
 	POP R3
 	POP R6
+=======
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R9
 	RTS
 code.Taylor.taylorSinus:
 	PUSH R9
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
 	PUSH R2
@@ -1893,6 +2777,20 @@ While_cond_a2015:
 	LOAD 99(GB), R2
 	LOAD -4(LB), R6
 	SUB R6, R2
+=======
+	PUSH R5
+	PUSH R4
+	PUSH R2
+	LOAD #0, R5
+	FLOAT R5, R5
+	STORE R5, 20(LB)
+	LOAD #0, R5
+	STORE R5, 21(LB)
+While_cond_a2015:
+	LOAD 21(LB), R2
+	LOAD -4(LB), R4
+	SUB R4, R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R2, R1
 	BLT OpCmp_if_in_a2015
 	LOAD #1, R1
@@ -1903,12 +2801,20 @@ OpCmp_fin_in_a2015:
 	LOAD R1, R3
 	LOAD R3, R1
 	BNE While_fin_a2015
+<<<<<<< HEAD
 	LOAD 98(GB), R6
+=======
+	LOAD 20(LB), R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode2
 	ADDSP #3
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
+<<<<<<< HEAD
 	LOAD 99(GB), R9
+=======
+	LOAD 21(LB), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R9, -1(SP)
 	LOAD -3(LB), R9
 	STORE R9, -2(SP)
@@ -1919,6 +2825,7 @@ OpCmp_fin_in_a2015:
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R9
+<<<<<<< HEAD
 	ADD R9, R6
 	STORE R6, 98(GB)
 	LOAD 99(GB), R6
@@ -1932,10 +2839,26 @@ While_fin_a2015:
 	POP R2
 	POP R3
 	POP R6
+=======
+	ADD R9, R4
+	STORE R4, 20(LB)
+	LOAD 21(LB), R4
+	LOAD #1, R9
+	ADD R9, R4
+	STORE R4, 21(LB)
+	BRA While_cond_a2015
+While_fin_a2015:
+	LOAD 20(LB), R5
+	LOAD R5, R0
+	POP R2
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R9
 	RTS
 code.Taylor.coefTaylorCosinus:
 	PUSH R9
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
 	PUSH R2
@@ -1961,6 +2884,33 @@ code.Taylor.coefTaylorCosinus:
 	LOAD -2(LB), R1
 	LOAD 1(R1), R3
 	STORE R3, 0(SP)
+=======
+	PUSH R5
+	PUSH R4
+	PUSH R2
+; appel de methode4
+	ADDSP #3
+	LOAD -2(LB), R0
+	LOAD 1(R0), R5
+	STORE R5, 0(SP)
+	LOAD #0x1.0p0, R4
+	OPP R4, R4
+	STORE R4, -1(SP)
+	LOAD -3(LB), R4
+	STORE R4, -2(SP)
+	LOAD 0(SP), R5
+	CMP #null, R5
+	BEQ pile_pleine
+	LOAD 0(R5), R5
+	BSR 4(R5)
+	SUBSP #3
+	LOAD R0, R4
+; appel de methode4
+	ADDSP #3
+	LOAD -2(LB), R0
+	LOAD 1(R0), R5
+	STORE R5, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -4(LB), R9
 	STORE R9, -1(SP)
 	LOAD #2, R9
@@ -1971,16 +2921,21 @@ code.Taylor.coefTaylorCosinus:
 	LOAD 0(SP), R3
 	CMP #null, R3
 	BEQ pile_pleine
+<<<<<<< HEAD
 	LOAD 0(R3), R3
 	BSR 4(R3)
+=======
+	LOAD 0(R5), R5
+	BSR 4(R5)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #3
 	LOAD R0, R9
-	MUL R9, R6
+	MUL R9, R4
 	BOV over_flow
 ; appel de methode3
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 1(R1), R9
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
 	STORE R9, 0(SP)
 	LOAD #2, R3
 	LOAD -3(LB), R2
@@ -1993,18 +2948,30 @@ code.Taylor.coefTaylorCosinus:
 	LOAD 0(R9), R9
 	BSR 3(R9)
 	SUBSP #2
+<<<<<<< HEAD
 	LOAD R0, R3
 	FLOAT R3, R3
 	DIV R3, R6
+=======
+	LOAD R0, R5
+	FLOAT R5, R5
+	DIV R5, R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BOV divisionErr
-	LOAD R6, R0
+	LOAD R4, R0
 	POP R2
+<<<<<<< HEAD
 	POP R3
 	POP R6
+=======
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R9
 	RTS
 code.Taylor.taylorCosinus:
 	PUSH R9
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
 	PUSH R2
@@ -2015,6 +2982,18 @@ code.Taylor.taylorCosinus:
 	STORE R6, 101(GB)
 While_cond_a3415:
 	LOAD 101(GB), R3
+=======
+	PUSH R5
+	PUSH R4
+	PUSH R2
+	LOAD #0, R4
+	FLOAT R4, R4
+	STORE R4, 22(LB)
+	LOAD #0, R4
+	STORE R4, 23(LB)
+While_cond_a3415:
+	LOAD 23(LB), R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -4(LB), R9
 	SUB R9, R3
 	LOAD R3, R1
@@ -2024,15 +3003,24 @@ While_cond_a3415:
 OpCmp_if_in_a3415:
 	LOAD #0, R1
 OpCmp_fin_in_a3415:
-	LOAD R1, R6
-	LOAD R6, R1
+	LOAD R1, R4
+	LOAD R4, R1
 	BNE While_fin_a3415
+<<<<<<< HEAD
 	LOAD 100(GB), R9
 ; appel de methode4
 	ADDSP #3
 	LOAD -2(LB), R3
 	STORE R3, 0(SP)
 	LOAD 101(GB), R2
+=======
+	LOAD 22(LB), R9
+; appel de methode4
+	ADDSP #3
+	LOAD -2(LB), R5
+	STORE R5, 0(SP)
+	LOAD 23(LB), R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R2, -1(SP)
 	LOAD -3(LB), R2
 	STORE R2, -2(SP)
@@ -2044,6 +3032,7 @@ OpCmp_fin_in_a3415:
 	SUBSP #3
 	LOAD R0, R2
 	ADD R2, R9
+<<<<<<< HEAD
 	STORE R9, 100(GB)
 	LOAD 101(GB), R9
 	LOAD #1, R2
@@ -2056,35 +3045,59 @@ While_fin_a3415:
 	POP R2
 	POP R3
 	POP R6
+=======
+	STORE R9, 22(LB)
+	LOAD 23(LB), R9
+	LOAD #1, R2
+	ADD R2, R9
+	STORE R9, 23(LB)
+	BRA While_cond_a3415
+While_fin_a3415:
+	LOAD 22(LB), R4
+	LOAD R4, R0
+	POP R2
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R9
 	RTS
 code.Taylor.coefTaylorArctan:
 	PUSH R9
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
+=======
+	PUSH R5
+	PUSH R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	PUSH R2
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R6
-	STORE R6, 0(SP)
+	LOAD -2(LB), R0
+	LOAD 1(R0), R4
+	STORE R4, 0(SP)
 	LOAD #0x1.0p0, R9
 	OPP R9, R9
 	STORE R9, -1(SP)
 	LOAD -3(LB), R9
 	STORE R9, -2(SP)
-	LOAD 0(SP), R6
-	CMP #null, R6
+	LOAD 0(SP), R4
+	CMP #null, R4
 	BEQ pile_pleine
+<<<<<<< HEAD
 	LOAD 0(R6), R6
 	BSR 4(R6)
+=======
+	LOAD 0(R4), R4
+	BSR 4(R4)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #3
 	LOAD R0, R9
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R6
-	STORE R6, 0(SP)
+	LOAD -2(LB), R0
+	LOAD 1(R0), R4
+	STORE R4, 0(SP)
 	LOAD -4(LB), R2
 	STORE R2, -1(SP)
 	LOAD #2, R2
@@ -2094,32 +3107,43 @@ code.Taylor.coefTaylorArctan:
 	LOAD #1, R3
 	ADD R3, R2
 	STORE R2, -2(SP)
-	LOAD 0(SP), R6
-	CMP #null, R6
+	LOAD 0(SP), R4
+	CMP #null, R4
 	BEQ pile_pleine
+<<<<<<< HEAD
 	LOAD 0(R6), R6
 	BSR 4(R6)
+=======
+	LOAD 0(R4), R4
+	BSR 4(R4)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #3
 	LOAD R0, R2
 	MUL R2, R9
 	BOV over_flow
 	LOAD #2, R2
-	LOAD -3(LB), R6
-	MUL R6, R2
+	LOAD -3(LB), R4
+	MUL R4, R2
 	BOV over_flow
-	LOAD #1, R6
-	ADD R6, R2
+	LOAD #1, R4
+	ADD R4, R2
 	FLOAT R2, R2
 	DIV R2, R9
 	BOV divisionErr
 	LOAD R9, R0
 	POP R2
+<<<<<<< HEAD
 	POP R3
 	POP R6
+=======
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R9
 	RTS
 code.Taylor.taylorArctan:
 	PUSH R9
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
 	PUSH R2
@@ -2132,6 +3156,20 @@ While_cond_a4815:
 	LOAD 103(GB), R2
 	LOAD -4(LB), R6
 	SUB R6, R2
+=======
+	PUSH R5
+	PUSH R4
+	PUSH R2
+	LOAD #0, R9
+	FLOAT R9, R9
+	STORE R9, 24(LB)
+	LOAD #0, R9
+	STORE R9, 25(LB)
+While_cond_a4815:
+	LOAD 25(LB), R2
+	LOAD -4(LB), R4
+	SUB R4, R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R2, R1
 	BLT OpCmp_if_in_a4815
 	LOAD #1, R1
@@ -2142,21 +3180,33 @@ OpCmp_fin_in_a4815:
 	LOAD R1, R9
 	LOAD R9, R1
 	BNE While_fin_a4815
+<<<<<<< HEAD
 	LOAD 102(GB), R6
+=======
+	LOAD 24(LB), R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode6
 	ADDSP #3
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
+<<<<<<< HEAD
 	LOAD 103(GB), R3
 	STORE R3, -1(SP)
 	LOAD -3(LB), R3
 	STORE R3, -2(SP)
+=======
+	LOAD 25(LB), R5
+	STORE R5, -1(SP)
+	LOAD -3(LB), R5
+	STORE R5, -2(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R2
 	CMP #null, R2
 	BEQ pile_pleine
 	LOAD 0(R2), R2
 	BSR 6(R2)
 	SUBSP #3
+<<<<<<< HEAD
 	LOAD R0, R3
 	ADD R3, R6
 	STORE R6, 102(GB)
@@ -2171,35 +3221,60 @@ While_fin_a4815:
 	POP R2
 	POP R3
 	POP R6
+=======
+	LOAD R0, R5
+	ADD R5, R4
+	STORE R4, 24(LB)
+	LOAD 25(LB), R4
+	LOAD #1, R5
+	ADD R5, R4
+	STORE R4, 25(LB)
+	BRA While_cond_a4815
+While_fin_a4815:
+	LOAD 24(LB), R9
+	LOAD R9, R0
+	POP R2
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R9
 	RTS
 code.Taylor.coefTaylorArcsin:
 	PUSH R10
 	PUSH R9
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
+=======
+	PUSH R5
+	PUSH R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	PUSH R2
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R9
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
 	STORE R9, 0(SP)
-	LOAD #0x1.0p0, R6
-	OPP R6, R6
-	STORE R6, -1(SP)
-	LOAD -3(LB), R6
-	STORE R6, -2(SP)
+	LOAD #0x1.0p0, R4
+	OPP R4, R4
+	STORE R4, -1(SP)
+	LOAD -3(LB), R4
+	STORE R4, -2(SP)
 	LOAD 0(SP), R9
 	CMP #null, R9
 	BEQ pile_pleine
 	LOAD 0(R9), R9
 	BSR 4(R9)
 	SUBSP #3
+<<<<<<< HEAD
 	LOAD R0, R6
+=======
+	LOAD R0, R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R9
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
 	STORE R9, 0(SP)
 	LOAD -4(LB), R3
 	STORE R3, -1(SP)
@@ -2216,6 +3291,7 @@ code.Taylor.coefTaylorArcsin:
 	LOAD 0(R9), R9
 	BSR 4(R9)
 	SUBSP #3
+<<<<<<< HEAD
 	LOAD R0, R3
 	MUL R3, R6
 	BOV over_flow
@@ -2224,6 +3300,16 @@ code.Taylor.coefTaylorArcsin:
 	LOAD -2(LB), R1
 	LOAD 1(R1), R3
 	STORE R3, 0(SP)
+=======
+	LOAD R0, R5
+	MUL R5, R4
+	BOV over_flow
+; appel de methode3
+	ADDSP #2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R5
+	STORE R5, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD #2, R9
 	LOAD -3(LB), R2
 	MUL R2, R9
@@ -2232,12 +3318,17 @@ code.Taylor.coefTaylorArcsin:
 	LOAD 0(SP), R3
 	CMP #null, R3
 	BEQ pile_pleine
+<<<<<<< HEAD
 	LOAD 0(R3), R3
 	BSR 3(R3)
+=======
+	LOAD 0(R5), R5
+	BSR 3(R5)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #2
 	LOAD R0, R9
 	FLOAT R9, R9
-	MUL R9, R6
+	MUL R9, R4
 	BOV over_flow
 	LOAD #2, R9
 	LOAD -3(LB), R3
@@ -2248,9 +3339,15 @@ code.Taylor.coefTaylorArcsin:
 	FLOAT R9, R9
 ; appel de methode4
 	ADDSP #3
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 1(R1), R3
 	STORE R3, 0(SP)
+=======
+	LOAD -2(LB), R0
+	LOAD 1(R0), R5
+	STORE R5, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD #0x1.0p1, R2
 	STORE R2, -1(SP)
 	LOAD #2, R2
@@ -2261,29 +3358,45 @@ code.Taylor.coefTaylorArcsin:
 	LOAD 0(SP), R3
 	CMP #null, R3
 	BEQ pile_pleine
+<<<<<<< HEAD
 	LOAD 0(R3), R3
 	BSR 4(R3)
+=======
+	LOAD 0(R5), R5
+	BSR 4(R5)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #3
 	LOAD R0, R2
 	MUL R2, R9
 	BOV over_flow
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 ; appel de methode3
 	ADDSP #2
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 1(R1), R3
 	STORE R3, 0(SP)
+=======
+	LOAD -2(LB), R0
+	LOAD 1(R0), R5
+	STORE R5, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R10
 	STORE R10, -1(SP)
 	LOAD 0(SP), R3
 	CMP #null, R3
 	BEQ pile_pleine
+<<<<<<< HEAD
 	LOAD 0(R3), R3
 	BSR 3(R3)
+=======
+	LOAD 0(R5), R5
+	BSR 3(R5)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #2
 	LOAD R0, R10
 	FLOAT R10, R10
@@ -2299,20 +3412,26 @@ code.Taylor.coefTaylorArcsin:
 	LOAD R0, R10
 	MUL R10, R9
 	BOV over_flow
-	DIV R9, R6
+	DIV R9, R4
 	BOV divisionErr
-	LOAD R6, R0
+	LOAD R4, R0
 	POP R2
+<<<<<<< HEAD
 	POP R3
 	POP R6
+=======
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R9
 	POP R10
 	RTS
 code.Taylor.taylorArcsin:
 	PUSH R10
 	PUSH R9
-	PUSH R6
+	PUSH R4
 	PUSH R2
+<<<<<<< HEAD
 	LOAD #0, R6
 	FLOAT R6, R6
 	STORE R6, 104(GB)
@@ -2320,6 +3439,15 @@ code.Taylor.taylorArcsin:
 	STORE R6, 105(GB)
 While_cond_a6315:
 	LOAD 105(GB), R9
+=======
+	LOAD #0, R4
+	FLOAT R4, R4
+	STORE R4, 26(LB)
+	LOAD #0, R4
+	STORE R4, 27(LB)
+While_cond_a6315:
+	LOAD 27(LB), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -4(LB), R10
 	SUB R10, R9
 	LOAD R9, R1
@@ -2329,15 +3457,23 @@ While_cond_a6315:
 OpCmp_if_in_a6315:
 	LOAD #0, R1
 OpCmp_fin_in_a6315:
-	LOAD R1, R6
-	LOAD R6, R1
+	LOAD R1, R4
+	LOAD R4, R1
 	BNE While_fin_a6315
+<<<<<<< HEAD
 	LOAD 104(GB), R10
+=======
+	LOAD 26(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode8
 	ADDSP #3
 	LOAD -2(LB), R9
 	STORE R9, 0(SP)
+<<<<<<< HEAD
 	LOAD 105(GB), R2
+=======
+	LOAD 27(LB), R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R2, -1(SP)
 	LOAD -3(LB), R2
 	STORE R2, -2(SP)
@@ -2349,6 +3485,7 @@ OpCmp_fin_in_a6315:
 	SUBSP #3
 	LOAD R0, R2
 	ADD R2, R10
+<<<<<<< HEAD
 	STORE R10, 104(GB)
 	LOAD 105(GB), R10
 	LOAD #1, R2
@@ -2358,26 +3495,38 @@ OpCmp_fin_in_a6315:
 While_fin_a6315:
 	LOAD 104(GB), R6
 	LOAD R6, R0
+=======
+	STORE R10, 26(LB)
+	LOAD 27(LB), R10
+	LOAD #1, R2
+	ADD R2, R10
+	STORE R10, 27(LB)
+	BRA While_cond_a6315
+While_fin_a6315:
+	LOAD 26(LB), R4
+	LOAD R4, R0
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R2
-	POP R6
+	POP R4
 	POP R9
 	POP R10
 	RTS
 init.ChebyApproxi32:
 ; instruction new
-	NEW #1, R6
+	NEW #1, R4
 	LEA 3(GB), R0
-	STORE R0, 0(R6)
-	PUSH R6
+	STORE R0, 0(R4)
+	PUSH R4
 	BSR init.Methods
-	POP R6
-	LOAD R6, R0
+	POP R4
+	LOAD R4, R0
 	LOAD -2(LB), R1
 	STORE R0, 1(R1)
 	RTS
 code.ChebyApproxi32.ChebychevActan:
 	PUSH R10
 	PUSH R9
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
 	PUSH R2
@@ -2404,14 +3553,46 @@ code.ChebyApproxi32.ChebychevActan:
 	LOAD #0x1.63b09ap4, R6
 	STORE R6, 116(GB)
 	LOAD 106(GB), R6
+=======
+	PUSH R5
+	PUSH R4
+	PUSH R2
+	LOAD #0x1.138b78p7, R4
+	STORE R4, 28(LB)
+	LOAD #0x1.379bf6p8, R4
+	STORE R4, 29(LB)
+	LOAD #0x1.e68816p7, R4
+	STORE R4, 30(LB)
+	LOAD #0x1.3078c6p6, R4
+	STORE R4, 31(LB)
+	LOAD #0x1.043f2p3, R4
+	STORE R4, 32(LB)
+	LOAD #0x1.12db8ap-3, R4
+	STORE R4, 33(LB)
+	LOAD #0x1.138b78p7, R4
+	STORE R4, 34(LB)
+	LOAD #0x1.65888ap8, R4
+	STORE R4, 35(LB)
+	LOAD #0x1.4ee39cp8, R4
+	STORE R4, 36(LB)
+	LOAD #0x1.0fd872p7, R4
+	STORE R4, 37(LB)
+	LOAD #0x1.63b09ap4, R4
+	STORE R4, 38(LB)
+	LOAD 28(LB), R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R10
-	MUL R10, R6
+	MUL R10, R4
 	BOV over_flow
+<<<<<<< HEAD
 	LOAD 107(GB), R10
+=======
+	LOAD 29(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R9
 	STORE R9, -1(SP)
@@ -2426,12 +3607,17 @@ code.ChebyApproxi32.ChebychevActan:
 	LOAD R0, R9
 	MUL R9, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 108(GB), R10
+=======
+	ADD R10, R4
+	LOAD 30(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R9
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
 	STORE R9, 0(SP)
 	LOAD -3(LB), R2
 	STORE R2, -1(SP)
@@ -2446,12 +3632,17 @@ code.ChebyApproxi32.ChebychevActan:
 	LOAD R0, R2
 	MUL R2, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 109(GB), R10
+=======
+	ADD R10, R4
+	LOAD 31(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R9
 	STORE R9, -1(SP)
@@ -2466,12 +3657,17 @@ code.ChebyApproxi32.ChebychevActan:
 	LOAD R0, R9
 	MUL R9, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 110(GB), R10
+=======
+	ADD R10, R4
+	LOAD 32(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R9
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
 	STORE R9, 0(SP)
 	LOAD -3(LB), R2
 	STORE R2, -1(SP)
@@ -2486,12 +3682,17 @@ code.ChebyApproxi32.ChebychevActan:
 	LOAD R0, R2
 	MUL R2, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 111(GB), R10
+=======
+	ADD R10, R4
+	LOAD 33(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R9
 	STORE R9, -1(SP)
@@ -2506,13 +3707,19 @@ code.ChebyApproxi32.ChebychevActan:
 	LOAD R0, R9
 	MUL R9, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 112(GB), R10
 	LOAD 113(GB), R9
+=======
+	ADD R10, R4
+	LOAD 34(LB), R10
+	LOAD 35(LB), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R3
 	STORE R3, -1(SP)
@@ -2528,12 +3735,21 @@ code.ChebyApproxi32.ChebychevActan:
 	MUL R3, R9
 	BOV over_flow
 	ADD R9, R10
+<<<<<<< HEAD
 	LOAD 114(GB), R9
 ; appel de methode4
 	ADDSP #3
 	LOAD -2(LB), R1
 	LOAD 1(R1), R3
 	STORE R3, 0(SP)
+=======
+	LOAD 36(LB), R9
+; appel de methode4
+	ADDSP #3
+	LOAD -2(LB), R0
+	LOAD 1(R0), R5
+	STORE R5, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R2
 	STORE R2, -1(SP)
 	LOAD #4, R2
@@ -2541,18 +3757,27 @@ code.ChebyApproxi32.ChebychevActan:
 	LOAD 0(SP), R3
 	CMP #null, R3
 	BEQ pile_pleine
+<<<<<<< HEAD
 	LOAD 0(R3), R3
 	BSR 4(R3)
+=======
+	LOAD 0(R5), R5
+	BSR 4(R5)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #3
 	LOAD R0, R2
 	MUL R2, R9
 	BOV over_flow
 	ADD R9, R10
+<<<<<<< HEAD
 	LOAD 115(GB), R9
+=======
+	LOAD 37(LB), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R3
 	STORE R3, -1(SP)
@@ -2568,12 +3793,21 @@ code.ChebyApproxi32.ChebychevActan:
 	MUL R3, R9
 	BOV over_flow
 	ADD R9, R10
+<<<<<<< HEAD
 	LOAD 116(GB), R9
 ; appel de methode4
 	ADDSP #3
 	LOAD -2(LB), R1
 	LOAD 1(R1), R3
 	STORE R3, 0(SP)
+=======
+	LOAD 38(LB), R9
+; appel de methode4
+	ADDSP #3
+	LOAD -2(LB), R0
+	LOAD 1(R0), R5
+	STORE R5, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R2
 	STORE R2, -1(SP)
 	LOAD #8, R2
@@ -2581,27 +3815,38 @@ code.ChebyApproxi32.ChebychevActan:
 	LOAD 0(SP), R3
 	CMP #null, R3
 	BEQ pile_pleine
+<<<<<<< HEAD
 	LOAD 0(R3), R3
 	BSR 4(R3)
+=======
+	LOAD 0(R5), R5
+	BSR 4(R5)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #3
 	LOAD R0, R2
 	MUL R2, R9
 	BOV over_flow
 	ADD R9, R10
-	DIV R10, R6
+	DIV R10, R4
 	BOV divisionErr
-	LOAD R6, R0
+	LOAD R4, R0
 	POP R2
+<<<<<<< HEAD
 	POP R3
 	POP R6
+=======
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R9
 	POP R10
 	RTS
 code.ChebyApproxi32.ChebychevSinus:
 	PUSH R10
 	PUSH R9
-	PUSH R6
+	PUSH R4
 	PUSH R2
+<<<<<<< HEAD
 	LOAD #0x1.555556p-3, R6
 	OPP R6, R6
 	STORE R6, 117(GB)
@@ -2614,10 +3859,24 @@ code.ChebyApproxi32.ChebychevSinus:
 	STORE R6, 120(GB)
 	LOAD -3(LB), R6
 	LOAD 117(GB), R10
+=======
+	LOAD #0x1.555556p-3, R4
+	OPP R4, R4
+	STORE R4, 39(LB)
+	LOAD #0x1.111112p-7, R4
+	STORE R4, 40(LB)
+	LOAD #0x1.a01a02p-13, R4
+	OPP R4, R4
+	STORE R4, 41(LB)
+	LOAD #0x1.71dc0ep-19, R4
+	STORE R4, 42(LB)
+	LOAD -3(LB), R4
+	LOAD 39(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R9
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
 	STORE R9, 0(SP)
 	LOAD -3(LB), R2
 	STORE R2, -1(SP)
@@ -2632,12 +3891,17 @@ code.ChebyApproxi32.ChebychevSinus:
 	LOAD R0, R2
 	MUL R2, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 118(GB), R10
+=======
+	ADD R10, R4
+	LOAD 40(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R9
 	STORE R9, -1(SP)
@@ -2652,12 +3916,17 @@ code.ChebyApproxi32.ChebychevSinus:
 	LOAD R0, R9
 	MUL R9, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 119(GB), R10
+=======
+	ADD R10, R4
+	LOAD 41(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R9
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
 	STORE R9, 0(SP)
 	LOAD -3(LB), R2
 	STORE R2, -1(SP)
@@ -2672,12 +3941,17 @@ code.ChebyApproxi32.ChebychevSinus:
 	LOAD R0, R2
 	MUL R2, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 120(GB), R10
+=======
+	ADD R10, R4
+	LOAD 42(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R9
 	STORE R9, -1(SP)
@@ -2692,18 +3966,19 @@ code.ChebyApproxi32.ChebychevSinus:
 	LOAD R0, R9
 	MUL R9, R10
 	BOV over_flow
-	ADD R10, R6
-	LOAD R6, R0
+	ADD R10, R4
+	LOAD R4, R0
 	POP R2
-	POP R6
+	POP R4
 	POP R9
 	POP R10
 	RTS
 code.ChebyApproxi32.ChebychevCosinus:
 	PUSH R10
 	PUSH R9
-	PUSH R6
+	PUSH R4
 	PUSH R2
+<<<<<<< HEAD
 	LOAD #0x1.0p-1, R6
 	OPP R6, R6
 	STORE R6, 121(GB)
@@ -2720,10 +3995,28 @@ code.ChebyApproxi32.ChebychevCosinus:
 	LOAD #1, R6
 	FLOAT R6, R6
 	LOAD 121(GB), R10
+=======
+	LOAD #0x1.0p-1, R4
+	OPP R4, R4
+	STORE R4, 43(LB)
+	LOAD #0x1.555556p-5, R4
+	STORE R4, 44(LB)
+	LOAD #0x1.6c16c2p-10, R4
+	OPP R4, R4
+	STORE R4, 45(LB)
+	LOAD #0x1.a01a02p-16, R4
+	STORE R4, 46(LB)
+	LOAD #0x1.27e354p-22, R4
+	OPP R4, R4
+	STORE R4, 47(LB)
+	LOAD #1, R4
+	FLOAT R4, R4
+	LOAD 43(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R9
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
 	STORE R9, 0(SP)
 	LOAD -3(LB), R2
 	STORE R2, -1(SP)
@@ -2738,12 +4031,17 @@ code.ChebyApproxi32.ChebychevCosinus:
 	LOAD R0, R2
 	MUL R2, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 122(GB), R10
+=======
+	ADD R10, R4
+	LOAD 44(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R9
 	STORE R9, -1(SP)
@@ -2758,12 +4056,17 @@ code.ChebyApproxi32.ChebychevCosinus:
 	LOAD R0, R9
 	MUL R9, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 123(GB), R10
+=======
+	ADD R10, R4
+	LOAD 45(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R9
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
 	STORE R9, 0(SP)
 	LOAD -3(LB), R2
 	STORE R2, -1(SP)
@@ -2778,12 +4081,17 @@ code.ChebyApproxi32.ChebychevCosinus:
 	LOAD R0, R2
 	MUL R2, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 124(GB), R10
+=======
+	ADD R10, R4
+	LOAD 46(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R9
 	STORE R9, -1(SP)
@@ -2798,12 +4106,17 @@ code.ChebyApproxi32.ChebychevCosinus:
 	LOAD R0, R9
 	MUL R9, R10
 	BOV over_flow
+<<<<<<< HEAD
 	ADD R10, R6
 	LOAD 125(GB), R10
+=======
+	ADD R10, R4
+	LOAD 47(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 1(R1), R9
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
 	STORE R9, 0(SP)
 	LOAD -3(LB), R2
 	STORE R2, -1(SP)
@@ -2818,76 +4131,111 @@ code.ChebyApproxi32.ChebychevCosinus:
 	LOAD R0, R2
 	MUL R2, R10
 	BOV over_flow
-	ADD R10, R6
-	LOAD R6, R0
+	ADD R10, R4
+	LOAD R4, R0
 	POP R2
-	POP R6
+	POP R4
 	POP R9
 	POP R10
 	RTS
 init.Chebychev:
-	LOAD #0x1.921fb4p1, R6
-	LOAD R6, R0
+	LOAD #0x1.921fb4p1, R4
+	LOAD R4, R0
 	LOAD -2(LB), R1
 	STORE R0, 1(R1)
 ; instruction new
+<<<<<<< HEAD
 	NEW #1, R6
 	LEA 10(GB), R0
 	STORE R0, 0(R6)
 	PUSH R6
+=======
+	NEW #1, R4
+	LEA 10(GB), R0
+	STORE R0, 0(R4)
+	PUSH R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BSR init.ChebychevValues
-	POP R6
-	LOAD R6, R0
+	POP R4
+	LOAD R4, R0
 	LOAD -2(LB), R1
 	STORE R0, 2(R1)
 ; instruction new
+<<<<<<< HEAD
 	NEW #3, R6
 	LEA 16(GB), R0
 	STORE R0, 0(R6)
 	PUSH R6
+=======
+	NEW #3, R4
+	LEA 16(GB), R0
+	STORE R0, 0(R4)
+	PUSH R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BSR init.Couple
-	POP R6
-	LOAD R6, R0
+	POP R4
+	LOAD R4, R0
 	LOAD -2(LB), R1
 	STORE R0, 3(R1)
 ; instruction new
-	NEW #1, R6
+	NEW #1, R4
 	LEA 3(GB), R0
-	STORE R0, 0(R6)
-	PUSH R6
+	STORE R0, 0(R4)
+	PUSH R4
 	BSR init.Methods
-	POP R6
-	LOAD R6, R0
+	POP R4
+	LOAD R4, R0
 	LOAD -2(LB), R1
 	STORE R0, 4(R1)
 ; instruction new
+<<<<<<< HEAD
 	NEW #2, R6
 	LEA 22(GB), R0
 	STORE R0, 0(R6)
 	PUSH R6
+=======
+	NEW #2, R4
+	LEA 22(GB), R0
+	STORE R0, 0(R4)
+	PUSH R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BSR init.RangeReduction
-	POP R6
-	LOAD R6, R0
+	POP R4
+	LOAD R4, R0
 	LOAD -2(LB), R1
 	STORE R0, 5(R1)
 ; instruction new
+<<<<<<< HEAD
 	NEW #2, R6
 	LEA 40(GB), R0
 	STORE R0, 0(R6)
 	PUSH R6
+=======
+	NEW #2, R4
+	LEA 40(GB), R0
+	STORE R0, 0(R4)
+	PUSH R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BSR init.ChebyApproxi32
-	POP R6
-	LOAD R6, R0
+	POP R4
+	LOAD R4, R0
 	LOAD -2(LB), R1
 	STORE R0, 6(R1)
 ; instruction new
+<<<<<<< HEAD
 	NEW #2, R6
 	LEA 26(GB), R0
 	STORE R0, 0(R6)
 	PUSH R6
+=======
+	NEW #2, R4
+	LEA 26(GB), R0
+	STORE R0, 0(R4)
+	PUSH R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BSR init.BreakPoints
-	POP R6
-	LOAD R6, R0
+	POP R4
+	LOAD R4, R0
 	LOAD -2(LB), R1
 	STORE R0, 7(R1)
 	RTS
@@ -2896,8 +4244,8 @@ code.Chebychev.sinCheb:
 	PUSH R11
 	PUSH R10
 	PUSH R9
-	PUSH R6
 	PUSH R5
+<<<<<<< HEAD
 	PUSH R3
 	PUSH R2
 ; instruction new
@@ -2920,6 +4268,31 @@ code.Chebychev.sinCheb:
 	LOAD #4, R3
 	FLOAT R3, R3
 	DIV R3, R9
+=======
+	PUSH R4
+	PUSH R3
+	PUSH R2
+; instruction new
+	NEW #3, R4
+	LEA 16(GB), R0
+	STORE R0, 0(R4)
+	PUSH R4
+	BSR init.Couple
+	POP R4
+	STORE R4, 48(LB)
+	LOAD #0x0.0p0, R4
+	STORE R4, 49(LB)
+	LOAD #0x0.0p0, R4
+	STORE R4, 50(LB)
+	LOAD #0x0.0p0, R4
+	STORE R4, 51(LB)
+	LOAD -3(LB), R2
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
+	LOAD #4, R5
+	FLOAT R5, R5
+	DIV R5, R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BOV divisionErr
 	SUB R9, R2
 	LOAD R2, R1
@@ -2951,13 +4324,13 @@ OpCmp_fin_in_a13229:
 And_else_in_a13212:
 	LOAD #1, R1
 And_fin_in_a13212:
-	LOAD R1, R6
-	LOAD R6, R1
+	LOAD R1, R4
+	LOAD R4, R1
 	BNE IfThenElse_else_a13212
 ; appel de methode5
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 4(R1), R2
+	LOAD -2(LB), R0
+	LOAD 4(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R9
 	STORE R9, -1(SP)
@@ -2982,8 +4355,8 @@ OpCmp_fin_in_a13315:
 	BNE IfThenElse_else_a13315
 ; appel de methode3
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 6(R1), R2
+	LOAD -2(LB), R0
+	LOAD 6(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R9
 	STORE R9, -1(SP)
@@ -2999,8 +4372,8 @@ OpCmp_fin_in_a13315:
 IfThenElse_else_a13315:
 ; appel de methode3
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 7(R1), R9
+	LOAD -2(LB), R0
+	LOAD 7(R0), R9
 	STORE R9, 0(SP)
 	LOAD -3(LB), R2
 	STORE R2, -1(SP)
@@ -3011,15 +4384,23 @@ IfThenElse_else_a13315:
 	BSR 3(R9)
 	SUBSP #2
 	LOAD R0, R2
+<<<<<<< HEAD
 	STORE R2, 126(GB)
+=======
+	STORE R2, 48(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode2
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 7(R1), R2
+	LOAD -2(LB), R0
+	LOAD 7(R0), R2
 	STORE R2, 0(SP)
 ; appel de methode2
 	ADDSP #1
+<<<<<<< HEAD
 	LOAD 126(GB), R9
+=======
+	LOAD 48(LB), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R9, 0(SP)
 	LOAD 0(SP), R9
 	CMP #null, R9
@@ -3031,10 +4412,17 @@ IfThenElse_else_a13315:
 	STORE R3, -1(SP)
 ; appel de methode3
 	ADDSP #1
+<<<<<<< HEAD
 	LOAD 126(GB), R3
 	STORE R3, 0(SP)
 	LOAD 0(SP), R3
 	CMP #null, R3
+=======
+	LOAD 48(LB), R5
+	STORE R5, 0(SP)
+	LOAD 0(SP), R5
+	CMP #null, R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ pile_pleine
 	LOAD 0(R3), R3
 	BSR 3(R3)
@@ -3048,19 +4436,31 @@ IfThenElse_else_a13315:
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R9
+<<<<<<< HEAD
 	STORE R9, 127(GB)
 	LOAD -3(LB), R9
 	LOAD 127(GB), R2
 	SUB R2, R9
 	STORE R9, 128(GB)
+=======
+	STORE R9, 49(LB)
+	LOAD -3(LB), R9
+	LOAD 49(LB), R2
+	SUB R2, R9
+	STORE R9, 50(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode3
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 2(R1), R9
+	LOAD -2(LB), R0
+	LOAD 2(R0), R9
 	STORE R9, 0(SP)
 ; appel de methode2
 	ADDSP #1
+<<<<<<< HEAD
 	LOAD 126(GB), R2
+=======
+	LOAD 48(LB), R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R2, 0(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -3072,10 +4472,17 @@ IfThenElse_else_a13315:
 	STORE R3, -1(SP)
 ; appel de methode3
 	ADDSP #1
+<<<<<<< HEAD
 	LOAD 126(GB), R3
 	STORE R3, 0(SP)
 	LOAD 0(SP), R3
 	CMP #null, R3
+=======
+	LOAD 48(LB), R5
+	STORE R5, 0(SP)
+	LOAD 0(SP), R5
+	CMP #null, R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ pile_pleine
 	LOAD 0(R3), R3
 	BSR 3(R3)
@@ -3091,11 +4498,16 @@ IfThenElse_else_a13315:
 	LOAD R0, R2
 ; appel de methode4
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 6(R1), R9
+	LOAD -2(LB), R0
+	LOAD 6(R0), R9
 	STORE R9, 0(SP)
+<<<<<<< HEAD
 	LOAD 128(GB), R3
 	STORE R3, -1(SP)
+=======
+	LOAD 50(LB), R5
+	STORE R5, -1(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R9
 	CMP #null, R9
 	BEQ pile_pleine
@@ -3107,12 +4519,21 @@ IfThenElse_else_a13315:
 	BOV over_flow
 ; appel de methode2
 	ADDSP #3
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 2(R1), R3
 	STORE R3, 0(SP)
 ; appel de methode2
 	ADDSP #1
 	LOAD 126(GB), R9
+=======
+	LOAD -2(LB), R0
+	LOAD 2(R0), R5
+	STORE R5, 0(SP)
+; appel de methode2
+	ADDSP #1
+	LOAD 48(LB), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R9, 0(SP)
 	LOAD 0(SP), R9
 	CMP #null, R9
@@ -3124,7 +4545,11 @@ IfThenElse_else_a13315:
 	STORE R11, -1(SP)
 ; appel de methode3
 	ADDSP #1
+<<<<<<< HEAD
 	LOAD 126(GB), R11
+=======
+	LOAD 48(LB), R11
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R11, 0(SP)
 	LOAD 0(SP), R11
 	CMP #null, R11
@@ -3143,10 +4568,17 @@ IfThenElse_else_a13315:
 	LOAD R0, R9
 ; appel de methode3
 	ADDSP #2
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 6(R1), R3
 	STORE R3, 0(SP)
 	LOAD 128(GB), R11
+=======
+	LOAD -2(LB), R0
+	LOAD 6(R0), R5
+	STORE R5, 0(SP)
+	LOAD 50(LB), R11
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R11, -1(SP)
 	LOAD 0(SP), R3
 	CMP #null, R3
@@ -3195,8 +4627,8 @@ OpCmp_fin_in_a14417:
 	BRA IfThenElse_fin_a14417
 IfThenElse_else_a14417:
 	LOAD -3(LB), R9
-	LOAD -2(LB), R1
-	LOAD 1(R1), R11
+	LOAD -2(LB), R0
+	LOAD 1(R0), R11
 	SUB R11, R9
 	LOAD R9, R1
 	BGT OpCmp_if_in_a14916
@@ -3210,8 +4642,8 @@ OpCmp_fin_in_a14916:
 	BNE IfThenElse_else_a14916
 ; appel de methode2
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 5(R1), R11
+	LOAD -2(LB), R0
+	LOAD 5(R0), R11
 	STORE R11, 0(SP)
 	LOAD -3(LB), R9
 	STORE R9, -1(SP)
@@ -3222,12 +4654,20 @@ OpCmp_fin_in_a14916:
 	BSR 2(R11)
 	SUBSP #2
 	LOAD R0, R9
+<<<<<<< HEAD
 	STORE R9, 129(GB)
+=======
+	STORE R9, 51(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode2
 	ADDSP #2
 	LOAD -2(LB), R9
 	STORE R9, 0(SP)
+<<<<<<< HEAD
 	LOAD 129(GB), R11
+=======
+	LOAD 51(LB), R11
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R11, -1(SP)
 	LOAD 0(SP), R9
 	CMP #null, R9
@@ -3240,8 +4680,13 @@ OpCmp_fin_in_a14916:
 	BRA IfThenElse_fin_a14916
 IfThenElse_else_a14916:
 	LOAD -3(LB), R9
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 1(R1), R3
+=======
+	LOAD -2(LB), R0
+	LOAD 1(R0), R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD #2, R12
 	FLOAT R12, R12
 	DIV R12, R3
@@ -3259,10 +4704,17 @@ OpCmp_fin_in_a15421:
 	BNE IfThenElse_else_a15421
 ; appel de methode3
 	ADDSP #2
+<<<<<<< HEAD
 	LOAD -2(LB), R3
 	STORE R3, 0(SP)
 	LOAD -2(LB), R1
 	LOAD 1(R1), R9
+=======
+	LOAD -2(LB), R5
+	STORE R5, 0(SP)
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD #2, R12
 	FLOAT R12, R12
 	DIV R12, R9
@@ -3287,9 +4739,15 @@ IfThenElse_else_a15421:
 	LOAD -2(LB), R3
 	STORE R3, 0(SP)
 	LOAD -3(LB), R12
+<<<<<<< HEAD
 	LOAD #2, R5
 	FLOAT R5, R5
 	DIV R5, R12
+=======
+	LOAD #2, R3
+	FLOAT R3, R3
+	DIV R3, R12
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BOV divisionErr
 	STORE R12, -1(SP)
 	LOAD 0(SP), R3
@@ -3305,10 +4763,17 @@ IfThenElse_else_a15421:
 	ADDSP #2
 	LOAD -2(LB), R12
 	STORE R12, 0(SP)
+<<<<<<< HEAD
 	LOAD -3(LB), R3
 	LOAD #2, R5
 	FLOAT R5, R5
 	DIV R5, R3
+=======
+	LOAD -3(LB), R5
+	LOAD #2, R3
+	FLOAT R3, R3
+	DIV R3, R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BOV divisionErr
 	STORE R3, -1(SP)
 	LOAD 0(SP), R12
@@ -3327,8 +4792,11 @@ IfThenElse_fin_a14417:
 IfThenElse_fin_a13212:
 	POP R2
 	POP R3
+<<<<<<< HEAD
+=======
+	POP R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R5
-	POP R6
 	POP R9
 	POP R10
 	POP R11
@@ -3341,8 +4809,8 @@ code.Chebychev.cosCheb:
 	PUSH R11
 	PUSH R10
 	PUSH R9
-	PUSH R6
 	PUSH R5
+<<<<<<< HEAD
 	PUSH R3
 	PUSH R2
 ; instruction new
@@ -3359,9 +4827,28 @@ code.Chebychev.cosCheb:
 	STORE R6, 132(GB)
 	LOAD #0x0.0p0, R6
 	STORE R6, 133(GB)
+=======
+	PUSH R4
+	PUSH R3
+	PUSH R2
+; instruction new
+	NEW #3, R4
+	LEA 16(GB), R0
+	STORE R0, 0(R4)
+	PUSH R4
+	BSR init.Couple
+	POP R4
+	STORE R4, 52(LB)
+	LOAD #0x0.0p0, R4
+	STORE R4, 53(LB)
+	LOAD #0x0.0p0, R4
+	STORE R4, 54(LB)
+	LOAD #0x0.0p0, R4
+	STORE R4, 55(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R2
-	LOAD -2(LB), R1
-	LOAD 1(R1), R11
+	LOAD -2(LB), R0
+	LOAD 1(R0), R11
 	LOAD #4, R9
 	FLOAT R9, R9
 	DIV R9, R11
@@ -3396,13 +4883,13 @@ OpCmp_fin_in_a17129:
 And_else_in_a17112:
 	LOAD #1, R1
 And_fin_in_a17112:
-	LOAD R1, R6
-	LOAD R6, R1
+	LOAD R1, R4
+	LOAD R4, R1
 	BNE IfThenElse_else_a17112
 ; appel de methode5
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 4(R1), R2
+	LOAD -2(LB), R0
+	LOAD 4(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R11
 	STORE R11, -1(SP)
@@ -3427,8 +4914,8 @@ OpCmp_fin_in_a17215:
 	BNE IfThenElse_else_a17215
 ; appel de methode4
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 6(R1), R2
+	LOAD -2(LB), R0
+	LOAD 6(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R11
 	STORE R11, -1(SP)
@@ -3444,8 +4931,8 @@ OpCmp_fin_in_a17215:
 IfThenElse_else_a17215:
 ; appel de methode3
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 7(R1), R11
+	LOAD -2(LB), R0
+	LOAD 7(R0), R11
 	STORE R11, 0(SP)
 	LOAD -3(LB), R2
 	STORE R2, -1(SP)
@@ -3456,15 +4943,23 @@ IfThenElse_else_a17215:
 	BSR 3(R11)
 	SUBSP #2
 	LOAD R0, R2
+<<<<<<< HEAD
 	STORE R2, 130(GB)
+=======
+	STORE R2, 52(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode2
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 7(R1), R2
+	LOAD -2(LB), R0
+	LOAD 7(R0), R2
 	STORE R2, 0(SP)
 ; appel de methode2
 	ADDSP #1
+<<<<<<< HEAD
 	LOAD 130(GB), R11
+=======
+	LOAD 52(LB), R11
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R11, 0(SP)
 	LOAD 0(SP), R11
 	CMP #null, R11
@@ -3476,7 +4971,11 @@ IfThenElse_else_a17215:
 	STORE R9, -1(SP)
 ; appel de methode3
 	ADDSP #1
+<<<<<<< HEAD
 	LOAD 130(GB), R9
+=======
+	LOAD 52(LB), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R9, 0(SP)
 	LOAD 0(SP), R9
 	CMP #null, R9
@@ -3493,19 +4992,31 @@ IfThenElse_else_a17215:
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R11
+<<<<<<< HEAD
 	STORE R11, 131(GB)
 	LOAD -3(LB), R11
 	LOAD 131(GB), R2
 	SUB R2, R11
 	STORE R11, 132(GB)
+=======
+	STORE R11, 53(LB)
+	LOAD -3(LB), R11
+	LOAD 53(LB), R2
+	SUB R2, R11
+	STORE R11, 54(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode2
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 2(R1), R11
+	LOAD -2(LB), R0
+	LOAD 2(R0), R11
 	STORE R11, 0(SP)
 ; appel de methode2
 	ADDSP #1
+<<<<<<< HEAD
 	LOAD 130(GB), R2
+=======
+	LOAD 52(LB), R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R2, 0(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -3517,7 +5028,11 @@ IfThenElse_else_a17215:
 	STORE R9, -1(SP)
 ; appel de methode3
 	ADDSP #1
+<<<<<<< HEAD
 	LOAD 130(GB), R9
+=======
+	LOAD 52(LB), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R9, 0(SP)
 	LOAD 0(SP), R9
 	CMP #null, R9
@@ -3536,10 +5051,14 @@ IfThenElse_else_a17215:
 	LOAD R0, R2
 ; appel de methode4
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 6(R1), R11
+	LOAD -2(LB), R0
+	LOAD 6(R0), R11
 	STORE R11, 0(SP)
+<<<<<<< HEAD
 	LOAD 132(GB), R9
+=======
+	LOAD 54(LB), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R9, -1(SP)
 	LOAD 0(SP), R11
 	CMP #null, R11
@@ -3552,12 +5071,16 @@ IfThenElse_else_a17215:
 	BOV over_flow
 ; appel de methode3
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 2(R1), R9
+	LOAD -2(LB), R0
+	LOAD 2(R0), R9
 	STORE R9, 0(SP)
 ; appel de methode2
 	ADDSP #1
+<<<<<<< HEAD
 	LOAD 130(GB), R11
+=======
+	LOAD 52(LB), R11
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R11, 0(SP)
 	LOAD 0(SP), R11
 	CMP #null, R11
@@ -3569,10 +5092,17 @@ IfThenElse_else_a17215:
 	STORE R3, -1(SP)
 ; appel de methode3
 	ADDSP #1
+<<<<<<< HEAD
 	LOAD 130(GB), R3
 	STORE R3, 0(SP)
 	LOAD 0(SP), R3
 	CMP #null, R3
+=======
+	LOAD 52(LB), R5
+	STORE R5, 0(SP)
+	LOAD 0(SP), R5
+	CMP #null, R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BEQ pile_pleine
 	LOAD 0(R3), R3
 	BSR 3(R3)
@@ -3588,11 +5118,16 @@ IfThenElse_else_a17215:
 	LOAD R0, R11
 ; appel de methode3
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 6(R1), R9
+	LOAD -2(LB), R0
+	LOAD 6(R0), R9
 	STORE R9, 0(SP)
+<<<<<<< HEAD
 	LOAD 132(GB), R3
 	STORE R3, -1(SP)
+=======
+	LOAD 54(LB), R5
+	STORE R5, -1(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R9
 	CMP #null, R9
 	BEQ pile_pleine
@@ -3639,11 +5174,19 @@ OpCmp_fin_in_a18317:
 	BRA IfThenElse_fin_a18317
 IfThenElse_else_a18317:
 	LOAD -3(LB), R11
+<<<<<<< HEAD
 	LOAD #2, R3
 	FLOAT R3, R3
 	LOAD -2(LB), R1
 	LOAD 1(R1), R9
 	MUL R9, R3
+=======
+	LOAD #2, R5
+	FLOAT R5, R5
+	LOAD -2(LB), R0
+	LOAD 1(R0), R9
+	MUL R9, R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BOV over_flow
 	SUB R3, R11
 	LOAD R11, R1
@@ -3658,9 +5201,15 @@ OpCmp_fin_in_a18816:
 	BNE IfThenElse_else_a18816
 ; appel de methode3
 	ADDSP #2
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 5(R1), R3
 	STORE R3, 0(SP)
+=======
+	LOAD -2(LB), R0
+	LOAD 5(R0), R5
+	STORE R5, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R11
 	STORE R11, -1(SP)
 	LOAD 0(SP), R3
@@ -3670,13 +5219,22 @@ OpCmp_fin_in_a18816:
 	BSR 3(R3)
 	SUBSP #2
 	LOAD R0, R11
+<<<<<<< HEAD
 	STORE R11, 133(GB)
+=======
+	STORE R11, 55(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode3
 	ADDSP #2
 	LOAD -2(LB), R11
 	STORE R11, 0(SP)
+<<<<<<< HEAD
 	LOAD 133(GB), R3
 	STORE R3, -1(SP)
+=======
+	LOAD 55(LB), R5
+	STORE R5, -1(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R11
 	CMP #null, R11
 	BEQ pile_pleine
@@ -3688,8 +5246,8 @@ OpCmp_fin_in_a18816:
 	BRA IfThenElse_fin_a18816
 IfThenElse_else_a18816:
 	LOAD -3(LB), R9
-	LOAD -2(LB), R1
-	LOAD 1(R1), R12
+	LOAD -2(LB), R0
+	LOAD 1(R0), R12
 	SUB R12, R9
 	LOAD R9, R1
 	BGT OpCmp_if_in_a19221
@@ -3704,9 +5262,15 @@ OpCmp_fin_in_a19221:
 	LOAD -3(LB), R12
 	LOAD #2, R9
 	FLOAT R9, R9
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 1(R1), R5
 	MUL R5, R9
+=======
+	LOAD -2(LB), R0
+	LOAD 1(R0), R3
+	MUL R3, R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BOV over_flow
 	SUB R9, R12
 	LOAD R12, R1
@@ -3732,8 +5296,8 @@ And_fin_in_a19221:
 	LOAD -2(LB), R11
 	STORE R11, 0(SP)
 	LOAD -3(LB), R9
-	LOAD -2(LB), R1
-	LOAD 1(R1), R12
+	LOAD -2(LB), R0
+	LOAD 1(R0), R12
 	SUB R12, R9
 	STORE R9, -1(SP)
 	LOAD 0(SP), R11
@@ -3748,11 +5312,19 @@ And_fin_in_a19221:
 	BRA IfThenElse_fin_a19221
 IfThenElse_else_a19221:
 	LOAD -3(LB), R11
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 1(R1), R12
 	LOAD #2, R5
 	FLOAT R5, R5
 	DIV R5, R12
+=======
+	LOAD -2(LB), R0
+	LOAD 1(R0), R12
+	LOAD #2, R3
+	FLOAT R3, R3
+	DIV R3, R12
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BOV divisionErr
 	SUB R12, R11
 	LOAD R11, R1
@@ -3769,6 +5341,7 @@ OpCmp_fin_in_a19621:
 	ADDSP #2
 	LOAD -2(LB), R12
 	STORE R12, 0(SP)
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 1(R1), R11
 	LOAD #2, R5
@@ -3777,6 +5350,16 @@ OpCmp_fin_in_a19621:
 	BOV divisionErr
 	LOAD -3(LB), R5
 	SUB R5, R11
+=======
+	LOAD -2(LB), R0
+	LOAD 1(R0), R11
+	LOAD #2, R3
+	FLOAT R3, R3
+	DIV R3, R11
+	BOV divisionErr
+	LOAD -3(LB), R3
+	SUB R3, R11
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R11, -1(SP)
 	LOAD 0(SP), R12
 	CMP #null, R12
@@ -3794,9 +5377,15 @@ IfThenElse_else_a19621:
 	FLOAT R12, R12
 ; appel de methode4
 	ADDSP #3
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 4(R1), R5
 	STORE R5, 0(SP)
+=======
+	LOAD -2(LB), R0
+	LOAD 4(R0), R3
+	STORE R3, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode2
 	ADDSP #2
 	LOAD -2(LB), R7
@@ -3817,11 +5406,19 @@ IfThenElse_else_a19621:
 	STORE R13, -1(SP)
 	LOAD #2, R13
 	STORE R13, -2(SP)
+<<<<<<< HEAD
 	LOAD 0(SP), R5
 	CMP #null, R5
 	BEQ pile_pleine
 	LOAD 0(R5), R5
 	BSR 4(R5)
+=======
+	LOAD 0(SP), R3
+	CMP #null, R3
+	BEQ pile_pleine
+	LOAD 0(R3), R3
+	BSR 4(R3)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #3
 	LOAD R0, R13
 	MUL R13, R12
@@ -3835,8 +5432,11 @@ IfThenElse_fin_a18317:
 IfThenElse_fin_a17112:
 	POP R2
 	POP R3
+<<<<<<< HEAD
+=======
+	POP R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R5
-	POP R6
 	POP R9
 	POP R10
 	POP R11
@@ -3848,6 +5448,7 @@ code.Chebychev.getIndexActan:
 	PUSH R11
 	PUSH R10
 	PUSH R9
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
 	PUSH R2
@@ -3855,6 +5456,15 @@ code.Chebychev.getIndexActan:
 	STORE R6, 134(GB)
 While_cond_a20815:
 	LOAD 134(GB), R10
+=======
+	PUSH R5
+	PUSH R4
+	PUSH R2
+	LOAD #1, R4
+	STORE R4, 56(LB)
+While_cond_a20815:
+	LOAD 56(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD #9, R2
 	SUB R2, R10
 	LOAD R10, R1
@@ -3864,16 +5474,20 @@ While_cond_a20815:
 OpCmp_if_in_a20815:
 	LOAD #0, R1
 OpCmp_fin_in_a20815:
-	LOAD R1, R6
-	LOAD R6, R1
+	LOAD R1, R4
+	LOAD R4, R1
 	BNE While_fin_a20815
 	LOAD -3(LB), R3
 ; appel de methode4
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 2(R1), R9
+	LOAD -2(LB), R0
+	LOAD 2(R0), R9
 	STORE R9, 0(SP)
+<<<<<<< HEAD
 	LOAD 134(GB), R11
+=======
+	LOAD 56(LB), R11
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R11, -1(SP)
 	LOAD 0(SP), R9
 	CMP #null, R9
@@ -3895,10 +5509,14 @@ OpCmp_fin_in_a20916:
 	BNE And_else_in_a20916
 ; appel de methode4
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 2(R1), R11
+	LOAD -2(LB), R0
+	LOAD 2(R0), R11
 	STORE R11, 0(SP)
+<<<<<<< HEAD
 	LOAD 134(GB), R3
+=======
+	LOAD 56(LB), R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD #1, R9
 	SUB R9, R3
 	STORE R3, -1(SP)
@@ -3929,11 +5547,16 @@ And_fin_in_a20916:
 	LOAD R1, R2
 	LOAD R2, R1
 	BNE IfThenElse_else_a20916
+<<<<<<< HEAD
 	LOAD 134(GB), R10
+=======
+	LOAD 56(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R10, R0
 	BRA IfThenElse_fin_a20916
 IfThenElse_else_a20916:
 IfThenElse_fin_a20916:
+<<<<<<< HEAD
 	LOAD 134(GB), R2
 	LOAD #1, R10
 	ADD R10, R2
@@ -3941,6 +5564,15 @@ IfThenElse_fin_a20916:
 	BRA While_cond_a20815
 While_fin_a20815:
 	LOAD 134(GB), R2
+=======
+	LOAD 56(LB), R2
+	LOAD #1, R10
+	ADD R10, R2
+	STORE R2, 56(LB)
+	BRA While_cond_a20815
+While_fin_a20815:
+	LOAD 56(LB), R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD #9, R10
 	SUB R10, R2
 	LOAD R2, R1
@@ -3950,17 +5582,26 @@ While_fin_a20815:
 OpCmp_if_in_a21412:
 	LOAD #0, R1
 OpCmp_fin_in_a21412:
-	LOAD R1, R6
-	LOAD R6, R1
+	LOAD R1, R4
+	LOAD R4, R1
 	BNE IfThenElse_else_a21412
+<<<<<<< HEAD
 	LOAD 134(GB), R10
+=======
+	LOAD 56(LB), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R10, R0
 	BRA IfThenElse_fin_a21412
 IfThenElse_else_a21412:
 IfThenElse_fin_a21412:
 	POP R2
+<<<<<<< HEAD
 	POP R3
 	POP R6
+=======
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R9
 	POP R10
 	POP R11
@@ -3969,6 +5610,7 @@ code.Chebychev.arctanCheb:
 	PUSH R11
 	PUSH R10
 	PUSH R9
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
 	PUSH R2
@@ -3982,6 +5624,21 @@ code.Chebychev.arctanCheb:
 	STORE R6, 138(GB)
 	LOAD #0x0.0p0, R6
 	STORE R6, 139(GB)
+=======
+	PUSH R5
+	PUSH R4
+	PUSH R2
+	LOAD #0x1.936bb8p-4, R4
+	STORE R4, 57(LB)
+	LOAD #0x1.921fb6p-4, R4
+	STORE R4, 58(LB)
+	LOAD #0, R4
+	STORE R4, 59(LB)
+	LOAD #0x0.0p0, R4
+	STORE R4, 60(LB)
+	LOAD #0x0.0p0, R4
+	STORE R4, 61(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R10
 	LOAD #0, R2
 	FLOAT R2, R2
@@ -3993,8 +5650,8 @@ code.Chebychev.arctanCheb:
 OpCmp_if_in_a22611:
 	LOAD #0, R1
 OpCmp_fin_in_a22611:
-	LOAD R1, R6
-	LOAD R6, R1
+	LOAD R1, R4
+	LOAD R4, R1
 	BNE IfThenElse_else_a22611
 ; appel de methode5
 	ADDSP #2
@@ -4028,10 +5685,17 @@ OpCmp_fin_in_a23017:
 	LOAD R1, R2
 	LOAD R2, R1
 	BNE And_else_in_a23017
+<<<<<<< HEAD
 	LOAD -3(LB), R3
 	LOAD 135(GB), R11
 	SUB R11, R3
 	LOAD R3, R1
+=======
+	LOAD -3(LB), R5
+	LOAD 57(LB), R11
+	SUB R11, R5
+	LOAD R5, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BLE OpCmp_if_in_a23031
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a23031
@@ -4051,8 +5715,8 @@ And_fin_in_a23017:
 	BNE IfThenElse_else_a23017
 ; appel de methode2
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 6(R1), R2
+	LOAD -2(LB), R0
+	LOAD 6(R0), R2
 	STORE R2, 0(SP)
 	LOAD -3(LB), R11
 	STORE R11, -1(SP)
@@ -4079,15 +5743,25 @@ IfThenElse_else_a23017:
 	BSR 4(R11)
 	SUBSP #2
 	LOAD R0, R2
+<<<<<<< HEAD
 	STORE R2, 137(GB)
+=======
+	STORE R2, 59(LB)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode5
 	ADDSP #2
-	LOAD -2(LB), R1
-	LOAD 2(R1), R2
+	LOAD -2(LB), R0
+	LOAD 2(R0), R2
 	STORE R2, 0(SP)
+<<<<<<< HEAD
 	LOAD 137(GB), R11
 	LOAD #1, R3
 	SUB R3, R11
+=======
+	LOAD 59(LB), R11
+	LOAD #1, R5
+	SUB R5, R11
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R11, -1(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -4096,22 +5770,37 @@ IfThenElse_else_a23017:
 	BSR 5(R2)
 	SUBSP #2
 	LOAD R0, R11
+<<<<<<< HEAD
 	STORE R11, 138(GB)
 	LOAD #1, R11
 	FLOAT R11, R11
 	LOAD 138(GB), R2
+=======
+	STORE R11, 60(LB)
+	LOAD #1, R11
+	FLOAT R11, R11
+	LOAD 60(LB), R2
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	DIV R2, R11
 	BOV divisionErr
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 4(R1), R2
+	LOAD -2(LB), R0
+	LOAD 4(R0), R2
 	STORE R2, 0(SP)
+<<<<<<< HEAD
 	LOAD 138(GB), R3
 	STORE R3, -1(SP)
 	LOAD #2, R3
 	OPP R3, R3
 	STORE R3, -2(SP)
+=======
+	LOAD 60(LB), R5
+	STORE R5, -1(SP)
+	LOAD #2, R5
+	OPP R5, R5
+	STORE R5, -2(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R2
 	CMP #null, R2
 	BEQ pile_pleine
@@ -4121,13 +5810,21 @@ IfThenElse_else_a23017:
 	LOAD R0, R3
 	LOAD #1, R2
 	FLOAT R2, R2
+<<<<<<< HEAD
 	ADD R2, R3
+=======
+	ADD R2, R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 ; appel de methode4
 	ADDSP #3
-	LOAD -2(LB), R1
-	LOAD 4(R1), R2
+	LOAD -2(LB), R0
+	LOAD 4(R0), R2
 	STORE R2, 0(SP)
+<<<<<<< HEAD
 	LOAD 138(GB), R9
+=======
+	LOAD 60(LB), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R9, -1(SP)
 	LOAD #1, R9
 	OPP R9, R9
@@ -4143,15 +5840,24 @@ IfThenElse_else_a23017:
 	ADD R2, R9
 	DIV R9, R3
 	BOV divisionErr
+<<<<<<< HEAD
 	SUB R3, R11
 	STORE R11, 139(GB)
 	LOAD #2, R11
 	LOAD 137(GB), R3
 	MUL R3, R11
+=======
+	SUB R5, R11
+	STORE R11, 61(LB)
+	LOAD #2, R11
+	LOAD 59(LB), R5
+	MUL R5, R11
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BOV over_flow
 	LOAD #2, R3
 	SUB R3, R11
 	FLOAT R11, R11
+<<<<<<< HEAD
 	LOAD 136(GB), R3
 	MUL R3, R11
 	BOV over_flow
@@ -4160,6 +5866,16 @@ IfThenElse_else_a23017:
 	LOAD -2(LB), R3
 	STORE R3, 0(SP)
 	LOAD 139(GB), R9
+=======
+	LOAD 58(LB), R5
+	MUL R5, R11
+	BOV over_flow
+; appel de methode5
+	ADDSP #2
+	LOAD -2(LB), R5
+	STORE R5, 0(SP)
+	LOAD 61(LB), R9
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R9, -1(SP)
 	LOAD 0(SP), R3
 	CMP #null, R3
@@ -4173,14 +5889,20 @@ IfThenElse_else_a23017:
 IfThenElse_fin_a23017:
 IfThenElse_fin_a22611:
 	POP R2
+<<<<<<< HEAD
 	POP R3
 	POP R6
+=======
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R9
 	POP R10
 	POP R11
 	RTS
 code.Chebychev.arcsinCheb:
 	PUSH R11
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
 	LOAD -3(LB), R6
@@ -4188,10 +5910,20 @@ code.Chebychev.arcsinCheb:
 	ADDSP #2
 	LOAD -2(LB), R1
 	LOAD 4(R1), R10
+=======
+	PUSH R5
+	PUSH R4
+	LOAD -3(LB), R4
+; appel de methode2
+	ADDSP #2
+	LOAD -2(LB), R0
+	LOAD 4(R0), R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R10, 0(SP)
 	LOAD #0x1.0p0, R11
 ; appel de methode4
 	ADDSP #3
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 4(R1), R9
 	STORE R9, 0(SP)
@@ -4199,14 +5931,28 @@ code.Chebychev.arcsinCheb:
 	STORE R3, -1(SP)
 	LOAD #2, R3
 	STORE R3, -2(SP)
+=======
+	LOAD -2(LB), R0
+	LOAD 4(R0), R9
+	STORE R9, 0(SP)
+	LOAD -3(LB), R5
+	STORE R5, -1(SP)
+	LOAD #2, R5
+	STORE R5, -2(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R9
 	CMP #null, R9
 	BEQ pile_pleine
 	LOAD 0(R9), R9
 	BSR 4(R9)
 	SUBSP #3
+<<<<<<< HEAD
 	LOAD R0, R3
 	SUB R3, R11
+=======
+	LOAD R0, R5
+	SUB R5, R11
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	STORE R11, -1(SP)
 	LOAD 0(SP), R10
 	CMP #null, R10
@@ -4215,6 +5961,7 @@ code.Chebychev.arcsinCheb:
 	BSR 2(R10)
 	SUBSP #2
 	LOAD R0, R11
+<<<<<<< HEAD
 	DIV R11, R6
 	BOV divisionErr
 	STORE R6, 140(GB)
@@ -4236,6 +5983,29 @@ code.Chebychev.arcsinCheb:
 	LOAD R11, R0
 	POP R3
 	POP R6
+=======
+	DIV R11, R4
+	BOV divisionErr
+	STORE R4, 62(LB)
+; appel de methode5
+	ADDSP #2
+	LOAD -2(LB), R4
+	STORE R4, 0(SP)
+	LOAD 62(LB), R11
+	STORE R11, -1(SP)
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ pile_pleine
+	LOAD 0(R4), R4
+	BSR 5(R4)
+	SUBSP #2
+	LOAD R0, R11
+	STORE R11, 63(LB)
+	LOAD 63(LB), R11
+	LOAD R11, R0
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R11
 	RTS
 init.finalTrigo:
@@ -4267,6 +6037,7 @@ init.finalTrigo:
 code.finalTrigo.sinf:
 	PUSH R11
 	PUSH R10
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
 	LOAD -2(LB), R1
@@ -4279,11 +6050,26 @@ code.finalTrigo.sinf:
 	LOAD -3(LB), R10
 	LOAD 142(GB), R3
 	SUB R3, R10
+=======
+	PUSH R5
+	PUSH R4
+	LOAD -2(LB), R0
+	LOAD 1(R0), R11
+	LOAD #64, R4
+	FLOAT R4, R4
+	DIV R4, R11
+	BOV divisionErr
+	STORE R11, 64(LB)
+	LOAD -3(LB), R10
+	LOAD 64(LB), R5
+	SUB R5, R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R10, R1
 	BLT OpCmp_if_in_a25912
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a25912
 OpCmp_if_in_a25912:
+<<<<<<< HEAD
 	LOAD #0, R1
 OpCmp_fin_in_a25912:
 	LOAD R1, R6
@@ -4307,24 +6093,63 @@ OpCmp_fin_in_a25929:
 	BRA And_fin_in_a25912
 And_else_in_a25912:
 	LOAD #1, R1
+=======
+	LOAD #0, R1
+OpCmp_fin_in_a25912:
+	LOAD R1, R4
+	LOAD R4, R1
+	BNE And_else_in_a25912
+	LOAD -3(LB), R5
+	LOAD 64(LB), R10
+	OPP R10, R10
+	SUB R10, R5
+	LOAD R5, R1
+	BGT OpCmp_if_in_a25929
+	LOAD #1, R1
+	BRA OpCmp_fin_in_a25929
+OpCmp_if_in_a25929:
+	LOAD #0, R1
+OpCmp_fin_in_a25929:
+	LOAD R1, R4
+	LOAD R4, R1
+	BNE And_else_in_a25912
+	LOAD #0, R1
+	BRA And_fin_in_a25912
+And_else_in_a25912:
+	LOAD #1, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 And_fin_in_a25912:
 	LOAD R1, R11
 	LOAD R11, R1
 	BNE IfThenElse_else_a25912
 ; appel de methode3
 	ADDSP #3
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 3(R1), R6
 	STORE R6, 0(SP)
+=======
+	LOAD -2(LB), R0
+	LOAD 3(R0), R4
+	STORE R4, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R10
 	STORE R10, -1(SP)
 	LOAD #7, R10
 	STORE R10, -2(SP)
+<<<<<<< HEAD
 	LOAD 0(SP), R6
 	CMP #null, R6
 	BEQ pile_pleine
 	LOAD 0(R6), R6
 	BSR 3(R6)
+=======
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ pile_pleine
+	LOAD 0(R4), R4
+	BSR 3(R4)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #3
 	LOAD R0, R10
 	LOAD R10, R0
@@ -4332,28 +6157,45 @@ And_fin_in_a25912:
 IfThenElse_else_a25912:
 ; appel de methode2
 	ADDSP #2
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 2(R1), R10
 	STORE R10, 0(SP)
 	LOAD -3(LB), R6
 	STORE R6, -1(SP)
+=======
+	LOAD -2(LB), R0
+	LOAD 2(R0), R10
+	STORE R10, 0(SP)
+	LOAD -3(LB), R4
+	STORE R4, -1(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R10
 	CMP #null, R10
 	BEQ pile_pleine
 	LOAD 0(R10), R10
 	BSR 2(R10)
 	SUBSP #2
+<<<<<<< HEAD
 	LOAD R0, R6
 	LOAD R6, R0
 IfThenElse_fin_a25912:
 	POP R3
 	POP R6
+=======
+	LOAD R0, R4
+	LOAD R4, R0
+IfThenElse_fin_a25912:
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R10
 	POP R11
 	RTS
 code.finalTrigo.cosf:
 	PUSH R11
 	PUSH R10
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
 	LOAD #0x1.99999ap-4, R11
@@ -4378,6 +6220,32 @@ code.finalTrigo.cosf:
 	LOAD -3(LB), R10
 	LOAD 143(GB), R3
 	SUB R3, R10
+=======
+	PUSH R5
+	PUSH R4
+	LOAD #0x1.99999ap-4, R11
+	LOAD -2(LB), R0
+	LOAD 1(R0), R4
+	LOAD #2, R10
+	FLOAT R10, R10
+	DIV R10, R4
+	BOV divisionErr
+	ADD R4, R11
+	STORE R11, 65(LB)
+	LOAD #0x1.99999ap-4, R11
+	OPP R11, R11
+	LOAD -2(LB), R0
+	LOAD 1(R0), R4
+	LOAD #2, R10
+	FLOAT R10, R10
+	DIV R10, R4
+	BOV divisionErr
+	ADD R4, R11
+	STORE R11, 66(LB)
+	LOAD -3(LB), R10
+	LOAD 65(LB), R5
+	SUB R5, R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R10, R1
 	BLT OpCmp_if_in_a27212
 	LOAD #1, R1
@@ -4385,6 +6253,7 @@ code.finalTrigo.cosf:
 OpCmp_if_in_a27212:
 	LOAD #0, R1
 OpCmp_fin_in_a27212:
+<<<<<<< HEAD
 	LOAD R1, R6
 	LOAD R6, R1
 	BNE And_else_in_a27212
@@ -4392,14 +6261,28 @@ OpCmp_fin_in_a27212:
 	LOAD 144(GB), R10
 	SUB R10, R3
 	LOAD R3, R1
+=======
+	LOAD R1, R4
+	LOAD R4, R1
+	BNE And_else_in_a27212
+	LOAD -3(LB), R5
+	LOAD 66(LB), R10
+	SUB R10, R5
+	LOAD R5, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BGT OpCmp_if_in_a27231
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a27231
 OpCmp_if_in_a27231:
 	LOAD #0, R1
 OpCmp_fin_in_a27231:
+<<<<<<< HEAD
 	LOAD R1, R6
 	LOAD R6, R1
+=======
+	LOAD R1, R4
+	LOAD R4, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BNE And_else_in_a27212
 	LOAD #0, R1
 	BRA And_fin_in_a27212
@@ -4411,18 +6294,32 @@ And_fin_in_a27212:
 	BNE IfThenElse_else_a27212
 ; appel de methode5
 	ADDSP #3
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 3(R1), R6
 	STORE R6, 0(SP)
+=======
+	LOAD -2(LB), R0
+	LOAD 3(R0), R4
+	STORE R4, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R10
 	STORE R10, -1(SP)
 	LOAD #7, R10
 	STORE R10, -2(SP)
+<<<<<<< HEAD
 	LOAD 0(SP), R6
 	CMP #null, R6
 	BEQ pile_pleine
 	LOAD 0(R6), R6
 	BSR 5(R6)
+=======
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ pile_pleine
+	LOAD 0(R4), R4
+	BSR 5(R4)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #3
 	LOAD R0, R10
 	LOAD R10, R0
@@ -4430,33 +6327,57 @@ And_fin_in_a27212:
 IfThenElse_else_a27212:
 ; appel de methode3
 	ADDSP #2
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 2(R1), R10
 	STORE R10, 0(SP)
 	LOAD -3(LB), R6
 	STORE R6, -1(SP)
+=======
+	LOAD -2(LB), R0
+	LOAD 2(R0), R10
+	STORE R10, 0(SP)
+	LOAD -3(LB), R4
+	STORE R4, -1(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R10
 	CMP #null, R10
 	BEQ pile_pleine
 	LOAD 0(R10), R10
 	BSR 3(R10)
 	SUBSP #2
+<<<<<<< HEAD
 	LOAD R0, R6
 	LOAD R6, R0
 IfThenElse_fin_a27212:
 	POP R3
 	POP R6
+=======
+	LOAD R0, R4
+	LOAD R4, R0
+IfThenElse_fin_a27212:
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R10
 	POP R11
 	RTS
 code.finalTrigo.arctanf:
 	PUSH R11
 	PUSH R10
+<<<<<<< HEAD
 	PUSH R6
 	PUSH R3
 	LOAD -3(LB), R10
 	LOAD #0x1.99999ap-2, R3
 	SUB R3, R10
+=======
+	PUSH R5
+	PUSH R4
+	LOAD -3(LB), R10
+	LOAD #0x1.99999ap-2, R5
+	SUB R5, R10
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD R10, R1
 	BLT OpCmp_if_in_a28212
 	LOAD #1, R1
@@ -4464,6 +6385,7 @@ code.finalTrigo.arctanf:
 OpCmp_if_in_a28212:
 	LOAD #0, R1
 OpCmp_fin_in_a28212:
+<<<<<<< HEAD
 	LOAD R1, R6
 	LOAD R6, R1
 	BNE And_else_in_a28212
@@ -4472,14 +6394,29 @@ OpCmp_fin_in_a28212:
 	OPP R10, R10
 	SUB R10, R3
 	LOAD R3, R1
+=======
+	LOAD R1, R4
+	LOAD R4, R1
+	BNE And_else_in_a28212
+	LOAD -3(LB), R5
+	LOAD #0x1.99999ap-2, R10
+	OPP R10, R10
+	SUB R10, R5
+	LOAD R5, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BGT OpCmp_if_in_a28228
 	LOAD #1, R1
 	BRA OpCmp_fin_in_a28228
 OpCmp_if_in_a28228:
 	LOAD #0, R1
 OpCmp_fin_in_a28228:
+<<<<<<< HEAD
 	LOAD R1, R6
 	LOAD R6, R1
+=======
+	LOAD R1, R4
+	LOAD R4, R1
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	BNE And_else_in_a28212
 	LOAD #0, R1
 	BRA And_fin_in_a28212
@@ -4491,18 +6428,32 @@ And_fin_in_a28212:
 	BNE IfThenElse_else_a28212
 ; appel de methode7
 	ADDSP #3
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 3(R1), R6
 	STORE R6, 0(SP)
+=======
+	LOAD -2(LB), R0
+	LOAD 3(R0), R4
+	STORE R4, 0(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD -3(LB), R10
 	STORE R10, -1(SP)
 	LOAD #7, R10
 	STORE R10, -2(SP)
+<<<<<<< HEAD
 	LOAD 0(SP), R6
 	CMP #null, R6
 	BEQ pile_pleine
 	LOAD 0(R6), R6
 	BSR 7(R6)
+=======
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ pile_pleine
+	LOAD 0(R4), R4
+	BSR 7(R4)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	SUBSP #3
 	LOAD R0, R10
 	LOAD R10, R0
@@ -4510,26 +6461,43 @@ And_fin_in_a28212:
 IfThenElse_else_a28212:
 ; appel de methode5
 	ADDSP #2
+<<<<<<< HEAD
 	LOAD -2(LB), R1
 	LOAD 2(R1), R10
 	STORE R10, 0(SP)
 	LOAD -3(LB), R6
 	STORE R6, -1(SP)
+=======
+	LOAD -2(LB), R0
+	LOAD 2(R0), R10
+	STORE R10, 0(SP)
+	LOAD -3(LB), R4
+	STORE R4, -1(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R10
 	CMP #null, R10
 	BEQ pile_pleine
 	LOAD 0(R10), R10
 	BSR 5(R10)
 	SUBSP #2
+<<<<<<< HEAD
 	LOAD R0, R6
 	LOAD R6, R0
 IfThenElse_fin_a28212:
 	POP R3
 	POP R6
+=======
+	LOAD R0, R4
+	LOAD R4, R0
+IfThenElse_fin_a28212:
+	POP R4
+	POP R5
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	POP R10
 	POP R11
 	RTS
 code.finalTrigo.arcsinf:
+<<<<<<< HEAD
 	PUSH R6
 ; appel de methode5
 	ADDSP #2
@@ -4538,15 +6506,31 @@ code.finalTrigo.arcsinf:
 	STORE R11, 0(SP)
 	LOAD -3(LB), R6
 	STORE R6, -1(SP)
+=======
+	PUSH R4
+; appel de methode5
+	ADDSP #2
+	LOAD -2(LB), R0
+	LOAD 2(R0), R11
+	STORE R11, 0(SP)
+	LOAD -3(LB), R4
+	STORE R4, -1(SP)
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	LOAD 0(SP), R11
 	CMP #null, R11
 	BEQ pile_pleine
 	LOAD 0(R11), R11
 	BSR 5(R11)
 	SUBSP #2
+<<<<<<< HEAD
 	LOAD R0, R6
 	LOAD R6, R0
 	POP R6
+=======
+	LOAD R0, R4
+	LOAD R4, R0
+	POP R4
+>>>>>>> 77dcbc7ae589a112a411329cecc2c095bcf26937
 	RTS
 code.Object.equals:
 pile_pleine:
