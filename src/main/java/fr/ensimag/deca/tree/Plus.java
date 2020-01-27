@@ -8,6 +8,7 @@ import fr.ensimag.ima.pseudocode.instructions.ADD;
 import fr.ensimag.ima.pseudocode.instructions.WINT;
 import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
 import fr.ensimag.deca.codegen.RegisterManager;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
 
 
 /**
@@ -32,6 +33,9 @@ public class Plus extends AbstractOpArith {
         compiler.getRegisterManager().used.add(r1);
         compiler.getRegisterManager().used.add(r2);
         compiler.addInstruction(new ADD(r2, r1));
+        if (!compiler.getCompilerOptions().getNoCheck() && this.getType().isFloat()){
+            compiler.addInstruction(new BOV(compiler.over_flow));
+        }
         compiler.getRegisterManager().freeReg(compiler, r2);
         compiler.addInstruction(new LOAD(r1, R1));
         compiler.getRegisterManager().freeReg(compiler, r1);
@@ -41,6 +45,9 @@ public class Plus extends AbstractOpArith {
         GPRegister r1 = this.getLeftOperand().codeGenLoad(compiler);
         GPRegister r2 = this.getRightOperand().codeGenLoad(compiler);
         compiler.addInstruction(new ADD(r2, r1));
+        if (!compiler.getCompilerOptions().getNoCheck() && this.getType().isFloat()){
+            compiler.addInstruction(new BOV(compiler.over_flow));
+        }
         compiler.getRegisterManager().freeReg(compiler, r2);
          compiler.getRegisterManager().used.add(r2);
         return r1;
