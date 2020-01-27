@@ -11,15 +11,15 @@
 
 
 
-    float cos = m.cos(0.0);
-    float sin = m.sin(0.0);
+    //float cos = m.cos(0.0);
+    //float sin = m.sin(0.0);
     float atan = m.arctan(0.0);
     float asin = m.arcsin(0.0);
     float ulp = m.ulp(0.0);
 
 
-    println(cos);
-    println(sin);
+    //println(cos);
+    //println(sin);
     println(atan);
     println(asin);
     println(ulp);

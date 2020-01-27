@@ -135,7 +135,7 @@ public class Chebychev {
         }
     }
 
-    public static float arcsinCheb(float value){
+    static float arcsinCheb(float value){
         float newVal = value / m.racine(1 - m.power(value, 2));
         float result = arctanCheb(newVal);
         return result;

@@ -242,7 +242,6 @@ class Chebychev {
     float arcsinCheb(float value){
         float newVal = value / m.racine(1.0f - m.power(value, 2));
         float result = this.arctanCheb(newVal);
-
         return result;
     }
 
