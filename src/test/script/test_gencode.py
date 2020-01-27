@@ -213,6 +213,8 @@ def valid_gencode():
                 attendu = "5 2 3 3"
             elif str(file) == "returnFloat.deca":
                 attendu = "3.33333e-01"
+            elif str(file) == "racine.deca":
+                attendu = "9.00000e+00"
             else:
                 print("fichier pas encore traité")
                 print(str(file));
