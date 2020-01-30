@@ -1,1 +1,1 @@
-mvn clean && mvn compile && mvn test-compile && mvn cobertura:instrument
+mvn clean && mvn compile && mvn test-compile
