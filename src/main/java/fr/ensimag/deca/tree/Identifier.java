@@ -190,7 +190,7 @@ public class Identifier extends AbstractIdentifier {
                   name.toString() + "\" est un type prédéfini" +
                   " (essayer de le renommer)", this.getLocation());
         }
-
+        
         ExpDefinition def = localEnv.get(this.getName());
         if (def == null)
         {
@@ -281,22 +281,22 @@ public class Identifier extends AbstractIdentifier {
         ExpDefinition def = this.getExpDefinition();
         ParamDefinition prm = this.getParamDefinition();
         def.setOperand(new RegisterOffset(-(prm.getIndex() + 2), Register.LB));
-        
+
     }
     @Override
      protected void codeGenPrint(DecacCompiler compiler, boolean hex) {
         compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), Register.R1));
         super.codeGenPrint(compiler, hex);
-        
+
     }
     @Override
     protected GPRegister codeGenLoad(DecacCompiler compiler) {
         GPRegister r1 = compiler.getRegisterManager().allocReg(compiler);
-        
+
         if(this.getExpDefinition().isField()){
             compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R0));
             compiler.addInstruction(new LOAD(new RegisterOffset(this.getFieldDefinition().getIndex(), Register.R0), r1));
-            
+
         }
         else{
             compiler.addInstruction(new LOAD(this.getExpDefinition().getOperand(), r1));

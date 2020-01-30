@@ -73,6 +73,12 @@ public class DeclVar extends AbstractDeclVar {
                           this.getLocation());
               }
               Type nameVar = this.getNameVar().verifyExpr(compiler, localEnv, currentClass);
+              if (currentClass != null && currentClass.getMembers().get(symbol) != null &&
+                  currentClass.getMembers().get(symbol).isMethod())
+              {
+                throw new ContextualError("L'identificateur \"" +
+                        symbol.toString() + "\" est une méthode", this.getLocation());
+              }
               //LOG.debug("End of verifyDeclVar");
     }
     @Override

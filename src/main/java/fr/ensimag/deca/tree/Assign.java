@@ -35,6 +35,11 @@ public class Assign extends AbstractBinaryExpr {
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
         Type type = this.getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
+        if (getLeftOperand().getExpDefinition().isMethod())
+        {
+          throw new ContextualError("On ne peut pas affecter la méthode \"" +
+                  getLeftOperand().decompile() + "\"", this.getLocation());
+        }
         this.setRightOperand(this.getRightOperand().verifyRValue(compiler, localEnv, currentClass, type));
         Type type2 = this.getRightOperand().getType();
         if (!localEnv.assignCompatible(type, type2))
